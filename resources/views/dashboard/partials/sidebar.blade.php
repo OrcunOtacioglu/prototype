@@ -4,18 +4,19 @@
             <li>
                 <a href="{{ url('/dashboard') }}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
             </li>
-            {{--<li>--}}
-                {{--<a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>--}}
-                {{--<ul class="nav nav-second-level">--}}
-                    {{--<li>--}}
-                        {{--<a href="flot.html">Flot Charts</a>--}}
-                    {{--</li>--}}
-                    {{--<li>--}}
-                        {{--<a href="morris.html">Morris.js Charts</a>--}}
-                    {{--</li>--}}
-                {{--</ul>--}}
-                {{--<!-- /.nav-second-level -->--}}
-            {{--</li>--}}
+            <li>
+                <a href="#">
+                    <i class="fa fa-adjust"></i> Accounts<span class="fa arrow"></span>
+                </a>
+                <ul class="nav nav-second-level">
+                    <li>
+                        <a href="{{ action('AccountController@index') }}">All Accounts</a>
+                    </li>
+                    <li>
+                        <a href="{{ action('AccountController@create') }}">Create Account</a>
+                    </li>
+                </ul>
+            </li>
         </ul>
     </div>
 </div>

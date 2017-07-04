@@ -25,11 +25,14 @@
             <div id="page-wrapper">
 
                 <div class="row">
-                    <div class="col-lg-12">
-                        <h1 class="page-header">@yield('title')</h1>
+                    <div class="col-lg-8">
+                        <h1>@yield('title')</h1>
+                    </div>
+                    <div class="col-md-4" style="padding-top: 20px;">
+                        @yield('page.top')
                     </div>
                 </div>
-
+                <hr>
                 <div class="row">
                     @yield('content')
                 </div>
