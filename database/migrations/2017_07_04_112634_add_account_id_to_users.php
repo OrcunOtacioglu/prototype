@@ -26,6 +26,8 @@ class AddAccountIdToUsers extends Migration
      */
     public function down()
     {
-        Schema::dropForeign(['account_id']);
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropIfExists('account_id');
+        });
     }
 }
