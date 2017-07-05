@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Event;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class EventController extends Controller
 {
@@ -13,7 +15,9 @@ class EventController extends Controller
      */
     public function index()
     {
-        //
+        $events = Event::all();
+
+        return view('dashboard.event.index', compact('events'));
     }
 
     /**
@@ -23,7 +27,9 @@ class EventController extends Controller
      */
     public function create()
     {
-        //
+        $account = Auth::user()->account->id;
+
+        return view('dashboard.event.create', compact('account'));
     }
 
     /**

@@ -6,7 +6,7 @@
             </li>
             <li>
                 <a href="#">
-                    <i class="fa fa-adjust"></i> Accounts<span class="fa arrow"></span>
+                    <i class="fa fa-address-card-o"></i> Accounts<span class="fa arrow"></span>
                 </a>
                 <ul class="nav nav-second-level">
                     <li>
@@ -14,6 +14,19 @@
                     </li>
                     <li>
                         <a href="{{ action('AccountController@create') }}">Create Account</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-calendar"></i> Events<span class="fa arrow"></span>
+                </a>
+                <ul class="nav nav-second-level">
+                    <li>
+                        <a href="{{ action('EventController@index') }}">All Events</a>
+                    </li>
+                    <li>
+                        <a href="{{ action('EventController@create') }}">Create Event</a>
                     </li>
                 </ul>
             </li>
