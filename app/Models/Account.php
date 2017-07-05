@@ -27,4 +27,14 @@ class Account extends Model
     {
         return $this->hasMany(User::class);
     }
+
+    public function events()
+    {
+        return $this->hasMany(Event::class);
+    }
+
+    public function ticketTypes()
+    {
+        return $this->hasMany(TicketType::class);
+    }
 }
