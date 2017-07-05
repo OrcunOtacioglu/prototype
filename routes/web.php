@@ -9,4 +9,6 @@ Auth::routes();
 
 Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
     Route::get('/', 'DashboardController@index');
+    Route::resource('/account', 'AccountController');
+    Route::resource('/event', 'EventController');
 });
