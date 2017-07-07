@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\TicketType;
 use Illuminate\Http\Request;
 
 class TicketTypeController extends Controller
@@ -34,7 +35,9 @@ class TicketTypeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        TicketType::createNew($request);
+
+        return redirect()->back();
     }
 
     /**

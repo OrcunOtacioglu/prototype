@@ -40,18 +40,22 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $event = Event::createNew($request);
+
+        return redirect()->to('/dashboard/event/' . $event->id . '/edit');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param $slug
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function show($id)
+    public function show($slug)
     {
-        //
+        $event = Event::where('slug', '=', $slug)->first();
+
+        return view('frontend.event.show', compact('event'));
     }
 
     /**
@@ -62,7 +66,9 @@ class EventController extends Controller
      */
     public function edit($id)
     {
-        //
+        $event = Event::find($id);
+
+        return view('dashboard.event.edit', ['id' => $event->id], compact('event'));
     }
 
     /**

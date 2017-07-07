@@ -24,8 +24,6 @@ class CreateEventsTable extends Migration
             $table->text('description');
             $table->string('cover_image');
             $table->string('location');
-            $table->string('category');
-            $table->string('type');
             $table->integer('status');
             $table->boolean('listing');
             $table->dateTime('start_date');
