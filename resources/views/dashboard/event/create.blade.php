@@ -1,10 +1,14 @@
 @extends('dashboard.base')
 
+@section('custom.css')
+    <link rel="stylesheet" href="{{ asset('css/plugins/bootstrap-datetimepicker.min.css') }}">
+@stop
+
 @section('title', 'Create New Event')
 
 @section('content')
     <div class="col-md-12">
-        <form action="{{ action('EventController@store') }}" method="POST">
+        <form action="{{ action('EventController@store') }}" method="POST" enctype="multipart/form-data">
             {{ csrf_field() }}
             <input type="hidden" name="accountID" value="{{ $account }}">
 
@@ -40,16 +44,9 @@
                     <div class="form-group">
                         <label for="category">Event Category</label>
                         <select name="category" id="category" class="form-control">
-                            <option value="1">Music</option>
-                            <option value="2">Theatre</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="type">Event Type</label>
-                        <select name="type" id="type" class="form-control">
-                            <option value="1">Match</option>
-                            <option value="2">Race</option>
+                            @foreach(\App\Models\Util\EventCategory::all() as $category)
+                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            @endforeach
                         </select>
                     </div>
 
@@ -75,21 +72,72 @@
                     </div>
 
                     <div class="form-group">
-                        <label for=""startDate>Event Start Date</label>
-                        <input type="text" name="startDate" id="startDate" class="form-control">
+                        <label for="startDate">Event Start Date</label>
+                        <div class="input-group">
+                            <input type="text" name="startDate" id="startDate" class="form-control">
+                            <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="form-group">
                         <label for="endDate">Event End Date</label>
-                        <input type="text" name="endDate" id="endDate" class="form-control">
+                        <div class="input-group">
+                            <input type="text" name="endDate" id="endDate" class="form-control">
+                            <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="form-group">
                         <label for="onSaleDate">Event On Sale Date</label>
-                        <input type="text" name="onSaleDate" id="onSaleDate" class="form-control">
+                        <div class="input-group">
+                            <input type="text" name="onSaleDate" id="onSaleDate" class="form-control">
+                            <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </form>
     </div>
+@stop
+
+@section('footer.scripts')
+    <script src="{{ asset('js/plugins/bootstrap-datetimepicker.min.js') }}"></script>
+    <script>
+        $('#startDate').datetimepicker({
+            weekStart: 1,
+            todayBtn: 1,
+            autoclose: 1,
+            todayHighlight: 1,
+            startView: 2,
+            forceParse: 0,
+            showMeridian: 1,
+            minuteStep: 10
+        });
+        $('#endDate').datetimepicker({
+            weekStart: 1,
+            todayBtn: 1,
+            autoclose: 1,
+            todayHighlight: 1,
+            startView: 2,
+            forceParse: 0,
+            showMeridian: 1,
+            minuteStep: 10
+        });
+        $('#onSaleDate').datetimepicker({
+            weekStart: 1,
+            todayBtn: 1,
+            autoclose: 1,
+            todayHighlight: 1,
+            startView: 2,
+            forceParse: 0,
+            showMeridian: 1,
+            minuteStep: 10
+        });
+    </script>
 @stop

@@ -2,6 +2,11 @@
 
 namespace App\Models;
 
+use App\Models\Util\EventCategory;
+use App\Models\Util\EventType;
+use Illuminate\Http\Request;
+use Acikgise\Helpers\Helpers;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
 
 class Event extends Model
@@ -37,5 +42,30 @@ class Event extends Model
     public function tickets()
     {
         return $this->hasManyThrough('App\Models\Ticket', 'App\Models\TicketType');
+    }
+
+    public function eventCategory()
+    {
+        return $this->belongsTo(EventCategory::class);
+    }
+
+    public static function createNew(Request $request)
+    {
+        $event = new Event();
+        $event->account_id = Auth::user()->account->id;
+        $event->event_category_id = $request->category;
+        $event->title = $request->title;
+        $event->slug = Helpers::sluggify($request->title);
+        $event->description = $request->description;
+        $event->cover_image = Helpers::uploadImage($request, 'coverImage');
+        $event->location = $request->location;
+        $event->status = $request->status;
+        $event->listing = $request->listing;
+        $event->start_date = Helpers::getDateTimeFormat($request->startDate);
+        $event->end_date = Helpers::getDateTimeFormat($request->endDate);
+        $event->on_sale_date = Helpers::getDateTimeFormat($request->onSaleDate);
+        $event->save();
+
+        return $event;
     }
 }

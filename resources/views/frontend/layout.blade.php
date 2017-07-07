@@ -13,7 +13,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
 </head>
-<body>
+<body style="padding-top: 50px;">
 <div id="app">
     @include('frontend.partials.navbar')
 
