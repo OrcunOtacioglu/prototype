@@ -2,6 +2,10 @@
 
 @section('title', 'Events')
 
+@section('custom.css')
+    <link rel="stylesheet" href="{{ asset('css/plugins/datatables.min.css') }}">
+@stop
+
 @section('page.top')
     <div class="pull-right">
         <a href="{{ action('EventController@create') }}" class="btn btn-success">Create New Event</a>
@@ -16,10 +20,11 @@
             <table id="events" class="dataTable" style="width: 100%">
                 <thead>
                 <tr>
-                    <th>Name</th>
+                    <th>Event Name</th>
                     <th>Slug</th>
-                    <th>Date</th>
+                    <th>Event Date</th>
                     <th>Status</th>
+                    <th>Actions</th>
                 </tr>
                 </thead>
 
@@ -31,7 +36,7 @@
                         <td>{{ $event->start_date }}</td>
                         <td>{{ $event->status }}</td>
                         <td>
-                            <a href="{{ action('AccountController@edit', ['id' => $event->id]) }}" class="btn btn-primary btn-xs">Edit</a>
+                            <a href="{{ action('EventController@edit', ['id' => $event->id]) }}" class="btn btn-primary btn-xs">Edit</a>
                             <a href="#" class="btn btn-default btn-xs">Delete</a>
                         </td>
                     </tr>
