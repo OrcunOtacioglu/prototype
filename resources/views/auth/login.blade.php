@@ -3,7 +3,7 @@
 @section('title', 'Please Sign In')
 
 @section('form')
-    <form class="form-horizontal" method="POST" action="{{ route('login') }}">
+    <form class="form-horizontal" method="POST" action="{{ route('dashboard.login') }}">
         {{ csrf_field() }}
 
         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
