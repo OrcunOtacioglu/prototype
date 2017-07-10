@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AttendeeController extends Controller
 {
@@ -23,7 +24,7 @@ class AttendeeController extends Controller
      */
     public function create()
     {
-        //
+        return view('frontend.attendee.create');
     }
 
     /**
@@ -34,7 +35,6 @@ class AttendeeController extends Controller
      */
     public function store(Request $request)
     {
-        //
     }
 
     /**
@@ -43,9 +43,10 @@ class AttendeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request)
     {
-        //
+        $attendee = $request->user('account');
+        return view('frontend.account.show', compact('attendee'));
     }
 
     /**
