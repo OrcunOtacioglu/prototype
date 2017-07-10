@@ -18,7 +18,28 @@ class Helpers
      */
     public static function sluggify($string)
     {
-        return strtolower(str_replace(' ', '-', $string));
+        $text = preg_replace('~[^\pL\d]+~u', '-', $string);
+
+        // transliterate
+        $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
+
+        // remove unwanted characters
+        $text = preg_replace('~[^-\w]+~', '', $text);
+
+        // trim
+        $text = trim($text, '-');
+
+        // remove duplicate -
+        $text = preg_replace('~-+~', '-', $text);
+
+        // lowercase
+        $text = strtolower($text);
+
+        if (empty($text)) {
+            return 'n-a';
+        }
+
+        return $text;
     }
 
     /**
@@ -36,8 +57,9 @@ class Helpers
 
             $ext = $file->guessClientExtension();
             $fileName = $fileString . '.' . $ext;
+            $file->move('images/cover-images', $fileName);
 
-            return $file->storePubliclyAs('images', $fileName);
+            return $fileName;
 
         } else {
             return false;

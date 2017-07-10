@@ -18,8 +18,9 @@
 
 @section('content')
     <div class="col-md-12">
-        <form action="{{ action('EventController@store') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ action('EventController@update', ['id' => $event->id]) }}" method="POST" enctype="multipart/form-data">
             {{ csrf_field() }}
+            {{ method_field('PUT') }}
 
             <div class="row">
                 <div class="col-md-8">
@@ -81,7 +82,7 @@
                 </div>
 
                 <div class="col-md-4">
-                    <img src="{{ asset('/images/' . $event->cover_image) }}" alt="" class="img-responsive">
+                    <img src="/images/cover-images/{{ $event->cover_image }}" alt="" class="img-responsive">
                     <div class="form-group">
                         <label for="coverImage">Event Cover Image</label>
                         <input type="file" name="coverImage" id="coverImage" value="{{ $event->cover_image }}">

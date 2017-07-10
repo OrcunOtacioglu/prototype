@@ -68,4 +68,21 @@ class Event extends Model
 
         return $event;
     }
+
+    public static function updateEvent(Request $request, $id)
+    {
+        $event = Event::findOrFail($id);
+        $event->event_category_id = $request->category;
+        $event->title = $request->title;
+        $event->slug = Helpers::sluggify($request->title);
+        $event->cover_image = Helpers::uploadImage($request, 'coverImage');
+        $event->description = $request->description;
+        $event->location = $request->location;
+        $event->status = $request->status;
+        $event->listing = $request->listing;
+        $event->start_date = Helpers::getDateTimeFormat($request->startDate);
+        $event->end_date = Helpers::getDateTimeFormat($request->endDate);
+        $event->on_sale_date = Helpers::getDateTimeFormat($request->onSaleDate);
+        $event->save();
+    }
 }

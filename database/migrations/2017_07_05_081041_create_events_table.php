@@ -18,6 +18,8 @@ class CreateEventsTable extends Migration
 
             $table->integer('account_id')->unsigned();
             $table->foreign('account_id')->references('id')->on('accounts')->onDelete('cascade');
+            $table->integer('event_category_id')->unsigned();
+            $table->foreign('event_category_id')->references('id')->on('event_categories')->onDelete('cascade');
 
             $table->string('title');
             $table->string('slug')->unique();

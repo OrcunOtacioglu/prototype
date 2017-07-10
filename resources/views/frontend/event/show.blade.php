@@ -6,11 +6,11 @@
 
 @section('content')
     <div style="
-            background: url({{ asset('images/' . $event->cover_image) }});
-            min-height: 350px;
-            background-repeat: no-repeat;
+            background: url('/images/cover-images/{{ $event->cover_image }}');
             background-size: cover;
-            background-position: left;
+            background-repeat: no-repeat;
+            background-position: center center;
+            min-height: 450px;
             ">
     </div>
     <div class="container">
@@ -23,13 +23,25 @@
                 <p>{{ $event->description }}</p>
             </div>
             <div class="col-md-4">
-                @foreach($event->ticketTypes as $ticketType)
-                    <div>
-                        <p>{{ $ticketType->name }}</p>
-                        <p>{{ $ticketType->price }}</p>
-                    </div>
-                @endforeach
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Category</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($event->ticketTypes as $ticketType)
+                            <tr>
+                                <td>{{ $ticketType->name }}</td>
+                                <td>{{ $ticketType->price }}</td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+                <button class="btn btn-primary btn-block" data-toggle="modal" data-target="#tickets">Select Your Ticket</button>
             </div>
         </div>
+        @include('frontend.ticketType.show')
     </div>
 @stop

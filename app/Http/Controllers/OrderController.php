@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Event;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class EventController extends Controller
+class OrderController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +13,7 @@ class EventController extends Controller
      */
     public function index()
     {
-        $events = Event::all();
-
-        return view('dashboard.event.index', compact('events'));
+        //
     }
 
     /**
@@ -27,9 +23,8 @@ class EventController extends Controller
      */
     public function create()
     {
-        $account = Auth::user()->account->id;
 
-        return view('dashboard.event.create', compact('account'));
+
     }
 
     /**
@@ -40,22 +35,18 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        $event = Event::createNew($request);
 
-        return redirect()->to('/dashboard/event/' . $event->id . '/edit');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param $slug
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
      */
-    public function show($slug)
+    public function show($id)
     {
-        $event = Event::where('slug', '=', $slug)->first();
-
-        return view('frontend.event.show', compact('event'));
+        //
     }
 
     /**
@@ -66,9 +57,7 @@ class EventController extends Controller
      */
     public function edit($id)
     {
-        $event = Event::find($id);
-
-        return view('dashboard.event.edit', ['id' => $event->id], compact('event'));
+        //
     }
 
     /**
@@ -80,9 +69,7 @@ class EventController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Event::updateEvent($request, $id);
-
-        return redirect()->back();
+        //
     }
 
     /**
