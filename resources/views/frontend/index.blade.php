@@ -17,9 +17,10 @@
         <div class="row">
             @foreach($events as $event)
                 <div class="col-md-4">
-                    <img src="{{ asset('/images/' . $event->cover_image) }}" alt="" class="img-responsive">
+                    <img src="/images/cover-images/{{ $event->cover_image }}" alt="" class="img-responsive">
                     <h3>{{ $event->title }}</h3>
-                    <p>{{ $event->description }}</p>
+                    <p>{{ substr($event->description, 0, 150) }}</p>
+
                     <a href="{{ action('EventController@show', ['slug' => $event->slug]) }}" class="btn btn-primary">See Details</a>
                 </div>
             @endforeach

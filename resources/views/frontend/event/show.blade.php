@@ -6,11 +6,11 @@
 
 @section('content')
     <div style="
-            background: url({{ asset('images/' . $event->cover_image) }});
+            background: url('/images/cover-images/{{ $event->cover_image }}');
             min-height: 350px;
             background-repeat: no-repeat;
             background-size: cover;
-            background-position: left;
+            background-position: center center;
             ">
     </div>
     <div class="container">
@@ -23,12 +23,30 @@
                 <p>{{ $event->description }}</p>
             </div>
             <div class="col-md-4">
-                @foreach($event->ticketTypes as $ticketType)
-                    <div>
-                        <p>{{ $ticketType->name }}</p>
-                        <p>{{ $ticketType->price }}</p>
-                    </div>
-                @endforeach
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Category</th>
+                            <th>Price</th>
+                            <th>Qty</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($event->ticketTypes as $ticketType)
+                            <tr>
+                                <td>{{ $ticketType->name }}</td>
+                                <td>{{ $ticketType->price }}</td>
+                                <td>
+                                    <select name="ticketCount" id="ticketCount" class="form-control">
+                                        @for($i = $ticketType->min_allowed_per_purchase; $i <= $ticketType->max_allowed_per_purchase; $i++)
+                                            <option value="{{ $i }}">{{ $i }}</option>
+                                        @endfor
+                                    </select>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
