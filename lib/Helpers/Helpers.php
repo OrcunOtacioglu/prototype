@@ -36,8 +36,9 @@ class Helpers
 
             $ext = $file->guessClientExtension();
             $fileName = $fileString . '.' . $ext;
+            $file->move('images/cover-images', $fileName);
 
-            return $file->storePubliclyAs('images', $fileName);
+            return $fileName;
 
         } else {
             return false;
