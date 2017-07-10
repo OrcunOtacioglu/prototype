@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AttendeeController extends Controller
 {
@@ -23,7 +26,6 @@ class AttendeeController extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**
@@ -34,7 +36,6 @@ class AttendeeController extends Controller
      */
     public function store(Request $request)
     {
-        //
     }
 
     /**
@@ -43,9 +44,17 @@ class AttendeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request)
     {
-        //
+        $attendee = $request->user('account');
+
+        // @TODO Add Order Reference to Cookie & check whether the order has been created.
+        if (Cart::count() > 0)
+        {
+            Order::createNew($attendee);
+        }
+
+        return view('frontend.account.show', compact('attendee'));
     }
 
     /**

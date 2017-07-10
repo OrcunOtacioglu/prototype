@@ -29,13 +29,13 @@
                     </li>
                     <li class="divider"></li>
                     <li>
-                        <a href="{{ route('logout') }}"
+                        <a href="{{ route('dashboard.logout') }}"
                             onclick="event.preventDefault();
                                      document.getElementById('logout-form').submit();">
                             <i class="fa fa-sign-out fa-fw"></i> Logout
                         </a>
 
-                        <form action="{{ route('logout') }}" id="logout-form" method="POST" style="display: none;">
+                        <form action="{{ route('dashboard.logout') }}" id="logout-form" method="POST" style="display: none;">
                             {{ csrf_field() }}
                         </form>
                     </li>

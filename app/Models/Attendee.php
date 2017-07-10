@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 
-class Attendee extends Model
+use Illuminate\Foundation\Auth\User as Authenticable;
+
+class Attendee extends Authenticable
 {
     protected $table = 'attendees';
 

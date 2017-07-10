@@ -24,7 +24,6 @@ class OrderController extends Controller
     public function create()
     {
 
-
     }
 
     /**

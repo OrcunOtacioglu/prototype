@@ -1,9 +1,9 @@
-@extends('auth.layout')
+@extends('auth.account.layout')
 
 @section('title', 'Please Register')
 
 @section('form')
-    <form class="form-horizontal" method="POST" action="{{ route('dashboard.register') }}">
+    <form class="form-horizontal" method="POST" action="{{ route('register') }}">
         {{ csrf_field() }}
 
         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
@@ -62,6 +62,10 @@
                     Register
                 </button>
             </div>
+            <div class="col-md-6 col-md-offset-4">
+                <p>Already have an account? <a href="{{ route('login') }}">Please Sıgn In Here</a></p>
+            </div>
         </div>
     </form>
-@endsection
+
+@stop

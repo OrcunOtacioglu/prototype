@@ -8,6 +8,12 @@ use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
+    /**
+     * Adds new Item to the Cart
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function addItem(Request $request)
     {
         $ticketType = TicketType::find($request->ticket);
@@ -18,6 +24,11 @@ class CartController extends Controller
         return redirect()->back();
     }
 
+    /**
+     * Shows the Cart.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function show()
     {
         $items = Cart::content();
@@ -25,6 +36,12 @@ class CartController extends Controller
         return view('frontend.cart.show', compact('items'));
     }
 
+    /**
+     * Deletes an individual Row from Cart.
+     *
+     * @param $rowID
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function deleteItem($rowID)
     {
         Cart::remove($rowID);
@@ -32,10 +49,20 @@ class CartController extends Controller
         return redirect()->action('CartController@show');
     }
 
+    /**
+     * Destroys the Cart.
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function destroyCart()
     {
         Cart::destroy();
 
         return redirect()->to('/');
+    }
+
+    public function step1()
+    {
+
     }
 }
