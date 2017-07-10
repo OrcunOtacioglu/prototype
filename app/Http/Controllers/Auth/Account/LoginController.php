@@ -19,6 +19,6 @@ class LoginController extends Controller
 
     protected function guard()
     {
-        Auth::guard('account');
+        return Auth::guard('account');
     }
 }
