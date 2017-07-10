@@ -7,10 +7,10 @@
 @section('content')
     <div style="
             background: url('/images/cover-images/{{ $event->cover_image }}');
-            min-height: 350px;
-            background-repeat: no-repeat;
             background-size: cover;
+            background-repeat: no-repeat;
             background-position: center center;
+            min-height: 450px;
             ">
     </div>
     <div class="container">
@@ -28,7 +28,6 @@
                         <tr>
                             <th>Category</th>
                             <th>Price</th>
-                            <th>Qty</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -36,18 +35,13 @@
                             <tr>
                                 <td>{{ $ticketType->name }}</td>
                                 <td>{{ $ticketType->price }}</td>
-                                <td>
-                                    <select name="ticketCount" id="ticketCount" class="form-control">
-                                        @for($i = $ticketType->min_allowed_per_purchase; $i <= $ticketType->max_allowed_per_purchase; $i++)
-                                            <option value="{{ $i }}">{{ $i }}</option>
-                                        @endfor
-                                    </select>
-                                </td>
                             </tr>
                         @endforeach
                     </tbody>
                 </table>
+                <button class="btn btn-primary btn-block" data-toggle="modal" data-target="#tickets">Select Your Ticket</button>
             </div>
         </div>
+        @include('frontend.ticketType.show')
     </div>
 @stop
