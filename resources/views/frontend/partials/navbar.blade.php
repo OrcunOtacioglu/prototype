@@ -25,15 +25,15 @@
             <!-- Right Side Of Navbar -->
             <ul class="nav navbar-nav navbar-right">
                 <!-- Authentication Links -->
+                <li>
+                    <a href="/cart">
+                        Shopping Cart @if(\Gloudemans\Shoppingcart\Facades\Cart::count() > 0)<span class="badge">{{ \Gloudemans\Shoppingcart\Facades\Cart::count() }}</span> @endif
+                    </a>
+                </li>
                 @if (!request()->user('account'))
                     <li><a href="{{ route('login') }}">Login</a></li>
                     <li><a href="{{ route('register') }}">Register</a></li>
                 @else
-                    <li>
-                        <a href="/cart">
-                            Shopping Cart @if(\Gloudemans\Shoppingcart\Facades\Cart::count() > 0)<span class="badge">{{ \Gloudemans\Shoppingcart\Facades\Cart::count() }}</span> @endif
-                        </a>
-                    </li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                             {{ request()->user('account')->name }} <span class="caret"></span>

@@ -62,6 +62,9 @@
                     Register
                 </button>
             </div>
+            <div class="col-md-6 col-md-offset-4">
+                <p>Already have an account? <a href="{{ route('login') }}">Please Sıgn In Here</a></p>
+            </div>
         </div>
     </form>
 
