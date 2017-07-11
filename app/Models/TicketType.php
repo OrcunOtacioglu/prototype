@@ -10,9 +10,6 @@ class TicketType extends Model
 {
     protected $table = 'ticket_types';
 
-    //@TODO REMOVE THIS AND ADD SUPPORT
-    public $timestamps = false;
-
     protected $fillable = [
         'account_id',
         'event_id',
