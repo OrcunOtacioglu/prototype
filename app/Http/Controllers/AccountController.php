@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Account;
 use Illuminate\Http\Request;
+use Acikgise\Helpers\Helpers;
 
 class AccountController extends Controller
 {
@@ -75,7 +76,9 @@ class AccountController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Account::updateAccount($request, $id);
+
+        return redirect()->back();
     }
 
     /**
@@ -87,5 +90,20 @@ class AccountController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * Shows the Account settings page.
+     *
+     * @param int $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function settings($id)
+    {
+        $account = Account::find($id);
+
+        $countries = Helpers::getCountriesList();
+
+        return view('dashboard.account.settings', compact('account', 'countries'));
     }
 }
