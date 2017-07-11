@@ -33,6 +33,7 @@ class CreateTicketTypesTable extends Migration
             $table->dateTime('sales_end_date');
             $table->boolean('is_paused');
             $table->boolean('absorb_fees');
+            $table->timestamps();
         });
     }
 

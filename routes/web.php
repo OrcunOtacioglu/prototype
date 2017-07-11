@@ -12,6 +12,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
     Route::get('/', 'DashboardController@index');
     Route::get('/categories', 'Util\EventCategoryController@index');
     Route::resource('/account', 'AccountController');
+    Route::get('/account-settings/{id}', 'AccountController@settings');
     Route::resource('/event', 'EventController', ['except' => 'show']);
     Route::resource('/rate', 'TicketTypeController');
     Route::resource('/ticket', 'TicketController');

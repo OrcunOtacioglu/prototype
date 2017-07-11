@@ -6,6 +6,7 @@ namespace Acikgise\Helpers;
 
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class Helpers
@@ -43,13 +44,14 @@ class Helpers
     }
 
     /**
-     * Uploads the given image.
+     * Uploads the given Image.
      *
      * @param Request $request
+     * @param $directory
      * @param $imageName
      * @return bool|string
      */
-    public static function uploadImage(Request $request, $imageName)
+    public static function uploadImage(Request $request, $directory, $imageName)
     {
         if ($request->hasFile($imageName)) {
             $fileString = Str::random(32);
@@ -57,7 +59,7 @@ class Helpers
 
             $ext = $file->guessClientExtension();
             $fileName = $fileString . '.' . $ext;
-            $file->move('images/cover-images', $fileName);
+            $file->move('images/' . $directory, $fileName);
 
             return $fileName;
 
@@ -75,5 +77,23 @@ class Helpers
     public static function getDateTimeFormat($time)
     {
         return Carbon::parse($time);
+    }
+
+    /**
+     * Returns the countries list.
+     *
+     * @param string $format
+     * @return mixed
+     */
+    public static function getCountriesList($format = 'array')
+    {
+        $countriesJson = Storage::read('/public/countries.json');
+
+        if ($format === 'array')
+        {
+            return json_decode($countriesJson, true);
+        } else {
+            return $countriesJson;
+        }
     }
 }

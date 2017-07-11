@@ -23,7 +23,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="{{ action('AccountController@settings', ['id' => Auth::user()->account->id]) }}">
                             <i class="fa fa-gear fa-fw"></i> Settings
                         </a>
                     </li>
