@@ -57,7 +57,7 @@ class Event extends Model
         $event->title = $request->title;
         $event->slug = Helpers::sluggify($request->title);
         $event->description = $request->description;
-        $event->cover_image = Helpers::uploadImage($request, 'coverImage');
+        $event->cover_image = Helpers::uploadImage($request, 'cover-images','coverImage');
         $event->location = $request->location;
         $event->status = $request->status;
         $event->listing = $request->listing;
@@ -75,7 +75,7 @@ class Event extends Model
         $event->event_category_id = $request->category;
         $event->title = $request->title;
         $event->slug = Helpers::sluggify($request->title);
-        $event->cover_image = Helpers::uploadImage($request, 'coverImage');
+        $event->cover_image = Helpers::uploadImage($request, 'cover-images' ,'coverImage');
         $event->description = $request->description;
         $event->location = $request->location;
         $event->status = $request->status;
