@@ -4,9 +4,10 @@
 
 @section('content')
     <div class="col-md-12">
-        <form action="{{ action('AccountController@store') }}" method="POST">
+        <form action="{{ action('AccountController@store') }}" method="POST" enctype="multipart/form-data">
             {{ csrf_field() }}
             <div class="row">
+
                 <div class="col-md-6">
 
                     <div class="form-group">
@@ -35,6 +36,7 @@
                     </div>
 
                 </div>
+
                 <div class="col-md-6">
 
                     <div class="form-group">
@@ -62,7 +64,13 @@
                         <input type="text" name="phone" id="phone" class="form-control">
                     </div>
 
+                    <img src="/images/profile-images/{{ $account->profile_image }}" alt="" class="img-responsive">
+                    <div class="form-group">
+                        <label for="profileImage">Company Profile Image</label>
+                        <input type="file" name="profileImage" id="profileImage">
+                    </div>
                 </div>
+
             </div>
             <div class="row">
                 <div class="col-md-4">
