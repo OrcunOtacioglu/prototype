@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Acikgise\Helpers\Helpers;
+use App\Models\Order;
 use App\Models\TicketType;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
@@ -61,8 +63,35 @@ class CartController extends Controller
         return redirect()->to('/');
     }
 
-    public function step1()
+    public function proceed(Request $request)
     {
+        // Check if the user is authenticated.
+        if (Helpers::checkAuthenticated($request)) {
+            if ($request->hasCookie('orderRef')) {
+                $orderRef = $request->cookie('orderRef');
+                $order = Order::where('reference', '=', $orderRef)->first();
+//                Order::updateOrder($order->id);
+            } else {
+                $order = Order::createNew(Helpers::getAuthenticatedUser($request));
+            }
 
+            return redirect()->action('CartController@payment')->withCookie('orderRef', $order->reference);
+
+        } else {
+            return redirect()->to('/register');
+        }
+    }
+
+    public function payment(Request $request)
+    {
+        $attendee = Helpers::getAuthenticatedUser($request);
+
+        if (!$request->hasCookie('orderRef')) {
+            $order = Order::createNew($attendee);
+        } else {
+            $order = Order::where('reference', '=', 'orderRef')->first();
+        }
+
+        // Gateway::pay('iyzico', $attendee, $order);
     }
 }

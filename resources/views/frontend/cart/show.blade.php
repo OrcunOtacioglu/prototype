@@ -57,7 +57,7 @@
                 <div class="pull-right">
                     <a href="{{ action('CartController@destroyCart') }}" class="text-danger">Destroy Cart</a>
                     <a href="{{ url('/') }}" class="btn btn-default">Continue Shopping</a>
-                    <a href="{{ action('Auth\Account\RegisterController@register') }}" class="btn btn-success">Proceed Checkout</a>
+                    <a href="{{ action('CartController@proceed') }}" class="btn btn-success">Proceed Checkout</a>
                 </div>
             </div>
         </div>

@@ -37,5 +37,7 @@ class Order extends Model
         $order->updated_at = Carbon::now('Europe/Istanbul');
         $order->save();
         OrderItem::createItems($order);
+
+        return $order;
     }
 }

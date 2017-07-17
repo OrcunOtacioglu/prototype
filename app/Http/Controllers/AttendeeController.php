@@ -38,20 +38,14 @@ class AttendeeController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified source.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function show(Request $request)
     {
         $attendee = $request->user('account');
-
-        // @TODO Add Order Reference to Cookie & check whether the order has been created.
-        if (Cart::count() > 0)
-        {
-            Order::createNew($attendee);
-        }
 
         return view('frontend.account.show', compact('attendee'));
     }
