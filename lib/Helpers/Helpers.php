@@ -96,4 +96,18 @@ class Helpers
             return $countriesJson;
         }
     }
+
+    public static function checkAuthenticated(Request $request)
+    {
+        if ($request->user('account')) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public static function getAuthenticatedUser(Request $request)
+    {
+        return $request->user('account');
+    }
 }
