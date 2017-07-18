@@ -81,16 +81,41 @@ class Iyzico implements GatewayInterface
         $this->makePayment();
     }
 
+    /**
+     * Prepares and sets necessary information for the payment.
+     */
     public function preparePayment()
     {
         $this->prepareRequest();
     }
 
+    /**
+     * Makes the payment request.
+     */
     public function makePayment()
     {
         $this->checkoutFormInitialize = CheckoutFormInitialize::create($this->request, $this->options);
     }
 
+    /**
+     * Initializes the form object for HTML
+     *
+     * @return mixed
+     */
+    public function initialize()
+    {
+        return $this->checkoutFormInitialize->getCheckOutFormContent();
+    }
+
+    public function validatePayment()
+    {
+        // @TODO Implement payment validation process.
+    }
+
+    /**
+     * Sets the configuration parameters for the gateway.
+     * @TODO Change this functionality in order to get this values from account settings.
+     */
     protected function setOptions()
     {
         $this->options = new Options();
@@ -99,6 +124,9 @@ class Iyzico implements GatewayInterface
         $this->options->setBaseUrl("https://sandbox-api.iyzipay.com");
     }
 
+    /**
+     * Prepares the request.
+     */
     protected function prepareRequest()
     {
         $this->request = new CreateCheckoutFormInitializeRequest();
@@ -122,6 +150,9 @@ class Iyzico implements GatewayInterface
         $this->setBasket();
     }
 
+    /**
+     * Sets the Customer/Attendee information
+     */
     protected function setUser()
     {
         $buyer = new Buyer();
@@ -152,6 +183,9 @@ class Iyzico implements GatewayInterface
         $this->request->setBuyer($buyer);
     }
 
+    /**
+     * Sets shipping address
+     */
     protected function setShippingAddress()
     {
         $shippingAddress = new Address();
@@ -169,6 +203,9 @@ class Iyzico implements GatewayInterface
         $this->request->setShippingAddress($shippingAddress);
     }
 
+    /**
+     * Sets billing address
+     */
     protected function setBillingAddress()
     {
         $billingAddress = new Address();
@@ -186,6 +223,9 @@ class Iyzico implements GatewayInterface
         $this->request->setBillingAddress($billingAddress);
     }
 
+    /**
+     * Generates the shoping cart according to Order.
+     */
     protected function setBasket()
     {
         $basketItems = array();
@@ -201,10 +241,4 @@ class Iyzico implements GatewayInterface
 
         $this->request->setBasketItems($basketItems);
     }
-
-    public function initialize()
-    {
-        return $this->checkoutFormInitialize->getCheckOutFormContent();
-    }
-
 }
