@@ -11,15 +11,23 @@ use App\Models\Order;
 
 class GatewayFactory
 {
-    public function pay($gateway, Attendee $attendee, Order $order)
+
+    protected $paymentGateway;
+
+    public function preparePayment($gateway, Attendee $attendee, Order $order)
     {
 
-        $paymentGateway = Helper::getGatewayClassName($gateway);
+        $this->paymentGateway = Helper::getGatewayClassName($gateway);
 
-        if (!class_exists($paymentGateway)) {
-            throw new RuntimeException("Payment gateway '$paymentGateway' not found");
+        if (!class_exists($this->paymentGateway)) {
+            throw new RuntimeException("Payment gateway '$this->paymentGateway' not found");
         }
 
-        return new $paymentGateway($attendee, $order);
+        return new $this->paymentGateway($attendee, $order);
+    }
+
+    public function initializeGateway($paymentObject)
+    {
+        return $paymentObject->initialize();
     }
 }

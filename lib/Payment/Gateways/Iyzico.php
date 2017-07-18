@@ -69,6 +69,8 @@ class Iyzico implements GatewayInterface
      */
     protected $options;
 
+    public $checkoutFormInitialize;
+
     public function __construct(Attendee $attendee, Order $order)
     {
         $this->attendee = $attendee;
@@ -86,8 +88,7 @@ class Iyzico implements GatewayInterface
 
     public function makePayment()
     {
-        $checkoutFormInitialize = CheckoutFormInitialize::create($this->request, $this->options);
-        print_r($checkoutFormInitialize);
+        $this->checkoutFormInitialize = CheckoutFormInitialize::create($this->request, $this->options);
     }
 
     protected function setOptions()
@@ -199,6 +200,11 @@ class Iyzico implements GatewayInterface
         array_push($basketItems, $firstBasketItem);
 
         $this->request->setBasketItems($basketItems);
+    }
+
+    public function initialize()
+    {
+        return $this->checkoutFormInitialize->getCheckOutFormContent();
     }
 
 }
