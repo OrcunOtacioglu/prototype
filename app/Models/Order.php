@@ -40,4 +40,11 @@ class Order extends Model
 
         return $order;
     }
+
+    public static function updateOrder($orderID)
+    {
+        $order = Order::find($orderID);
+
+        //@TODO Compare Cart Items with the Order Items. Add the additional resources into the Order.
+    }
 }
