@@ -24,6 +24,8 @@ Route::post('/cart', 'CartController@addItem');
 Route::get('/cart', 'CartController@show');
 Route::get('/remove/{id}', 'CartController@deleteItem');
 Route::get('/cart-destroy', 'CartController@destroyCart');
+Route::get('/proceed', 'CartController@proceed');
+Route::get('/payment', 'CartController@payment');
 
 Route::resource('/attendee', 'AttendeeController', ['except' => 'show']);
 Route::get('/account', 'AttendeeController@show');

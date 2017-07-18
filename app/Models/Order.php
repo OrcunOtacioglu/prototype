@@ -37,5 +37,14 @@ class Order extends Model
         $order->updated_at = Carbon::now('Europe/Istanbul');
         $order->save();
         OrderItem::createItems($order);
+
+        return $order;
+    }
+
+    public static function updateOrder($orderID)
+    {
+        $order = Order::find($orderID);
+
+        //@TODO Compare Cart Items with the Order Items. Add the additional resources into the Order.
     }
 }
