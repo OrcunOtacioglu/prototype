@@ -3,6 +3,7 @@
 
 namespace Acikgise\Payment\Gateways;
 
+use Iyzipay\Model\CheckoutForm;
 use Iyzipay\Options;
 use App\Models\Order;
 use Iyzipay\Model\Buyer;
@@ -16,6 +17,7 @@ use Iyzipay\Model\BasketItemType;
 use Iyzipay\Model\CheckoutFormInitialize;
 use Acikgise\Payment\Common\GatewayInterface;
 use Iyzipay\Request\CreateCheckoutFormInitializeRequest;
+use Iyzipay\Request\RetrieveCheckoutFormRequest;
 
 class Iyzico implements GatewayInterface
 {
@@ -67,7 +69,7 @@ class Iyzico implements GatewayInterface
      *
      * @var
      */
-    protected $options;
+    protected static $options;
 
     public $checkoutFormInitialize;
 
@@ -107,21 +109,39 @@ class Iyzico implements GatewayInterface
         return $this->checkoutFormInitialize->getCheckOutFormContent();
     }
 
-    public function validatePayment()
+    public static function validate($request)
     {
-        // @TODO Implement payment validation process.
+        $token = $request->request->get('token');
+        $request = new RetrieveCheckoutFormRequest();
+        $request->setLocale(Locale::TR);
+        $request->setToken($token);
+        self::setOptions();
+        $checkoutForm = CheckoutForm::retrieve($request, self::getOptions());
+
+        if ($checkoutForm->getStatus() == "success")
+        {
+            return true;
+
+        } else {
+            return $checkoutForm->getErrorMessage();
+        }
     }
 
     /**
      * Sets the configuration parameters for the gateway.
      * @TODO Change this functionality in order to get this values from account settings.
      */
-    protected function setOptions()
+    protected static function setOptions()
     {
-        $this->options = new Options();
-        $this->options->setApiKey("sandbox-XGqr0sVLwRM0CHputawzwlgAQNRrRqI9");
-        $this->options->setSecretKey("sandbox-4eI1PwbJRV7w4R9DpsfMGlreysBfJoVP");
-        $this->options->setBaseUrl("https://sandbox-api.iyzipay.com");
+        self::$options = new Options();
+        self::$options->setApiKey("sandbox-XGqr0sVLwRM0CHputawzwlgAQNRrRqI9");
+        self::$options->setSecretKey("sandbox-4eI1PwbJRV7w4R9DpsfMGlreysBfJoVP");
+        self::$options->setBaseUrl("https://sandbox-api.iyzipay.com");
+    }
+
+    protected static function getOptions()
+    {
+        return self::$options;
     }
 
     /**

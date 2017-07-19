@@ -99,4 +99,15 @@ class CartController extends Controller
 
         return view('frontend.payment.index', compact('paymentForm'));
     }
+
+    public function validatePayment(Request $request)
+    {
+        $validation = Gateway::validatePayment('iyzico', $request);
+
+        if ($validation) {
+            return view('frontend.payment.success');
+        } else {
+            return view('frontend.payment.error');
+        }
+    }
 }
