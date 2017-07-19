@@ -9,7 +9,6 @@ use App\Models\TicketType;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
-use Iyzipay\Model\CheckoutFormInitialize;
 
 class CartController extends Controller
 {
@@ -66,6 +65,12 @@ class CartController extends Controller
         return redirect()->to('/')->withCookie(Cookie::forget('orderRef'));
     }
 
+    /**
+     * Proceeds to the payment.
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function proceed(Request $request)
     {
         // Check if the user is authenticated.
@@ -84,6 +89,13 @@ class CartController extends Controller
         }
     }
 
+    /**
+     * Shows the payment form.
+     *
+     * @param Request $request
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function payment(Request $request)
     {
         $attendee = Helpers::getAuthenticatedUser($request);
@@ -100,14 +112,19 @@ class CartController extends Controller
         return view('frontend.payment.index', compact('paymentForm'));
     }
 
+    /**
+     * Order confirmation page.
+     *
+     * @param Request $request
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function validatePayment(Request $request)
     {
-        $validation = Gateway::validatePayment('iyzico', $request);
+        $results = Gateway::validatePayment('iyzico', $request);
 
-        if ($validation) {
-            return view('frontend.payment.success');
-        } else {
-            return view('frontend.payment.error');
-        }
+        $order = Order::where('reference', '=', $results['orderRef'])->first();
+
+        return view('frontend.payment.success', compact('results', 'order'));
     }
 }
