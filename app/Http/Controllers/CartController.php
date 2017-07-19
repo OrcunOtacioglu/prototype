@@ -9,6 +9,7 @@ use App\Models\TicketType;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
+use Iyzipay\Model\CheckoutFormInitialize;
 
 class CartController extends Controller
 {
@@ -93,8 +94,20 @@ class CartController extends Controller
             $order = Order::where('reference', '=', $request->cookie('orderRef'))->first();
         }
 
-        Gateway::pay('iyzico', $attendee, $order);
+        $payment = Gateway::preparePayment('iyzico', $attendee, $order);
+        $paymentForm = Gateway::initializeGateway($payment);
 
-        return view('frontend.payment.index');
+        return view('frontend.payment.index', compact('paymentForm'));
+    }
+
+    public function validatePayment(Request $request)
+    {
+        $validation = Gateway::validatePayment('iyzico', $request);
+
+        if ($validation) {
+            return view('frontend.payment.success');
+        } else {
+            return view('frontend.payment.error');
+        }
     }
 }

@@ -22,5 +22,6 @@
 
 <!-- Scripts -->
 @include('general-partials.footer-scripts')
+@yield('footer.scripts')
 </body>
 </html>

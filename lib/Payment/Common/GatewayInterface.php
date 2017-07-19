@@ -9,4 +9,6 @@ interface GatewayInterface
     public function preparePayment();
 
     public function makePayment();
+
+    public function initialize();
 }
