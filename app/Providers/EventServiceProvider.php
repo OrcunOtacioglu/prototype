@@ -16,6 +16,7 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\OrderSuccessful' => [
             'App\Listeners\ReserveTickets',
             'App\Listeners\SendOrderConfirmationMail',
+            'App\Listeners\ClearShoppingCart',
         ],
     ];
 
