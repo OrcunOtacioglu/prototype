@@ -11,8 +11,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class Event extends Model
 {
+    /**
+     * Tablename
+     *
+     * @var string
+     */
     protected $table = 'events';
 
+    /**
+     * Mass assignable fields.
+     *
+     * @var array
+     */
     protected $fillable = [
         'account_id',
         'title',

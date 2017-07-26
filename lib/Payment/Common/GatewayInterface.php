@@ -11,4 +11,6 @@ interface GatewayInterface
     public function makePayment();
 
     public function initialize();
+
+    public static function setOptions();
 }

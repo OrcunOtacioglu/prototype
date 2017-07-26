@@ -3,7 +3,6 @@
 
 namespace Acikgise\Payment\Gateways;
 
-use Iyzipay\Model\CheckoutForm;
 use Iyzipay\Options;
 use App\Models\Order;
 use Iyzipay\Model\Buyer;
@@ -12,12 +11,13 @@ use Iyzipay\Model\Locale;
 use Iyzipay\Model\Address;
 use Iyzipay\Model\Currency;
 use Iyzipay\Model\BasketItem;
+use Iyzipay\Model\CheckoutForm;
 use Iyzipay\Model\PaymentGroup;
 use Iyzipay\Model\BasketItemType;
 use Iyzipay\Model\CheckoutFormInitialize;
 use Acikgise\Payment\Common\GatewayInterface;
-use Iyzipay\Request\CreateCheckoutFormInitializeRequest;
 use Iyzipay\Request\RetrieveCheckoutFormRequest;
+use Iyzipay\Request\CreateCheckoutFormInitializeRequest;
 
 class Iyzico implements GatewayInterface
 {
@@ -71,14 +71,25 @@ class Iyzico implements GatewayInterface
      */
     protected static $options;
 
+    /**
+     * Checkoutform instance.
+     *
+     * @var
+     */
     public $checkoutFormInitialize;
 
+    /**
+     * Iyzico constructor.
+     *
+     * @param Attendee $attendee
+     * @param Order $order
+     */
     public function __construct(Attendee $attendee, Order $order)
     {
         $this->attendee = $attendee;
         $this->order = $order;
 
-        $this->setOptions();
+        self::setOptions();
         $this->preparePayment();
         $this->makePayment();
     }
@@ -96,7 +107,7 @@ class Iyzico implements GatewayInterface
      */
     public function makePayment()
     {
-        $this->checkoutFormInitialize = CheckoutFormInitialize::create($this->request, $this->options);
+        $this->checkoutFormInitialize = CheckoutFormInitialize::create($this->request, self::getOptions());
     }
 
     /**
@@ -109,6 +120,13 @@ class Iyzico implements GatewayInterface
         return $this->checkoutFormInitialize->getCheckOutFormContent();
     }
 
+    /**
+     * Validates the payment.
+     *
+     * @param $request
+     *
+     * @return array
+     */
     public static function validate($request)
     {
         $token = $request->request->get('token');
@@ -118,20 +136,21 @@ class Iyzico implements GatewayInterface
         self::setOptions();
         $checkoutForm = CheckoutForm::retrieve($request, self::getOptions());
 
-        if ($checkoutForm->getStatus() == "success")
-        {
-            return true;
-
-        } else {
-            return $checkoutForm->getErrorMessage();
-        }
+        return $results = [
+            'status' => $checkoutForm->getStatus(),
+            'orderRef' => $checkoutForm->getBasketId(),
+            'cardType' => $checkoutForm->getCardAssociation(),
+            'cardFamily' => $checkoutForm->getCardFamily(),
+            'items' => $checkoutForm->getPaymentItems(),
+            'error' => $checkoutForm->getErrorMessage(),
+        ];
     }
 
     /**
      * Sets the configuration parameters for the gateway.
      * @TODO Change this functionality in order to get this values from account settings.
      */
-    protected static function setOptions()
+    public static function setOptions()
     {
         self::$options = new Options();
         self::$options->setApiKey("sandbox-XGqr0sVLwRM0CHputawzwlgAQNRrRqI9");
@@ -139,6 +158,11 @@ class Iyzico implements GatewayInterface
         self::$options->setBaseUrl("https://sandbox-api.iyzipay.com");
     }
 
+    /**
+     * Returns the configuration options.
+     *
+     * @return mixed
+     */
     protected static function getOptions()
     {
         return self::$options;
