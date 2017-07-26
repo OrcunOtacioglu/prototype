@@ -50,7 +50,7 @@
                             </tr>
                         </tfoot>
                     </table>
-                    <a href="#" class="btn btn-block btn-success">Pay Now</a>
+                    <a href="{{ action('CartController@payment') }}" class="btn btn-block btn-success">Pay Now</a>
                 @endif
             </div>
         </div>
