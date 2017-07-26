@@ -14,7 +14,6 @@ use Iyzipay\Model\BasketItem;
 use Iyzipay\Model\CheckoutForm;
 use Iyzipay\Model\PaymentGroup;
 use Iyzipay\Model\BasketItemType;
-use Acikgise\Payment\Helper\Helper;
 use Iyzipay\Model\CheckoutFormInitialize;
 use Acikgise\Payment\Common\GatewayInterface;
 use Iyzipay\Request\RetrieveCheckoutFormRequest;
@@ -90,7 +89,7 @@ class Iyzico implements GatewayInterface
         $this->attendee = $attendee;
         $this->order = $order;
 
-        $this->setOptions();
+        self::setOptions();
         $this->preparePayment();
         $this->makePayment();
     }
@@ -108,7 +107,7 @@ class Iyzico implements GatewayInterface
      */
     public function makePayment()
     {
-        $this->checkoutFormInitialize = CheckoutFormInitialize::create($this->request, $this->options);
+        $this->checkoutFormInitialize = CheckoutFormInitialize::create($this->request, self::getOptions());
     }
 
     /**
@@ -151,7 +150,7 @@ class Iyzico implements GatewayInterface
      * Sets the configuration parameters for the gateway.
      * @TODO Change this functionality in order to get this values from account settings.
      */
-    protected static function setOptions()
+    public static function setOptions()
     {
         self::$options = new Options();
         self::$options->setApiKey("sandbox-XGqr0sVLwRM0CHputawzwlgAQNRrRqI9");
