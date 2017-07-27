@@ -10,18 +10,57 @@
 
     <title>@yield('title') | Açıkgişe</title>
 
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Gochi+Hand|Lato:300,400|Montserrat:400,400i,700,700i" rel="stylesheet">
+    @yield('custom.fonts')
+
     <!-- Styles -->
-    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('frontend/css/base.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/rs-plugin/css/settings.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/extralayers.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/tabs_home.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/color-orange.css') }}">
+    @yield('custom.css')
 </head>
-<body style="padding-top: 50px;">
-<div id="app">
-    @include('frontend.partials.navbar')
+<body>
 
-    @yield('content')
-</div>
+    <!-- Mobile menu overlay mask -->
+    <div class="layer"></div>
 
-<!-- Scripts -->
-@include('general-partials.footer-scripts')
-@yield('footer.scripts')
+    <div id="app">
+        @include('frontend.partials.navbar')
+
+        <main>
+            @include('frontend.partials.banner')
+
+            <div class="white_bg">
+                <div class="container margin_60">
+                    <div class="main_title">
+                        <h2>@yield('main.title', 'Popular Upcoming') <span>@yield('main.title.span', 'Events')</span></h2>
+                    </div>
+
+                    <div class="row">
+                        @yield('content')
+                    </div>
+                </div>
+            </div>
+
+            <div class="white_bg">
+                <div class="container margin_60">
+                    @include('frontend.partials.allEvents')
+                </div>
+            </div>
+        </main>
+
+        @include('frontend.partials.footer')
+
+        <div id="toTop"></div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="{{ asset('frontend/js/jquery-2.2.4.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/common_scripts_min.js') }}"></script>
+    <script src="{{ asset('frontend/js/functions.js') }}"></script>
+    @yield('footer.scripts')
 </body>
 </html>

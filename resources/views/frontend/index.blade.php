@@ -4,26 +4,17 @@
 
 @section('content')
 
-    <div class="jumbotron">
-        <div class="container">
-            <h1>Events</h1>
-            <p>
-                <a class="btn btn-primary btn-lg" href="#" role="button">Start Now</a>
-            </p>
-        </div>
-    </div>
+@stop
 
-    <div class="container">
-        <div class="row">
-            @foreach($events as $event)
-                <div class="col-md-4">
-                    <img src="/images/cover-images/{{ $event->cover_image }}" alt="" class="img-responsive">
-                    <h3>{{ $event->title }}</h3>
-                    <p>{{ substr($event->description, 0, 150) }}</p>
+@section('footer.scripts')
+    <script src="{{ asset('frontend/js/common_scripts_min.js') }}"></script>
+    <script src="{{ asset('frontend/js/functions.js') }}"></script>
 
-                    <a href="{{ action('EventController@show', ['slug' => $event->slug]) }}" class="btn btn-primary">See Details</a>
-                </div>
-            @endforeach
-        </div>
-    </div>
+    <!-- SLIDER REVOLUTION 4.x SCRIPTS  -->
+    <script src="{{ asset('frontend/rs-plugin/js/jquery.themepunch.tools.min.js') }}"></script>
+    <script src="{{ asset('frontend/rs-plugin/js/jquery.themepunch.revolution.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/revolution_func.js') }}"></script>
+
+    <script src="{{ asset('frontend/js/tabs.js') }}"></script>
+    <script>new CBPFWTabs(document.getElementById('tabs'));</script>
 @stop
