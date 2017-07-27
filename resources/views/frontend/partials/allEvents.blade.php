@@ -17,9 +17,20 @@
             <div class="content">
                 <section id="section-1">
                     <div class="row list_tours_tabs">
-                        <div class="col-md-4"></div>
-                        <div class="col-md-4"></div>
-                        <div class="col-md-4"></div>
+                        <div class="col-md-4">
+                            <ul>
+                                @foreach($events as $event)
+                                    <li>
+                                        <div>
+                                            <a href="{{ action('EventController@show', ['slug' => $event->slug]) }}">
+                                                <figure><img src="/images/cover-images/{{ $event->cover_image }}" class="img-rounded"></figure>
+                                                <h3>{{ $event->title }}</h3>
+                                            </a>
+                                        </div>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
                     </div>
                 </section>
                 <section id="section-2">

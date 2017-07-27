@@ -30,27 +30,7 @@
     <div id="app">
         @include('frontend.partials.navbar')
 
-        <main>
-            @include('frontend.partials.banner')
-
-            <div class="white_bg">
-                <div class="container margin_60">
-                    <div class="main_title">
-                        <h2>@yield('main.title', 'Popular Upcoming') <span>@yield('main.title.span', 'Events')</span></h2>
-                    </div>
-
-                    <div class="row">
-                        @yield('content')
-                    </div>
-                </div>
-            </div>
-
-            <div class="white_bg">
-                <div class="container margin_60">
-                    @include('frontend.partials.allEvents')
-                </div>
-            </div>
-        </main>
+        @yield('content')
 
         @include('frontend.partials.footer')
 
