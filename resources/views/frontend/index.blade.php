@@ -14,12 +14,12 @@
 
                 <div class="row">
                     @foreach($events as $event)
-                        <div class="col-md-4">
-                            <div class="tour-container">
-                                <div class="ribbon_3 popular"><span>{{ $event->eventCategory->name }}</span></div>
+                        <div class="col-md-4 col-sm-6">
+                            <div class="tour_container">
+                                <div class="ribbon_3 "><span>{{ $event->eventCategory->name }}</span></div>
                                 <div class="img_container">
-                                    <a href="{{ action('EventController@show', ['slug' => $event->slug]) }}">
-                                        <img src="/images/cover-images/{{ $event->cover_image }}" alt="">
+                                    <a href="{{ action('EventController@show', ['slug' => $event->slug]) }}" target="_blank">
+                                        <img src="images/cover-images/{{ $event->cover_image }}" class="img-responsive" alt="Image">
                                         <div class="short_info"></div>
                                     </a>
                                 </div>
