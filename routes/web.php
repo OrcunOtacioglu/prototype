@@ -27,6 +27,7 @@ Route::get('/cart-destroy', 'CartController@destroyCart');
 Route::get('/proceed', 'CartController@proceed');
 Route::get('/payment', 'CartController@payment');
 Route::post('/order-complete', 'CartController@validatePayment');
+Route::get('/organizer/{name}', 'AccountController@organizer');
 
 Route::resource('/attendee', 'AttendeeController', ['except' => 'show']);
 Route::get('/account', 'AttendeeController@show');

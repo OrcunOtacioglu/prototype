@@ -109,4 +109,11 @@ class AccountController extends Controller
 
         return redirect()->back();
     }
+
+    public function organizer($id)
+    {
+        $organizer = Account::with('events')->where('id', '=', $id)->first();
+
+        return view('frontend.organizer.show', compact('organizer'));
+    }
 }
