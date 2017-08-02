@@ -18,7 +18,7 @@
                             <div class="tour_container">
                                 <div class="ribbon_3 "><span>{{ $event->eventCategory->name }}</span></div>
                                 <div class="img_container">
-                                    <a href="{{ action('EventController@show', ['slug' => $event->slug]) }}" target="_blank">
+                                    <a href="{{ action('EventController@show', ['slug' => $event->slug]) }}">
                                         <img src="images/cover-images/{{ $event->cover_image }}" class="img-responsive" alt="Image">
                                         <div class="short_info"></div>
                                     </a>
