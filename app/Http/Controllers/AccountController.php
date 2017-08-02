@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Account;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Acikgise\Helpers\Helpers;
+use Illuminate\Support\Facades\DB;
 
 class AccountController extends Controller
 {
@@ -64,7 +66,11 @@ class AccountController extends Controller
     {
         $account = Account::find($id);
 
-        return view('dashboard.account.edit', compact('account'));
+        $countries = Helpers::getCountriesList();
+
+        $gateways = $account->paymentGateways;
+
+        return view('dashboard.account.edit', compact('account', 'countries', 'gateways'));
     }
 
     /**
@@ -92,18 +98,15 @@ class AccountController extends Controller
         //
     }
 
-    /**
-     * Shows the Account settings page.
-     *
-     * @param int $id
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function settings($id)
+    public function addGateway(Request $request)
     {
-        $account = Account::find($id);
+        DB::table('account_payment_gateways')->insert([
+            'account_id' => $request->accountId,
+            'payment_gateway_id' => $request->provider,
+            'config' => $request->apiKey,
+            'created_at' => Carbon::now('Europe/Istanbul')
+        ]);
 
-        $countries = Helpers::getCountriesList();
-
-        return view('dashboard.account.settings', compact('account', 'countries'));
+        return redirect()->back();
     }
 }
