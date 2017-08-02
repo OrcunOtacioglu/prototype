@@ -53,7 +53,7 @@ class EventController extends Controller
      */
     public function show($slug)
     {
-        $event = Event::where('slug', '=', $slug)->first();
+        $event = Event::with('account')->where('slug', '=', $slug)->first();
 
         return view('frontend.event.show', compact('event'));
     }

@@ -1,3 +1,68 @@
 @charset "UTF-8";
 /* CSS Document */
+.coverPhoto {
+    position: relative;
+    min-width: 100%;
+    min-height: 450px;
+    overflow: hidden;
+}
 
+.coverPhotoContainer {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    background-size: cover;
+}
+
+.coverPhotoImage {
+    width: 1170px;
+    height: 380px;
+    background-size: cover;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    display: flex;
+    box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.18);
+    z-index: 3;
+    margin-top: 70px;
+    position: relative;
+}
+
+.coverTitle {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin-top: auto;
+    color: white;
+    padding: 1.75rem;
+    text-align: left;
+}
+
+.eventTitle {
+    color: inherit;
+    margin: 0;
+    font-size: 3.25rem;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.eventOrganizer {
+    color: inherit;
+    margin: 0;
+    font-size: 1.5rem;
+    margin-bottom: 0.25rem;
+}
+
+.eventLocation {
+    color: inherit;
+    font-size: 1.5rem;
+    margin-top: 0.25rem;
+}
+
+.eventDate {
+    margin-top: 0.5rem;
+}
