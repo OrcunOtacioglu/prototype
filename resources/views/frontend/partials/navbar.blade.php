@@ -14,17 +14,34 @@
                     </div>
                     <a href="#" class="open_close" id="close_in"><i class="icon_set_1_icon-77"></i></a>
                     <ul>
+                        {{--<li class="submenu">--}}
+                            {{--<a href="javascript:void(0);" class="show-submenu">MUSIC</a>--}}
+                        {{--</li>--}}
+                        {{--<li class="submenu">--}}
+                            {{--<a href="javascript:void(0);" class="show-submenu">ARTS</a>--}}
+                        {{--</li>--}}
+                        {{--<li class="submenu">--}}
+                            {{--<a href="javascript:void(0);" class="show-submenu">SPORT</a>--}}
+                        {{--</li>--}}
+                        {{--<li class="submenu">--}}
+                            {{--<a href="javascript:void(0);" class="show-submenu">PREMIERE</a>--}}
+                        {{--</li>--}}
+                        @if(!request()->user('account'))
+                            <li class="submenu">
+                                <a href="{{ route('login') }}">LOGIN</a>
+                            </li>
+                            <li class="submenu">
+                                <a href="{{ route('register') }}">REGISTER</a>
+                            </li>
+                        @else
+                            <li class="submenu">
+                                <a href="{{ action('AttendeeController@show') }}">{{ request()->user('account')->name }}</a>
+                            </li>
+                        @endif
                         <li class="submenu">
-                            <a href="javascript:void(0);" class="show-submenu">MUSIC</a>
-                        </li>
-                        <li class="submenu">
-                            <a href="javascript:void(0);" class="show-submenu">ARTS</a>
-                        </li>
-                        <li class="submenu">
-                            <a href="javascript:void(0);" class="show-submenu">SPORT</a>
-                        </li>
-                        <li class="submenu">
-                            <a href="javascript:void(0);" class="show-submenu">PREMIERE</a>
+                            <a href="/cart">
+                                CART @if(\Gloudemans\Shoppingcart\Facades\Cart::count() > 0)<span class="badge">{{ \Gloudemans\Shoppingcart\Facades\Cart::count() }}</span> @endif
+                            </a>
                         </li>
                         <li class="submenu">
                             <a href="http://fbbentertainment.com" target="_blank" class="dropdown-toggle" style="border: 1px solid orange; border-radius: 3px; padding: 5px 20px;">KURUMSAL</a>

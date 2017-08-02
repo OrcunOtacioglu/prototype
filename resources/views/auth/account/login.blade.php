@@ -14,8 +14,8 @@
 
                 @if ($errors->has('email'))
                     <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
+                        <strong>{{ $errors->first('email') }}</strong>
+                    </span>
                 @endif
             </div>
         </div>
@@ -28,8 +28,8 @@
 
                 @if ($errors->has('password'))
                     <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
+                        <strong>{{ $errors->first('password') }}</strong>
+                    </span>
                 @endif
             </div>
         </div>
@@ -45,14 +45,16 @@
         </div>
 
         <div class="form-group">
-            <div class="col-md-8 col-md-offset-4">
+            <div class="col-md-6 col-md-offset-4">
                 <button type="submit" class="btn btn-primary">
                     Login
                 </button>
-
+            </div>
+            <div class="col-md-6 col-md-offset-4">
                 <a class="btn btn-link" href="{{ route('password.request') }}">
                     Forgot Your Password?
                 </a>
+                <a href="{{ route('register') }}">Please Register Here</a>
             </div>
         </div>
     </form>
