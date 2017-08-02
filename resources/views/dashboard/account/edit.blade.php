@@ -72,5 +72,40 @@
             </div>
         </div>
     </form>
-    
+    <hr>
+    <div class="row">
+        <div class="col-md-6">
+            @if(empty($gateways))
+                <div class="alert alert-danger" role="alert">
+                    <p>There is no defined payment gateway!</p>
+                </div>
+            @else
+                @foreach($gateways as $gateway)
+                    <p>{{ $gateway->provider_name }}</p>
+                @endforeach
+            @endif
+        </div>
+        <div class="col-md-6">
+            <!-- @TODO Refactor the code -->
+            <form action="{{ action('AccountController@addGateway') }}" method="POST">
+                {{ csrf_field() }}
+                @foreach(\App\Models\PaymentGateway::all() as $paymentGateway)
+                    <div class="form-group">
+                        <label for="provider">Select Your Provider</label>
+                        <select name="provider" id="provider" class="form-control">
+                            <option value="{{ $paymentGateway->id }}">{{ $paymentGateway->provider_name }}</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="apiKey">Set Your API Key</label>
+                        <input type="text" name="apiKey" id="apiKey" class="form-control" value="{{ $paymentGateway->default_config }}">
+                    </div>
+                @endforeach
+
+                <input type="hidden" name="accountId" value="{{ $account->id }}">
+                <input type="submit" class="btn btn-success" value="Save Changes">
+            </form>
+        </div>
+    </div>
 @stop

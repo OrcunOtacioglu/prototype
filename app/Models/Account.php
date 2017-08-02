@@ -39,6 +39,11 @@ class Account extends Model
         return $this->hasMany(TicketType::class);
     }
 
+    public function paymentGateways()
+    {
+        return $this->belongsToMany(PaymentGateway::class, 'account_payment_gateways', 'payment_gateway_id', 'account_id');
+    }
+
     public static function updateAccount(Request $request, $id)
     {
         $account = Account::find($id);

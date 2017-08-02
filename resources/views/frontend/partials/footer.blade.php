@@ -1,4 +1,4 @@
-<footer class="revealed" style="z-index: 0; position: fixed; bottom: 0px; width: 1440px;">
+<footer style="bottom: 0; position: relative; z-index: 0; width: 100%; margin-top: 30px;">
     <div class="container">
     </div>
 </footer>
