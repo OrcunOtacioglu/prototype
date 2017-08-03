@@ -29,11 +29,17 @@ class Order extends Model
         return $this->belongsTo(Attendee::class, 'attendee_id');
     }
 
-    public static function createNew(Attendee $attendee)
+    public function event()
+    {
+        return $this->belongsTo(Event::class);
+    }
+
+    public static function createNew(Attendee $attendee, $eventID)
     {
         $order = new Order();
         $order->reference = str_random(6);
         $order->attendee_id = $attendee->id;
+        $order->event_id = $eventID;
         $order->transaction_id = random_int(100000, 999999);
         $order->status = 1;
         $order->total = Cart::total();

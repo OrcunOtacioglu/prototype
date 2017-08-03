@@ -23,7 +23,7 @@ class CartController extends Controller
         $ticketType = TicketType::find($request->ticket);
         $qty = $request->quantity;
 
-        Cart::add($ticketType->id, $ticketType->name, $qty, $ticketType->price, ['event' => $ticketType->event->title]);
+        Cart::add($ticketType->id, $ticketType->name, $qty, $ticketType->price, ['event' => $ticketType->event->title, 'eventID' => $ticketType->event->id]);
 
         return redirect()->back();
     }
@@ -80,7 +80,10 @@ class CartController extends Controller
                 $order = Order::where('reference', '=', $orderRef)->first();
                 Order::updateOrder($order->id);
             } else {
-                $order = Order::createNew(Helpers::getAuthenticatedUser($request));
+                foreach (Cart::content() as $item) {
+                    $eventID = $item->options->eventID;
+                }
+                $order = Order::createNew(Helpers::getAuthenticatedUser($request), $eventID);
             }
             return redirect()->action('CartController@payment')->withCookie('orderRef', $order->reference);
 
@@ -101,7 +104,7 @@ class CartController extends Controller
         $attendee = Helpers::getAuthenticatedUser($request);
 
         if (!$request->hasCookie('orderRef')) {
-            $order = Order::createNew($attendee);
+            return redirect()->action('CartController@proceed');
         } else {
             $order = Order::where('reference', '=', $request->cookie('orderRef'))->first();
         }
@@ -109,7 +112,10 @@ class CartController extends Controller
         $payment = Gateway::preparePayment('iyzico', $attendee, $order);
         $paymentForm = Gateway::initializeGateway($payment);
 
-        return view('frontend.payment.index', compact('paymentForm'));
+        // @TODO Dynamically Get This from the payment settings of the account.
+        $paymentGateway = 'iyzico';
+
+        return view('frontend.payment.index', compact('paymentForm', 'paymentGateway'));
     }
 
     /**
