@@ -24,6 +24,11 @@ class Order extends Model
         return $this->hasMany(OrderItem::class);
     }
 
+    public function attendee()
+    {
+        return $this->belongsTo(Attendee::class, 'attendee_id');
+    }
+
     public static function createNew(Attendee $attendee)
     {
         $order = new Order();
