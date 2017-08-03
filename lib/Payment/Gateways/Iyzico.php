@@ -153,6 +153,8 @@ class Iyzico implements GatewayInterface
     public static function setOptions()
     {
         self::$options = new Options();
+        // Get the account payment gateway options.
+
         self::$options->setApiKey("sandbox-XGqr0sVLwRM0CHputawzwlgAQNRrRqI9");
         self::$options->setSecretKey("sandbox-4eI1PwbJRV7w4R9DpsfMGlreysBfJoVP");
         self::$options->setBaseUrl("https://sandbox-api.iyzipay.com");
