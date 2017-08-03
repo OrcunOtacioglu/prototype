@@ -20,6 +20,9 @@ class CreateOrdersTable extends Migration
             $table->integer('attendee_id')->unsigned();
             $table->foreign('attendee_id')->references('id')->on('attendees')->onDelete('cascade');
 
+            $table->integer('event_id')->unsigned();
+            $table->foreign('event_id')->references('id')->on('events')->onDelete('cascade');
+
             $table->integer('transaction_id');
             $table->integer('status');
             $table->decimal('total');
