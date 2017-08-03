@@ -98,6 +98,12 @@ class AccountController extends Controller
         //
     }
 
+    /**
+     * Defines a PaymentGateway to the Account.
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function addGateway(Request $request)
     {
         DB::table('account_payment_gateways')->insert([
@@ -110,6 +116,12 @@ class AccountController extends Controller
         return redirect()->back();
     }
 
+    /**
+     * Shows Organizer Page on the Frontend.
+     *
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function organizer($id)
     {
         $organizer = Account::with('events')->where('id', '=', $id)->first();
