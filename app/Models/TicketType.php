@@ -8,8 +8,18 @@ use Illuminate\Http\Request;
 
 class TicketType extends Model
 {
+    /**
+     * Table name.
+     *
+     * @var string
+     */
     protected $table = 'ticket_types';
 
+    /**
+     * Mass assignable fields.
+     *
+     * @var array
+     */
     protected $fillable = [
         'account_id',
         'event_id',
@@ -26,21 +36,42 @@ class TicketType extends Model
         'absorb_fees'
     ];
 
+    /**
+     * Returns the related Account.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function account()
     {
         return $this->belongsTo(Account::class);
     }
 
+    /**
+     * Returns the related Event.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function event()
     {
         return $this->belongsTo(Event::class);
     }
 
+    /**
+     * Returns all related Tickets.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function tickets()
     {
         return $this->hasMany(Ticket::class);
     }
 
+    /**
+     * Creates a new Ticket Type resource.
+     *
+     * @param Request $request
+     * @return TicketType
+     */
     public static function createNew(Request $request)
     {
         $rate = new TicketType();

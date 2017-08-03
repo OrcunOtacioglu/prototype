@@ -8,8 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class OrderItem extends Model
 {
+    /**
+     * Table name.
+     *
+     * @var string
+     */
     protected $table = 'order_items';
 
+    /**
+     * Mass assignable fields.
+     *
+     * @var array
+     */
     protected $fillable = [
         'order_id',
         'product_name',
@@ -18,6 +28,11 @@ class OrderItem extends Model
         'subtotal'
     ];
 
+    /**
+     * Creates OrderItems based on the Cart.
+     *
+     * @param Order $order
+     */
     public static function createItems(Order $order)
     {
         foreach (Cart::content() as $item) {

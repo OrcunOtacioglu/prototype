@@ -97,6 +97,12 @@ class Helpers
         }
     }
 
+    /**
+     * Checks whether the user is authenticated.
+     *
+     * @param Request $request
+     * @return bool
+     */
     public static function checkAuthenticated(Request $request)
     {
         if ($request->user('account')) {
@@ -106,6 +112,13 @@ class Helpers
         }
     }
 
+
+    /**
+     * Returns the authenticated User.
+     *
+     * @param Request $request
+     * @return mixed
+     */
     public static function getAuthenticatedUser(Request $request)
     {
         return $request->user('account');

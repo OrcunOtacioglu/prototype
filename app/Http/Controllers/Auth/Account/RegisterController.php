@@ -13,6 +13,11 @@ class RegisterController extends Controller
 {
     use RegistersUsers;
 
+    /**
+     * Where to redirect Attendees after registration.
+     *
+     * @var string
+     */
     protected $redirectTo = '/account';
 
     /**

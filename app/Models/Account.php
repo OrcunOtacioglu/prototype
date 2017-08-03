@@ -8,8 +8,18 @@ use Illuminate\Http\Request;
 
 class Account extends Model
 {
+    /**
+     * Table name.
+     *
+     * @var string
+     */
     protected $table = 'accounts';
 
+    /**
+     * Mass assignable fields.
+     *
+     * @var array
+     */
     protected $fillable = [
         'name',
         'address',
@@ -24,26 +34,52 @@ class Account extends Model
         'profile_image'
     ];
 
+    /**
+     * Returns all related User accounts
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function users()
     {
         return $this->hasMany(User::class);
     }
 
+    /**
+     * Returns all related Events.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function events()
     {
         return $this->hasMany(Event::class);
     }
 
+    /**
+     * Returns all related Ticket Types.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function ticketTypes()
     {
         return $this->hasMany(TicketType::class);
     }
 
+    /**
+     * Returns all related Payment Gateways.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function paymentGateways()
     {
         return $this->belongsToMany(PaymentGateway::class, 'account_payment_gateways', 'payment_gateway_id', 'account_id');
     }
 
+    /**
+     * Updates the given Account.
+     *
+     * @param Request $request
+     * @param $id
+     */
     public static function updateAccount(Request $request, $id)
     {
         $account = Account::find($id);

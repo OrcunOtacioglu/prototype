@@ -8,6 +8,11 @@ use App\Http\Controllers\Controller;
 
 class EventCategoryController extends Controller
 {
+    /**
+     * Shows all EventCategories.
+     *
+     * @return \Illuminate\Database\Eloquent\Collection|static[]
+     */
     public function index()
     {
         $categories = EventCategory::all();

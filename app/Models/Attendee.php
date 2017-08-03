@@ -34,4 +34,14 @@ class Attendee extends Authenticable
     {
         return $this->hasMany(Ticket::class);
     }
+
+    /**
+     * Returns all related Orders.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
 }
