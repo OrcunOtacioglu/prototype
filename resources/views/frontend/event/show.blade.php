@@ -22,8 +22,9 @@
         </div>
     </div>
     <div class="container">
-        <div class="row" style="padding-top: 30px;">
+        <div class="row">
             <div class="col-md-8">
+                <h3>Description</h3>
                 <p>{{ $event->description }}</p>
                 <hr>
                 <div class="text-left">
@@ -35,23 +36,27 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Category</th>
-                            <th>Price</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach($event->ticketTypes as $ticketType)
+                <div class="ticketTypes">
+                    <div class="ticketTypesContainer">
+                        <table class="table">
+                            <thead>
                             <tr>
-                                <td>{{ $ticketType->name }}</td>
-                                <td>{{ $ticketType->price }}</td>
+                                <th>Category</th>
+                                <th>Price</th>
                             </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-                <button class="btn btn-primary btn-block" data-toggle="modal" data-target="#tickets">Select Your Ticket</button>
+                            </thead>
+                            <tbody>
+                            @foreach($event->ticketTypes as $ticketType)
+                                <tr>
+                                    <td>{{ $ticketType->name }}</td>
+                                    <td>{{ $ticketType->price }}</td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                        <button class="btn btn-primary btn-block" data-toggle="modal" data-target="#tickets">Select Your Ticket</button>
+                    </div>
+                </div>
             </div>
         </div>
         @include('frontend.ticketType.show')
