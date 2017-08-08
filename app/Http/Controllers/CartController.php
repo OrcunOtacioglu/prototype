@@ -25,7 +25,7 @@ class CartController extends Controller
 
         Cart::add($ticketType->id, $ticketType->name, $qty, $ticketType->price, ['event' => $ticketType->event->title, 'eventID' => $ticketType->event->id]);
 
-        return redirect()->back();
+        return redirect()->action('CartController@show');
     }
 
     /**
@@ -129,7 +129,7 @@ class CartController extends Controller
     {
         $results = Gateway::validatePayment('iyzico', $request);
 
-        $order = Order::where('reference', '=', $results['orderRef'])->first();
+        $order = Order::with('orderItems', 'event')->where('reference', '=', $results['orderRef'])->first();
 
         return view('frontend.payment.success', compact('results', 'order'));
     }
