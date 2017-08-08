@@ -47,6 +47,11 @@ class AttendeeController extends Controller
     {
         $attendee = $request->user('account');
 
+        if (!$attendee)
+        {
+            return redirect()->action('Auth\Account\LoginController@showLoginForm');
+        }
+
         return view('frontend.account.show', compact('attendee'));
     }
 
