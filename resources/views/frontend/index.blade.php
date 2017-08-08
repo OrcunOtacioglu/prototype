@@ -1,6 +1,6 @@
 @extends('frontend.layout')
 
-@section('title', 'Ticketing Solutions')
+@section('title', 'Biletleme Çözümleri')
 
 @section('content')
     <main>
@@ -9,7 +9,7 @@
         <div class="white_bg">
             <div class="container margin_60">
                 <div class="main_title">
-                    <h2>@yield('main.title', 'Popular Upcoming') <span>@yield('main.title.span', 'Events')</span></h2>
+                    <h2>@yield('main.title', 'Popüler') <span>@yield('main.title.span', 'Etkinlikler')</span></h2>
                 </div>
 
                 <div class="row">

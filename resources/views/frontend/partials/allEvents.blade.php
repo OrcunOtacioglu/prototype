@@ -1,16 +1,16 @@
 <div class="white_bg">
     <div class="container margin_60">
         <div class="main_title">
-            <h2>All <span>Events</span></h2>
+            <h2>Tüm <span>Etkinlikler</span></h2>
         </div>
 
         <div id="tabs" class="tabs">
             <nav>
                 <ul>
-                    <li><a href="#section-1"><span>MUSIC</span></a></li>
-                    <li><a href="#section-2"><span>ARTS</span></a></li>
-                    <li><a href="#section-3"><span>SPORT</span></a></li>
-                    <li><a href="#section-4"><span>PREMIERE</span></a></li>
+                    <li><a href="#section-1"><span>MÜZİK</span></a></li>
+                    <li><a href="#section-2"><span>SANAT</span></a></li>
+                    <li><a href="#section-3"><span>SPOR</span></a></li>
+                    <li><a href="#section-4"><span>GALA</span></a></li>
                 </ul>
             </nav>
 

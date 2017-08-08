@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>@yield('title') | Dashboard</title>
+    <title>@yield('title') | Online FBB</title>
 
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/admin.min.css') }}" rel="stylesheet">

@@ -24,39 +24,39 @@
             <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h2 class="panel-title">Payment Details</h2>
+                        <h2 class="panel-title">Ödeme Detayları</h2>
                     </div>
 
                     <div class="panel-body">
                         @foreach($items as $item)
                             <p><strong>{{ $item->options->event }}</strong></p>
                             <p>{{ $item->name }} x {{ $item->qty }}</p>
-                            <a href="{{ action('CartController@deleteItem', ['id' => $item->rowId]) }}" class="text-danger">Remove</a>
+                            <a href="{{ action('CartController@deleteItem', ['id' => $item->rowId]) }}" class="text-danger">Kaldır</a>
                         @endforeach
 
                         <hr>
-                        <p><strong>Subtotal {{ Cart::subtotal() }}</strong></p>
-                        <p><strong>Tax {{ Cart::tax() }}</strong></p>
+                        <p><strong>Ara Toplam {{ Cart::subtotal() }}</strong></p>
+                        <p><strong>Vergi {{ Cart::tax() }}</strong></p>
                     </div>
                     
                     <div class="panel-footer text-center">
-                        <p><strong>TOTAL {{ Cart::total() }}</strong></p>
-                        <a href="{{ action('CartController@proceed') }}" class="btn btn-block btn-success">Proceed Checkout</a>
-                        <a href="{{ action('CartController@destroyCart') }}" class="text-danger" style="font-size: 12px;">Destroy Cart</a>
+                        <p><strong>TOPLAM {{ Cart::total() }}</strong></p>
+                        <a href="{{ action('CartController@proceed') }}" class="btn btn-block btn-success">Ödeme Yap</a>
+                        <a href="{{ action('CartController@destroyCart') }}" class="text-danger" style="font-size: 12px;">Kartı İptal Et</a>
                     </div>
                 </div>
             </div>
             <div class="col-md-8">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h2 class="panel-title">Attendee Information</h2>
+                        <h2 class="panel-title">Katılımcı Bilgisi</h2>
                     </div>
 
                     <div class="panel-body">
                         <form action="#" method="POST">
                             {{ csrf_field() }}
                             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                                <label for="name" class="control-label">Name</label>
+                                <label for="name" class="control-label">Ad</label>
                                 <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
 
                                 @if ($errors->has('name'))
@@ -67,7 +67,7 @@
                             </div>
 
                             <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                                <label for="email" class="control-label">E-Mail Address</label>
+                                <label for="email" class="control-label">E-Mail</label>
                                 <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
 
                                 @if ($errors->has('email'))
@@ -78,7 +78,7 @@
                             </div>
 
                             <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                                <label for="password" class="control-label">Password</label>
+                                <label for="password" class="control-label">Parola</label>
                                 <input id="password" type="password" class="form-control" name="password" required>
 
                                 @if ($errors->has('password'))
@@ -89,12 +89,12 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="password-confirm" class="control-label">Confirm Password</label>
+                                <label for="password-confirm" class="control-label">Parola Doğrulama</label>
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                             </div>
 
                             <button type="submit" class="btn btn-primary">
-                                Register
+                                Kayıt Ol
                             </button>
                         </form>
                     </div>

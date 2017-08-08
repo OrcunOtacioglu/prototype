@@ -31,10 +31,10 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>Event</th>
-                                <th>Ticket</th>
-                                <th>Qty</th>
-                                <th>Price</th>
+                                <th>Etkinlik</th>
+                                <th>Kategori</th>
+                                <th>Adet</th>
+                                <th>Fiyat</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -50,22 +50,22 @@
                         <tfoot>
                             <tr>
                                 <td colspan="2"></td>
-                                <td>SUBTOTAL</td>
+                                <td>ARA TOPLAM</td>
                                 <td>{{ \Gloudemans\Shoppingcart\Facades\Cart::subtotal() }}</td>
                             </tr>
                             <tr>
                                 <td colspan="2"></td>
-                                <td>TAX</td>
+                                <td>VERGİ</td>
                                 <td>{{ \Gloudemans\Shoppingcart\Facades\Cart::tax() }}</td>
                             </tr>
                             <tr>
                                 <td colspan="2"></td>
-                                <td>TOTAL</td>
+                                <td>TOPLAM</td>
                                 <td>{{ \Gloudemans\Shoppingcart\Facades\Cart::total() }}</td>
                             </tr>
                         </tfoot>
                     </table>
-                    <a href="{{ action('CartController@payment') }}" class="btn btn-block btn-success">Pay Now</a>
+                    <a href="{{ action('CartController@payment') }}" class="btn btn-block btn-success">Ödeme</a>
                 @endif
             </div>
         </div>
