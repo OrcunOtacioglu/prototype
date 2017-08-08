@@ -34,8 +34,27 @@
                                 <a href="{{ route('register') }}">REGISTER</a>
                             </li>
                         @else
-                            <li class="submenu">
-                                <a href="{{ action('AttendeeController@show') }}">{{ request()->user('account')->name }}</a>
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                    {{ request()->user('account')->name }} <i class="glyphicon glyphicon-menu-down"></i>
+                                </a>
+                                
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a href="{{ action('AttendeeController@show') }}">Profile</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                                     document.getElementById('logout').submit();">
+                                            Logout
+                                        </a>
+
+                                        <form action="{{ route('logout') }}" id="logout" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
+                                    </li>
+                                </ul>
                             </li>
                         @endif
                         <li class="submenu">
@@ -44,7 +63,7 @@
                             </a>
                         </li>
                         <li class="submenu">
-                            <a href="http://fbbentertainment.com" target="_blank" class="dropdown-toggle" style="border: 1px solid orange; border-radius: 3px; padding: 5px 20px;">KURUMSAL</a>
+                            <a href="http://fbbentertainment.com" target="_blank" class="dropdown-toggle" style="border: 1px solid orange; border-radius: 3px; padding: 5px 20px;">CORPORATE</a>
                         </li>
                     </ul>
                 </div>
