@@ -377,13 +377,14 @@ header.sticky #logo .logo_sticky{ display:block; }
 	padding:0;
 }
 #logo_home h1 a, header.sticky #logo_home h1 a, header#plain #logo_home h1 a, header#colored #logo_home h1 a{
-	width:160px;
-	display:block;
-	background-image:url(../img/logo.png);
-	background-repeat:no-repeat;
-	background-position:left top;
-	text-indent:-9999px;
-    background-size:110px;
+	width: 155px;
+	display: block;
+	background-image: url(../img/logo.png);
+	background-repeat: no-repeat;
+	background-position: left top;
+	text-indent: -9999px;
+	background-size: 170px;
+	height: 60px;
 }
 header.sticky #logo_home h1{
 	margin:0 0 10px 0;

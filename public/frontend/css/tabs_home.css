@@ -185,7 +185,8 @@
 }
 .list_tours_tabs  ul li div{
 	display: table-cell;
-	vertical-align:middle;
+	vertical-align: middle;
+	padding-left: 55px;
 }
 .list_tours_tabs  ul li figure{
 	width:45px;

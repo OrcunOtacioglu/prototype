@@ -63,7 +63,11 @@
                             </a>
                         </li>
                         <li class="submenu">
-                            <a href="http://fbbentertainment.com" target="_blank" class="dropdown-toggle" style="border: 1px solid orange; border-radius: 3px; padding: 5px 20px;">CORPORATE</a>
+                            <a href="http://fbbentertainment.com" target="_blank" class="dropdown-toggle" style="border: 1px solid #d3712c;
+                                                                                                                 border-radius: 3px;
+                                                                                                                 padding: 5px 20px;">
+                                CORPORATE
+                            </a>
                         </li>
                     </ul>
                 </div>
