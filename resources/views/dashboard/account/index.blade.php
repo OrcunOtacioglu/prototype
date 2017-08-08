@@ -33,7 +33,11 @@
                         <td>{{ $account->phone }}</td>
                         <td>
                             <a href="{{ action('AccountController@edit', ['id' => $account->id]) }}" class="btn btn-primary btn-xs">Edit</a>
-                            <a href="#" class="btn btn-default btn-xs">Delete</a>
+                            <form action="{{ action('AccountController@destroy', ['id' => $account->id]) }}" method="post">
+                                {{ method_field('DELETE') }}
+                                {{ csrf_field() }}
+                                <input type="submit" class="btn btn-default btn-xs" value="Delete">
+                            </form>
                         </td>
                     </tr>
                 @endforeach
