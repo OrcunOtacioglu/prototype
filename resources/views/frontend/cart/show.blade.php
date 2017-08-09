@@ -67,7 +67,7 @@
                         <div class="tab-content">
                             <div class="tab-pane active" id="registration">
                                 <!-- Registration Form -->
-                                <form action="{{ route('login') }}" method="POST">
+                                <form action="{{ route('register') }}" method="POST">
                                     {{ csrf_field() }}
                                     <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                                         <label for="name" class="control-label">Ad</label>
