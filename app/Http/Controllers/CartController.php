@@ -127,11 +127,52 @@ class CartController extends Controller
      */
     public function validatePayment(Request $request)
     {
-        dd($request->data);
-        $results = Gateway::validatePayment('iyzico', $request);
+//        $results = Gateway::validatePayment('iyzico', $request);
+//
+//        $order = Order::with('orderItems', 'event')->where('reference', '=', $results['orderRef'])->first();
 
-        $order = Order::with('orderItems', 'event')->where('reference', '=', $results['orderRef'])->first();
+        $hashparams = $request->HASHPARAMS;
+        $hashparamsval = $request->HASHPARAMSVAL;
+        $hashparam = $request->HASH;
+        $storekey = "123456";
+        $paramsval = "";
+        $index1 = 0;
+        $index2 = 0;
 
-        return view('frontend.payment.success', compact('results', 'order'));
+        while ($index1 < strlen($hashparams)) {
+            $index2 = strpos($hashparams, ":", $index1);
+            $vl = $_POST[substr($hashparams, $index1, $index2 - $index1)];
+            if ($vl == null)
+                $vl = "";
+            $paramsval = $paramsval . $vl;
+            $index1 = $index2 + 1;
+        }
+        $results = $request->mdErrorMsg;
+        $storekey = "123456";
+        $hashval = $paramsval . $storekey;
+        $hash = base64_encode(pack('H*', sha1($hashval)));
+
+
+        $mdStatus = $request->mdStatus;
+        $ErrMsg = $request->ErrMsg;
+
+        if ($mdStatus == 1 || $mdStatus == 2 || $mdStatus == 3 || $mdStatus == 4) {
+            $results = "3D Islemi basarili";
+
+            $response = $request->Response;
+
+            if ($response == "Approved") {
+                $results = "Ödeme Islemi Basarili";
+                $order = Order::where('reference', '=', $request->ReturnOid)->with('event')->get();
+                return view('frontend.payment.success', compact('results', 'order'));
+            } else {
+                $results = "Ödeme Islemi Basarisiz. Hata = " . $ErrMsg;
+                return view('frontend.payment.fail', compact('results'));
+            }
+
+        } else {
+            $results = "3D Islemi basarisiz. " . $request->mdErrorMsg;
+            return view('frontend.payment.fail', compact('results'));
+        }
     }
 }
