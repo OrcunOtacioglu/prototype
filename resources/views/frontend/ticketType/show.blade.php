@@ -26,7 +26,7 @@
                                 </select>
                             </div>
                             <div class="col-md-3">
-                                <input type="submit" class="btn btn-block btn-success" value="Add">
+                                <input type="submit" class="btn btn-block btn-success" value="Sepete Ekle">
                             </div>
                         </form>
                     </div>

@@ -85,7 +85,7 @@ class CartController extends Controller
                 }
                 $order = Order::createNew(Helpers::getAuthenticatedUser($request), $eventID);
             }
-            return redirect()->action('CartController@payment')->withCookie('orderRef', $order->reference);
+            return redirect()->action('AttendeeController@show')->withCookie('orderRef', $order->reference);
 
         } else {
             return redirect()->to('/register');
@@ -127,6 +127,7 @@ class CartController extends Controller
      */
     public function validatePayment(Request $request)
     {
+        dd($request->data);
         $results = Gateway::validatePayment('iyzico', $request);
 
         $order = Order::with('orderItems', 'event')->where('reference', '=', $results['orderRef'])->first();
