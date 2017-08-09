@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Util\EventCategory;
 use App\Models\Util\EventType;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Acikgise\Helpers\Helpers;
 use Illuminate\Support\Facades\Auth;
@@ -99,5 +100,10 @@ class Event extends Model
         $event->end_date = Helpers::getDateTimeFormat($request->endDate);
         $event->on_sale_date = Helpers::getDateTimeFormat($request->onSaleDate);
         $event->save();
+    }
+
+    public static function listBasedOnCategory(Collection $events, $categoryID)
+    {
+        return $events->where('event_category_id', '=', $categoryID);
     }
 }
