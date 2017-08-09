@@ -10,6 +10,8 @@
 
 /* Submenu styles */
 .main-menu ul li a {display: block; line-height: 20px;padding:10px;}
+.main-menu > ul > li:hover > a.dropdown-toggle{    background: #f7941d;
+    color: #fff;}
 			
 /*First level styles */			
 .main-menu > ul > li > a {color: #fff;     padding: 0 20px 15px 20px; font-size:14px;}
