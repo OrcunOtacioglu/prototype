@@ -34,18 +34,18 @@
                 <div class="col-md-10">
                     <div class="row">
                         <div class="col-md-5">
-                            <p>Event: {{ $order->event->title }}</p>
-                            <p>Event Date: {{ $order->event->start_date }}</p>
-                            <p>Event Location: {{ $order->event->location }}</p>
+                            <p>Etkinlik Adı: {{ $order->event->title }}</p>
+                            <p>Etkinlik Tarihi: {{ $order->event->start_date }}</p>
+                            <p>Etkinlik Mekanı: {{ $order->event->location }}</p>
                         </div>
                         <div class="col-md-3">
-                            <p>Ticket Category: {{ $item->product_name }}</p>
-                            <p>Ticket Count: {{ $item->quantity }}</p>
+                            <p>Bilet Kategorisi: {{ $item->product_name }}</p>
+                            <p>Bilet Adedi: {{ $item->quantity }}</p>
                         </div>
                         <div class="col-md-4">
-                            <p>Total Payment: {{ $item->unit_price * $item->quantity }}</p>
-                            <a href="#" class="btn btn-block btn-default">Print This Information</a>
-                            <a href="#" class="btn btn-block btn default">Get Invoice</a>
+                            <p>Toplam Tutar: {{ $item->unit_price * $item->quantity }}</p>
+                            <a href="#" class="btn btn-block btn-default">Bu Sayfayı Yazdır</a>
+                            <a href="#" class="btn btn-block btn default">Fatura Al</a>
                         </div>
                     </div>
                 </div>
