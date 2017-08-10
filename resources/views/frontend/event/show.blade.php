@@ -2,6 +2,7 @@
 
 @section('custom.css')
     <link rel="stylesheet" href="{{ asset('frontend/css/custom.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 @stop
 
 @section('title')
@@ -24,7 +25,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8">
-                <h3>Description</h3>
+                <h3>Etkinlik Detayı</h3>
                 <p>{{ $event->description }}</p>
                 <hr>
                 <div class="text-left">
@@ -34,6 +35,8 @@
                     </p>
                     <small>{{ substr($event->account->about, 0, 160) }}...</small>
                 </div>
+
+                {{--<ticket-component></ticket-component>--}}
             </div>
             <div class="col-md-4">
                 <div class="ticketTypes">
@@ -41,8 +44,8 @@
                         <table class="table">
                             <thead>
                             <tr>
-                                <th>Category</th>
-                                <th>Price</th>
+                                <th>Kategori</th>
+                                <th>Fiyat</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -54,11 +57,15 @@
                             @endforeach
                             </tbody>
                         </table>
-                        <button class="btn btn-primary btn-block" data-toggle="modal" data-target="#tickets">Select Your Ticket</button>
+                        <button class="btn btn-primary btn-block" data-toggle="modal" data-target="#tickets">Biletlerinizi Seçin</button>
                     </div>
                 </div>
             </div>
         </div>
         @include('frontend.ticketType.show')
     </div>
+@stop
+
+@section('footer.scripts')
+    <script src="{{ asset('js/app.js') }}"></script>
 @stop
