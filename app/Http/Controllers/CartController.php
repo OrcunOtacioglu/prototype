@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Acikgise\Helpers\Helpers;
 use Acikgise\Payment\Gateway;
+use App\Events\OrderSuccessful;
 use App\Models\Order;
 use App\Models\TicketType;
 use Gloudemans\Shoppingcart\Facades\Cart;
@@ -162,12 +163,22 @@ class CartController extends Controller
             $response = $request->Response;
 
             if ($response == "Approved") {
+
                 $results = "Ödeme Islemi Basarili";
-                $order = Order::where('reference', '=', $request->ReturnOid)->with('event')->get();
+
+                $order = Order::where('reference', '=', $request->ReturnOid)->with('orderItems', 'attendee', 'event')->first();
+                event(new OrderSuccessful($order));
+                cookie()->queue(
+                    Cookie::forget('orderRef')
+                );
+                
                 return view('frontend.payment.success', compact('results', 'order'));
+
             } else {
+
                 $results = "Ödeme Islemi Basarisiz. Hata = " . $ErrMsg;
                 return view('frontend.payment.fail', compact('results'));
+
             }
 
         } else {
