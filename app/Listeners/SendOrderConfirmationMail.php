@@ -28,6 +28,7 @@ class SendOrderConfirmationMail
      */
     public function handle(OrderSuccessful $event)
     {
+        dd($event->order);
         Mail::to($event->order->attendee)->send(new OrderConfirmation($event->order));
     }
 }
