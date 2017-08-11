@@ -21,7 +21,7 @@
     <div class="container">
         <div class="row item">
             <div class="col-md-12">
-                <h3>Your Payment Successful! Order Reference: {{ $results['orderRef'] }}</h3>
+                <h3>Your Payment Successful! Order Reference: {{ $order->reference }}</h3>
                 <p>Thank you for purchasing tickets for online streaming {{ $order->event->title }} event!</p>
                 <p>An email has been sent to your account regarding to this purchase. You will find all the information you need about your purchase and steps that are explaining you how to watch your selected event.</p>
             </div>

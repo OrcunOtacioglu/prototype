@@ -3,12 +3,11 @@
 namespace App\Listeners;
 
 use App\Events\OrderSuccessful;
-use App\Mail\OrderConfirmation;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Support\Facades\Mail;
 
-class SendOrderConfirmationMail
+class ClearShoppingCart
 {
     /**
      * Create the event listener.
@@ -21,13 +20,13 @@ class SendOrderConfirmationMail
     }
 
     /**
-     * Handle the event.
+     * Handles the event.
      *
-     * @param  OrderSuccessful  $event
-     * @return void
+     * @param OrderSuccessful $event
+     * @return mixed
      */
     public function handle(OrderSuccessful $event)
     {
-        Mail::to($event->order->attendee)->send(new OrderConfirmation($event->order));
+        Cart::destroy();
     }
 }

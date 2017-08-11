@@ -2,7 +2,6 @@
 
 namespace App\Events;
 
-use App\Models\Order;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Broadcasting\PrivateChannel;
@@ -22,7 +21,7 @@ class OrderSuccessful
      *
      * @param Order $order
      */
-    public function __construct(Order $order)
+    public function __construct($order)
     {
         $this->order = $order;
     }
