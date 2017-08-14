@@ -8,6 +8,9 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    <!-- Custom Meta-->
+    @yield('custom.meta')
+
     <title>@yield('title') | OnlineFBB</title>
 
     <!-- Fonts -->

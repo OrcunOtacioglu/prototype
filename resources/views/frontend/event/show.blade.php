@@ -1,5 +1,9 @@
 @extends('frontend.layout')
 
+@section('custom.meta')
+    <meta name="eventID" content="{{ $event->id }}">
+@stop
+
 @section('custom.css')
     <link rel="stylesheet" href="{{ asset('frontend/css/custom.css') }}">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
@@ -35,8 +39,6 @@
                     </p>
                     <small>{{ substr($event->account->about, 0, 160) }}...</small>
                 </div>
-
-                {{--<ticket-component></ticket-component>--}}
             </div>
             <div class="col-md-4">
                 <div class="ticketTypes">
