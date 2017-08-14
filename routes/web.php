@@ -17,6 +17,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
     Route::resource('/rate', 'TicketTypeController');
     Route::resource('/ticket', 'TicketController');
     Route::resource('/order', 'OrderController');
+    Route::resource('/page', 'Util\PageController', ['except' => 'show']);
 });
 
 Route::get('/event/{slug}', 'EventController@show');
@@ -31,3 +32,5 @@ Route::get('/organizer/{name}', 'AccountController@organizer');
 
 Route::resource('/attendee', 'AttendeeController', ['except' => 'show']);
 Route::get('/account', 'AttendeeController@show');
+
+Route::get('/{slug}', 'Util\PageController@show');
