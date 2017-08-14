@@ -171,7 +171,7 @@ class CartController extends Controller
                 cookie()->queue(
                     Cookie::forget('orderRef')
                 );
-                
+
                 return view('frontend.payment.success', compact('results', 'order'));
 
             } else {
