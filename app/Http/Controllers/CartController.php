@@ -21,12 +21,19 @@ class CartController extends Controller
      */
     public function addItem(Request $request)
     {
-        $ticketType = TicketType::find($request->ticket);
-        $qty = $request->quantity;
+        foreach (Cart::content() as $item) {
+            if ($item->id == $request->cart[0]['id']) {
+                Cart::update($item->rowId, $request->cart[0]['qty']);
+            }
+        }
+
+        $ticketType = TicketType::find($request->cart[0]['id']);
+        $qty = $request->cart[0]['qty'];
 
         Cart::add($ticketType->id, $ticketType->name, $qty, $ticketType->price, ['event' => $ticketType->event->title, 'eventID' => $ticketType->event->id]);
 
-        return redirect()->action('CartController@show');
+//        return redirect()->action('CartController@show');
+        return response('Success!');
     }
 
     /**
@@ -37,8 +44,11 @@ class CartController extends Controller
     public function show()
     {
         $items = Cart::content();
-
-        return view('frontend.cart.show', compact('items'));
+        $subtotal = Cart::subtotal();
+        $tax = Cart::tax();
+        $total = Cart::total();
+//        return view('frontend.cart.show', compact('items'));
+        return response()->json([$items, $subtotal, $tax, $total]);
     }
 
     /**
@@ -74,6 +84,7 @@ class CartController extends Controller
      */
     public function proceed(Request $request)
     {
+
         // Check if the user is authenticated.
         if (Helpers::checkAuthenticated($request)) {
             if ($request->hasCookie('orderRef')) {
@@ -86,10 +97,28 @@ class CartController extends Controller
                 }
                 $order = Order::createNew(Helpers::getAuthenticatedUser($request), $eventID);
             }
-            return redirect()->action('AttendeeController@show')->withCookie('orderRef', $order->reference);
+
+            $paymentInfo = [
+                'clientid' => "100300000",
+                'amount' => $order->total,
+                'oid' => $order->reference,
+                'okUrl' => "http://test.onlinefbb.com/order-complete",
+                'failUrl' => "http://test.onlinefbb.com/order-complete",
+                'rnd' => microtime(),
+                'taksit' => "",
+                'islemtipi' => "Auth",
+                'storekey' => "123456"
+            ];
+
+            $hashstr = $paymentInfo['clientid'] . $paymentInfo['oid'] . $paymentInfo['amount'] . $paymentInfo['okUrl'] . $paymentInfo['failUrl'] . $paymentInfo['islemtipi'] . $paymentInfo['taksit'] . $paymentInfo['rnd'] . $paymentInfo['storekey'];
+
+            $hash = base64_encode(pack('H*',sha1($hashstr)));
+
+
+            return view('frontend.cart.proceed', compact('order', 'paymentInfo', 'hash'));
 
         } else {
-            return redirect()->to('/register');
+            return view('frontend.cart.authenticate');
         }
     }
 

@@ -15,7 +15,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/account';
+    //protected $redirectTo = '/account';
 
     /**
      * Renders login form.
@@ -35,5 +35,10 @@ class LoginController extends Controller
     protected function guard()
     {
         return Auth::guard('account');
+    }
+
+    public function redirectTo()
+    {
+        return url()->previous();
     }
 }
