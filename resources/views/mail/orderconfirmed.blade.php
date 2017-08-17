@@ -13,7 +13,7 @@
     <body>
         <h1>Your order completed! {{ $order->attendee->name }}</h1>
         <div style="
-                background: url('http://acikgise.dev/images/cover-images/{{ $order->event->cover_image }}');
+                background: url('http://test.onlinefbb.com/images/cover-images/{{ $order->event->cover_image }}');
                 background-size: cover;
                 background-repeat: no-repeat;
                 background-position: center center;
@@ -38,7 +38,7 @@
             @foreach($order->orderItems as $item)
                 <div class="row item">
                     <div class="col-md-2">
-                        <img src="http://acikgise.dev/images/cover-images/{{ $order->event->cover_image }}" alt="" class="img-responsive">
+                        <img src="http://test.onlinefbb.com/images/cover-images/{{ $order->event->cover_image }}" alt="" class="img-responsive">
                     </div>
                     <div class="col-md-10">
                         <div class="row">
