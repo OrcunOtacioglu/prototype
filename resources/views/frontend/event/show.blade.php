@@ -6,7 +6,6 @@
 
 @section('custom.css')
     <link rel="stylesheet" href="{{ asset('frontend/css/custom.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 @stop
 
 @section('title')
@@ -27,41 +26,28 @@
         </div>
     </div>
     <div class="container">
-        <div class="row">
+        <div class="row" style="background: #fff;">
             <div class="col-md-8">
+
                 <h3>Etkinlik Detayı</h3>
                 <p>{{ $event->description }}</p>
                 <hr>
-                <div class="text-left">
-                    <h3>Organizer</h3>
-                    <p style="margin: 0;">
-                        <a href="{{ action('AccountController@organizer', ['id' => $event->account->id]) }}">{{ $event->account->name }}</a>
-                    </p>
-                    <small>{{ substr($event->account->about, 0, 160) }}...</small>
-                </div>
+
+                <ticket-select></ticket-select>
+
             </div>
+
             <div class="col-md-4">
-                <div class="ticketTypes">
-                    <div class="ticketTypesContainer">
-                        <table class="table">
-                            <thead>
-                            <tr>
-                                <th>Kategori</th>
-                                <th>Fiyat</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            @foreach($event->ticketTypes as $ticketType)
-                                <tr>
-                                    <td>{{ $ticketType->name }}</td>
-                                    <td>{{ $ticketType->price }}</td>
-                                </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
-                        <button class="btn btn-primary btn-block" data-toggle="modal" data-target="#tickets">Biletlerinizi Seçin</button>
-                    </div>
-                </div>
+
+                <h3>Organizatör</h3>
+                <p style="margin: 0;">
+                    <a href="{{ action('AccountController@organizer', ['id' => $event->account->id]) }}">{{ $event->account->name }}</a>
+                </p>
+                <small>{{ substr($event->account->about, 0, 160) }}...</small>
+
+                <hr>
+
+                <shopping-cart></shopping-cart>
             </div>
         </div>
         @include('frontend.ticketType.show')

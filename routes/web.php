@@ -33,4 +33,10 @@ Route::get('/organizer/{name}', 'AccountController@organizer');
 Route::resource('/attendee', 'AttendeeController', ['except' => 'show']);
 Route::get('/account', 'AttendeeController@show');
 
+/**
+ * APIs
+ */
+Route::get('/e/{id}', 'EventController@getEventInfo');
+Route::get('/tickets/{eventID}', 'TicketTypeController@getTickets');
+
 Route::get('/{slug}', 'Util\PageController@show');

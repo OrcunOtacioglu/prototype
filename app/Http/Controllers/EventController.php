@@ -95,4 +95,9 @@ class EventController extends Controller
     {
         //
     }
+
+    public function getEventInfo($id)
+    {
+        return Event::find($id);
+    }
 }

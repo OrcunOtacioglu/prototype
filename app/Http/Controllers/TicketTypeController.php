@@ -84,4 +84,9 @@ class TicketTypeController extends Controller
     {
         //
     }
+
+    public function getTickets($eventID)
+    {
+        return TicketType::where('event_id', '=', $eventID)->get();
+    }
 }

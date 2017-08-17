@@ -46,11 +46,6 @@
                             </li>
                         @endif
                         <li class="submenu">
-                            <a href="/cart">
-                                ALIŞVERİŞ SEPETİ @if(\Gloudemans\Shoppingcart\Facades\Cart::count() > 0)<span class="badge">{{ \Gloudemans\Shoppingcart\Facades\Cart::count() }}</span> @endif
-                            </a>
-                        </li>
-                        <li class="submenu">
                             <a href="http://fbbentertainment.com" target="_blank" class="dropdown-toggle" style="border: 1px solid #d3712c;
                                                                                                                  border-radius: 3px;
                                                                                                                  padding: 5px 20px;">
