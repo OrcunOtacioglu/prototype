@@ -46,8 +46,38 @@
                     <input type="hidden" name="refreshtime" value="10" >
                     <input type="hidden" name="lang" value="tr">
                     <input type="hidden" name="currency" value="949">
+
+                    <input type="hidden" name="firmaadi" value="FBB Entertainment">
+                    <input type="hidden" name="Fismi" value="is">
+                    <input type="hidden" name="faturaFirma" value="FBB Entertainment">
+                    <input type="hidden" name="Fadres" value="FBB Entertainment Güzeloba Mah.">
+                    <input type="hidden" name="Fadres2" value="Rauf Denktaş Cad. No:60/A">
+                    <input type="hidden" name="Fil" value="ANTALYA">
+                    <input type="hidden" name="Filce" value="Muratpaşa">
+                    <input type="hidden" name="Fpostakodu" value="07040">
+                    <input type="hidden" name="tel" value="+90 242 280 22 11">
+                    <input type="hidden" name="fulkekod" value="tr">
+                    <input type="hidden" name="nakliyeFirma" value="FBB Entertainment">
+                    <input type="hidden" name="tismi" value="FBB Entertainment">
+                    <input type="hidden" name="tadres" value="FBB Entertainment Güzeloba Mah.">
+                    <input type="hidden" name="tadres2" value="Rauf Denktaş Cad. No:60/A">
+                    <input type="hidden" name="til" value="ANTALYA">
+                    <input type="hidden" name="tilce" value="Muratpaşa">
+                    <input type="hidden" name="tpostakodu" value="07040">
+                    <input type="hidden" name="tulkekod" value="tr">
                     <input type="submit" class="btn btn-success btn-block" value="Ödeme Yap">
                 </form>
+                <ul class="list-inline valign-midd ellipses">
+                    <li>
+                        <img id="imgVisaLogo" src="{{ asset('frontend/img/footer/Visa.jpg') }}" alt="Visa">
+                    </li>
+                    <li>
+                        <img id="imgMasterCardLogo" src="{{ asset('frontend/img/footer/Master-card.jpg') }}" alt="Master Card">
+                    </li>
+                    <li>
+                        <img id="imgAmericanExpressLogo" src="{{ asset('frontend/img/footer/American-Express.jpg') }}" alt="American Express">
+                    </li>
+                </ul>
             </div>
         </div>
     </div>

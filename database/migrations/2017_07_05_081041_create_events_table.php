@@ -25,9 +25,11 @@ class CreateEventsTable extends Migration
             $table->string('slug')->unique();
             $table->text('description');
             $table->string('cover_image');
+            $table->string('bg_cover_image')->nullable();
             $table->string('location');
             $table->integer('status');
             $table->boolean('listing');
+            $table->boolean('is_featured')->default(false);
             $table->dateTime('start_date');
             $table->dateTime('end_date');
             $table->dateTime('on_sale_date');
