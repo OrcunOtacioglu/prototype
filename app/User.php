@@ -3,6 +3,8 @@
 namespace App;
 
 use App\Models\Account;
+use App\Models\Authority\Permission;
+use App\Models\Authority\Role;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -36,5 +38,20 @@ class User extends Authenticatable
     public function account()
     {
         return $this->belongsTo(Account::class);
+    }
+
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
+    }
+
+    public static function hasRole($role)
+    {
+        if (request()->user()->role->name === $role)
+        {
+            return true;
+        }
+
+        return false;
     }
 }

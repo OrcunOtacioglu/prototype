@@ -8,6 +8,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
+/**
+ * Backend Routes
+ */
 Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
     Route::get('/', 'DashboardController@index');
     Route::get('/categories', 'Util\EventCategoryController@index');
@@ -19,8 +22,13 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
     Route::resource('/ticket', 'TicketController');
     Route::resource('/order', 'OrderController');
     Route::resource('/page', 'Util\PageController', ['except' => 'show']);
+    Route::resource('/role', 'Authority\RoleController');
+    Route::resource('/permission', 'Authority\PermissionController');
 });
 
+/**
+ * Frontend Routes
+ */
 Route::get('/event/{slug}', 'EventController@show');
 Route::post('/cart', 'CartController@addItem');
 Route::get('/cart', 'CartController@show');
