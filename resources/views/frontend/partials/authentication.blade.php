@@ -119,6 +119,19 @@
                 </div>
             </div>
 
+            <div class="checkbox">
+                <input type="checkbox"><small>Şirketiniz’in www.onlinefbb.com uzantılı sayfasında detayları yer alan
+                    <a href="{{ action('Util\PageController@show', ['slug' => 'gizlilik-ve-kisisel-verilerin-korunumu']) }}">“Kişisel Verilerin Korunması Kanunu (“Kanun”)Hakkındaki Bilgilendirme metnini”</a>
+                    okuduğumu ve içeriğini anladığımı, bu meyanda kişisel ve/veya özel nitelikli kişisel verilerimin;
+                    Şirketiniz tarafından ve/veya Şirketiniz adına her türlü kanal aracılığı ile elde edilmesine,
+                    Kanunda tanımı yapılan en geniş şekilde işlenmesine, gerekmesi durumunda yurt içi ve yurt dışındaki
+                    ilgili üçüncü kişilere aktarılmasına, aydınlatılmış açık rızam ile açık onay veriyorum.</small>
+            </div>
+            <hr>
+            <small>OnlineFBB'ye üye olup bu siteyi kullanmaya başlayınca OnlineFBB Gizlilik Beyanı'nı kabul etmiş olursunuz.
+                OnlineFBB, Gizlilik Beyanı’nındaki hükümleri değiştirme, düzenleme, ekleme ve çıkarma hakkına sahiptir.
+                Gizlilik Beyanı’nın güncellemiş haline her zaman Site’den ulaşabilirsiniz. Site’mizi sık sık ziyaret ederek,
+                Gizlilik Beyanı’nın son güncel halini okumanızı önemle rica ederiz.</small>
             <div class="form-group">
                 <div class="col-md-6 col-md-offset-4">
                     <button type="submit" class="btn btn-primary">

@@ -8,6 +8,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Intervention\Image\Facades\Image;
 
 class Helpers
 {
@@ -53,13 +54,14 @@ class Helpers
      */
     public static function uploadImage(Request $request, $directory, $imageName)
     {
+
         if ($request->hasFile($imageName)) {
             $fileString = Str::random(32);
             $file = $request->file($imageName);
 
             $ext = $file->guessClientExtension();
             $fileName = $fileString . '.' . $ext;
-            $file->move('images/' . $directory, $fileName);
+            Image::make($request->file($imageName))->save('images/' . $directory . '/' . $fileName);
 
             return $fileName;
 
@@ -122,5 +124,22 @@ class Helpers
     public static function getAuthenticatedUser(Request $request)
     {
         return $request->user('account');
+    }
+
+    public static function makeBlurredImage(Request $request, $directory, $imageName)
+    {
+        if ($request->hasFile($imageName)) {
+            $fileString = Str::random(32);
+            $file = $request->file($imageName);
+
+            $ext = $file->guessClientExtension();
+            $fileName = $fileString . '.' . $ext;
+            Image::make($request->file($imageName))->crop(600, 300, 0, 0)->blur(100)->save('images/' . $directory . '/' . $fileName);
+
+            return $fileName;
+
+        } else {
+            return false;
+        }
     }
 }

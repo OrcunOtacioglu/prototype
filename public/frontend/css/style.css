@@ -406,15 +406,15 @@ only screen and (-webkit-min-device-pixel-ratio: 2),
 only screen and (min-device-pixel-ratio: 2) {
 #logo_home h1 a, header#colored #logo_home h1 a{
     background-image: url(../img/logo_2x.png);
-	background-size: 160px 34px;
+	background-size: 160px 50px;
 }
 header.sticky #logo_home h1 a, header#plain #logo_home h1 a{
     background-image: url(../img/logo_sticky_2x.png);
-	background-size: 160px 34px;
+	background-size: 160px 50px;
 }
 header.sticky#colored #logo_home h1 a{
     background-image: url(../img/logo_sticky_colored_2x.png);
-	background-size: 160px 34px;
+	background-size: 160px 50px;
 }
 }
 
@@ -438,7 +438,7 @@ header.sticky{
 }
 
 nav{ margin-top:20px; position:relative;}
-.sticky nav{ margin-top:5px}
+.sticky nav{ margin-top:20px}
 .sticky #logo{ margin-top:0; margin-bottom:10px;}
 
 ul#top_tools{list-style:none; padding:0; position:absolute; right:15px; top:0; z-index:999;}
