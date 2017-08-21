@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Finance\Invoice;
 use Carbon\Carbon;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Database\Eloquent\Model;
@@ -34,6 +35,11 @@ class Order extends Model
         return $this->belongsTo(Event::class);
     }
 
+    public function invoice()
+    {
+        return $this->hasOne(Invoice::class);
+    }
+
     public static function createNew(Attendee $attendee, $eventID)
     {
         $order = new Order();
@@ -41,7 +47,7 @@ class Order extends Model
         $order->attendee_id = $attendee->id;
         $order->event_id = $eventID;
         $order->transaction_id = random_int(100000, 999999);
-        $order->status = 1;
+        $order->status = 0;
         $order->total = Cart::total();
         $order->currency = 949;
         $order->created_at = Carbon::now('Europe/Istanbul');
