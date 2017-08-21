@@ -20,17 +20,17 @@
     <div class="container">
         <div class="row" style="padding-top: 30px;">
             <div class="col-md-8">
-                <h1 class="page-title">About Organizer</h1>
+                <h1 class="page-title">Organizatör Hakkında</h1>
                 <p>{{ $organizer->about }}</p>
                 <hr>
             </div>
             <div class="col-md-4">
-                <h2>Events</h2>
+                <h2>Etkinlikler</h2>
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>Event Name</th>
-                            <th>Location</th>
+                            <th>Etkinlik Adı</th>
+                            <th>Mekan</th>
                         </tr>
                     </thead>
                     <tbody>

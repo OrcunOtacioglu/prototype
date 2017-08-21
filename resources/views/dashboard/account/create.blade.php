@@ -63,8 +63,7 @@
                         <label for="phone">Company Phone Number</label>
                         <input type="text" name="phone" id="phone" class="form-control">
                     </div>
-
-                    <img src="/images/profile-images/{{ $account->profile_image }}" alt="" class="img-responsive">
+                    
                     <div class="form-group">
                         <label for="profileImage">Company Profile Image</label>
                         <input type="file" name="profileImage" id="profileImage">

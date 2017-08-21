@@ -47,7 +47,44 @@ class AttendeeController extends Controller
     {
         $attendee = $request->user('account');
 
-        return view('frontend.account.show', compact('attendee'));
+        if (!$attendee)
+        {
+            return redirect()->action('Auth\Account\LoginController@showLoginForm');
+        }
+
+        if (!$request->hasCookie('orderRef')) {
+            return redirect()->action('CartController@proceed');
+        } else {
+            $order = Order::where('reference', '=', $request->cookie('orderRef'))->first();
+        }
+
+        $paymentInfo = [
+            'clientid' => "100300000",
+            'amount' => $order->total,
+            'oid' => $order->reference,
+            'okUrl' => "http://test.onlinefbb.com/order-complete",
+            'failUrl' => "http://test.onlinefbb.com/order-complete",
+            'rnd' => microtime(),
+            'taksit' => "",
+            'islemtipi' => "Auth",
+            'storekey' => "123456"
+        ];
+//        $clientId = "100300000";
+//        $amount = "9.95";
+//        $oid = "";
+//        $okUrl = "http://development.dev/training/fail.php";
+//        $failUrl = "http://development.dev/training/fail.php";
+//        $rnd = microtime();
+//
+//        $taksit = "";
+//        $islemtipi="Auth";
+//        $storekey = "123456";
+
+        $hashstr = $paymentInfo['clientid'] . $paymentInfo['oid'] . $paymentInfo['amount'] . $paymentInfo['okUrl'] . $paymentInfo['failUrl'] . $paymentInfo['islemtipi'] . $paymentInfo['taksit'] . $paymentInfo['rnd'] . $paymentInfo['storekey'];
+
+        $hash = base64_encode(pack('H*',sha1($hashstr)));
+
+        return view('frontend.account.show', compact('attendee', 'order', 'hash', 'paymentInfo'));
     }
 
     /**

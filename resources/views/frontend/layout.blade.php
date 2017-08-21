@@ -8,7 +8,10 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>@yield('title') | Açıkgişe</title>
+    <!-- Custom Meta-->
+    @yield('custom.meta')
+
+    <title>@yield('title') | OnlineFBB</title>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Gochi+Hand|Lato:300,400|Montserrat:400,400i,700,700i" rel="stylesheet">

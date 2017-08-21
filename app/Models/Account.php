@@ -2,7 +2,9 @@
 
 namespace App\Models;
 
+use Acikgise\Helpers\Helpers;
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
@@ -94,6 +96,25 @@ class Account extends Model
         $account->twitter_page = $request->twitter;
         $account->phone = $request->phone;
         $account->profile_image = Helpers::uploadImage($request, 'profile-images', 'profileImage');
+        $account->updated_at = Carbon::now('Europe/Istanbul');
+        $account->save();
+    }
+
+    public static function createAccount(Request $request)
+    {
+        $account = new Account();
+        $account->name = $request->name;
+        $account->address = $request->address;
+        $account->city = $request->city;
+        $account->postal_code = $request->postalCode;
+        $account->country = $request->country;
+        $account->about = $request->about;
+        $account->website = $request->website;
+        $account->facebook_page = $request->facebookPage;
+        $account->twitter_page = $request->twitterPage;
+        $account->phone = $request->phone;
+        $account->profile_image = Helpers::uploadImage($request, 'profile-images', 'profileImage');
+        $account->created_at = Carbon::now('Europe/Istanbul');
         $account->updated_at = Carbon::now('Europe/Istanbul');
         $account->save();
     }

@@ -3,8 +3,10 @@
 namespace App\Listeners;
 
 use App\Events\OrderSuccessful;
+use App\Mail\OrderConfirmation;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Support\Facades\Mail;
 
 class SendOrderConfirmationMail
 {
@@ -26,6 +28,6 @@ class SendOrderConfirmationMail
      */
     public function handle(OrderSuccessful $event)
     {
-        //
+        Mail::to($event->order->attendee)->send(new OrderConfirmation($event->order));
     }
 }

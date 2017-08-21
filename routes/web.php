@@ -14,9 +14,11 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
     Route::resource('/account', 'AccountController');
     Route::post('/account/add-gateway', 'AccountController@addGateway');
     Route::resource('/event', 'EventController', ['except' => 'show']);
+    Route::get('/event/featured', 'EventController@featuredEvents');
     Route::resource('/rate', 'TicketTypeController');
     Route::resource('/ticket', 'TicketController');
     Route::resource('/order', 'OrderController');
+    Route::resource('/page', 'Util\PageController', ['except' => 'show']);
 });
 
 Route::get('/event/{slug}', 'EventController@show');
@@ -31,3 +33,11 @@ Route::get('/organizer/{name}', 'AccountController@organizer');
 
 Route::resource('/attendee', 'AttendeeController', ['except' => 'show']);
 Route::get('/account', 'AttendeeController@show');
+
+/**
+ * APIs
+ */
+Route::get('/e/{id}', 'EventController@getEventInfo');
+Route::get('/tickets/{eventID}', 'TicketTypeController@getTickets');
+
+Route::get('/{slug}', 'Util\PageController@show');

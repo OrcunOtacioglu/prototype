@@ -18,7 +18,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/account';
+    //protected $redirectTo = '/account';
 
     /**
      * Show the account registration form.
@@ -68,5 +68,10 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password'])
         ]);
+    }
+
+    public function redirectTo()
+    {
+        return url()->previous();
     }
 }

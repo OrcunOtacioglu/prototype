@@ -8,6 +8,7 @@
 
 @section('page.top')
     <div class="pull-right">
+        <a href="{{ action('EventController@featuredEvents') }}" class="btn btn-default">Manage Featured Events</a>
         <a href="{{ action('EventController@create') }}" class="btn btn-success">Create New Event</a>
     </div>
 @stop

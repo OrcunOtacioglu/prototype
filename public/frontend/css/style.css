@@ -377,13 +377,14 @@ header.sticky #logo .logo_sticky{ display:block; }
 	padding:0;
 }
 #logo_home h1 a, header.sticky #logo_home h1 a, header#plain #logo_home h1 a, header#colored #logo_home h1 a{
-	width:160px;
-	display:block;
-	background-image:url(../img/logo.png);
-	background-repeat:no-repeat;
-	background-position:left top;
-	text-indent:-9999px;
-    background-size:110px;
+	width: 155px;
+	display: block;
+	background-image: url(../img/logo.png);
+	background-repeat: no-repeat;
+	background-position: left top;
+	text-indent: -9999px;
+	background-size: 170px;
+	height: 60px;
 }
 header.sticky #logo_home h1{
 	margin:0 0 10px 0;
@@ -405,15 +406,15 @@ only screen and (-webkit-min-device-pixel-ratio: 2),
 only screen and (min-device-pixel-ratio: 2) {
 #logo_home h1 a, header#colored #logo_home h1 a{
     background-image: url(../img/logo_2x.png);
-	background-size: 160px 34px;
+	background-size: 160px 50px;
 }
 header.sticky #logo_home h1 a, header#plain #logo_home h1 a{
     background-image: url(../img/logo_sticky_2x.png);
-	background-size: 160px 34px;
+	background-size: 160px 50px;
 }
 header.sticky#colored #logo_home h1 a{
     background-image: url(../img/logo_sticky_colored_2x.png);
-	background-size: 160px 34px;
+	background-size: 160px 50px;
 }
 }
 
@@ -437,7 +438,7 @@ header.sticky{
 }
 
 nav{ margin-top:20px; position:relative;}
-.sticky nav{ margin-top:5px}
+.sticky nav{ margin-top:20px}
 .sticky #logo{ margin-top:0; margin-bottom:10px;}
 
 ul#top_tools{list-style:none; padding:0; position:absolute; right:15px; top:0; z-index:999;}
@@ -2945,6 +2946,7 @@ ul.list_order li span {
 	position: relative;
 	overflow: hidden;
 	border: 1px solid #fff;
+	max-height: 185px;
 }
 
 .tour_container .tour_title {
@@ -2959,8 +2961,8 @@ ul.list_order li span {
 
 .tour_container .tour_title h3 {
 	margin: 0;
-	font-size: 18px;
-	text-transform: uppercase;
+	font-size: 16px;
+	/*text-transform: uppercase;*/
 }
 
 .wishlist {

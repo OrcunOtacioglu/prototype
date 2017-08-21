@@ -40,7 +40,9 @@ class AccountController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Account::createAccount($request);
+
+        return redirect()->action('AccountController@index');
     }
 
     /**
@@ -53,7 +55,7 @@ class AccountController extends Controller
     {
         $account = Account::find($id);
 
-        return view('frontend.account.show', compact('account'));
+        return view('dashboard.account.show', compact('account'));
     }
 
     /**
@@ -95,7 +97,9 @@ class AccountController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Account::destroy($id);
+
+        return redirect()->action('AccountController@index');
     }
 
     /**

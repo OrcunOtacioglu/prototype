@@ -30,6 +30,19 @@
                     </li>
                 </ul>
             </li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-file-word-o"></i> Pages<span class="fa arrow"></span>
+                </a>
+                <ul class="nav nav-second-level">
+                    <li>
+                        <a href="{{ action('Util\PageController@index') }}">All Pages</a>
+                    </li>
+                    <li>
+                        <a href="{{ action('Util\PageController@create') }}">Create Page</a>
+                    </li>
+                </ul>
+            </li>
         </ul>
     </div>
 </div>

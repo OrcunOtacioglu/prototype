@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Acikgise\Helpers\Helpers;
 use Acikgise\Payment\Gateway;
+use App\Events\OrderSuccessful;
 use App\Models\Order;
 use App\Models\TicketType;
 use Gloudemans\Shoppingcart\Facades\Cart;
@@ -20,12 +21,19 @@ class CartController extends Controller
      */
     public function addItem(Request $request)
     {
-        $ticketType = TicketType::find($request->ticket);
-        $qty = $request->quantity;
+        foreach (Cart::content() as $item) {
+            if ($item->id == $request->cart[0]['id']) {
+                Cart::update($item->rowId, $request->cart[0]['qty']);
+            }
+        }
+
+        $ticketType = TicketType::find($request->cart[0]['id']);
+        $qty = $request->cart[0]['qty'];
 
         Cart::add($ticketType->id, $ticketType->name, $qty, $ticketType->price, ['event' => $ticketType->event->title, 'eventID' => $ticketType->event->id]);
 
-        return redirect()->action('CartController@show');
+//        return redirect()->action('CartController@show');
+        return response('Success!');
     }
 
     /**
@@ -36,8 +44,11 @@ class CartController extends Controller
     public function show()
     {
         $items = Cart::content();
-
-        return view('frontend.cart.show', compact('items'));
+        $subtotal = Cart::subtotal();
+        $tax = Cart::tax();
+        $total = Cart::total();
+//        return view('frontend.cart.show', compact('items'));
+        return response()->json([$items, $subtotal, $tax, $total]);
     }
 
     /**
@@ -73,6 +84,7 @@ class CartController extends Controller
      */
     public function proceed(Request $request)
     {
+
         // Check if the user is authenticated.
         if (Helpers::checkAuthenticated($request)) {
             if ($request->hasCookie('orderRef')) {
@@ -85,10 +97,28 @@ class CartController extends Controller
                 }
                 $order = Order::createNew(Helpers::getAuthenticatedUser($request), $eventID);
             }
-            return redirect()->action('CartController@payment')->withCookie('orderRef', $order->reference);
+
+            $paymentInfo = [
+                'clientid' => "100300000",
+                'amount' => $order->total,
+                'oid' => $order->reference,
+                'okUrl' => "http://test.onlinefbb.com/order-complete",
+                'failUrl' => "http://test.onlinefbb.com/order-complete",
+                'rnd' => microtime(),
+                'taksit' => "",
+                'islemtipi' => "Auth",
+                'storekey' => "123456"
+            ];
+
+            $hashstr = $paymentInfo['clientid'] . $paymentInfo['oid'] . $paymentInfo['amount'] . $paymentInfo['okUrl'] . $paymentInfo['failUrl'] . $paymentInfo['islemtipi'] . $paymentInfo['taksit'] . $paymentInfo['rnd'] . $paymentInfo['storekey'];
+
+            $hash = base64_encode(pack('H*',sha1($hashstr)));
+
+
+            return view('frontend.cart.proceed', compact('order', 'paymentInfo', 'hash'));
 
         } else {
-            return redirect()->to('/register');
+            return view('frontend.cart.authenticate');
         }
     }
 
@@ -127,10 +157,62 @@ class CartController extends Controller
      */
     public function validatePayment(Request $request)
     {
-        $results = Gateway::validatePayment('iyzico', $request);
+//        $results = Gateway::validatePayment('iyzico', $request);
+//
+//        $order = Order::with('orderItems', 'event')->where('reference', '=', $results['orderRef'])->first();
 
-        $order = Order::with('orderItems', 'event')->where('reference', '=', $results['orderRef'])->first();
+        $hashparams = $request->HASHPARAMS;
+        $hashparamsval = $request->HASHPARAMSVAL;
+        $hashparam = $request->HASH;
+        $storekey = "123456";
+        $paramsval = "";
+        $index1 = 0;
+        $index2 = 0;
 
-        return view('frontend.payment.success', compact('results', 'order'));
+        while ($index1 < strlen($hashparams)) {
+            $index2 = strpos($hashparams, ":", $index1);
+            $vl = $_POST[substr($hashparams, $index1, $index2 - $index1)];
+            if ($vl == null)
+                $vl = "";
+            $paramsval = $paramsval . $vl;
+            $index1 = $index2 + 1;
+        }
+        $results = $request->mdErrorMsg;
+        $storekey = "123456";
+        $hashval = $paramsval . $storekey;
+        $hash = base64_encode(pack('H*', sha1($hashval)));
+
+
+        $mdStatus = $request->mdStatus;
+        $ErrMsg = $request->ErrMsg;
+
+        if ($mdStatus == 1 || $mdStatus == 2 || $mdStatus == 3 || $mdStatus == 4) {
+            $results = "3D Islemi basarili";
+
+            $response = $request->Response;
+
+            if ($response == "Approved") {
+
+                $results = "Ödeme Islemi Basarili";
+
+                $order = Order::where('reference', '=', $request->ReturnOid)->with('orderItems', 'attendee', 'event')->first();
+                event(new OrderSuccessful($order));
+                cookie()->queue(
+                    Cookie::forget('orderRef')
+                );
+
+                return view('frontend.payment.success', compact('results', 'order'));
+
+            } else {
+
+                $results = "Ödeme Islemi Basarisiz. Hata = " . $ErrMsg;
+                return view('frontend.payment.fail', compact('results'));
+
+            }
+
+        } else {
+            $results = "3D Islemi basarisiz. " . $request->mdErrorMsg;
+            return view('frontend.payment.fail', compact('results'));
+        }
     }
 }
