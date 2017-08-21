@@ -41,14 +41,26 @@
                         <input type="file" name="coverImage" id="coverImage">
                     </div>
 
-                    <div class="form-group">
-                        <label for="category">Event Category</label>
-                        <select name="category" id="category" class="form-control">
-                            @foreach(\App\Models\Util\EventCategory::all() as $category)
-                                <option value="{{ $category->id }}">{{ $category->name }}</option>
-                            @endforeach
-                        </select>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="category">Event Category</label>
+                                <select name="category" id="category" class="form-control">
+                                    @foreach(\App\Models\Util\EventCategory::all() as $category)
+                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="featured" id="featured"> Featured Event?
+                                </label>
+                            </div>
+                        </div>
                     </div>
+
 
                     <div class="row">
                         <div class="col-md-6">

@@ -14,6 +14,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
     Route::resource('/account', 'AccountController');
     Route::post('/account/add-gateway', 'AccountController@addGateway');
     Route::resource('/event', 'EventController', ['except' => 'show']);
+    Route::get('/event/featured', 'EventController@featuredEvents');
     Route::resource('/rate', 'TicketTypeController');
     Route::resource('/ticket', 'TicketController');
     Route::resource('/order', 'OrderController');

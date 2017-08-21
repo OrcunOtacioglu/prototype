@@ -88,17 +88,28 @@
                         <input type="file" name="coverImage" id="coverImage" value="{{ $event->cover_image }}">
                     </div>
 
-                    <div class="form-group">
-                        <label for="category">Event Category</label>
-                        <select name="category" id="category" class="form-control">
-                            @foreach(\App\Models\Util\EventCategory::all() as $category)
-                                <option
-                                        @if($event->event_category_id == $category->id)
-                                            selected
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="category">Event Category</label>
+                                <select name="category" id="category" class="form-control">
+                                    @foreach(\App\Models\Util\EventCategory::all() as $category)
+                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="featured" id="featured"
+                                        @if($event->is_featured)
+                                            checked
                                         @endif
-                                        value="{{ $category->id }}">{{ $category->name }}</option>
-                            @endforeach
-                        </select>
+                                            > Featured Event?
+                                </label>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="row">

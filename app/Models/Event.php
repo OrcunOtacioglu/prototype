@@ -30,11 +30,13 @@ class Event extends Model
         'slug',
         'description',
         'cover_image',
+        'bg_cover_image',
         'location',
         'category',
         'type',
         'status',
         'listing',
+        'is_featured',
         'start_date',
         'end_date',
         'on_sale_date'
@@ -74,9 +76,11 @@ class Event extends Model
         $event->slug = Helpers::sluggify($request->title);
         $event->description = $request->description;
         $event->cover_image = Helpers::uploadImage($request, 'cover-images','coverImage');
+        $event->bg_cover_image = Helpers::makeBlurredImage($request, 'cover-images', 'coverImage');
         $event->location = $request->location;
         $event->status = $request->status;
         $event->listing = $request->listing;
+        $event->is_featured = $request->featured;
         $event->start_date = Helpers::getDateTimeFormat($request->startDate);
         $event->end_date = Helpers::getDateTimeFormat($request->endDate);
         $event->on_sale_date = Helpers::getDateTimeFormat($request->onSaleDate);
@@ -92,10 +96,12 @@ class Event extends Model
         $event->title = $request->title;
         $event->slug = Helpers::sluggify($request->title);
         $event->cover_image = Helpers::uploadImage($request, 'cover-images' ,'coverImage');
+        $event->bg_cover_image = Helpers::makeBlurredImage($request, 'cover-images', 'coverImage');
         $event->description = $request->description;
         $event->location = $request->location;
         $event->status = $request->status;
         $event->listing = $request->listing;
+        $event->is_featured = $request->featured;
         $event->start_date = Helpers::getDateTimeFormat($request->startDate);
         $event->end_date = Helpers::getDateTimeFormat($request->endDate);
         $event->on_sale_date = Helpers::getDateTimeFormat($request->onSaleDate);

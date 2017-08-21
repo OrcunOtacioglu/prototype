@@ -1,16 +1,9 @@
 @extends('dashboard.base')
 
-@section('title', 'Events')
+@section('title', 'Manage Featured Events')
 
 @section('custom.css')
     <link rel="stylesheet" href="{{ asset('css/plugins/datatables.min.css') }}">
-@stop
-
-@section('page.top')
-    <div class="pull-right">
-        <a href="{{ action('EventController@featuredEvents') }}" class="btn btn-default">Manage Featured Events</a>
-        <a href="{{ action('EventController@create') }}" class="btn btn-success">Create New Event</a>
-    </div>
 @stop
 
 @section('content')
