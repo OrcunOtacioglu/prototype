@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Finance;
 
+use App\Models\Finance\Invoice;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\App;
 
 class InvoiceController extends Controller
 {
@@ -14,7 +16,9 @@ class InvoiceController extends Controller
      */
     public function index()
     {
-        //
+        $invoices = Invoice::all();
+
+        return view('dashboard.finance.invoice.index', compact('invoices'));
     }
 
     /**
@@ -46,7 +50,8 @@ class InvoiceController extends Controller
      */
     public function show($id)
     {
-        //
+        $pdf = App::make('dompdf.wrapper');
+        return $pdf->loadFile('invoices/' . $id . '.pdf')->stream();
     }
 
     /**
