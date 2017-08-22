@@ -45,6 +45,16 @@
             </li>
             <li>
                 <a href="#">
+                    <i class="fa fa-file-word-o"></i> Sales<span class="fa arrow"></span>
+                </a>
+                <ul class="nav nav-second-level">
+                    <li>
+                        <a href="{{ action('OrderController@index') }}">All Sales</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">
                     <i class="fa fa-file-word-o"></i> Invoices<span class="fa arrow"></span>
                 </a>
                 <ul class="nav nav-second-level">
