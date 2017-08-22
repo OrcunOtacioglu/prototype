@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -13,6 +14,8 @@ class DashboardController extends Controller
 
     public function index()
     {
-        return view('dashboard.index');
+        $sales = Order::where('status', '=', 1)->with('orderItems')->get();
+
+        return view('dashboard.index', compact('sales'));
     }
 }

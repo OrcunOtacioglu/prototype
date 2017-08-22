@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Authority;
 
-use App\Models\Order;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class OrderController extends Controller
+class PermissionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $sales = Order::where('status', '=', 1)->with('orderItems')->get();
-
-        return view('dashboard.finance.sales.index', compact('sales'));
+        //
     }
 
     /**
@@ -26,7 +24,7 @@ class OrderController extends Controller
      */
     public function create()
     {
-
+        //
     }
 
     /**
@@ -37,7 +35,7 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-
+        //
     }
 
     /**

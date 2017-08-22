@@ -1,11 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Finance;
 
-use App\Models\Order;
+use App\Models\Finance\Invoice;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\App;
 
-class OrderController extends Controller
+class InvoiceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +16,9 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $sales = Order::where('status', '=', 1)->with('orderItems')->get();
+        $invoices = Invoice::all();
 
-        return view('dashboard.finance.sales.index', compact('sales'));
+        return view('dashboard.finance.invoice.index', compact('invoices'));
     }
 
     /**
@@ -26,7 +28,7 @@ class OrderController extends Controller
      */
     public function create()
     {
-
+        //
     }
 
     /**
@@ -37,7 +39,7 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-
+        //
     }
 
     /**
@@ -48,7 +50,8 @@ class OrderController extends Controller
      */
     public function show($id)
     {
-        //
+        $pdf = App::make('dompdf.wrapper');
+        return $pdf->loadFile('invoices/' . $id . '.pdf')->stream();
     }
 
     /**
