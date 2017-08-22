@@ -24,6 +24,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
     Route::resource('/page', 'Util\PageController', ['except' => 'show']);
     Route::resource('/role', 'Authority\RoleController');
     Route::resource('/permission', 'Authority\PermissionController');
+    Route::resource('/invoice', 'Finance\InvoiceController');
 });
 
 /**

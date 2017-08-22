@@ -5,8 +5,10 @@ namespace App\Models\Finance;
 use App\Models\Attendee;
 use App\Models\Event;
 use App\Models\Order;
+use Barryvdh\DomPDF\PDF;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\App;
 
 class Invoice extends Model
 {
@@ -46,7 +48,14 @@ class Invoice extends Model
 
     public static function generate($order)
     {
-        $invoice = new Invoice();
+        $checkExists = Invoice::where('order_id', '=', $order->id)->count();
+
+        if ($checkExists > 0) {
+            $invoice = Invoice::where('order_id', '=', $order->id)->first();
+        } else {
+            $invoice = new Invoice();
+        }
+
         $invoice->order_id = $order->id;
         $invoice->attendee_id = $order->attendee->id;
         $invoice->event_id = $order->event->id;
@@ -62,5 +71,11 @@ class Invoice extends Model
         $invoice->save();
 
         return $invoice;
+    }
+
+    public static function generatePdfOf(Invoice $invoice)
+    {
+        $pdf = App::make('dompdf.wrapper');
+        $pdf->loadView('pdf.invoice', $invoice)->save('invoices/' . $invoice->transaction_id . '.pdf');
     }
 }

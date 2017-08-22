@@ -28,11 +28,10 @@ class GenerateInvoice
      */
     public function handle(OrderSuccessful $event)
     {
-        $sale = Order::with('orderItems', 'attendee', 'event')->where('id', '=', $event->order->id)->first();
-        $sale->status = 1;
-        $sale->save();
+        $event->order->status = 1;
+        $event->order->save();
 
-        $invoice = Invoice::generate($sale);
+        $invoice = Invoice::generate($event->order);
         Invoice::generatePdfOf($invoice);
     }
 }
