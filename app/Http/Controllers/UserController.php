@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Authority;
+namespace App\Http\Controllers;
 
+use App\Models\Account;
 use App\Models\Authority\Role;
-use Carbon\Carbon;
+use App\User;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
-class RoleController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +16,9 @@ class RoleController extends Controller
      */
     public function index()
     {
-        $roles = Role::with('permissions')->get();
+        $users = User::all();
 
-        return view('dashboard.authority.role.index', compact('roles'));
+        return view('dashboard.account.user.index', compact('users'));
     }
 
     /**
@@ -28,7 +28,9 @@ class RoleController extends Controller
      */
     public function create()
     {
-        return view('dashboard.authority.role.create');
+        $accounts = Account::all();
+        $roles = Role::all();
+        return view('dashboard.account.user.create', compact('accounts', 'roles'));
     }
 
     /**
@@ -39,15 +41,7 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        $role = new Role();
-        $role->name = $request->roleName;
-        $role->title = ucfirst($request->roleName);
-        $role->level = $request->roleLevel;
-        $role->created_at = Carbon::now('Europe/Istanbul');
-        $role->updated_at = Carbon::now('Europe/Istanbul');
-        $role->save();
 
-        return redirect()->action('Authority\RoleController@edit', ['id' => $role->id]);
     }
 
     /**
@@ -69,9 +63,7 @@ class RoleController extends Controller
      */
     public function edit($id)
     {
-        $role = Role::where('id', '=', $id)->with('permissions')->first();
-
-        return view('dashboard.authority.role.edit', compact('role'));
+        //
     }
 
     /**
@@ -83,14 +75,7 @@ class RoleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $role = Role::find($id);
-        $role->name = $request->roleName;
-        $role->title = ucfirst($request->roleName);
-        $role->level = $request->roleLevel;
-        $role->updated_at = Carbon::now('Europe/Istanbul');
-        $role->save();
-
-        return redirect()->action('Authority\RoleController@edit', ['id' => $role->id]);
+        //
     }
 
     /**

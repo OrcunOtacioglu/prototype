@@ -19,8 +19,8 @@
                 <ul class="dropdown-menu dropdown-user">
                     @if(\App\User::hasRole('root'))
                         <li>
-                            <a href="{{ action('Authority\RoleController@index') }}">
-                                <i class="fa fa-user fa-fw"></i> Roles & Permissions
+                            <a href="{{ action('UserController@index') }}">
+                                <i class="fa fa-user fa-fw"></i> Manage Users
                             </a>
                         </li>
                     @endif
