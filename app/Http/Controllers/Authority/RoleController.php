@@ -40,9 +40,9 @@ class RoleController extends Controller
     public function store(Request $request)
     {
         $role = new Role();
-        $role->userd_id = $request->userID;
         $role->name = $request->roleName;
-        $role->title = $request->roleTitle;
+        $role->title = ucfirst($request->roleName);
+        $role->level = $request->roleLevel;
         $role->created_at = Carbon::now('Europe/Istanbul');
         $role->updated_at = Carbon::now('Europe/Istanbul');
         $role->save();
@@ -84,9 +84,9 @@ class RoleController extends Controller
     public function update(Request $request, $id)
     {
         $role = Role::find($id);
-        $role->user_id = $request->userID;
         $role->name = $request->roleName;
-        $role->title = $request->roleTitle;
+        $role->title = ucfirst($request->roleName);
+        $role->level = $request->roleLevel;
         $role->updated_at = Carbon::now('Europe/Istanbul');
         $role->save();
 

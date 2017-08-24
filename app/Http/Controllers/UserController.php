@@ -1,14 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Finance;
+namespace App\Http\Controllers;
 
-use App\Models\Finance\Invoice;
+use App\Models\Account;
+use App\Models\Authority\Role;
+use App\User;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Storage;
 
-class InvoiceController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,9 +16,9 @@ class InvoiceController extends Controller
      */
     public function index()
     {
-        $invoices = Invoice::all();
+        $users = User::all();
 
-        return view('dashboard.finance.invoice.index', compact('invoices'));
+        return view('dashboard.account.user.index', compact('users'));
     }
 
     /**
@@ -29,7 +28,9 @@ class InvoiceController extends Controller
      */
     public function create()
     {
-        //
+        $accounts = Account::all();
+        $roles = Role::all();
+        return view('dashboard.account.user.create', compact('accounts', 'roles'));
     }
 
     /**
@@ -40,7 +41,7 @@ class InvoiceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**
@@ -51,9 +52,7 @@ class InvoiceController extends Controller
      */
     public function show($id)
     {
-        $pdf = App::make('dompdf.wrapper');
-        $invoice = Invoice::where('transaction_id', '=', $id)->first();
-        return $pdf->loadView('pdf.invoice', $invoice)->stream();
+        //
     }
 
     /**
