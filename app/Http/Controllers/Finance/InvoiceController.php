@@ -6,6 +6,7 @@ use App\Models\Finance\Invoice;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Storage;
 
 class InvoiceController extends Controller
 {
@@ -51,7 +52,8 @@ class InvoiceController extends Controller
     public function show($id)
     {
         $pdf = App::make('dompdf.wrapper');
-        return $pdf->loadFile('invoices/' . $id . '.pdf')->stream();
+        $invoice = Invoice::where('transaction_id', '=', $id)->first();
+        return $pdf->loadView('pdf.invoice', $invoice)->stream();
     }
 
     /**

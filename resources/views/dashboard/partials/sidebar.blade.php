@@ -45,7 +45,7 @@
             </li>
             <li>
                 <a href="#">
-                    <i class="fa fa-file-word-o"></i> Sales<span class="fa arrow"></span>
+                    <i class="fa fa-calculator"></i> Sales<span class="fa arrow"></span>
                 </a>
                 <ul class="nav nav-second-level">
                     <li>
@@ -55,7 +55,7 @@
             </li>
             <li>
                 <a href="#">
-                    <i class="fa fa-file-word-o"></i> Invoices<span class="fa arrow"></span>
+                    <i class="fa fa-credit-card-alt"></i> Invoices<span class="fa arrow"></span>
                 </a>
                 <ul class="nav nav-second-level">
                     <li>
