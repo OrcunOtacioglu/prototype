@@ -96,6 +96,9 @@ class CartController extends Controller
                     $eventID = $item->options->eventID;
                 }
                 $order = Order::createNew(Helpers::getAuthenticatedUser($request), $eventID);
+                cookie()->queue(
+                    Cookie::make('orderRef', $order->reference)
+                );
             }
 
             $paymentInfo = [

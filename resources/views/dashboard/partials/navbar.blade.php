@@ -17,6 +17,13 @@
             </a>
             @if (Auth::check())
                 <ul class="dropdown-menu dropdown-user">
+                    @if(\App\User::hasRole('root'))
+                        <li>
+                            <a href="{{ action('Authority\RoleController@index') }}">
+                                <i class="fa fa-user fa-fw"></i> Roles & Permissions
+                            </a>
+                        </li>
+                    @endif
                     <li>
                         <a href="#">
                             <i class="fa fa-user fa-fw"></i> User Profile

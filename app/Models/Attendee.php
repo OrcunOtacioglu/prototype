@@ -3,6 +3,7 @@
 namespace App\Models;
 
 
+use App\Models\Finance\Invoice;
 use Illuminate\Foundation\Auth\User as Authenticable;
 
 class Attendee extends Authenticable
@@ -43,5 +44,10 @@ class Attendee extends Authenticable
     public function orders()
     {
         return $this->hasMany(Order::class);
+    }
+
+    public function invoices()
+    {
+        return $this->hasMany(Invoice::class);
     }
 }

@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
+use App\Models\Finance\Invoice;
 use App\Models\Util\EventCategory;
-use App\Models\Util\EventType;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Acikgise\Helpers\Helpers;
@@ -65,6 +65,11 @@ class Event extends Model
     public function orders()
     {
         return $this->hasMany(Order::class);
+    }
+
+    public function invoices()
+    {
+        return $this->hasMany(Invoice::class);
     }
 
     public static function createNew(Request $request)

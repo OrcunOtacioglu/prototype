@@ -1,11 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Authority;
 
-use App\Models\Order;
+use App\Models\Authority\Role;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class OrderController extends Controller
+class RoleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +16,9 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $sales = Order::where('status', '=', 1)->with('orderItems')->get();
+        $roles = Role::with('permissions')->get();
 
-        return view('dashboard.finance.sales.index', compact('sales'));
+        return view('dashboard.authority.role.index', compact('roles'));
     }
 
     /**
@@ -26,7 +28,7 @@ class OrderController extends Controller
      */
     public function create()
     {
-
+        return view('dashboard.authority.role.create');
     }
 
     /**
@@ -37,7 +39,15 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
+        $role = new Role();
+        $role->userd_id = $request->userID;
+        $role->name = $request->roleName;
+        $role->title = $request->roleTitle;
+        $role->created_at = Carbon::now('Europe/Istanbul');
+        $role->updated_at = Carbon::now('Europe/Istanbul');
+        $role->save();
 
+        return redirect()->action('Authority\RoleController@edit', ['id' => $role->id]);
     }
 
     /**
@@ -59,7 +69,9 @@ class OrderController extends Controller
      */
     public function edit($id)
     {
-        //
+        $role = Role::where('id', '=', $id)->with('permissions')->first();
+
+        return view('dashboard.authority.role.edit', compact('role'));
     }
 
     /**
@@ -71,7 +83,14 @@ class OrderController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $role = Role::find($id);
+        $role->user_id = $request->userID;
+        $role->name = $request->roleName;
+        $role->title = $request->roleTitle;
+        $role->updated_at = Carbon::now('Europe/Istanbul');
+        $role->save();
+
+        return redirect()->action('Authority\RoleController@edit', ['id' => $role->id]);
     }
 
     /**

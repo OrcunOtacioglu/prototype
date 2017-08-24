@@ -17,6 +17,7 @@ class EventServiceProvider extends ServiceProvider
             'App\Listeners\ReserveTickets',
             'App\Listeners\SendOrderConfirmationMail',
             'App\Listeners\ClearShoppingCart',
+            'App\Listeners\GenerateInvoice',
         ],
     ];
 
