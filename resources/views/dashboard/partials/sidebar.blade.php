@@ -3,6 +3,7 @@
         <div class="scrollable-container">
             <div class="scrollable-content">
                 <ul class="site-menu" data-plugin="menu">
+
                     <li class="site-menu-category">General</li>
                     <li class="site-menu-item">
                         <a href="{{ url('/dashboard') }}">
@@ -10,19 +11,75 @@
                             <span class="site-menu-title">Dashboard</span>
                         </a>
                     </li>
+
+                    <!-- Events -->
                     <li class="site-menu-item has-sub">
                         <a href="javascript:void(0)">
-                            <i class="site-menu-icon wb-user-circle" aria-hidden="true"></i>
-                            <span class="site-menu-title">Clients</span>
+                            <i class="site-menu-icon wb-calendar" aria-hidden="true"></i>
+                            <span class="site-menu-title">Events</span>
                         </a>
                         <ul class="site-menu-sub">
                             <li class="site-menu-item active">
                                 <a class="animsition-link" href="#">
-                                    <span class="site-menu-title">Manage Clients</span>
+                                    <span class="site-menu-title">Create New Event</span>
+                                </a>
+                            </li>
+                            <li class="site-menu-item active">
+                                <a class="animsition-link" href="{{ action('EventController@index') }}">
+                                    <span class="site-menu-title">Manage Events</span>
                                 </a>
                             </li>
                         </ul>
                     </li>
+
+                    <!-- Site Management -->
+                    <li class="site-menu-item has-sub">
+                        <a href="javascript:void(0)">
+                            <i class="site-menu-icon wb-layout" aria-hidden="true"></i>
+                            <span class="site-menu-title">Site Management</span>
+                        </a>
+                        <ul class="site-menu-sub">
+                            <li class="site-menu-item active">
+                                <a class="animsition-link" href="#">
+                                    <span class="site-menu-title">Page Management</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <!-- Sales and Reporting -->
+                    <li class="site-menu-category">Sales & Reporting</li>
+
+                    <!-- Sales -->
+                    <li class="site-menu-item has-sub">
+                        <a href="javascript:void(0)">
+                            <i class="site-menu-icon wb-stats-bars" aria-hidden="true"></i>
+                            <span class="site-menu-title">Sales</span>
+                        </a>
+                        <ul class="site-menu-sub">
+                            <li class="site-menu-item active">
+                                <a class="animsition-link" href="#">
+                                    <span class="site-menu-title">All Sales</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <!-- Invoices -->
+                    <li class="site-menu-item has-sub">
+                        <a href="javascript:void(0)">
+                            <i class="site-menu-icon wb-order" aria-hidden="true"></i>
+                            <span class="site-menu-title">Invoices</span>
+                        </a>
+                        <ul class="site-menu-sub">
+                            <li class="site-menu-item active">
+                                <a class="animsition-link" href="#">
+                                    <span class="site-menu-title">Manage Invoices</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
                 </ul>
             </div>
         </div>

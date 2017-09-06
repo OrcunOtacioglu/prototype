@@ -9,7 +9,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     @yield('custom.meta')
 
-    <title>@yield('title', 'Dashboard') | Scrabit</title>
+    <title>@yield('title', 'Dashboard') | AçıkGişe</title>
 
     @include('dashboard.partials.css.base')
 
@@ -41,6 +41,12 @@
             <!-- Page Header -->
             <div class="page-header">
                 <h1 class="page-title">@yield('title')</h1>
+
+                <div class="page-header-actions">
+                    <div class="btn-group btn-group-sm" id="withBtnGroup" aria-label="Page Header Actions" role="group">
+                        @yield('page-header')
+                    </div>
+                </div>
             </div>
             <!-- End Page Header -->
 
@@ -62,9 +68,9 @@
 
     @include('dashboard.partials.js.template-config')
 
-    @include('dashboard.partials.js.initialize')
-
     <script src="{{ asset('assets/js/app.js') }}"></script>
     @yield('footer.scripts')
+
+    @include('dashboard.partials.js.initialize')
 </body>
 </html>
