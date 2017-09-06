@@ -1,55 +1,59 @@
-<!-- Navigation -->
-<nav class="navbar navbar-inverse navbar-static-top" role="navigation" style="margin-bottom: 0">
+<nav class="site-navbar navbar navbar-default navbar-fixed-top navbar-mega" role="navigation">
     <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <button type="button" class="navbar-toggler hamburger hamburger-close navbar-toggler-left hided" data-toggle="menubar">
             <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
+            <span class="hamburger-bar"></span>
         </button>
-        <a class="navbar-brand" href="{{ url('/dashboard') }}">AçıkGişe</a>
+        <button type="button" class="navbar-toggler collapsed" data-target="#site-navbar-collapse" data-toggle="collapse">
+            <i class="icon wb-more-horizontal" aria-hidden="true"></i>
+        </button>
+        <div class="navbar-brand navbar-brand-center site-gridmenu-toggle" data-toggle="gridmenu">
+            <img class="navbar-brand-logo" src="{{ asset('assets/img/scrabit-light.png') }}" title="Scrabit">
+            <span class="navbar-brand-text hidden-xs-down brand-font"> Scrabit</span>
+        </div>
     </div>
-
-    <ul class="nav navbar-top-links navbar-right">
-        <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
-            </a>
-            @if (Auth::check())
-                <ul class="dropdown-menu dropdown-user">
-                    @if(\App\User::hasRole('root'))
-                        <li>
-                            <a href="{{ action('UserController@index') }}">
-                                <i class="fa fa-user fa-fw"></i> Manage Users
-                            </a>
-                        </li>
-                    @endif
-                    <li>
-                        <a href="#">
-                            <i class="fa fa-user fa-fw"></i> User Profile
+    <div class="navbar-container container-fluid">
+        <!-- Navbar Collapse -->
+        <div class="collapse navbar-collapse navbar-collapse-toolbar" id="site-navbar-collapse">
+            <!-- Navbar Toolbar -->
+            <ul class="nav navbar-toolbar">
+                <li class="nav-item hidden-float" id="toggleMenubar">
+                    <a class="nav-link" data-toggle="menubar" href="#" role="button">
+                        <i class="icon hamburger hamburger-arrow-left">
+                            <span class="sr-only">Toggle menubar</span>
+                            <span class="hamburger-bar"></span>
+                        </i>
+                    </a>
+                </li>
+            </ul>
+            <!-- End Navbar Toolbar -->
+            <!-- Navbar Toolbar Right -->
+            <ul class="nav navbar-toolbar navbar-right navbar-toolbar-right">
+                <li class="nav-item dropdown">
+                    <a class="nav-link navbar-avatar" data-toggle="dropdown" href="#" aria-expanded="false" data-animation="scale-up" role="button">
+                      <span class="avatar avatar-online">
+                        <img src="{{ asset('assets/img/scrabit-dark.png') }}" alt="{{ request()->user()->name }}">
+                        <i></i>
+                      </span>
+                    </a>
+                    <div class="dropdown-menu" role="menu">
+                        <a class="dropdown-item" href="javascript:void(0)" role="menuitem"><i class="icon wb-user" aria-hidden="true"></i> Profile</a>
+                        <a class="dropdown-item" href="javascript:void(0)" role="menuitem"><i class="icon wb-payment" aria-hidden="true"></i> Billing</a>
+                        <a class="dropdown-item" href="javascript:void(0)" role="menuitem"><i class="icon wb-settings" aria-hidden="true"></i> Settings</a>
+                        <div class="dropdown-divider" role="presentation"></div>
+                        <a class="dropdown-item" role="menuitem" href="{{ route('logout') }}"
+                           onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                            <i class="icon wb-power" aria-hidden="true"></i> Logout
                         </a>
-                    </li>
-                    <li>
-                        <a href="{{ action('AccountController@edit', ['id' => Auth::user()->account->id]) }}">
-                            <i class="fa fa-gear fa-fw"></i> Settings
-                        </a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a href="{{ route('dashboard.logout') }}"
-                            onclick="event.preventDefault();
-                                     document.getElementById('logout-form').submit();">
-                            <i class="fa fa-sign-out fa-fw"></i> Logout
-                        </a>
-
-                        <form action="{{ route('dashboard.logout') }}" id="logout-form" method="POST" style="display: none;">
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             {{ csrf_field() }}
                         </form>
-                    </li>
-                </ul>
-            @endif
-        </li>
-    </ul>
-
-    @include('dashboard.partials.sidebar')
+                    </div>
+                </li>
+            </ul>
+            <!-- End Navbar Toolbar Right -->
+        </div>
+        <!-- End Navbar Collapse -->
+    </div>
 </nav>
