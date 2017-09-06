@@ -7,7 +7,7 @@
         @if(count($invoices) <= 0)
             <p>There are no invoices to show!</p>
         @else
-            <table id="events" class="dataTable" style="width: 100%">
+            <table id="events" class="table">
                 <thead>
                 <tr>
                     <th>Invoice ID</th>

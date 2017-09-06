@@ -26,6 +26,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
     Route::resource('/permission', 'Authority\PermissionController');
     Route::resource('/invoice', 'Finance\InvoiceController');
     Route::resource('/sale', 'OrderController');
+    Route::resource('/user', 'UserController');
 });
 
 /**
