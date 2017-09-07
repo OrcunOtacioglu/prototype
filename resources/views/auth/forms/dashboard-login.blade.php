@@ -1,4 +1,4 @@
-<form method="POST" action="{{ route('login') }}">
+<form method="POST" action="{{ action('Auth\LoginController@login') }}">
     {{ csrf_field() }}
 
     <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
