@@ -11,19 +11,36 @@
         <i class="icon wb-eye" aria-hidden="true"></i>
         <span class="hidden-sm-down">See Event</span>
     </a>
+    <button class="btn btn-outline btn-success" data-target="#eventRates" data-toggle="modal" type="button">
+        <i class="icon wb-payment" aria-hidden="true"></i>
+        <span class="hidden-sm-down">Manage Rates</span>
+    </button>
 @stop
 
 @section('content')
 
+    <!-- EVENT FORM -->
     <form action="{{ action('EventController@update', ['id' => $event->id]) }}" method="POST" enctype="multipart/form-data">
         {{ csrf_field() }}
         <div class="row">
+
+            <!-- EVENT GENERAL INFO -->
             <div class="col-md-8">
                 <div class="panel panel-primary panel-line">
 
                     <div class="panel-heading">
                         <h3 class="panel-title">General Info</h3>
                     </div>
+
+                    @if($event->ticketTypes->count() == 0)
+                        <div class="alert alert-danger alert-dismissible" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                                <span class="sr-only">Close</span>
+                            </button>
+                            You have not assigned any rates yet! In order to start sales please create new rate!
+                        </div>
+                    @endif
 
                     <div class="panel-body">
                         <div class="form-group">
@@ -41,13 +58,51 @@
                             <input type="text" class="form-control" name="location" id="location" value="{{ $event->location }}">
                         </div>
 
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="startDate">Start Date</label>
+                                    <div class="input-group">
+                                        <input type="text" name="startDate" id="startDate" class="form-control" value="{{ $event->start_date }}">
+                                        <div class="input-group-addon">
+                                            <i class="icon wb-calendar"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="endDate">End Date</label>
+                                    <div class="input-group">
+                                        <input type="text" name="endDate" id="endDate" class="form-control" value="{{ $event->end_date }}">
+                                        <div class="input-group-addon">
+                                            <i class="icon wb-calendar"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="onSaleDate">On Sale Date</label>
+                                    <div class="input-group">
+                                        <input type="text" name="onSaleDate" id="onSaleDate" class="form-control" value="{{ $event->on_sale_date }}">
+                                        <div class="input-group-addon">
+                                            <i class="icon wb-calendar"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <input type="submit" value="UPDATE" class="btn btn-success">
                         <a class="text-danger" href="{{ action('EventController@index') }}">Cancel</a>
                     </div>
 
                 </div>
             </div>
+            <!-- END GENERAL INFO -->
 
+            <!-- EVENT CONFIGURATION -->
             <div class="col-md-4">
                 <div class="panel panel-primary panel-line">
 
@@ -104,54 +159,34 @@
                             </div>
                         </div>
 
+                        <img src="/images/cover-images/{{ $event->cover_image }}" alt="" class="img-thumbnail">
+
                         <div class="form-group">
                             <div class="input-group input-group-file" data-plugin="inputGroupFile">
-                                <input type="text" class="form-control" readonly>
+                                <input type="text" class="form-control" readonly value="{{ $event->cover_image }}">
                                 <span class="input-group-btn">
                                     <span class="btn btn-primary btn-file">
                                         <i class="icon wb-upload"></i>
-                                        <input type="file" name="coverImage" id="coverImage">
+                                        <input type="file" name="coverImage" id="coverImage" value="{{ $event->cover_image }}">
                                     </span>
                                 </span>
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <label for="startDate">Start Date</label>
-                            <div class="input-group">
-                                <input type="text" name="startDate" id="startDate" class="form-control" value="{{ $event->start_date }}">
-                                <div class="input-group-addon">
-                                    <i class="icon wb-calendar"></i>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="endDate">End Date</label>
-                            <div class="input-group">
-                                <input type="text" name="endDate" id="endDate" class="form-control" value="{{ $event->end_date }}">
-                                <div class="input-group-addon">
-                                    <i class="icon wb-calendar"></i>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="onSaleDate">On Sale Date</label>
-                            <div class="input-group">
-                                <input type="text" name="onSaleDate" id="onSaleDate" class="form-control" value="{{ $event->on_sale_date }}">
-                                <div class="input-group-addon">
-                                    <i class="icon wb-calendar"></i>
-                                </div>
-                            </div>
-                        </div>
-
                     </div>
+
                 </div>
             </div>
+            <!-- END EVENT CONFIGURATION -->
+
         </div>
     </form>
+    <!-- END EVENT FORM -->
+    
+@stop
 
+@section('custom.html')
+    @include('dashboard.partials.entities.rates')
 @stop
 
 @section('footer.scripts')

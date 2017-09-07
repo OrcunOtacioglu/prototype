@@ -34,6 +34,42 @@
                             <input type="text" class="form-control" name="location" id="location">
                         </div>
 
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="startDate">Start Date</label>
+                                    <div class="input-group">
+                                        <input type="text" name="startDate" id="startDate" class="form-control">
+                                        <div class="input-group-addon">
+                                            <i class="icon wb-calendar"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="endDate">End Date</label>
+                                    <div class="input-group">
+                                        <input type="text" name="endDate" id="endDate" class="form-control">
+                                        <div class="input-group-addon">
+                                            <i class="icon wb-calendar"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="onSaleDate">On Sale Date</label>
+                                    <div class="input-group">
+                                        <input type="text" name="onSaleDate" id="onSaleDate" class="form-control">
+                                        <div class="input-group-addon">
+                                            <i class="icon wb-calendar"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <input type="submit" value="CREATE" class="btn btn-success">
                         <a class="text-danger" href="{{ action('EventController@index') }}">Cancel</a>
                     </div>
@@ -102,36 +138,6 @@
                                         <input type="file" name="coverImage" id="coverImage">
                                     </span>
                                 </span>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="startDate">Start Date</label>
-                            <div class="input-group">
-                                <input type="text" name="startDate" id="startDate" class="form-control">
-                                <div class="input-group-addon">
-                                    <i class="icon wb-calendar"></i>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="endDate">End Date</label>
-                            <div class="input-group">
-                                <input type="text" name="endDate" id="endDate" class="form-control">
-                                <div class="input-group-addon">
-                                    <i class="icon wb-calendar"></i>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="onSaleDate">On Sale Date</label>
-                            <div class="input-group">
-                                <input type="text" name="onSaleDate" id="onSaleDate" class="form-control">
-                                <div class="input-group-addon">
-                                    <i class="icon wb-calendar"></i>
-                                </div>
                             </div>
                         </div>
 

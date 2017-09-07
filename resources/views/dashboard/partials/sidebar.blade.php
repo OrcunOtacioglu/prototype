@@ -20,7 +20,7 @@
                         </a>
                         <ul class="site-menu-sub">
                             <li class="site-menu-item active">
-                                <a class="animsition-link" href="#">
+                                <a class="animsition-link" href="{{ action('EventController@create') }}">
                                     <span class="site-menu-title">Create New Event</span>
                                 </a>
                             </li>
