@@ -14,6 +14,14 @@ class DashboardController extends Controller
 
     public function index()
     {
-        return view('dashboard.index');
+        $sales = Order::where('status', '=', 1)->with('orderItems', 'event', 'attendee')->get();
+
+        $total = 0;
+
+        foreach ($sales as $sale) {
+            $total = $total + $sale->total;
+        }
+
+        return view('dashboard.index', compact('sales', 'total'));
     }
 }
