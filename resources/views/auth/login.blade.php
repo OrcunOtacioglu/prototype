@@ -1,4 +1,4 @@
-@extends('layouts.dashboard-auth')
+@extends('auth.layout')
 
 @section('custom.css')
     <link rel="stylesheet" href="{{ asset('assets/css/dashboard/pages/login.min.css') }}">
