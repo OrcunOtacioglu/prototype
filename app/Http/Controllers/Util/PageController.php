@@ -19,7 +19,7 @@ class PageController extends Controller
     {
         $pages = Page::all();
 
-        return view('dashboard.page.index', compact('pages'));
+        return view('dashboard.management.page.index', compact('pages'));
     }
 
     /**
@@ -29,7 +29,7 @@ class PageController extends Controller
      */
     public function create()
     {
-        return view('dashboard.page.create');
+        return view('dashboard.management.page.create');
     }
 
     /**
