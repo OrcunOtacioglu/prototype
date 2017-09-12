@@ -35,12 +35,12 @@
                     <!-- Site Management -->
                     <li class="site-menu-item has-sub">
                         <a href="javascript:void(0)">
-                            <i class="site-menu-icon wb-layout" aria-hidden="true"></i>
-                            <span class="site-menu-title">Site Management</span>
+                            <i class="site-menu-icon wb-wrench" aria-hidden="true"></i>
+                            <span class="site-menu-title">Management</span>
                         </a>
                         <ul class="site-menu-sub">
                             <li class="site-menu-item active">
-                                <a class="animsition-link" href="#">
+                                <a class="animsition-link" href="{{ action('Util\PageController@index') }}">
                                     <span class="site-menu-title">Page Management</span>
                                 </a>
                             </li>
