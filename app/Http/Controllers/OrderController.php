@@ -16,7 +16,7 @@ class OrderController extends Controller
     {
         $sales = Order::where('status', '=', 1)->with('orderItems')->get();
 
-        return view('dashboard.finance.sales.index', compact('sales'));
+        return view('dashboard.finance.sale.index', compact('sales'));
     }
 
     /**
