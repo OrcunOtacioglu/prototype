@@ -73,7 +73,7 @@
                         </a>
                         <ul class="site-menu-sub">
                             <li class="site-menu-item active">
-                                <a class="animsition-link" href="#">
+                                <a class="animsition-link" href="{{ action('Finance\InvoiceController@index') }}">
                                     <span class="site-menu-title">Manage Invoices</span>
                                 </a>
                             </li>

@@ -37,7 +37,7 @@
                       </span>
                     </a>
                     <div class="dropdown-menu" role="menu">
-                        <a class="dropdown-item" href="javascript:void(0)" role="menuitem">
+                        <a class="dropdown-item" href="{{ action('AccountController@index') }}" role="menuitem">
                             <i class="icon wb-users" aria-hidden="true"></i> Accounts
                         </a>
                         <a class="dropdown-item" href="javascript:void(0)" role="menuitem">
