@@ -29,9 +29,19 @@
                             <textarea class="form-control" name="description" id="description" cols="30" rows="5"></textarea>
                         </div>
 
-                        <div class="form-group">
-                            <label for="location">Location</label>
-                            <input type="text" class="form-control" name="location" id="location">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="location">Location</label>
+                                    <input type="text" class="form-control" name="location" id="location">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="price">Price</label>
+                                    <input type="text" class="form-control" name="price" id="price">
+                                </div>
+                            </div>
                         </div>
 
                         <div class="row">
@@ -113,8 +123,8 @@
                                 <div class="form-group">
                                     <label for="status">Status</label>
                                     <select name="status" id="status" class="form-control">
-                                        <option value="0">Draft</option>
-                                        <option value="1">Published</option>
+                                        <option value="0">Published</option>
+                                        <option value="1">Draft</option>
                                     </select>
                                 </div>
                             </div>
@@ -122,8 +132,8 @@
                                 <div class="form-group">
                                     <label for="listing">Listing</label>
                                     <select name="listing" id="listing" class="form-control">
-                                        <option value="0">Private</option>
-                                        <option value="1">Public</option>
+                                        <option value="0">Public</option>
+                                        <option value="1">Private</option>
                                     </select>
                                 </div>
                             </div>

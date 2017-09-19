@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Finance\Invoice;
 use App\Models\Util\EventCategory;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Acikgise\Helpers\Helpers;
@@ -75,6 +76,7 @@ class Event extends Model
     public static function createNew(Request $request)
     {
         $event = new Event();
+
         $event->account_id = Auth::user()->account->id;
         $event->event_category_id = $request->category;
         $event->title = $request->title;
@@ -89,6 +91,11 @@ class Event extends Model
         $event->start_date = Helpers::getDateTimeFormat($request->startDate);
         $event->end_date = Helpers::getDateTimeFormat($request->endDate);
         $event->on_sale_date = Helpers::getDateTimeFormat($request->onSaleDate);
+        $event->price = $request->price;
+
+        $event->created_at = Carbon::now();
+        $event->updated_at = Carbon::now();
+
         $event->save();
 
         return $event;
@@ -97,6 +104,7 @@ class Event extends Model
     public static function updateEvent(Request $request, $id)
     {
         $event = Event::findOrFail($id);
+
         $event->event_category_id = $request->category;
         $event->title = $request->title;
         $event->slug = Helpers::sluggify($request->title);
@@ -110,6 +118,10 @@ class Event extends Model
         $event->start_date = Helpers::getDateTimeFormat($request->startDate);
         $event->end_date = Helpers::getDateTimeFormat($request->endDate);
         $event->on_sale_date = Helpers::getDateTimeFormat($request->onSaleDate);
+        $event->price = $request->price;
+
+        $event->updated_at = Carbon::now();
+
         $event->save();
     }
 
