@@ -17,7 +17,7 @@ class CreateOrdersTable extends Migration
             $table->increments('id');
             $table->string('reference');
 
-            $table->integer('attendee_id')->unsigned();
+            $table->integer('attendee_id')->unsigned()->nullable();
             $table->foreign('attendee_id')->references('id')->on('attendees')->onDelete('cascade');
 
             $table->integer('event_id')->unsigned();

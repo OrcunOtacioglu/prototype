@@ -14,6 +14,8 @@ class DashboardController extends Controller
 
     public function index()
     {
-        return view('dashboard.index');
+        $sales = Order::with('orderItems')->where('status', '=', 1)->get();
+
+        return view('dashboard.index', compact('sales'));
     }
 }

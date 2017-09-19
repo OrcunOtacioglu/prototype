@@ -29,7 +29,29 @@
             </div>
 
             <div class="col-md-4">
-                <order></order>
+                <div>
+                    <h3>Siparişiniz</h3>
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Kategori</th>
+                            <th>Fiyat</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr v-for="item in items">
+                            <td>{{ $order->event->title }}</td>
+                            <td>{{ $order->total }}TL</td>
+                        </tr>
+                        </tbody>
+                        <tfoot>
+                        <tr>
+                            <td><strong>TOPLAM</strong></td>
+                            <td><strong>{{ $order->total }}TL</strong></td>
+                        </tr>
+                        </tfoot>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

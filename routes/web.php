@@ -25,7 +25,6 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
     Route::resource('/role', 'Authority\RoleController');
     Route::resource('/permission', 'Authority\PermissionController');
     Route::resource('/invoice', 'Finance\InvoiceController');
-    Route::resource('/sale', 'OrderController');
     Route::resource('/user', 'UserController');
 });
 
@@ -33,10 +32,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
  * Frontend Routes
  */
 Route::get('/event/{slug}', 'EventController@show');
-Route::post('/cart', 'CartController@addItem');
-Route::get('/cart', 'CartController@show');
-Route::get('/remove/{id}', 'CartController@deleteItem');
-Route::get('/cart-destroy', 'CartController@destroyCart');
+Route::resource('/order', 'OrderController');
 Route::get('/proceed', 'CartController@proceed');
 Route::get('/payment', 'CartController@payment');
 Route::post('/order-complete', 'CartController@validatePayment');
