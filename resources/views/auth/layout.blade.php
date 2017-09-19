@@ -77,7 +77,7 @@
 
 @include('dashboard.partials.js.core')
 
-{{--@include('dashboard.partials.js.template')--}}
+@include('dashboard.partials.js.template')
 
 @include('dashboard.partials.js.template-config')
 
