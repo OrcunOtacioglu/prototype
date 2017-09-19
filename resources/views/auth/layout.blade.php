@@ -9,7 +9,7 @@
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 	@yield('custom.meta')
 
-	<title>@yield('title', 'Login') | Scrabit</title>
+	<title>@yield('title', 'Login') | AçıkGişe</title>
 
 	@include('dashboard.partials.css.base')
 
