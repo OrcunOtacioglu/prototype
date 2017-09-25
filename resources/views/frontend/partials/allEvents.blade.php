@@ -24,7 +24,7 @@
                                         <div>
                                             <a href="{{ action('EventController@show', ['slug' => $event->slug]) }}">
                                                 <figure><img src="/images/cover-images/{{ $event->cover_image }}" class="img-rounded"></figure>
-                                                <h3>{{ $event->title }} <br><span class="small-description">{{ $event->start_date }}</span></h3>
+                                                <h3>{{ $event->title }} <br><span class="small-description">{{ Acikgise\Helpers\Helpers::getHumanTime($event->start_date) }}</span></h3>
                                             </a>
                                         </div>
                                     </li>
@@ -42,7 +42,7 @@
                                         <div>
                                             <a href="{{ action('EventController@show', ['slug' => $event->slug]) }}">
                                                 <figure><img src="/images/cover-images/{{ $event->cover_image }}" class="img-rounded"></figure>
-                                                <h3>{{ $event->title }} <br><span class="small-description">{{ $event->start_date }}</span></h3>
+                                                <h3>{{ $event->title }} <br><span class="small-description">{{ Acikgise\Helpers\Helpers::getHumanTime($event->start_date) }}</span></h3>
                                             </a>
                                         </div>
                                     </li>
@@ -82,7 +82,7 @@
                                         <div>
                                             <a href="{{ action('EventController@show', ['slug' => $event->slug]) }}">
                                                 <figure><img src="/images/cover-images/{{ $event->cover_image }}" class="img-rounded"></figure>
-                                                <h3>{{ $event->title }} <br><span class="small-description">{{  }}</span></h3>
+                                                <h3>{{ $event->title }} <br><span class="small-description">{{ Acikgise\Helpers\Helpers::getHumanTime($event->start_date) }}</span></h3>
                                             </a>
                                         </div>
                                     </li>
