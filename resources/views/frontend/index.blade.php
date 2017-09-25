@@ -1,6 +1,6 @@
 @extends('frontend.layout')
 
-@section('title', 'Biletleme Çözümleri')
+@section('title', 'Neredeysen Orada')
 
 @section('content')
     <main>

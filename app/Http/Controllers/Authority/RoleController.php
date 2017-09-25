@@ -28,7 +28,7 @@ class RoleController extends Controller
      */
     public function create()
     {
-        return view('dashboard.authority.role.create');
+        return view('dashboard.account.authority.role.create');
     }
 
     /**
@@ -47,7 +47,7 @@ class RoleController extends Controller
         $role->updated_at = Carbon::now('Europe/Istanbul');
         $role->save();
 
-        return redirect()->action('Authority\RoleController@edit', ['id' => $role->id]);
+        return redirect()->back();
     }
 
     /**

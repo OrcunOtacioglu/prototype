@@ -37,9 +37,11 @@
                       </span>
                     </a>
                     <div class="dropdown-menu" role="menu">
-                        <a class="dropdown-item" href="{{ action('AccountController@index') }}" role="menuitem">
-                            <i class="icon wb-users" aria-hidden="true"></i> Accounts
-                        </a>
+                        @if(\Acikgise\Helpers\Helpers::minimumUserLevel(request()->user(), 0))
+                            <a class="dropdown-item" href="{{ action('AccountController@index') }}" role="menuitem">
+                                <i class="icon wb-users" aria-hidden="true"></i> Accounts
+                            </a>
+                        @endif
                         <a class="dropdown-item" href="javascript:void(0)" role="menuitem">
                             <i class="icon wb-settings" aria-hidden="true"></i> Settings
                         </a>

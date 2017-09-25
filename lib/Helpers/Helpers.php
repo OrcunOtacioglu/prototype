@@ -148,4 +148,14 @@ class Helpers
             return false;
         }
     }
+
+    public static function minimumUserLevel($user, $level)
+    {
+        if ($user->role->level === $level)
+        {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
