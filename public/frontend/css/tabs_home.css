@@ -209,7 +209,7 @@
 	color:orange;
 }
 .list_tours_tabs  ul li:hover{
-	background-color:#f8f8f8;
+	background-color:#fff;
 }
 .list_hotels_tabs h3{
 	font-size:18px;
@@ -229,7 +229,7 @@
 		margin-right: 0;
 	}
     .tabs nav a {
-        font-size: 12px;
+        font-size: 11px;
             padding: 0 10px;
     }
 	.mediabox {

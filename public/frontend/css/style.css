@@ -59,7 +59,7 @@ Author URI: http://themeforest.net/user/Ansonika/
 i.color_1{color:#e04f67;}
 i.color_2{color:#1cbbb4;}
 i.color_3{color:#82ca9c;}
-i.color_4{color:#f7941d;}
+i.color_4{color:#fcb131;}
 
 /*-------- Allert for old browsers IE8 and below --------*/
 .chromeframe{background:#ddd;color:#000;padding: 0.2em;position: fixed; top: 0; left: 0; text-align: center; z-index:9999; width: 100%;}
@@ -377,25 +377,23 @@ header.sticky #logo .logo_sticky{ display:block; }
 	padding:0;
 }
 #logo_home h1 a, header.sticky #logo_home h1 a, header#plain #logo_home h1 a, header#colored #logo_home h1 a{
-	width: 155px;
 	display: block;
 	background-image: url(../img/logo.png);
 	background-repeat: no-repeat;
 	background-position: left top;
 	text-indent: -9999px;
-	background-size: 170px;
-	height: 60px;
 }
 header.sticky #logo_home h1{
 	margin:0 0 10px 0;
 	padding:0;
 }
 header.sticky #logo_home h1 a{
-	background-image:url(../img/logo_sticky.png);
-    margin-top:5px;
+	background-image:url(../img/logo.png);
+    margin-top:18px;
+    height: 52px;
 }
 header#plain #logo_home h1 a{
-	background-image:url(../img/logo_sticky.png);
+	background-image:url(../img/logo.png);
 }
 header.sticky#colored #logo_home h1 a{
 	background-image:url(../img/logo_sticky_colored.png);
@@ -406,7 +404,6 @@ only screen and (-webkit-min-device-pixel-ratio: 2),
 only screen and (min-device-pixel-ratio: 2) {
 #logo_home h1 a, header#colored #logo_home h1 a{
     background-image: url(../img/logo_2x.png);
-	background-size: 160px 50px;
 }
 header.sticky #logo_home h1 a, header#plain #logo_home h1 a{
     background-image: url(../img/logo_sticky_2x.png);
@@ -706,7 +703,7 @@ footer a {
 }
 
 footer a:hover {
-	color: #999;
+	color: #fcb131;
 }
 
 footer ul {
@@ -2675,7 +2672,7 @@ label.error:after {
 
 /*Background colors*/
 .white_bg {
-	background-color: #fff
+	background-color: #f9f9f9
 }
 
 /*Spacing*/
@@ -2853,7 +2850,7 @@ ul.list_order li span {
 
 /* Margin tools */
 .margin_60 {
-	padding-top: 60px;
+	padding-top: 100px;
 	padding-bottom: 60px;
 }
 
@@ -2940,12 +2937,35 @@ ul.list_order li span {
 	box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
 	margin: 0;
 	margin-bottom: 30px;
+     -webkit-transition: all 0.3s ease;
+	transition: all 0.3s ease;
+}
+
+.tour_container:hover img{
+    -webkit-transform: scale(1);
+	transform: scale(1.1);
+}
+
+.tour_container:hover h3{
+    color: #fff;
+     -webkit-transition: all 0.3s ease;
+	transition: all 0.3s ease;
+}
+
+.tour_container h3{
+     -webkit-transition: all 0.3s ease;
+	transition: all 0.3s ease;
+}
+
+.tour_container:hover {
+	background: #fcb131;
+    -webkit-transition: all 0.3s ease;
+	transition: all 0.3s ease;
 }
 
 .img_container {
 	position: relative;
 	overflow: hidden;
-	border: 1px solid #fff;
 	max-height: 185px;
 }
 
@@ -3027,10 +3047,6 @@ ul.list_order li span {
 	top: 3px;
 }
 
-.img_container a:hover img {
-	-webkit-transform: scale(1);
-	transform: scale(1.1);
-}
 
 .img_container img {
 
@@ -4902,4 +4918,75 @@ nav.full-horizontal{
 }
 header.sticky nav.full-horizontal{
 	margin-top:0;
+}
+
+.small-description{
+    color: #8d8d8d;
+    font-size: 12px;
+}
+
+.mt-40{
+    margin-top: 40px;
+}
+
+.hide-slide{
+    visibility: hidden;
+}
+
+.pr-15{
+    padding-right: 15px !important;
+}
+
+.pl-15{
+    padding-left: 15px !important;
+}
+
+.display-inherit{
+    display: inherit !important;
+}
+
+.pr-0{
+    padding-right: 0 !important;
+}
+
+@media (max-width: 992px){
+    .display-none-sm{
+        display: none !important;
+    }
+}
+
+@media (min-width: 993px){
+    .display-none-md{
+        display: none !important;
+    }
+}
+
+.social-icons-sub{
+    
+}
+
+.social-icons-sub a{
+    float: left;
+}
+
+.pt-15{
+    padding-top: 15px;
+}
+
+.font-size-20{
+    font-size: 20px;
+}
+
+.float-right{
+    float: right;
+}
+
+.mt--8{
+    margin-top: -8px;
+}
+
+.bg-gradient{
+    -webkit-box-shadow: inset 0px -72px 119px -29px rgba(0,0,0,0.45);
+-moz-box-shadow: inset 0px -72px 119px -29px rgba(0,0,0,0.45);
+box-shadow: inset 0px -72px 119px -29px rgba(0,0,0,0.45);
 }
