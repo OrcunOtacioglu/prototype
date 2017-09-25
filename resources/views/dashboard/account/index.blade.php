@@ -3,9 +3,9 @@
 @section('title', 'Manage Account Settings')
 
 @section('page-header')
-    <a href="{{ action('UserController@create') }}" class="btn btn-outline btn-success" data-toggle="tooltip" data-original-title="Manage Roles" data-container="body">
-        <i class="icon wb-user-add" aria-hidden="true"></i>
-        <span class="hidden-sm-down">Create User</span>
+    <a href="{{ action('UserController@index') }}" class="btn btn-outline btn-success" data-toggle="tooltip" data-original-title="Manage Roles" data-container="body">
+        <i class="icon wb-users" aria-hidden="true"></i>
+        <span class="hidden-sm-down">Manage Users</span>
     </a>
     <a href="{{ action('Authority\RoleController@create') }}" class="btn btn-outline btn-success" data-toggle="tooltip" data-original-title="Manage Roles" data-container="body">
         <i class="icon wb-wrench" aria-hidden="true"></i>
