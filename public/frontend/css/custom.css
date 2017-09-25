@@ -42,6 +42,31 @@ background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 73%);
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=0 );
 }
 
+.coverPhotoContainer {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    background-size: cover;
+}
+
+.coverPhotoImage {
+    width: 1170px;
+    height: 380px;
+    background-size: cover;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    display: flex;
+    box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.18);
+    z-index: 3;
+    margin-top: 70px;
+    position: relative;
+}
+
 .coverPhoto .coverPhotoImage .eventTitle {
     color: inherit;
     margin: 0;
