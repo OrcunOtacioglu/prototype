@@ -7,32 +7,27 @@
     overflow: hidden;
 }
 
-.coverPhotoContainer {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    display: flex;
-    -webkit-box-pack: center;
-    justify-content: center;
-    background-size: cover;
-}
+
 
 .coverPhotoImage {
-    width: 1170px;
-    height: 380px;
-    background-size: cover;
-    border-top-left-radius: 6px;
-    border-top-right-radius: 6px;
-    display: flex;
-    box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.18);
+    display: table;
+    background-size: contain;
+    background-repeat: no-repeat;
     z-index: 3;
     margin-top: 70px;
     position: relative;
 }
 
-.coverTitle {
+.coverPhotoImage img{
+    position: relative;
+	width: 100%;
+     border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.2); 
+    
+}
+
+.coverPhoto .coverPhotoImage .coverTitle {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -40,9 +35,14 @@
     color: white;
     padding: 1.75rem;
     text-align: left;
+    width: 100%;
+background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.65) 73%); 
+background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 73%); 
+background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 73%); 
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=0 );
 }
 
-.eventTitle {
+.coverPhoto .coverPhotoImage .eventTitle {
     color: inherit;
     margin: 0;
     font-size: 3.25rem;
@@ -50,21 +50,81 @@
     text-transform: uppercase;
 }
 
-.eventOrganizer {
+.coverPhoto .coverPhotoImage .eventOrganizer {
     color: inherit;
     margin: 0;
     font-size: 1.5rem;
     margin-bottom: 0.25rem;
 }
 
-.eventLocation {
+.coverPhoto .coverPhotoImage .eventLocation {
     color: inherit;
     font-size: 1.5rem;
     margin-top: 0.25rem;
 }
 
-.eventDate {
+.coverPhoto .coverPhotoImage .eventDate {
     margin-top: 0.5rem;
+}
+
+@media (min-width:375px) and (max-width: 480px){
+    .coverPhoto .coverPhotoImage .eventTitle {
+    color: inherit;
+    margin: 0;
+    font-size: 18px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+    .coverPhoto .coverPhotoImage .eventLocation {
+    color: inherit;
+    font-size: 12px;
+    margin-top: 0;
+}
+    .coverPhoto .coverPhotoImage .eventDate {
+    margin-top: 0;
+    font-size: 12px !important;
+}
+    .coverPhoto .coverPhotoImage .coverTitle {
+    position: absolute;
+    bottom: 0;
+    left: -10px;
+    top: 45px;
+    margin-top: auto;
+    color: white;
+    padding: 1.75rem;
+    text-align: left;
+    width: 480px;
+}
+}
+
+@media (max-width:374px){
+    .coverPhoto .coverPhotoImage .eventTitle {
+    color: inherit;
+    margin: 0;
+    font-size: 18px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+    .coverPhoto .coverPhotoImage .eventLocation {
+    color: inherit;
+    font-size: 12px;
+    margin-top: 0;
+}
+    .coverPhoto .coverPhotoImage .eventDate {
+    margin-top: 0;
+    font-size: 12px !important;
+}
+    .coverPhoto .coverPhotoImage .coverTitle {
+    position: absolute;
+    bottom: 0;
+    left: -10px;
+    top: 16px;
+    margin-top: auto;
+    color: white;
+    padding: 1.75rem;
+    text-align: left;
+    width: 480px;
+}
 }
 
 .ticketTypes {
@@ -107,13 +167,13 @@ footer {
 }
 
 .footer-partner-border-left {
-    border-left: 1px solid rgba(51,100,114,0.2);
+    border-left: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .footer-copyright {
     background: #333;
     color: #fff;
-    padding: 0 0 60px;
+    padding: 0 0 24px;
 }
 
 #social_footer {
@@ -124,7 +184,6 @@ footer {
 }
 
 .BuyButton {
-    position: absolute;
     right: 0;
     top: 0;
 }
@@ -137,7 +196,6 @@ footer {
     -webkit-box-direction: normal;
     -ms-flex-direction: column;
     flex-direction: column;
-    width: 400px;
     border: 1px solid #E2E5E7;
     border-top: 0;
     border-radius: 6px;
@@ -199,7 +257,7 @@ footer {
 .BuyButton__tickets__button {
     box-shadow: none;
     border: none;
-    background: #f7941d;
+    background: #fcb131;
     color: #FFF;
     height: 42px;
     width: 100%;
