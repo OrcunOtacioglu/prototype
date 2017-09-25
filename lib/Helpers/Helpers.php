@@ -81,6 +81,12 @@ class Helpers
         return Carbon::parse($time);
     }
 
+    public static function getHumanTime($time)
+    {
+        $dt = Carbon::parse($time);
+        return $dt->formatLocalized('%A %d %B %Y');
+    }
+
     /**
      * Returns the countries list.
      *

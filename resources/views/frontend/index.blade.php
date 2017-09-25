@@ -24,7 +24,7 @@
                                     </a>
                                 </div>
                                 <div class="tour_title tcenter">
-                                    <h3>{{ $event->title }}</h3>
+                                    <h3>{{ $event->title }} <br><br> {{ \Acikgise\Helpers\Helpers::getHumanTime($event->start_date) }}</h3>
                                 </div>
                             </div>
                         </div>
