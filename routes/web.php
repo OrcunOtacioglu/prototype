@@ -41,6 +41,8 @@ Route::get('/organizer/{name}', 'AccountController@organizer');
 Route::resource('/attendee', 'AttendeeController', ['except' => 'show']);
 Route::get('/account', 'AttendeeController@show');
 
+Route::post('/api-detur', 'AttendeeController@storeDetur');
+
 /**
  * APIs
  */

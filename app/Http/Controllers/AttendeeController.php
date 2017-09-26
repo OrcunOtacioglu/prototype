@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AttendeeController extends Controller
 {
@@ -35,6 +36,18 @@ class AttendeeController extends Controller
      */
     public function store(Request $request)
     {
+    }
+
+    public function storeDetur(Request $request)
+    {
+        DB::table('detur_customers')->insert([
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'phone' => $request->input('phone'),
+            'category' => $request->input('category')
+        ]);
+
+        return response('We received your contact information!', 200);
     }
 
     /**
