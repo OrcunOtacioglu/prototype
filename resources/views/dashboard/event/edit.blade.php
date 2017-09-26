@@ -22,6 +22,7 @@
     <!-- EVENT FORM -->
     <form action="{{ action('EventController@update', ['id' => $event->id]) }}" method="POST" enctype="multipart/form-data">
         {{ csrf_field() }}
+        {{ method_field('PUT') }}
         <div class="row">
 
             <!-- EVENT GENERAL INFO -->
