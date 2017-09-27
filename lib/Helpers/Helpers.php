@@ -81,10 +81,12 @@ class Helpers
         return Carbon::parse($time);
     }
 
-    public static function getHumanTime($time)
+    public static function getTurkishTime($time)
     {
-        $dt = Carbon::parse($time);
-        return $dt->formatLocalized('%A %d %B %Y');
+        $datetime = Carbon::parse($time);
+
+        setlocale(LC_TIME, 'tr_TR.utf8');
+        return $datetime->formatLocalized('%d %B %Y - %H:%M');
     }
 
     /**

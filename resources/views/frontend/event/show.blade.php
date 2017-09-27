@@ -19,7 +19,7 @@
                 <div class="coverTitle">
                     <h1 class="eventTitle">{{ $event->title }}</h1>
                     <div class="eventLocation">{{ $event->location }}</div>
-                    <div class="eventDate">{{ \Carbon\Carbon::parse($event->start_date)->diffForHumans() }}</div>
+                    <div class="eventDate">{{ \Acikgise\Helpers\Helpers::getTurkishTime($event->start_date) }}</div>
                 </div>
             </div>
         </div>
