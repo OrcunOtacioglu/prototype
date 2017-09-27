@@ -6,7 +6,7 @@ header {
 }
 
 #logo_home {
-    margin-top: 15px;
+    margin-top: 20px;
 }
 
 .forcefullwidth_wrapper_tp_banner {
@@ -325,4 +325,21 @@ footer {
     transition-duration: 0.2s;
     transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
     transition-property: color, background, border-color;
+}
+
+.white_bground {
+    background-color: #fff;
+}
+
+.wide {
+    text-align: left;
+    background: #fff;
+    width: 100%;
+    height: auto;
+    padding-top: 40px;
+    padding-bottom: 20px;
+}
+
+.pdt-5 {
+    padding-top: 5px;
 }

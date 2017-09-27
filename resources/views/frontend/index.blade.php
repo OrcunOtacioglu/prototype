@@ -15,29 +15,33 @@
                 <div class="row">
                     @foreach($events as $event)
                         <div class="col-md-4 col-sm-6">
-                            <div class="tour_container">
-                                <div class="ribbon_3 "><span>{{ $event->eventCategory->name }}</span></div>
-                                <div class="img_container">
-                                    <a href="{{ action('EventController@show', ['slug' => $event->slug]) }}">
+                            <a href="{{ action('EventController@show', ['slug' => $event->slug]) }}">
+                                <div class="tour_container">
+                                    <div class="ribbon_3 "><span>{{ $event->eventCategory->name }}</span></div>
+                                    <div class="img_container">
                                         <img src="images/cover-images/{{ $event->cover_image }}" class="img-responsive" alt="Image">
                                         <div class="short_info"></div>
-                                    </a>
+                                    </div>
+                                    <div class="tour_title tcenter">
+                                        <h3>{{ $event->title }} <br><br> {{ \Acikgise\Helpers\Helpers::getTurkishTime($event->start_date) }}</h3>
+                                    </div>
                                 </div>
-                                <div class="tour_title tcenter">
-                                    <h3>{{ $event->title }} <br><br> {{ \Acikgise\Helpers\Helpers::getTurkishTime($event->start_date) }}</h3>
-                                </div>
-                            </div>
+                            </a>
                         </div>
                     @endforeach
                 </div>
             </div>
         </div>
 
-        <div class="white_bg">
-            <div class="container margin_60">
-                @include('frontend.partials.allEvents')
+        <section id="all-events" name="all-events">
+            <div class="white_bground">
+                <div class="wide">
+                    <div class="container">
+                        @include('frontend.partials.allEvents')
+                    </div>
+                </div>
             </div>
-        </div>
+        </section>
     </main>
 @stop
 
