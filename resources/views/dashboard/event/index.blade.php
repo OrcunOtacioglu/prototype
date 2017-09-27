@@ -41,9 +41,17 @@
                             <a href="{{ action('EventController@edit', ['id' => $event->id]) }}" class="btn btn-sm btn-icon btn-flat btn-default" data-toggle="tooltip" data-original-title="Edit">
                                 <i class="icon wb-wrench" aria-hidden="true"></i>
                             </a>
-                            <button type="button" class="btn btn-sm btn-icon btn-flat btn-default" data-toggle="tooltip" data-original-title="Delete">
-                                <i class="icon wb-close" aria-hidden="true"></i>
-                            </button>
+                            <form action="{{ action('EventController@destroy', ['id' => $event->id]) }}" method="POST">
+                                {{ csrf_field() }}
+                                {{ method_field('DELETE') }}
+                                <button type="submit" href="{{ action('EventController@destroy', ['id' => $event->id]) }}"
+                                       class="btn btn-sm btn-icon btn-flat btn-default"
+                                       data-toggle="tooltip"
+                                       data-original-title="Delete"
+                                >
+                                    <i class="icon wb-close" aria-hidden="true"></i>
+                                </button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach
