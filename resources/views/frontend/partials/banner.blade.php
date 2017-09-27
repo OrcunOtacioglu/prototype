@@ -1,5 +1,5 @@
 <!-- Slider -->
-<div class="tp-banner-container">
+<div class="tp-banner-container" style="margin-top: 40px;">
     <div class="tp-banner">
         <ul>
             <!-- SLIDE  -->

@@ -1,6 +1,21 @@
 @charset "UTF-8";
+
+header {
+    background: #fff;
+    padding: 0;
+}
+
+#logo_home {
+    margin-top: 15px;
+}
+
+.forcefullwidth_wrapper_tp_banner {
+    margin-top: 40px;
+}
+
 /* CSS Document */
 .coverPhoto {
+    margin-top: 40px;
     position: relative;
     min-width: 100%;
     min-height: 450px;
