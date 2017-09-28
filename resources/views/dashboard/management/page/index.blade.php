@@ -2,6 +2,13 @@
 
 @section('title', 'Manage Content Pages')
 
+@section('page-header')
+    <a href="{{ action('Util\PageController@create') }}" class="btn btn-outline btn-success" data-toggle="tooltip" data-original-title="Create New Page" data-container="body">
+        <i class="icon wb-plus" aria-hidden="true"></i>
+        <span class="hidden-sm-down">New Page</span>
+    </a>
+@stop
+
 @section('content')
     <div class="panel panel-primary panel-line">
 
