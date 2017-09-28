@@ -43,4 +43,16 @@ class SettingsController extends Controller
 
         $settings->save();
     }
+
+    public function updateGateway(Request $request, $id)
+    {
+        $gateway = PaymentGateway::find($id);
+
+        $gateway->test_url = $request->test_url;
+        $gateway->production_url = $request->production_url;
+        $gateway->default_config = $request->default_config;
+        $gateway->save();
+
+        return redirect()->action('Util\SettingsController@index');
+    }
 }

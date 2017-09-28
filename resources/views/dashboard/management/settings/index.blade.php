@@ -50,7 +50,7 @@
                 </div>
 
                 <div class="panel-body">
-                    <form action="#" method="POST">
+                    <form action="{{ action('Util\SettingsController@updateGateway', ['id' => $gateway->id]) }}" method="POST">
                         {{ csrf_field() }}
                         {{ method_field('PUT') }}
                         
