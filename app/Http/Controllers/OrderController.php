@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use Acikgise\Helpers\Helpers;
 use App\Models\Event;
 use App\Models\Order;
+use App\Models\PaymentGateway;
+use App\Models\Util\Settings;
 use Carbon\Carbon;
+use function Couchbase\defaultDecoder;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -61,9 +64,10 @@ class OrderController extends Controller
             if (!$request->hasCookie('orderRef')) {
                 return redirect()->to('/');
             } else {
+                $config = Helpers::getProcessorConfig();
 
                 $paymentInfo = [
-                    'clientid' => "100300000",
+                    'clientid' => $config['clientid'],
                     'amount' => $order->total,
                     'oid' => $order->reference,
                     'okUrl' => env('APP_URL') . '/order-complete',
@@ -71,7 +75,7 @@ class OrderController extends Controller
                     'rnd' => microtime(),
                     'taksit' => "",
                     'islemtipi' => "Auth",
-                    'storekey' => "123456"
+                    'storekey' => $config['storekey']
                 ];
 
                 $hashstr = $paymentInfo['clientid'] . $paymentInfo['oid'] . $paymentInfo['amount'] . $paymentInfo['okUrl'] . $paymentInfo['failUrl'] . $paymentInfo['islemtipi'] . $paymentInfo['taksit'] . $paymentInfo['rnd'] . $paymentInfo['storekey'];

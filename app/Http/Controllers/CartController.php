@@ -6,7 +6,9 @@ use Acikgise\Helpers\Helpers;
 use Acikgise\Payment\Gateway;
 use App\Events\OrderSuccessful;
 use App\Models\Order;
+use App\Models\PaymentGateway;
 use App\Models\TicketType;
+use App\Models\Util\Settings;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
@@ -163,11 +165,12 @@ class CartController extends Controller
 //        $results = Gateway::validatePayment('iyzico', $request);
 //
 //        $order = Order::with('orderItems', 'event')->where('reference', '=', $results['orderRef'])->first();
+        $config = Helpers::getProcessorConfig();
 
         $hashparams = $request->HASHPARAMS;
         $hashparamsval = $request->HASHPARAMSVAL;
         $hashparam = $request->HASH;
-        $storekey = "123456";
+        $storekey = $config['storekey'];
         $paramsval = "";
         $index1 = 0;
         $index2 = 0;
@@ -181,7 +184,7 @@ class CartController extends Controller
             $index1 = $index2 + 1;
         }
         $results = $request->mdErrorMsg;
-        $storekey = "123456";
+        $storekey = $config['storekey'];
         $hashval = $paramsval . $storekey;
         $hash = base64_encode(pack('H*', sha1($hashval)));
 

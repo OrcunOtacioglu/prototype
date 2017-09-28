@@ -29,7 +29,7 @@
             <div class="col-md-4">
                 <h3>Ödeme Seçenekleri</h3>
                 <p>"Ödeme Yap" butonuna basarak veya bu siteyi kullanarak, Kullanım Koşulları'nı da kabul etmiş sayılırsınız.</p>
-                <form action="https://entegrasyon.asseco-see.com.tr/fim/est3Dgate" method="POST">
+                <form action="{{ \Acikgise\Helpers\Helpers::getGatewayFormUrl() }}" method="POST">
                     <input type="hidden" name="clientid" value="{{ $paymentInfo['clientid'] }}">
                     <input type="hidden" name="amount" value="{{ $paymentInfo['amount'] }}">
                     <input type="hidden" name="oid" value="{{ $paymentInfo['oid'] }}">
@@ -64,17 +64,11 @@
                     <input type="hidden" name="tilce" value="Muratpaşa">
                     <input type="hidden" name="tpostakodu" value="07040">
                     <input type="hidden" name="tulkekod" value="tr">
-                    <input type="submit" class="btn btn-success btn-block" value="Ödeme Yap">
+                    <input type="submit" class="BuyButton__tickets__button button" value="Ödeme Yap">
                 </form>
-                <ul class="list-inline valign-midd ellipses">
+                <ul class="list-inline valign-midd ellipses text-center" style="margin-top: 10px;">
                     <li>
-                        <img id="imgVisaLogo" src="{{ asset('frontend/img/footer/Visa.jpg') }}" alt="Visa">
-                    </li>
-                    <li>
-                        <img id="imgMasterCardLogo" src="{{ asset('frontend/img/footer/Master-card.jpg') }}" alt="Master Card">
-                    </li>
-                    <li>
-                        <img id="imgAmericanExpressLogo" src="{{ asset('frontend/img/footer/American-Express.jpg') }}" alt="American Express">
+                        <img id="imgVisaLogo" src="{{ asset('frontend/img/footer/visaMastercard.png') }}" alt="Visa">
                     </li>
                 </ul>
             </div>

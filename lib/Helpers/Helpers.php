@@ -4,6 +4,8 @@
 namespace Acikgise\Helpers;
 
 
+use App\Models\PaymentGateway;
+use App\Models\Util\Settings;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -159,5 +161,24 @@ class Helpers
         } else {
             return false;
         }
+    }
+
+    public static function getGatewayFormUrl()
+    {
+        $settings = Settings::find(1);
+        $gateway = PaymentGateway::find($settings->default_payment_processor_id);
+
+        if ($gateway->is_active) {
+            return $gateway->production_url;
+        } else {
+            return $gateway->test_url;
+        }
+    }
+
+    public static function getProcessorConfig()
+    {
+        $settings = Settings::find(1);
+        $gateway = PaymentGateway::find($settings->default_payment_processor_id);
+        return json_decode($gateway->default_config, true);
     }
 }
