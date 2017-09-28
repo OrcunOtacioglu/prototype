@@ -349,3 +349,7 @@ footer {
     background-color: rgba(248, 54, 0, 1) !important;
     min-width: 200px;
 }
+
+.list_tours_tabs ul li:hover {
+    background-color: #f9f9f9;
+}
