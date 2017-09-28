@@ -343,3 +343,9 @@ footer {
 .pdt-5 {
     padding-top: 5px;
 }
+
+.watch-now-button {
+    color: #fff !important;
+    background-color: rgba(248, 54, 0, 1) !important;
+    min-width: 200px;
+}

@@ -44,6 +44,11 @@
                                     <span class="site-menu-title">Page Management</span>
                                 </a>
                             </li>
+                            <li class="site-menu-item active">
+                                <a class="animsition-link" href="{{ action('SliderController@index') }}">
+                                    <span class="site-menu-title">Slider Management</span>
+                                </a>
+                            </li>
                         </ul>
                     </li>
 

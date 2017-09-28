@@ -6,7 +6,8 @@ header('Access-Control-Allow-Headers:  Content-Type, X-Auth-Token, Origin, Autho
 
 Route::get('/', function () {
     $events = \App\Models\Event::with('eventCategory')->get();
-    return view('frontend.index', compact('events'));
+    $slides = \App\Slider::with('event')->get();
+    return view('frontend.index', compact('events', 'slides'));
 });
 
 Auth::routes();
@@ -29,6 +30,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
     Route::resource('/permission', 'Authority\PermissionController');
     Route::resource('/invoice', 'Finance\InvoiceController');
     Route::resource('/user', 'UserController');
+    Route::resource('/slider', 'SliderController', ['except' => 'show']);
 });
 
 /**
