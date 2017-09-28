@@ -42,7 +42,7 @@ class PageController extends Controller
     {
         $page = new Page();
         $page->title = $request->title;
-        $page->slug = Helpers::sluggify($request->title);
+        $page->slug = $request->slug;
         $page->content = $request->pageContent;
         $page->created_at = Carbon::now('Europe/Istanbul');
         $page->updated_at = Carbon::now('Europe/Istanbul');
@@ -74,7 +74,7 @@ class PageController extends Controller
     {
         $page = Page::find($id);
 
-        return view('dashboard.page.edit', compact('page'));
+        return view('dashboard.management.page.edit', compact('page'));
     }
 
     /**
@@ -88,7 +88,6 @@ class PageController extends Controller
     {
         $page = Page::find($id);
         $page->title = $request->title;
-        $page->slug = Helpers::sluggify($request->title);
         $page->content = $request->pageContent;
         $page->updated_at = Carbon::now('Europe/Istanbul');
         $page->save();
