@@ -14,6 +14,8 @@ class EventCategory extends Model
      */
     protected $table = 'event_categories';
 
+    public $timestamps = 'false';
+
     /**
      * Mass assignable fields.
      *
