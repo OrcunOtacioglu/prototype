@@ -5,15 +5,35 @@
 <div id="tabs" class="tabs">
     <nav>
         <ul>
-            <li><a href="#section-1"><span>MÜZİK</span></a></li>
-            <li><a href="#section-2"><span>SANAT</span></a></li>
-            <li><a href="#section-3"><span>SPOR</span></a></li>
-            <li><a href="#section-4"><span>GALA</span></a></li>
+            @foreach(\App\Models\Util\EventCategory::all() as $category)
+                <li><a href="#section-{{ $category->id }}"><span>{{ $category->name }}</span></a></li>
+            @endforeach
         </ul>
     </nav>
 
     <div class="content">
-        <section id="section-1">
+        @foreach(\App\Models\Util\EventCategory::all() as $category)
+            <section id="section-{{ $category->id }}">
+                <div class="row list_tours_tabs">
+                    <div class="col-md-4">
+                        <ul>
+                            @foreach(\App\Models\Event::listBasedOnCategory($events, $category->id) as $event)
+                                <li>
+                                    <div>
+                                        <a href="{{ action('EventController@show', ['slug' => $event->slug]) }}">
+                                            <figure><img src="/images/cover-images/{{ $event->cover_image }}" class="img-rounded"></figure>
+                                            <h3>{{ $event->title }} <br><span class="small-description">{{ Acikgise\Helpers\Helpers::getTurkishTime($event->start_date) }}</span></h3>
+                                        </a>
+                                    </div>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        @endforeach
+    </div>
+        {{--<section id="section-1">--}}
             <div class="row list_tours_tabs">
                 <div class="col-md-4">
                     <ul>
@@ -30,66 +50,65 @@
                     </ul>
                 </div>
             </div>
-        </section>
-        <section id="section-2">
-            <div class="row list_tours_tabs">
-                <div class="col-md-4">
-                    <ul>
-                        @foreach(\App\Models\Event::listBasedOnCategory($events, 2) as $event)
-                            <li>
-                                <div>
-                                    <a href="{{ action('EventController@show', ['slug' => $event->slug]) }}">
-                                        <figure><img src="/images/cover-images/{{ $event->cover_image }}" class="img-rounded"></figure>
-                                        <h3>{{ $event->title }} <br><span class="small-description">{{ Acikgise\Helpers\Helpers::getTurkishTime($event->start_date) }}</span></h3>
-                                    </a>
-                                </div>
-                            </li>
-                        @endforeach
-                    </ul>
-                </div>
-                <div class="col-md-4"></div>
-                <div class="col-md-4"></div>
-            </div>
-        </section>
-        <section id="section-3">
-            <div class="row list_tours_tabs">
-                <div class="col-md-4">
-                    <ul>
-                        @foreach(\App\Models\Event::listBasedOnCategory($events, 3) as $event)
-                            <li>
-                                <div>
-                                    <a href="{{ action('EventController@show', ['slug' => $event->slug]) }}">
-                                        <figure><img src="/images/cover-images/{{ $event->cover_image }}" class="img-rounded"></figure>
-                                        <h3>{{ $event->title }} <br><span class="small-description">{{ Acikgise\Helpers\Helpers::getTurkishTime($event->start_date) }}</span></h3>
-                                    </a>
-                                </div>
-                            </li>
-                        @endforeach
-                    </ul>
-                </div>
-                <div class="col-md-4"></div>
-                <div class="col-md-4"></div>
-            </div>
-        </section>
-        <section id="section-4">
-            <div class="row list_tours_tabs">
-                <div class="col-md-4">
-                    <ul>
-                        @foreach(\App\Models\Event::listBasedOnCategory($events, 4) as $event)
-                            <li>
-                                <div>
-                                    <a href="{{ action('EventController@show', ['slug' => $event->slug]) }}">
-                                        <figure><img src="/images/cover-images/{{ $event->cover_image }}" class="img-rounded"></figure>
-                                        <h3>{{ $event->title }} <br><span class="small-description">{{ Acikgise\Helpers\Helpers::getTurkishTime($event->start_date) }}</span></h3>
-                                    </a>
-                                </div>
-                            </li>
-                        @endforeach
-                    </ul>
-                </div>
-                <div class="col-md-4"></div>
-                <div class="col-md-4"></div>
-            </div>
-        </section>
-    </div>
+        {{--</section>--}}
+        {{--<section id="section-2">--}}
+            {{--<div class="row list_tours_tabs">--}}
+                {{--<div class="col-md-4">--}}
+                    {{--<ul>--}}
+                        {{--@foreach(\App\Models\Event::listBasedOnCategory($events, 2) as $event)--}}
+                            {{--<li>--}}
+                                {{--<div>--}}
+                                    {{--<a href="{{ action('EventController@show', ['slug' => $event->slug]) }}">--}}
+                                        {{--<figure><img src="/images/cover-images/{{ $event->cover_image }}" class="img-rounded"></figure>--}}
+                                        {{--<h3>{{ $event->title }} <br><span class="small-description">{{ Acikgise\Helpers\Helpers::getTurkishTime($event->start_date) }}</span></h3>--}}
+                                    {{--</a>--}}
+                                {{--</div>--}}
+                            {{--</li>--}}
+                        {{--@endforeach--}}
+                    {{--</ul>--}}
+                {{--</div>--}}
+                {{--<div class="col-md-4"></div>--}}
+                {{--<div class="col-md-4"></div>--}}
+            {{--</div>--}}
+        {{--</section>--}}
+        {{--<section id="section-3">--}}
+            {{--<div class="row list_tours_tabs">--}}
+                {{--<div class="col-md-4">--}}
+                    {{--<ul>--}}
+                        {{--@foreach(\App\Models\Event::listBasedOnCategory($events, 3) as $event)--}}
+                            {{--<li>--}}
+                                {{--<div>--}}
+                                    {{--<a href="{{ action('EventController@show', ['slug' => $event->slug]) }}">--}}
+                                        {{--<figure><img src="/images/cover-images/{{ $event->cover_image }}" class="img-rounded"></figure>--}}
+                                        {{--<h3>{{ $event->title }} <br><span class="small-description">{{ Acikgise\Helpers\Helpers::getTurkishTime($event->start_date) }}</span></h3>--}}
+                                    {{--</a>--}}
+                                {{--</div>--}}
+                            {{--</li>--}}
+                        {{--@endforeach--}}
+                    {{--</ul>--}}
+                {{--</div>--}}
+                {{--<div class="col-md-4"></div>--}}
+                {{--<div class="col-md-4"></div>--}}
+            {{--</div>--}}
+        {{--</section>--}}
+        {{--<section id="section-4">--}}
+            {{--<div class="row list_tours_tabs">--}}
+                {{--<div class="col-md-4">--}}
+                    {{--<ul>--}}
+                        {{--@foreach(\App\Models\Event::listBasedOnCategory($events, 4) as $event)--}}
+                            {{--<li>--}}
+                                {{--<div>--}}
+                                    {{--<a href="{{ action('EventController@show', ['slug' => $event->slug]) }}">--}}
+                                        {{--<figure><img src="/images/cover-images/{{ $event->cover_image }}" class="img-rounded"></figure>--}}
+                                        {{--<h3>{{ $event->title }} <br><span class="small-description">{{ Acikgise\Helpers\Helpers::getTurkishTime($event->start_date) }}</span></h3>--}}
+                                    {{--</a>--}}
+                                {{--</div>--}}
+                            {{--</li>--}}
+                        {{--@endforeach--}}
+                    {{--</ul>--}}
+                {{--</div>--}}
+                {{--<div class="col-md-4"></div>--}}
+                {{--<div class="col-md-4"></div>--}}
+            {{--</div>--}}
+        {{--</section>--}}
 </div>

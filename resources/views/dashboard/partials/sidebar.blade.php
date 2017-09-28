@@ -29,6 +29,11 @@
                                     <span class="site-menu-title">Manage Events</span>
                                 </a>
                             </li>
+                            <li class="site-menu-item active">
+                                <a class="animsition-link" href="{{ action('Util\EventCategoryController@index') }}">
+                                    <span class="site-menu-title">Manage Categories</span>
+                                </a>
+                            </li>
                         </ul>
                     </li>
 
@@ -47,6 +52,12 @@
                             <li class="site-menu-item active">
                                 <a class="animsition-link" href="{{ action('SliderController@index') }}">
                                     <span class="site-menu-title">Slider Management</span>
+                                </a>
+                            </li>
+
+                            <li class="site-menu-item active">
+                                <a class="animsition-link" href="{{ action('Util\SettingsController@index') }}">
+                                    <span class="site-menu-title">Site Settings</span>
                                 </a>
                             </li>
                         </ul>
