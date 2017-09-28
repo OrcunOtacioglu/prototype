@@ -13,19 +13,15 @@ class EventCategoriesSeeder extends Seeder
     {
         DB::table('event_categories')->insert([
             [
-                'id' => 1,
                 'name' => 'Müzik'
             ],
             [
-                'id' => 2,
                 'name' => 'Sanat'
             ],
             [
-                'id' => 3,
                 'name' => 'Spor'
             ],
             [
-                'id' => 4,
                 'name' => 'Gala'
             ]
         ]);
