@@ -1,4 +1,4 @@
-<footer style="bottom: 0; position: relative; z-index: 0; width: 100%; margin-top: 30px;">
+<footer style="bottom: 0; position: relative; z-index: 0; width: 100%;">
     <div class="container">
         <div class="row">
             <div class="col-md-3">
