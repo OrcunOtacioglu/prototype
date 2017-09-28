@@ -29,10 +29,10 @@
                 <h3>Şirket Profili</h3>
                 <ul>
                     <li>
-                        <a href="#">Hakkımızda</a>
+                        <a href="http://www.fbbentertainment.com/hakkimizda" target="_blank">Hakkımızda</a>
                     </li>
                     <li>
-                        <a href="#">İletişim</a>
+                        <a href="http://www.fbbentertainment.com/iletisim" target=”_blank”>İletişim</a>
                     </li>
                 </ul>
             </div>
@@ -76,7 +76,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div id="social_footer">
-                    <p>© 2017 OnlineFBB. Tüm hakları saklıdır.</p>
+                    <p>© 2017 Neredeysen Orada. Tüm hakları saklıdır.</p>
                 </div>
             </div>
         </div>

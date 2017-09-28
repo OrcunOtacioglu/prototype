@@ -17,9 +17,9 @@ Auth::routes();
  */
 Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
     Route::get('/', 'DashboardController@index');
-    Route::get('/categories', 'Util\EventCategoryController@index');
+    Route::resource('/category', 'Util\EventCategoryController');
     Route::resource('/account', 'AccountController');
-    Route::post('/account/add-gateway', 'AccountController@addGateway');
+    Route::put('/gateway/{id}', 'Util\SettingsController@updateGateway');
     Route::resource('/event', 'EventController', ['except' => 'show']);
     Route::get('/event/featured', 'EventController@featuredEvents');
     Route::resource('/rate', 'TicketTypeController');
@@ -31,6 +31,8 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
     Route::resource('/invoice', 'Finance\InvoiceController');
     Route::resource('/user', 'UserController');
     Route::resource('/slider', 'SliderController', ['except' => 'show']);
+    Route::get('/settings', 'Util\SettingsController@index');
+    Route::put('/settings', 'Util\SettingsController@update');
 });
 
 /**

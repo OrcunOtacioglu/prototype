@@ -358,6 +358,7 @@ a.btn_full_outline:hover{
 #logo{margin-top:10px;}
 
 header{
+	height: 85px;
 	width:100%;
 	position:fixed;
 	left:0;
