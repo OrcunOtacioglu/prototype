@@ -24,8 +24,8 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="content">Page Content</label>
-                            <textarea name="content" id="content" cols="30" rows="10" class="form-control">{{ $page->content }}</textarea>
+                            <label for="pageContent">Page Content</label>
+                            <textarea name="pageContent" id="pageContent" cols="30" rows="10" class="form-control">{{ $page->content }}</textarea>
                         </div>
                     </div>
 

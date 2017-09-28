@@ -346,8 +346,12 @@ footer {
 
 .watch-now-button {
     color: #fff !important;
-    background-color: rgba(248, 54, 0, 1) !important;
+    background-color: #fc2b2b !important;
     min-width: 200px;
+}
+
+.watch-now-button:hover {
+    background-color: #fcb131 !important;
 }
 
 .list_tours_tabs ul li:hover {

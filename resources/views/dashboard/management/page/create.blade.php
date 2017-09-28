@@ -23,8 +23,13 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="content">Page Content</label>
-                            <textarea name="content" id="content" cols="30" rows="10" class="form-control"></textarea>
+                            <label for="slug">Slug</label>
+                            <input type="text" class="form-control" name="slug" id="slug">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="pageContent">Page Content</label>
+                            <textarea name="pageContent" id="pageContent" cols="30" rows="10" class="form-control"></textarea>
                         </div>
                     </div>
                     
