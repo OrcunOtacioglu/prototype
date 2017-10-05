@@ -6,8 +6,10 @@ header('Access-Control-Allow-Headers:  Content-Type, X-Auth-Token, Origin, Autho
 
 Route::get('/', function () {
     $events = \App\Models\Event::with('eventCategory')->get();
+
+    $eligibleEvents = \App\Models\Event::eligibleEvents($events);
     $slides = \App\Slider::with('event')->get();
-    return view('frontend.index', compact('events', 'slides'));
+    return view('frontend.index', compact('eligibleEvents', 'slides'));
 });
 
 Auth::routes();
@@ -21,7 +23,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
     Route::resource('/account', 'AccountController');
     Route::put('/gateway/{id}', 'Util\SettingsController@updateGateway');
     Route::resource('/event', 'EventController', ['except' => 'show']);
-    Route::resource('/featured-event', 'FeaturedEventController', ['except' => ['create', 'store', 'show']]);
+    Route::resource('/featured-event', 'FeaturedEventController', ['except' => 'create']);
     Route::resource('/rate', 'TicketTypeController');
     Route::resource('/ticket', 'TicketController');
     Route::resource('/order', 'OrderController');

@@ -7,7 +7,7 @@
 @section('title', 'Edit Event')
 
 @section('page-header')
-    <a href="{{ action('EventController@show', ['slug' => $event->slug]) }}" class="btn btn-outline btn-success" data-toggle="tooltip" data-original-title="See Event Page" data-container="body">
+    <a href="{{ action('EventController@show', ['slug' => $event->slug]) }}" target="_blank" class="btn btn-outline btn-success" data-toggle="tooltip" data-original-title="See Event Page" data-container="body">
         <i class="icon wb-eye" aria-hidden="true"></i>
         <span class="hidden-sm-down">See Event</span>
     </a>
@@ -97,7 +97,7 @@
                             </div>
                         </div>
 
-                        <input type="submit" value="UPDATE" class="btn btn-success">
+                        <input type="submit" value="UPDATE" class="btn btn-sm btn-success">
                         <a class="text-danger" href="{{ action('EventController@index') }}">Cancel</a>
                     </div>
 
@@ -134,9 +134,11 @@
                                 <div class="form-group">
                                     <label for="featured">Featured Event</label>
                                     <select name="featured" id="featured" class="form-control">
-                                        <option value="0">No</option>
+                                        <option value="0" @if(!$event->is_featured)
+                                            selected
+                                                @endif>No</option>
                                         <option value="1" @if($event->is_featured)
-                                          selected
+                                            selected
                                         @endif>Yes</option>
                                     </select>
                                 </div>
@@ -148,8 +150,12 @@
                                 <div class="form-group">
                                     <label for="status">Status</label>
                                     <select name="status" id="status" class="form-control">
-                                        <option value="0">Published</option>
-                                        <option value="1">Draft</option>
+                                        <option value="1" @if($event->status)
+                                            selected
+                                        @endif>Published</option>
+                                        <option value="0" @if(!$event->status)
+                                            selected
+                                        @endif>Draft</option>
                                     </select>
                                 </div>
                             </div>

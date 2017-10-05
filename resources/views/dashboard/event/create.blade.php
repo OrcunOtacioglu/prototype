@@ -123,8 +123,8 @@
                                 <div class="form-group">
                                     <label for="status">Status</label>
                                     <select name="status" id="status" class="form-control">
-                                        <option value="0">Published</option>
-                                        <option value="1">Draft</option>
+                                        <option value="1">Published</option>
+                                        <option value="0">Draft</option>
                                     </select>
                                 </div>
                             </div>
@@ -152,6 +152,33 @@
                         </div>
 
                     </div>
+                </div>
+
+                <div class="panel panel-primary panel-line">
+
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Event HomePage Info</h3>
+                    </div>
+
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label for="small_title">HomePage Title</label>
+                            <input type="text" class="form-control" name="small_title" id="small_title">
+                        </div>
+
+                        <div class="form-group">
+                            <div class="input-group input-group-file" data-plugin="inputGroupFile">
+                                <input type="text" class="form-control" readonly>
+                                <span class="input-group-btn">
+                                    <span class="btn btn-primary btn-file">
+                                        <i class="icon wb-upload"></i>
+                                        <input type="file" name="small_image" id="small_image">
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>

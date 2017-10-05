@@ -17,7 +17,7 @@
                 <div class="row list_tours_tabs">
                     <div class="col-md-4">
                         <ul>
-                            @foreach(\App\Models\Event::listBasedOnCategory($events, $category->id) as $event)
+                            @foreach(\App\Models\Event::listBasedOnCategory($eligibleEvents, $category->id) as $event)
                                 <li>
                                     <div>
                                         <a href="{{ action('EventController@show', ['slug' => $event->slug]) }}">

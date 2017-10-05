@@ -8,23 +8,71 @@
     <div class="row">
 
         <div class="col-md-6">
-            @if($sales->count() > 0)
-                <div class="widget">
-                    <div class="widget-content padding-25 bg-blue-600">
-                        <div class="counter counter-lg counter-inverse">
-                            <div class="counter-label text-uppercase">TOTAL SALES</div>
-                            <span class="counter-number">220₺</span>
-                        </div>
-                    </div>
+            <div class="panel">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        <i class="icon wb-users" aria-hidden="true"></i> Customers
+                    </h3>
                 </div>
-            @else
-                <div class="alert alert-danger">
-                    <p>There are no sales yet!</p>
+                <div class="panel-body">
+                    <ul class="list-group list-group-dividered list-group-full">
+
+                        @foreach(\App\Models\Attendee::all() as $attendee)
+                            <li class="list-group-item">
+                                <div class="media">
+                                    <div class="media-body">
+                                        <div class="float-right">
+                                            <small>{{ $attendee->created_at }}</small>
+                                        </div>
+                                        <div><a class="name" href="javascript:void(0)">{{ $attendee->name }}</a></div>
+                                        <small>{{ $attendee->email }}</small>
+                                    </div>
+                                </div>
+                            </li>
+                        @endforeach
+
+                    </ul>
                 </div>
-            @endif
+            </div>
         </div>
 
         <div class="col-md-6">
+            <div class="panel">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        <i class="icon wb-calendar" aria-hidden="true"></i> Events
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <ul class="list-group list-group-dividered list-group-full">
+
+                        @foreach(\App\Models\Event::all() as $event)
+                            <li class="list-group-item">
+                                <div class="media">
+                                    <div class="pr-20">
+                                        <a class="avatar avatar-100 @if($event->status)
+                                                avatar-online
+                                                @else
+                                                avatar-away
+                                                @endif" href="javascript:void(0)">
+                                            <img src="/images/small-images/{{ $event->small_image }}" alt="">
+                                            <i></i>
+                                        </a>
+                                    </div>
+                                    <div class="media-body">
+                                        <div class="float-right">
+                                            <a href="{{ action('EventController@edit', ['id' => $event->id]) }}" class="btn btn-outline btn-default btn-sm">Edit</a>
+                                        </div>
+                                        <div><a class="name" href="javascript:void(0)">{{ $event->title }}</a></div>
+                                        <small>{{ Acikgise\Helpers\Helpers::getTurkishTime($event->start_date) }}</small>
+                                    </div>
+                                </div>
+                            </li>
+                        @endforeach
+
+                    </ul>
+                </div>
+            </div>
 
         </div>
 

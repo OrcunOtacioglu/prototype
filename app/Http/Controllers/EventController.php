@@ -42,7 +42,7 @@ class EventController extends Controller
     {
         $event = Event::createNew($request);
 
-        return redirect()->to('/dashboard/event/' . $event->id . '/edit');
+        return redirect()->action('EventController@edit', ['id' => $event->id]);
     }
 
     /**
@@ -68,7 +68,7 @@ class EventController extends Controller
     {
         $event = Event::find($id);
 
-        return view('dashboard.event.edit', ['id' => $event->id], compact('event'));
+        return view('dashboard.event.edit', compact('event'));
     }
 
     /**
@@ -82,7 +82,7 @@ class EventController extends Controller
     {
         Event::updateEvent($request, $id);
 
-        return redirect()->back();
+        return redirect()->action('EventController@edit', ['id' => $id]);
     }
 
     /**

@@ -1,6 +1,6 @@
 @extends('frontend.layout')
 
-@section('title', 'Neredeysen Orada')
+@section('title', 'Ana Sayfa')
 
 @section('content')
     <main>
@@ -13,7 +13,7 @@
                 </div>
 
                 <div class="row">
-                    @foreach($events as $event)
+                    @foreach($eligibleEvents as $event)
                         @if($event->is_featured)
                             <div class="col-md-4 col-sm-6">
                                 <a href="{{ action('EventController@show', ['slug' => $event->slug]) }}">

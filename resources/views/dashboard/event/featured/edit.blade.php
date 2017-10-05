@@ -2,6 +2,13 @@
 
 @section('title', 'Edit Featured Event')
 
+@section('page-header')
+    <a href="{{ action('EventController@edit', ['id' => $event->id]) }}" class="btn btn-outline btn-success" data-toggle="tooltip" data-original-title="Back To Event Edit" data-container="body">
+        <i class="icon wb-calendar" aria-hidden="true"></i>
+        <span class="hidden-sm-down">Back to Event Page</span>
+    </a>
+@stop
+
 @section('content')
     <form action="{{ action('FeaturedEventController@update', ['id' => $event->id]) }}" method="POST" enctype="multipart/form-data">
         {{ csrf_field() }}
