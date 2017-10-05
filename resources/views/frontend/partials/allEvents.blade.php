@@ -21,8 +21,8 @@
                                 <li>
                                     <div>
                                         <a href="{{ action('EventController@show', ['slug' => $event->slug]) }}">
-                                            <figure><img src="/images/cover-images/{{ $event->cover_image }}" class="img-rounded"></figure>
-                                            <h3>{{ $event->title }} <br><span class="small-description">{{ Acikgise\Helpers\Helpers::getTurkishTime($event->start_date) }}</span></h3>
+                                            <figure><img src="/images/small-images/{{ $event->small_image }}" class="img-rounded"></figure>
+                                            <h3>{{ $event->small_title }} <br><span class="small-description">{{ Acikgise\Helpers\Helpers::getTurkishTime($event->start_date) }}</span></h3>
                                         </a>
                                     </div>
                                 </li>
