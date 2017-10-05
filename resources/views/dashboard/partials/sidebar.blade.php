@@ -30,6 +30,11 @@
                                 </a>
                             </li>
                             <li class="site-menu-item active">
+                                <a class="animsition-link" href="{{ action('FeaturedEventController@index') }}">
+                                    <span class="site-menu-title">Manage Featured Events</span>
+                                </a>
+                            </li>
+                            <li class="site-menu-item active">
                                 <a class="animsition-link" href="{{ action('Util\EventCategoryController@index') }}">
                                     <span class="site-menu-title">Manage Categories</span>
                                 </a>

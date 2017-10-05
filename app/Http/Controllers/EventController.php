@@ -104,11 +104,4 @@ class EventController extends Controller
     {
         return Event::find($id);
     }
-
-    public function featuredEvents()
-    {
-        $events = Event::where('is_featured', '=', true)->get();
-
-        return view('dashboard.event.featured', compact('events'));
-    }
 }

@@ -7,7 +7,7 @@
         <i class="icon wb-plus" aria-hidden="true"></i>
         <span class="hidden-sm-down">New Event</span>
     </a>
-    <a href="#" class="btn btn-outline btn-success" data-toggle="tooltip" data-original-title="Featured Events" data-container="body">
+    <a href="{{ action('FeaturedEventController@index') }}" class="btn btn-outline btn-success" data-toggle="tooltip" data-original-title="Featured Events" data-container="body">
         <i class="icon wb-star" aria-hidden="true"></i>
         <span class="hidden-sm-down">Featured Events</span>
     </a>
