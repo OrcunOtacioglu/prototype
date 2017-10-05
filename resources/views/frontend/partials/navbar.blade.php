@@ -14,6 +14,9 @@
                     </div>
                     <a href="#" class="open_close" id="close_in"><i class="icon_set_1_icon-77"></i></a>
                     <ul>
+                        <li class="submenu">
+                            <h4>Online <span style="color: #f22c29">Canlı Yayın</span> İzleme Portalı | </h4>
+                        </li>
                         @if(!request()->user('account'))
                             <li class="submenu">
                                 <a href="{{ route('login') }}">GİRİŞ YAP</a>
@@ -24,7 +27,7 @@
                         @else
                             <li class="dropdown">
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                    {{ request()->user('account')->name }} <i class="glyphicon glyphicon-menu-down"></i>
+                                    <i class="glyphicon glyphicon-user"></i> {{ strtoupper(request()->user('account')->name) }} <i class="glyphicon glyphicon-menu-down"></i>
                                 </a>
 
                                 <ul class="dropdown-menu">

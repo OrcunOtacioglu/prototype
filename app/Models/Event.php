@@ -93,6 +93,9 @@ class Event extends Model
         $event->on_sale_date = Helpers::getDateTimeFormat($request->onSaleDate);
         $event->price = $request->price;
 
+        $event->small_title = $request->small_title;
+        $event->small_image = $request->small_image != null ? Helpers::uploadImage($request, 'small-images' ,'small_image') : $event->small_image;
+
         $event->created_at = Carbon::now();
         $event->updated_at = Carbon::now();
 
@@ -108,8 +111,10 @@ class Event extends Model
         $event->event_category_id = $request->category;
         $event->title = $request->title;
         $event->slug = Helpers::sluggify($request->title);
+
         $event->cover_image = $request->coverImage != null ? Helpers::uploadImage($request, 'cover-images' ,'coverImage') : $event->cover_image;
-        $event->bg_cover_image = Helpers::makeBlurredImage($request, 'cover-images', 'coverImage');
+        $event->bg_cover_image = $request->coverImage != null ? Helpers::makeBlurredImage($request, 'cover-images', 'coverImage') : $event->bg_cover_image;
+
         $event->description = $request->description;
         $event->location = $request->location;
         $event->status = $request->status;
@@ -120,13 +125,31 @@ class Event extends Model
         $event->on_sale_date = Helpers::getDateTimeFormat($request->onSaleDate);
         $event->price = $request->price;
 
+        $event->small_title = $request->small_title;
+        $event->small_image = $request->small_image != null ? Helpers::uploadImage($request, 'small-images' ,'small_image') : $event->small_image;
+
         $event->updated_at = Carbon::now();
 
         $event->save();
     }
 
-    public static function listBasedOnCategory(Collection $events, $categoryID)
+    public static function listBasedOnCategory($events, $categoryID)
     {
         return $events->where('event_category_id', '=', $categoryID);
+    }
+
+    public static function eligibleEvents(Collection $events)
+    {
+        $eligibleEvents = [];
+
+        foreach ($events as $event) {
+            $eventOnSaleDate = Carbon::parse($event->on_sale_date);
+            $eventEndDate = Carbon::parse($event->end_date);
+            if ($eventEndDate->gt(Carbon::now()) && $eventOnSaleDate->lt(Carbon::now()) && $event->status == 1) {
+                array_push($eligibleEvents, $event);
+            }
+        }
+
+        return collect($eligibleEvents);
     }
 }

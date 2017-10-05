@@ -19,7 +19,7 @@
     <!-- Custom Meta-->
     @yield('custom.meta')
 
-    <title>@yield('title', 'Neredeysen Orada') | OnlineFBB</title>
+    <title>@yield('title', 'Ana Sayfa') | Neredeysen Orada</title>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Gochi+Hand|Lato:300,400|Montserrat:400,400i,700,700i" rel="stylesheet">

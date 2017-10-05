@@ -8,7 +8,7 @@
             <i class="icon wb-more-horizontal" aria-hidden="true"></i>
         </button>
         <div class="navbar-brand navbar-brand-center site-gridmenu-toggle" data-toggle="gridmenu">
-            <img class="navbar-brand-logo" src="{{ asset('assets/img/scrabit-light.png') }}" title="Scrabit">
+            <img class="navbar-brand-logo" src="{{ asset('assets/img/ag-small-logo.png') }}" title="Scrabit">
             <span class="navbar-brand-text hidden-xs-down"> AçıkGişe</span>
         </div>
     </div>
@@ -32,7 +32,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link navbar-avatar" data-toggle="dropdown" href="#" aria-expanded="false" data-animation="scale-up" role="button">
                       <span class="avatar avatar-online">
-                        <img src="{{ asset('assets/img/scrabit-dark.png') }}" alt="{{ request()->user()->name }}">
+                        <img src="{{ asset('assets/img/ag-small-logo-dark.png') }}" alt="{{ request()->user()->name }}">
                         <i></i>
                       </span>
                     </a>

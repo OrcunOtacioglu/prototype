@@ -7,14 +7,16 @@
 @section('title', 'Edit Event')
 
 @section('page-header')
-    <a href="{{ action('EventController@show', ['slug' => $event->slug]) }}" class="btn btn-outline btn-success" data-toggle="tooltip" data-original-title="See Event Page" data-container="body">
+    <a href="{{ action('EventController@show', ['slug' => $event->slug]) }}" target="_blank" class="btn btn-outline btn-success" data-toggle="tooltip" data-original-title="See Event Page" data-container="body">
         <i class="icon wb-eye" aria-hidden="true"></i>
         <span class="hidden-sm-down">See Event</span>
     </a>
-    <button class="btn btn-outline btn-success" data-target="#eventRates" data-toggle="modal" type="button">
-        <i class="icon wb-payment" aria-hidden="true"></i>
-        <span class="hidden-sm-down">Manage Rates</span>
-    </button>
+    @if($event->is_featured)
+        <a href="{{ action('FeaturedEventController@edit', ['id' => $event->id]) }}" class="btn btn-outline btn-success" data-toggle="tooltip" data-original-title="Manage Featured Options" data-container="body">
+            <i class="icon wb-star-outline" aria-hidden="true"></i>
+            <span class="hidden-sm-down">Manage Featured Event</span>
+        </a>
+    @endif
 @stop
 
 @section('content')
@@ -95,7 +97,7 @@
                             </div>
                         </div>
 
-                        <input type="submit" value="UPDATE" class="btn btn-success">
+                        <input type="submit" value="UPDATE" class="btn btn-sm btn-success">
                         <a class="text-danger" href="{{ action('EventController@index') }}">Cancel</a>
                     </div>
 
@@ -132,8 +134,12 @@
                                 <div class="form-group">
                                     <label for="featured">Featured Event</label>
                                     <select name="featured" id="featured" class="form-control">
-                                        <option value="0">No</option>
-                                        <option value="1">Yes</option>
+                                        <option value="0" @if(!$event->is_featured)
+                                            selected
+                                                @endif>No</option>
+                                        <option value="1" @if($event->is_featured)
+                                            selected
+                                        @endif>Yes</option>
                                     </select>
                                 </div>
                             </div>
@@ -144,8 +150,12 @@
                                 <div class="form-group">
                                     <label for="status">Status</label>
                                     <select name="status" id="status" class="form-control">
-                                        <option value="0">Published</option>
-                                        <option value="1">Draft</option>
+                                        <option value="1" @if($event->status)
+                                            selected
+                                        @endif>Published</option>
+                                        <option value="0" @if(!$event->status)
+                                            selected
+                                        @endif>Draft</option>
                                     </select>
                                 </div>
                             </div>
@@ -174,6 +184,35 @@
                             </div>
                         </div>
 
+                    </div>
+
+                </div>
+
+                <div class="panel panel-primary panel-line">
+
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Event HomePage Info</h3>
+                    </div>
+
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label for="small_title">HomePage Title</label>
+                            <input type="text" class="form-control" name="small_title" id="small_title" value="{{ $event->small_title }}">
+                        </div>
+
+                        <img src="/images/small-images/{{ $event->small_image }}" alt="" class="img-thumbnail">
+
+                        <div class="form-group">
+                            <div class="input-group input-group-file" data-plugin="inputGroupFile">
+                                <input type="text" class="form-control" readonly value="{{ $event->small_image }}">
+                                <span class="input-group-btn">
+                                    <span class="btn btn-primary btn-file">
+                                        <i class="icon wb-upload"></i>
+                                        <input type="file" name="small_image" id="small_image" value="{{ $event->small_image }}">
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
                     </div>
 
                 </div>

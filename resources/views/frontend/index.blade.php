@@ -1,6 +1,6 @@
 @extends('frontend.layout')
 
-@section('title', 'Neredeysen Orada')
+@section('title', 'Ana Sayfa')
 
 @section('content')
     <main>
@@ -13,21 +13,23 @@
                 </div>
 
                 <div class="row">
-                    @foreach($events as $event)
-                        <div class="col-md-4 col-sm-6">
-                            <a href="{{ action('EventController@show', ['slug' => $event->slug]) }}">
-                                <div class="tour_container">
-                                    <div class="ribbon_3 "><span>{{ $event->eventCategory->name }}</span></div>
-                                    <div class="img_container">
-                                        <img src="images/cover-images/{{ $event->cover_image }}" class="img-responsive" alt="Image">
-                                        <div class="short_info"></div>
+                    @foreach($eligibleEvents as $event)
+                        @if($event->is_featured)
+                            <div class="col-md-4 col-sm-6">
+                                <a href="{{ action('EventController@show', ['slug' => $event->slug]) }}">
+                                    <div class="tour_container">
+                                        <div class="ribbon_3 "><span>{{ $event->eventCategory->name }}</span></div>
+                                        <div class="img_container">
+                                            <img src="images/featured-images/{{ $event->featured_image }}" class="img-responsive" alt="Image">
+                                            <div class="short_info"></div>
+                                        </div>
+                                        <div class="tour_title tcenter">
+                                            <h3>{{ $event->featured_title }} <br><br> {{ \Acikgise\Helpers\Helpers::getTurkishTime($event->start_date) }}</h3>
+                                        </div>
                                     </div>
-                                    <div class="tour_title tcenter">
-                                        <h3>{{ $event->title }} <br><br> {{ \Acikgise\Helpers\Helpers::getTurkishTime($event->start_date) }}</h3>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
+                                </a>
+                            </div>
+                        @endif
                     @endforeach
                 </div>
             </div>

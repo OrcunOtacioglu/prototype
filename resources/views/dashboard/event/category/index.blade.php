@@ -30,20 +30,22 @@
                     <tr>
                         <td>{{ $category->name }}</td>
                         <td class="text-nowrap">
-                            <a href="{{ action('Util\EventCategoryController@edit', ['id' => $category->id]) }}" class="btn btn-sm btn-icon btn-flat btn-default" data-toggle="tooltip" data-original-title="Edit">
-                                <i class="icon wb-wrench" aria-hidden="true"></i>
-                            </a>
-                            <form action="{{ action('Util\EventCategoryController@destroy', ['id' => $category->id]) }}" method="POST">
-                                {{ csrf_field() }}
-                                {{ method_field('DELETE') }}
-                                <button type="submit"
-                                        class="btn btn-sm btn-icon btn-flat btn-default"
-                                        data-toggle="tooltip"
-                                        data-original-title="Delete"
-                                >
-                                    <i class="icon wb-close" aria-hidden="true"></i>
-                                </button>
-                            </form>
+                            <div class="row">
+                                <a href="{{ action('Util\EventCategoryController@edit', ['id' => $category->id]) }}" class="btn btn-sm btn-icon btn-flat btn-default" data-toggle="tooltip" data-original-title="Edit">
+                                    <i class="icon wb-wrench" aria-hidden="true"></i>
+                                </a>
+                                <form action="{{ action('Util\EventCategoryController@destroy', ['id' => $category->id]) }}" method="POST">
+                                    {{ csrf_field() }}
+                                    {{ method_field('DELETE') }}
+                                    <button type="submit"
+                                            class="btn btn-sm btn-icon btn-flat btn-default"
+                                            data-toggle="tooltip"
+                                            data-original-title="Delete"
+                                    >
+                                        <i class="icon wb-close" aria-hidden="true"></i>
+                                    </button>
+                                </form>
+                            </div>
                         </td>
                     </tr>
                 @endforeach

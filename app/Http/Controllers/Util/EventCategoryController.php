@@ -32,7 +32,7 @@ class EventCategoryController extends Controller
         $category->name = $request->name;
         $category->save();
 
-        return redirect()->action('Util\EventCategoryController@edit', ['id' => $category->id]);
+        return redirect()->action('Util\EventCategoryController@index');
     }
 
     public function edit($id)
@@ -57,6 +57,6 @@ class EventCategoryController extends Controller
         $category = EventCategory::find($id);
         $category->delete();
 
-        return redirect()->action('Util\EventCategoryController@all');
+        return redirect()->action('Util\EventCategoryController@index');
     }
 }

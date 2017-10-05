@@ -38,7 +38,7 @@
 	<div class="page-content">
 		<div class="page-brand-info">
 			<div class="brand">
-				<img class="brand-img" src="{{ asset('assets/img/scrabit-light.png') }}" alt="Scrabit" style="width: 50px;">
+				<img class="brand-img" src="{{ asset('assets/img/ag-small-logo.png') }}" alt="Scrabit" style="width: 50px;">
 				<h2 class="brand-text font-size-40">{{ env('APP_NAME') }}</h2>
 			</div>
 			<p class="font-size-20">
@@ -56,17 +56,11 @@
 			@yield('content')
 
 			<footer class="page-copyright">
-				<p>WEBSITE BY AçıkGişe</p>
-				<p>© 2017. All RIGHT RESERVED.</p>
+				<p>WEBSITE BY <a href="http://acikgise.com">AçıkGişe</a></p>
+				<p>© 2017 All RIGHTS RESERVED.</p>
 				<div class="social">
-					<a class="btn btn-icon btn-round social-twitter mx-5" href="javascript:void(0)">
-						<i class="icon bd-twitter" aria-hidden="true"></i>
-					</a>
-					<a class="btn btn-icon btn-round social-facebook mx-5" href="javascript:void(0)">
+					<a class="btn btn-icon btn-round social-facebook mx-5" href="https://tr-tr.facebook.com/acikgise/">
 						<i class="icon bd-facebook" aria-hidden="true"></i>
-					</a>
-					<a class="btn btn-icon btn-round social-google-plus mx-5" href="javascript:void(0)">
-						<i class="icon bd-google-plus" aria-hidden="true"></i>
 					</a>
 				</div>
 			</footer>
