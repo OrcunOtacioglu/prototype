@@ -56,7 +56,7 @@
                                 <form action="{{ action('OrderController@store') }}" method="POST" style="width: 100%;">
                                     {{ csrf_field() }}
                                     <input type="hidden" name="eventID" value="{{ $event->id }}">
-                                    <input class="BuyButton__tickets__button button" type="submit" value="ŞİMDİ İZLE">
+                                    <input class="BuyButton__tickets__button button" type="submit" value="SATIN AL">
                                 </form>
 
                             </div>

@@ -50,7 +50,7 @@
                             <li class="list-group-item">
                                 <div class="media">
                                     <div class="pr-20">
-                                        <a class="avatar avatar-100 @if($event->status)
+                                        <a class="avatar @if($event->status)
                                                 avatar-online
                                                 @else
                                                 avatar-away
