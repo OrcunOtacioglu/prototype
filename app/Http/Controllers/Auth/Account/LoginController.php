@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth\Account;
 
 use App\Http\Controllers\Controller;
+use App\Models\Order;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 
@@ -39,6 +40,12 @@ class LoginController extends Controller
 
     public function redirectTo()
     {
-        return url()->previous();
+        if (request()->hasCookie('orderRef'))
+        {
+            $order = Order::where('reference', '=', Cookie::get('orderRef'))->first();
+            return '/order/' . $order->id;
+        } else {
+            return url(request()->headers->get('referer'));
+        }
     }
 }

@@ -25,12 +25,12 @@
                                 <a href="{{ route('register') }}">KAYIT OL</a>
                             </li>
                         @else
-                            <li class="dropdown">
+                            <li class="dropdown custom-nav-dropdown">
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                                     <i class="glyphicon glyphicon-user"></i> {{ strtoupper(request()->user('account')->name) }} <i class="glyphicon glyphicon-menu-down"></i>
                                 </a>
 
-                                <ul class="dropdown-menu">
+                                <ul class="dropdown-menu custom-nav-dropdown-menu">
                                     <li>
                                         <a href="{{ action('AttendeeController@show') }}">Profil</a>
                                     </li>
