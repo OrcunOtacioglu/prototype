@@ -9,7 +9,7 @@
                 <div class="coverTitle">
                     <h1 class="eventTitle">{{ $order->event->title }}</h1>
                     <div class="eventLocation">{{ $order->event->location }}</div>
-                    <div class="eventDate">{{ $order->event->start_date }}</div>
+                    <div class="eventDate">{{ \Acikgise\Helpers\Helpers::getTurkishTime($order->event->start_date) }}</div>
                 </div>
             </div>
         </div>
