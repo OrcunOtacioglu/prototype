@@ -15,10 +15,11 @@ use Intervention\Image\Facades\Image;
 class Helpers
 {
     /**
-     * Creates a slug based on given text.
+     * Creates a slug based on given string.
      *
-     * @param $string
-     * @return mixed
+     * @param $str
+     * @param array $options
+     * @return mixed|string
      */
     public static function sluggify($str, $options = array()) {
         // Make sure string is in UTF-8 and strip invalid UTF-8 characters
@@ -29,7 +30,7 @@ class Helpers
             'limit' => null,
             'lowercase' => true,
             'replacements' => array(),
-            'transliterate' => false,
+            'transliterate' => true,
         );
 
         // Merge options

@@ -150,6 +150,8 @@ class Event extends Model
             }
         }
 
-        return collect($eligibleEvents);
+        $collection = collect($eligibleEvents);
+
+        return $collection->sortBy('start_date');
     }
 }

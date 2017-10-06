@@ -15,7 +15,7 @@
                     <a href="#" class="open_close" id="close_in"><i class="icon_set_1_icon-77"></i></a>
                     <ul>
                         <li class="submenu">
-                            <h4>Online <span style="color: #f22c29">Canlı Yayın</span> İzleme Portalı | </h4>
+                            <h4>Online <span style="color: #f22c29">Canlı Yayın</span> İzleme Portalı&nbsp;&nbsp;&nbsp;&nbsp;|</h4>
                         </li>
                         @if(!request()->user('account'))
                             <li class="submenu">
