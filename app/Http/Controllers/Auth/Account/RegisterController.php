@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Auth\Account;
 
 use App\Models\Attendee;
 use App\Http\Controllers\Controller;
+use App\Models\Order;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
@@ -72,6 +74,12 @@ class RegisterController extends Controller
 
     public function redirectTo()
     {
-        return url()->previous();
+        if (request()->hasCookie('orderRef'))
+        {
+            $order = Order::where('reference', '=', Cookie::get('orderRef'))->first();
+            return '/order/' . $order->id;
+        } else {
+            return url(request()->headers->get('referer'));
+        }
     }
 }
