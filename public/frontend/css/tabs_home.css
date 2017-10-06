@@ -166,7 +166,6 @@
 	padding:15px 5px 10px 70px;
 	min-height:65px;
 	width:100%;
-	border-bottom:1px solid #ededed;
 	display:table;
 }
 .list_tours_tabs  ul li a:hover {
@@ -283,5 +282,16 @@
 
 	.mediabox p {
 		margin: 0;
+	}
+}
+
+@-moz-document url-prefix() {
+	.list_tours_tabs  ul li{
+		position:relative;
+		padding:15px 5px 20px 70px;
+	:65px;
+		width:100%;
+		border-bottom:1px solid #ededed;
+		display:table;
 	}
 }
