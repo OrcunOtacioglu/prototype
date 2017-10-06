@@ -12,7 +12,34 @@ Route::get('/', function () {
     return view('frontend.index', compact('eligibleEvents', 'slides'));
 });
 
-Auth::routes();
+/**
+ * Authentication Routes
+ */
+
+// Dashboard Authentication Routes...
+Route::get('dashboard/login', 'Auth\LoginController@showLoginForm')->name('dashboard.login');
+Route::post('dashboard/login', 'Auth\LoginController@login');
+Route::post('dashboard/logout', 'Auth\LoginController@logout')->name('dashboard.logout');
+// Dashboard Registration Routes...
+Route::get('dashboard/register', 'Auth\RegisterController@showRegistrationForm')->name('dashboard.register');
+Route::post('dashboard/register', 'Auth\RegisterController@register');
+// Dashboard Password Reset Routes...
+Route::get('dashboard/password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('dashboard.password.request');
+Route::post('dashboard/password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('dashboard.password.email');
+Route::get('dashboard/password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('dashboard.password.reset');
+Route::post('dashboard/password/reset', 'Auth\ResetPasswordController@reset');
+// Account Authentication Routes
+Route::get('login', 'Auth\Account\LoginController@showLoginForm')->name('login');
+Route::post('login', 'Auth\Account\LoginController@login');
+Route::post('logout', 'Auth\Account\LoginController@logout')->name('logout');
+// Account Registration Routes
+Route::get('register', 'Auth\Account\RegisterController@showRegistrationForm')->name('register');
+Route::post('register', 'Auth\Account\RegisterController@register');
+// Account Password Reset Routes..
+Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
+Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
 /**
  * Backend Routes

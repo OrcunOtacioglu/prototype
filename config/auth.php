@@ -107,6 +107,12 @@ return [
             'table' => 'password_resets',
             'expire' => 60,
         ],
+
+        'accounts' => [
+            'provider' => 'attendees',
+            'table' => 'attendee_password_resets',
+            'expire' => 60,
+        ]
     ],
 
 ];

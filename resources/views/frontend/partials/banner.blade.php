@@ -15,7 +15,7 @@
                          data-speed="500"
                          data-start="0"
                          data-easing="Power4.easeOut">
-                        <a href="{{ action('EventController@show', ['slug' => $slide->event->slug]) }}" class="btn btn-lg watch-now-button">Şimdi İzle</a>
+                        <a href="{{ action('EventController@show', ['slug' => $slide->event->slug]) }}" class="btn btn-lg watch-now-button">İNCELE</a>
                     </div>
                 </li>
             @endforeach
