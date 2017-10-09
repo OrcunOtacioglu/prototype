@@ -19,22 +19,22 @@
                             <span class="site-menu-title">Events</span>
                         </a>
                         <ul class="site-menu-sub">
-                            <li class="site-menu-item active">
+                            <li class="site-menu-item">
                                 <a class="animsition-link" href="{{ action('EventController@create') }}">
                                     <span class="site-menu-title">Create New Event</span>
                                 </a>
                             </li>
-                            <li class="site-menu-item active">
+                            <li class="site-menu-item">
                                 <a class="animsition-link" href="{{ action('EventController@index') }}">
                                     <span class="site-menu-title">Manage Events</span>
                                 </a>
                             </li>
-                            <li class="site-menu-item active">
+                            <li class="site-menu-item">
                                 <a class="animsition-link" href="{{ action('FeaturedEventController@index') }}">
                                     <span class="site-menu-title">Manage Featured Events</span>
                                 </a>
                             </li>
-                            <li class="site-menu-item active">
+                            <li class="site-menu-item">
                                 <a class="animsition-link" href="{{ action('Util\EventCategoryController@index') }}">
                                     <span class="site-menu-title">Manage Categories</span>
                                 </a>
@@ -49,20 +49,26 @@
                             <span class="site-menu-title">Management</span>
                         </a>
                         <ul class="site-menu-sub">
-                            <li class="site-menu-item active">
+                            <li class="site-menu-item">
                                 <a class="animsition-link" href="{{ action('Util\PageController@index') }}">
                                     <span class="site-menu-title">Page Management</span>
                                 </a>
                             </li>
-                            <li class="site-menu-item active">
+                            <li class="site-menu-item">
                                 <a class="animsition-link" href="{{ action('SliderController@index') }}">
                                     <span class="site-menu-title">Slider Management</span>
                                 </a>
                             </li>
 
-                            <li class="site-menu-item active">
+                            <li class="site-menu-item">
                                 <a class="animsition-link" href="{{ action('Util\SettingsController@index') }}">
                                     <span class="site-menu-title">Site Settings</span>
+                                </a>
+                            </li>
+
+                            <li class="site-menu-item">
+                                <a class="animsition-link" href="{{ action('Util\AssetManagementController@index') }}">
+                                    <span class="site-menu-title">Asset Management</span>
                                 </a>
                             </li>
                         </ul>
@@ -78,7 +84,7 @@
                             <span class="site-menu-title">Sales</span>
                         </a>
                         <ul class="site-menu-sub">
-                            <li class="site-menu-item active">
+                            <li class="site-menu-item">
                                 <a class="animsition-link" href="{{ action('OrderController@index') }}">
                                     <span class="site-menu-title">All Sales</span>
                                 </a>
@@ -93,7 +99,7 @@
                             <span class="site-menu-title">Invoices</span>
                         </a>
                         <ul class="site-menu-sub">
-                            <li class="site-menu-item active">
+                            <li class="site-menu-item">
                                 <a class="animsition-link" href="{{ action('Finance\InvoiceController@index') }}">
                                     <span class="site-menu-title">Manage Invoices</span>
                                 </a>

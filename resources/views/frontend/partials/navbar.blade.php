@@ -1,18 +1,20 @@
 <header>
     <div class="container pdt-5">
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div id="logo_home">
                     <h1><a href="{{ url('/') }}" title="NeredeysenOrada">Neredeysen Orada</a></h1>
                 </div>
             </div>
-            <nav class="col-md-8 col-sm-8 col-xs-8">
+            <nav class="col-md-9 col-sm-9 col-xs-9">
                 <a class="cmn-toggle-switch cmn-toggle-switch__htx open_close" href="javascript:void(0);"><span>Mobil Menu</span></a>
                 <div class="main-menu">
                     <div id="header_menu">
                         <img src="{{ asset('frontend/img/logo.png') }}" alt="Neredeysen Orada" data-retina="true">
                     </div>
-                    <a href="#" class="open_close" id="close_in"><i class="icon_set_1_icon-77"></i></a>
+                    <a href="#" class="open_close" id="close_in">
+                        <i class="icon_set_1_icon-77"></i>
+                    </a>
                     <ul>
                         <li class="submenu">
                             <h4>Online <span style="color: #f22c29">Canlı Yayın</span> İzleme Portalı&nbsp;&nbsp;&nbsp;&nbsp;|</h4>
