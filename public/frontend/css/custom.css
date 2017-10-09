@@ -371,3 +371,7 @@ footer {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
 }
+
+.pt-pb-40 {
+    padding: 40px 0 40px 0;
+}

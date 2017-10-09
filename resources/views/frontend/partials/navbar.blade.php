@@ -20,8 +20,39 @@
                             <h4>Online <span style="color: #f22c29">Canlı Yayın</span> İzleme Portalı&nbsp;&nbsp;&nbsp;&nbsp;|</h4>
                         </li>
                         @if(!request()->user('account'))
-                            <li class="submenu">
-                                <a href="{{ route('login') }}">GİRİŞ YAP</a>
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="cursor: pointer">
+                                    GİRİŞ YAP <span class="caret"></span>
+                                </a>
+                                <div class="dropdown-menu" style="min-width: 260px;">
+                                    <form role="form" action="{{ route('login') }}" method="POST">
+
+                                        {{ csrf_field() }}
+
+                                        <div class="col-xs-12 col-sm-12 col-md-12" style="margin-top: 10px;">
+                                            <div class="form-group">
+                                                <input type="text" name="email" id="email" class="form-control input-lg" placeholder="E-posta">
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-12 col-md-12">
+                                            <div class="form-group">
+                                                <input type="password" name="password" id="password" class="form-control input-lg" placeholder="Şifre">
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-12 col-md-12">
+                                            <div class="form-group">
+                                                <input type="checkbox" name="beni-hatirla" value="Beni Hatırla" style="position: relative; vertical-align: middle; bottom: 3px;"> Beni Hatırla
+                                            </div>
+                                        </div>
+                                        <div class="pt-15">
+                                            <div class="col-xs-12 col-md-12">
+                                                <input type="submit" value="GİRİŞ YAP" class="BuyButton__tickets__button button"></div>
+                                        </div>
+                                    </form>
+                                    <div class="col-xs-12 col-md-12 pt-15 text-center">
+                                        <a href="sifremi-unuttum.html">Şifremi Unuttum</a>
+                                    </div>
+                                </div>
                             </li>
                             <li class="submenu">
                                 <a href="{{ route('register') }}">KAYIT OL</a>

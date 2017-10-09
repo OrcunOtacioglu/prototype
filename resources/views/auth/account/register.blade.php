@@ -3,68 +3,50 @@
 @section('title', 'Kayıt Ol')
 
 @section('form')
-    <form class="form-horizontal" method="POST" action="{{ route('register') }}">
+    <form role="form" method="POST" action="{{ route('register') }}">
         {{ csrf_field() }}
-
-        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-            <label for="name" class="col-md-4 control-label">Ad</label>
-
-            <div class="col-md-6">
-                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
-
-                @if ($errors->has('name'))
-                    <span class="help-block">
-                        <strong>{{ $errors->first('name') }}</strong>
-                    </span>
-                @endif
+        <div class="row">
+            <div class="col-xs-6 col-sm-6 col-md-3">
+                <div class="form-group">
+                    <input type="text" name="name" id="name" class="form-control input-lg" placeholder="Ad" tabindex="1">
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-3">
+                <div class="form-group">
+                    <input type="text" name="surname" id="surname" class="form-control input-lg" placeholder="Soyad" tabindex="2">
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-3">
+                <div class="form-group">
+                    <input type="email" name="email" id="email" class="form-control input-lg" placeholder="E-posta" tabindex="3">
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-3">
+                <div class="form-group">
+                    <input type="text" name="phone" id="phone" class="form-control input-lg" placeholder="Telefon" tabindex="4">
+                </div>
             </div>
         </div>
 
-        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-            <label for="email" class="col-md-4 control-label">E-Mail</label>
-
-            <div class="col-md-6">
-                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
-
-                @if ($errors->has('email'))
-                    <span class="help-block">
-                        <strong>{{ $errors->first('email') }}</strong>
-                    </span>
-                @endif
+        <div class="row">
+            <div class="col-xs-6 col-sm-6 col-md-3">
+                <div class="form-group">
+                    <input type="password" name="password" id="password" class="form-control input-lg" placeholder="Şifre" tabindex="6">
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-3">
+                <div class="form-group">
+                    <input type="password" name="password_confirmation" id="password_confirmation" class="form-control input-lg" placeholder="Şifre Tekrar" tabindex="7">
+                </div>
             </div>
         </div>
-
-        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-            <label for="password" class="col-md-4 control-label">Parola</label>
-
-            <div class="col-md-6">
-                <input id="password" type="password" class="form-control" name="password" required>
-
-                @if ($errors->has('password'))
-                    <span class="help-block">
-                        <strong>{{ $errors->first('password') }}</strong>
-                    </span>
-                @endif
+        <div class="row">
+            <div class="col-xs-9 col-sm-9 col-md-9">
+                <input type="checkbox" name="gizlilik"> <a href="gizlilik.html" target="_blank">Gizlilik Sözleşmesini</a> okudum ve kabul ediyorum.
             </div>
         </div>
-
-        <div class="form-group">
-            <label for="password-confirm" class="col-md-4 control-label">Parola Doğrulama</label>
-
-            <div class="col-md-6">
-                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-6 col-md-offset-4">
-                <button type="submit" class="btn btn-primary">
-                    Kayıt Ol
-                </button>
-            </div>
-            <div class="col-md-6 col-md-offset-4">
-                <p>Zaten üye misiniz? <a href="{{ route('login') }}">buradan giriş yapın</a></p>
-            </div>
+        <div class="row pt-15">
+            <div class="col-xs-6 col-md-3"><input type="submit" value="Kayıt Ol" class="BuyButton__tickets__button button" tabindex="7"></div>
         </div>
     </form>
 
