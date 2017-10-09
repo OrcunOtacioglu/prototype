@@ -15,22 +15,20 @@
         @foreach(\App\Models\Util\EventCategory::all() as $category)
             <section id="section-{{ $category->id }}">
                 <div class="row list_tours_tabs">
-                    <div class="col-md-4">
-                        <ul>
-                            @foreach(\App\Models\Event::listBasedOnCategory($eligibleEvents, $category->id) as $event)
-                                <div class="col-md-4 col-sm-6 col-xs-12">
-                                    <li>
-                                        <div>
-                                            <a href="{{ action('EventController@show', ['slug' => $event->slug]) }}">
-                                                <figure><img src="/images/small-images/{{ $event->small_image }}" class="img-rounded"></figure>
-                                                <h3>{{ $event->small_title }} <br><span class="small-description">{{ Acikgise\Helpers\Helpers::getTurkishTime($event->start_date) }}</span></h3>
-                                            </a>
-                                        </div>
-                                    </li>
-                                </div>
-                            @endforeach
-                        </ul>
-                    </div>
+                    <ul>
+                        @foreach(\App\Models\Event::listBasedOnCategory($eligibleEvents, $category->id) as $event)
+                            <div class="col-md-4 col-sm-6 col-xs-12">
+                                <li>
+                                    <div>
+                                        <a href="{{ action('EventController@show', ['slug' => $event->slug]) }}">
+                                            <figure><img src="/images/small-images/{{ $event->small_image }}" class="img-rounded"></figure>
+                                            <h3>{{ $event->small_title }} <br><span class="small-description">{{ Acikgise\Helpers\Helpers::getTurkishTime($event->start_date) }}</span></h3>
+                                        </a>
+                                    </div>
+                                </li>
+                            </div>
+                        @endforeach
+                    </ul>
                 </div>
             </section>
         @endforeach
