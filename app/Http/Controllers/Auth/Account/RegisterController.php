@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth\Account;
 use App\Models\Attendee;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Validator;
@@ -52,6 +53,8 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => 'required|string|max:255',
+            'surname' => 'required|string|max:255',
+            'phone' => 'required|string',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
         ]);
@@ -68,7 +71,12 @@ class RegisterController extends Controller
         return Attendee::create([
             'name' => $data['name'],
             'email' => $data['email'],
-            'password' => bcrypt($data['password'])
+            'password' => bcrypt($data['password']),
+            'remember_token' => '',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+            'surname' => $data['surname'],
+            'phone' => $data['phone'],
         ]);
     }
 

@@ -22,6 +22,8 @@ class Attendee extends Authenticable
      */
     protected $fillable = [
         'name',
+        'surname',
+        'phone',
         'email',
         'password'
     ];
