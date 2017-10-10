@@ -3,6 +3,7 @@
 namespace App\Listeners;
 
 use App\Events\EventCreated;
+use Carbon\Carbon;
 use GuzzleHttp\Client;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -40,9 +41,9 @@ class SendEventInfo
                 'Description' => $object->event->description,
                 'Location' => $object->event->location,
                 'Price' => $object->event->price,
-                'StartDate' => $object->event->start_date,
-                'EndDate' => $object->event->end_date,
-                'OnSaleDate' => $object->event->on_sale_date,
+                'StartDate' => Carbon::parse($object->event->start_date)->format('Y-m-d H:i'),
+                'EndDate' => Carbon::parse($object->event->end_date)->format('Y-m-d H:i'),
+                'OnSaleDate' => Carbon::parse($object->event->on_sale_date)->format('Y-m-d H:i'),
                 'Featured' => $object->event->is_featured,
                 'Status' => $object->event->status === 1 ? 'Published' : 'Draft',
                 'Listing' => $object->event->listing === 0 ? 'Public' : 'Private'

@@ -28,50 +28,49 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="container">
-        <div class="row" style="background: #fff; margin-bottom: 50px;">
-            <div class="col-md-8">
+        <div class="container">
+            <div class="row" style="background: #fff; margin-bottom: 50px;">
+                <div class="col-md-8">
 
-                <h3>Etkinlik Detayı</h3>
-                <p>{{ $event->description }}</p>
+                    <h3>Etkinlik Detayı</h3>
+                    <p>{{ $event->description }}</p>
 
-            </div>
+                </div>
 
-            <div class="col-md-4">
+                <div class="col-md-4">
 
-                <div class="BuyButton">
-                    <div>
-                        <div class="BuyButton__container">
-                            <div class="BuyButton__price">
-                                <div class="BuyButton__price__label">
-                                    <span>Fiyat</span>
-                                </div>
-                                <div class="BuyButton__price__amount">
-                                    <div>
-                                        <span>{{ $event->price }} TL</span>
+                    <div class="BuyButton">
+                        <div>
+                            <div class="BuyButton__container">
+                                <div class="BuyButton__price">
+                                    <div class="BuyButton__price__label">
+                                        <span>Fiyat</span>
+                                    </div>
+                                    <div class="BuyButton__price__amount">
+                                        <div>
+                                            <span>{{ $event->price }} TL</span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="BuyButton__tickets">
-                                <div class="BuyButton__details__container">
+                                <div class="BuyButton__tickets">
+                                    <div class="BuyButton__details__container">
+
+                                    </div>
+
+                                    <form action="{{ action('OrderController@store') }}" method="POST" style="width: 100%;">
+                                        {{ csrf_field() }}
+                                        <input type="hidden" name="eventID" value="{{ $event->id }}">
+                                        <input class="BuyButton__tickets__button button" type="submit" value="SATIN AL">
+                                    </form>
 
                                 </div>
-
-                                <form action="{{ action('OrderController@store') }}" method="POST" style="width: 100%;">
-                                    {{ csrf_field() }}
-                                    <input type="hidden" name="eventID" value="{{ $event->id }}">
-                                    <input class="BuyButton__tickets__button button" type="submit" value="SATIN AL">
-                                </form>
-
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
+            @include('frontend.ticketType.show')
         </div>
-        @include('frontend.ticketType.show')
     </div>
 @stop
 
