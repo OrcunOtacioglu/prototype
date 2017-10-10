@@ -50,15 +50,23 @@ class RegisterController extends Controller
      * @param array $data
      * @return mixed
      */
-    protected function validator(array $data)
+    public function validator(array $data)
     {
+        $messages = [
+            'name.required' => 'Ad alanını doldurmak zorunludur.',
+            'surname.required' => 'Soyad alanını doldurmak zorunludur.',
+            'phone.required' => 'Telefon numarası alanını doldurmak zorunludur.',
+            'email.required' => 'Email alanını doldurmak zorunludur.',
+            'password.required' => 'Parola alanını doldurmak zorunludur.'
+        ];
+
         return Validator::make($data, [
-            'name' => 'required|string|max:255',
-            'surname' => 'required|string|max:255',
-            'phone' => 'required|string',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
-        ]);
+                'name' => 'required|string|max:255',
+                'surname' => 'required|string|max:255',
+                'phone' => 'required|string',
+                'email' => 'required|string|email|max:255|unique:users',
+                'password' => 'required|string|min:6|confirmed',
+        ], $messages);
     }
 
     /**
