@@ -29,10 +29,10 @@
                 <h3>Şirket Profili</h3>
                 <ul>
                     <li>
-                        <a href="http://www.fbbentertainment.com/hakkimizda" target="_blank">Hakkımızda</a>
+                        <a href="http://www.fbbentertainment.com/#about" target="_blank">Hakkımızda</a>
                     </li>
                     <li>
-                        <a href="http://www.fbbentertainment.com/iletisim" target=”_blank”>İletişim</a>
+                        <a href="http://www.fbbentertainment.com/#contact" target=”_blank”>İletişim</a>
                     </li>
                 </ul>
             </div>
