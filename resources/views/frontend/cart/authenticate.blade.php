@@ -24,7 +24,7 @@
         <div class="row" style="background: #fff;">
             <div class="col-md-8">
                 <h3>Giriş Yap</h3>
-                <p>Kayıtlı kullanıcı iseniz giriş yaparak, kayıtlı değilseniz kayıt oalrak devamediniz.</p>
+                <p>Kayıtlı kullanıcı iseniz giriş yaparak, kayıtlı değilseniz kayıt olarak devam ediniz.</p>
                 @include('frontend.partials.authentication')
             </div>
 
