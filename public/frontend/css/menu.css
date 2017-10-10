@@ -10,8 +10,8 @@
 
 /* Submenu styles */
 .main-menu ul li a {display: block; line-height: 20px;padding:10px;}
-.main-menu > ul > li:hover > a.dropdown-toggle{    background: #fcb131;
-    color: #fff;}
+.main-menu > ul > li > .dropdown a {color: #333;     padding: 0 20px 15px 20px; font-size:14px;}
+.main-menu > ul > li > .dropdown a:hover {color: #fcb131;     padding: 0 20px 15px 20px; font-size:14px;}
 			
 /*First level styles */			
 .main-menu > ul > li > a {color: #333;     padding: 0 20px 15px 20px; font-size:14px;}
@@ -60,7 +60,7 @@ header#colored.sticky .main-menu > ul > li > a {color: #fff;}
 a.dropdown-toggle.icon-search{display: inline-block;}	
 
 /* IE9 fix that affect the pages with parallax header (ex.single_hotel.html); Issue: submenu disappear when move the cursor to the submenu (only if you did not scroll the page) */
-.ie9 a.show-submenu, .ie9 a.show-submenu-mega{ background:url(../img/fix_ie_9_menu.png);}
+.ie9 a.show-submenu, .ie9 a.show-submenu-mega{ background:url(../img/fix_ie_9_menu.html);}
 
 /* All styles for screen size between 992px and 1200px
 ================================================== */
