@@ -14,12 +14,17 @@
 
 @section('content')
     <div class="coverPhoto">
-        <div class="coverPhotoContainer" style="background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('/images/cover-images/{{$event->bg_cover_image}}');">
-            <div class="coverPhotoImage" style="background-image: linear-gradient(rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.15) 70%, rgba(0, 0, 0, 0.8) 100%), url('/images/cover-images/{{$event->cover_image}}'), linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5));">
-                <div class="coverTitle">
-                    <h1 class="eventTitle">{{ $event->title }}</h1>
-                    <div class="eventLocation">{{ $event->location }}</div>
-                    <div class="eventDate">{{ \Acikgise\Helpers\Helpers::getTurkishTime($event->start_date) }}</div>
+        <div style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/images/cover-images/{{$event->bg_cover_image}}'); background-repeat: no-repeat; background-size: cover">
+            <div class="container">
+                <div class="row">
+                    <div class="coverPhotoImage">
+                        <img src="/images/cover-images/{{$event->cover_image}}" alt="">
+                        <div class="coverTitle">
+                            <h1 class="eventTitle">{{ $event->title }}</h1>
+                            <div class="eventLocation">{{ $event->location }}</div>
+                            <div class="eventDate">{{ \Acikgise\Helpers\Helpers::getTurkishTime($event->start_date) }}</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

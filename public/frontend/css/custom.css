@@ -22,23 +22,19 @@ header {
     overflow: hidden;
 }
 
-
-
 .coverPhotoImage {
     display: table;
     background-size: contain;
     background-repeat: no-repeat;
     z-index: 3;
-    margin-top: 70px;
+    margin-top: 45px;
     position: relative;
 }
 
 .coverPhotoImage img{
     position: relative;
 	width: 100%;
-     border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.2); 
+    box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.2);
     
 }
 
@@ -51,28 +47,16 @@ header {
     padding: 1.75rem;
     text-align: left;
     width: 100%;
-background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.65) 73%); 
-background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 73%); 
-background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 73%); 
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=0 );
+    background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.65) 73%); 
+    background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 73%); 
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 73%); 
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=0 );
 }
 
-.coverPhotoContainer {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    display: flex;
-    -webkit-box-pack: center;
-    justify-content: center;
-    background-size: cover;
-}
-
-.coverPhotoImage {
+/*.coverPhotoImage {
     width: 1170px;
     height: 380px;
-    background-size: cover;
+    background-size: contain;
     border-top-left-radius: 6px;
     border-top-right-radius: 6px;
     display: flex;
@@ -80,7 +64,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
     z-index: 3;
     margin-top: 70px;
     position: relative;
-}
+}*/
 
 .coverPhoto .coverPhotoImage .eventTitle {
     color: inherit;
@@ -376,5 +360,14 @@ footer {
     padding: 40px 0 40px 0;
 }
 
-.main-menu > ul > li > .dropdown a {color: #333;     padding: 0 20px 15px 20px; font-size:14px;}
-.main-menu > ul > li > .dropdown a:hover {color: #fcb131;     padding: 0 20px 15px 20px; font-size:14px;}
+@media (min-width: 992px){
+    .border-right-login{
+        border-right: solid 1px #ddd;
+    }
+}
+
+.checkboxFive {
+	width: 25px;
+	margin: 20px 100px;
+	position: relative;
+}
