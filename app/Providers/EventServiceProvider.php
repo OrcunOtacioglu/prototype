@@ -14,11 +14,20 @@ class EventServiceProvider extends ServiceProvider
      */
     protected $listen = [
         'App\Events\OrderSuccessful' => [
-            'App\Listeners\ReserveTickets',
+            'App\Listeners\SendOrderInfo',
             'App\Listeners\SendOrderConfirmationMail',
             'App\Listeners\ClearShoppingCart',
             'App\Listeners\GenerateInvoice',
         ],
+        'App\Events\EventCreated' => [
+            'App\Listeners\SendEventInfo'
+        ],
+        'App\Events\EventUpdated' => [
+            'App\Listeners\SendUpdatedEventInfo'
+        ],
+        'App\Events\UserRegistered' => [
+            'App\Listeners\SendUserInfo'
+        ]
     ];
 
     /**
