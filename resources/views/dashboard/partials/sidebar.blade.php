@@ -65,12 +65,6 @@
                                     <span class="site-menu-title">Site Settings</span>
                                 </a>
                             </li>
-
-                            <li class="site-menu-item">
-                                <a class="animsition-link" href="{{ action('Util\AssetManagementController@index') }}">
-                                    <span class="site-menu-title">Asset Management</span>
-                                </a>
-                            </li>
                         </ul>
                     </li>
 
