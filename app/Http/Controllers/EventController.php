@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\EventCreated;
+use App\Events\EventUpdated;
 use App\Models\Event;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -41,6 +43,7 @@ class EventController extends Controller
     public function store(Request $request)
     {
         $event = Event::createNew($request);
+        event(new EventCreated($event));
 
         return redirect()->action('EventController@edit', ['id' => $event->id]);
     }
@@ -81,6 +84,9 @@ class EventController extends Controller
     public function update(Request $request, $id)
     {
         Event::updateEvent($request, $id);
+        $event = Event::find($id);
+
+        event(new EventUpdated($event));
 
         return redirect()->action('EventController@edit', ['id' => $id]);
     }

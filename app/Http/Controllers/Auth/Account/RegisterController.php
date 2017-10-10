@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth\Account;
 
+use App\Events\UserRegistered;
 use App\Models\Attendee;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
@@ -68,6 +69,8 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        event(new UserRegistered($data));
+
         return Attendee::create([
             'name' => $data['name'],
             'email' => $data['email'],
