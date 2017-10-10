@@ -375,3 +375,6 @@ footer {
 .pt-pb-40 {
     padding: 40px 0 40px 0;
 }
+
+.main-menu > ul > li > .dropdown a {color: #333;     padding: 0 20px 15px 20px; font-size:14px;}
+.main-menu > ul > li > .dropdown a:hover {color: #fcb131;     padding: 0 20px 15px 20px; font-size:14px;}

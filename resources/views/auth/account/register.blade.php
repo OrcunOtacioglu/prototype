@@ -42,7 +42,7 @@
         </div>
         <div class="row">
             <div class="col-xs-9 col-sm-9 col-md-9">
-                <input type="checkbox" name="gizlilik"> <a href="gizlilik.html" target="_blank">Gizlilik Sözleşmesini</a> okudum ve kabul ediyorum.
+                <input type="checkbox" name="gizlilik"><a href="{{ action('Util\PageController@show', ['slug' => 'gizlilik-ve-kisisel-verilerin-korunumu']) }}" target="_blank">Gizlilik Sözleşmesini</a> okudum ve kabul ediyorum.
             </div>
         </div>
         <div class="row pt-15">
