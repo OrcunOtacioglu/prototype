@@ -6,12 +6,12 @@
 
 @section('content')
     <div class="coverPhoto">
-        <div style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/frontend/img/coverBG.jpg'); background-repeat: no-repeat; background-size: cover">
+        <div style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/frontend/img/loginImg.jpg'); background-repeat: no-repeat; background-size: cover">
             <div class="container">
                 <div class="row">
                     <div class="coverPhotoImage">
-                        <img src="/frontend/img/coverBG.jpg" alt="">
-                        <h1 class="eventTitle">{{ $page->title }}</h1>
+                        <img src="/frontend/img/loginImg.jpg" alt="">
+                        <h1 class="eventTitle" style="color: #fff">{{ $page->title }}</h1>
                     </div>
                 </div>
             </div>
