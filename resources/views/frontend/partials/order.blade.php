@@ -5,14 +5,14 @@
     </div>
     <div class="col-md-10">
         <div class="row">
-            <div class="col-md-5">
+            <div class="col-md-4">
                 <p>Yayın Adı: {{ $order->event->title }}</p>
             </div>
             <div class="col-md-4">
-                <p>Yayın Tarihi: {{ \Acikgise\Helpers\Helpers::getTurkishTime($order->event->start_date) }}</p>
+                <p>Tarih: {{ \Acikgise\Helpers\Helpers::getTurkishTime($order->event->start_date) }}</p>
             </div>
-            <div class="col-md-3">
-                <p>Toplam Tutar: {{ $order->total }} TL</p>
+            <div class="col-md-4">
+                <p>Tutar: {{ $order->total }} TL</p>
             </div>
         </div>
     </div>

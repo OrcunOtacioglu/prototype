@@ -148,7 +148,7 @@
             </div>
 
             <div class="checkbox">
-                <input type="checkbox">
+                <input type="checkbox" required>
                     <small>Şirketiniz’in www.neredeysenorada.com uzantılı sayfasında detayları yer alan
                     <a href="{{ action('Util\PageController@show', ['slug' => 'gizlilik-ve-kisisel-verilerin-korunumu']) }}">
                         “Kişisel Verilerin Korunması Kanunu (“Kanun”) Hakkındaki Bilgilendirme metnini”
