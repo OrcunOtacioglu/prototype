@@ -228,36 +228,43 @@
 @section('footer.scripts')
     <script src="{{ asset('assets/js/dashboard/plugins/input-group-file.js') }}"></script>
     <script src="{{ asset('assets/js/dashboard/plugins/bootstrap-datetimepicker.min.js') }}"></script>
+    <script src="{{ asset('assets/js/dashboard/plugins/bootstrap-datetimepicker.tr.js') }}" charset="UTF-8"></script>
     <script>
         $('#startDate').datetimepicker({
-            weekStart: 1,
-            todayBtn: 1,
-            autoclose: 1,
-            todayHighlight: 1,
-            startView: 2,
-            forceParse: 0,
-            showMeridian: 1,
-            minuteStep: 10
+            weekStart: 0,
+            autoclose: true,
+            startView: 'month',
+            minView: 'hour',
+            maxView: 'decade',
+            todayBtn: true,
+            todayHighlight: true,
+            language: 'tr',
+            minuteStep: 15,
+            showMeridian: false
         });
         $('#endDate').datetimepicker({
-            weekStart: 1,
-            todayBtn: 1,
-            autoclose: 1,
-            todayHighlight: 1,
-            startView: 2,
-            forceParse: 0,
-            showMeridian: 1,
-            minuteStep: 10
+            weekStart: 0,
+            autoclose: true,
+            startView: 'month',
+            minView: 'hour',
+            maxView: 'decade',
+            todayBtn: true,
+            todayHighlight: true,
+            language: 'tr',
+            minuteStep: 15,
+            showMeridian: false
         });
         $('#onSaleDate').datetimepicker({
-            weekStart: 1,
-            todayBtn: 1,
-            autoclose: 1,
-            todayHighlight: 1,
-            startView: 2,
-            forceParse: 0,
-            showMeridian: 1,
-            minuteStep: 10
+            weekStart: 0,
+            autoclose: true,
+            startView: 'month',
+            minView: 'hour',
+            maxView: 'decade',
+            todayBtn: true,
+            todayHighlight: true,
+            language: 'tr',
+            minuteStep: 15,
+            showMeridian: false
         });
     </script>
 @stop

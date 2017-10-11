@@ -49,7 +49,10 @@
                                 <label for="event_id">Related Event</label>
                                 <select name="event_id" id="event_id" class="form-control">
                                     @foreach(\App\Models\Event::all() as $event)
-                                        <option value="{{ $event->id }}">{{ $event->title }}</option>
+                                        <option value="{{ $event->id }}"
+                                            @if($event->id === $slider->event_id)
+                                                selected
+                                            @endif>{{ $event->title }}</option>
                                     @endforeach
                                 </select>
                             </div>

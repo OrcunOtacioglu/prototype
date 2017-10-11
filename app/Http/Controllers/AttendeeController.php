@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Attendee;
 use App\Models\Order;
+use Carbon\Carbon;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -65,39 +67,7 @@ class AttendeeController extends Controller
             return redirect()->action('Auth\Account\LoginController@showLoginForm');
         }
 
-        if (!$request->hasCookie('orderRef')) {
-            return redirect()->action('CartController@proceed');
-        } else {
-            $order = Order::where('reference', '=', $request->cookie('orderRef'))->first();
-        }
-
-        $paymentInfo = [
-            'clientid' => "100300000",
-            'amount' => $order->total,
-            'oid' => $order->reference,
-            'okUrl' => "http://test.onlinefbb.com/order-complete",
-            'failUrl' => "http://test.onlinefbb.com/order-complete",
-            'rnd' => microtime(),
-            'taksit' => "",
-            'islemtipi' => "Auth",
-            'storekey' => "123456"
-        ];
-//        $clientId = "100300000";
-//        $amount = "9.95";
-//        $oid = "";
-//        $okUrl = "http://development.dev/training/fail.php";
-//        $failUrl = "http://development.dev/training/fail.php";
-//        $rnd = microtime();
-//
-//        $taksit = "";
-//        $islemtipi="Auth";
-//        $storekey = "123456";
-
-        $hashstr = $paymentInfo['clientid'] . $paymentInfo['oid'] . $paymentInfo['amount'] . $paymentInfo['okUrl'] . $paymentInfo['failUrl'] . $paymentInfo['islemtipi'] . $paymentInfo['taksit'] . $paymentInfo['rnd'] . $paymentInfo['storekey'];
-
-        $hash = base64_encode(pack('H*',sha1($hashstr)));
-
-        return view('frontend.account.show', compact('attendee', 'order', 'hash', 'paymentInfo'));
+        return view('frontend.account.show', compact('attendee'));
     }
 
     /**
@@ -120,7 +90,18 @@ class AttendeeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $attendee = Attendee::find($id);
+
+        $attendee->name = $request->name;
+        $attendee->surname = $request->surname;
+        $attendee->phone = $request->phone;
+        $attendee->email = $request->email;
+
+        $attendee->updated_at = Carbon::now();
+
+        $attendee->save();
+
+        return redirect()->action('AttendeeController@show');
     }
 
     /**
