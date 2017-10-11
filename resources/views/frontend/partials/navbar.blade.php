@@ -50,7 +50,7 @@
                                         </div>
                                     </form>
                                     <div class="col-xs-12 col-md-12 pt-15 text-center">
-                                        <a href="sifremi-unuttum.html">Şifremi Unuttum</a>
+                                        <a href="{{ route('password.request') }}">Şifremi Unuttum</a>
                                     </div>
                                 </div>
                             </li>

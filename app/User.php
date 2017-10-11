@@ -3,7 +3,6 @@
 namespace App;
 
 use App\Models\Account;
-use App\Models\Authority\Permission;
 use App\Models\Authority\Role;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
