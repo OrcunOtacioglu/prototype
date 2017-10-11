@@ -1,89 +1,89 @@
 @extends('frontend.layout')
 
-@section('title', 'Account')
+@section('title', 'Hesabım')
 
 @section('content')
-    <div style="
-            background: url('/images/cover-images/coverBG.jpg');
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center center;
-            min-height: 450px;
-            ">
-        <div style="
-            background: rgba(0,0,0,0.4);
-            display: block;
-            z-index: 100;
-            height: 100% !important;
-            min-height: 450px;
-        "></div>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8">
-                <h1>{{ $attendee->name }}</h1>
-                <p>{{ $attendee->email }}</p>
+    <div class="coverPhoto">
+        <div style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/frontend/img/loginImg.jpg'); background-repeat: no-repeat; background-size: cover">
+            <div class="container">
+                <div class="row">
+                    <div class="coverPhotoImage">
+                        <img src="/frontend/img/loginImg.jpg" alt="">
+                        <div class="coverTitle">
+                            <h1 class="eventTitle">{{ $attendee->name }}  {{ $attendee->surname }}</h1>
+                            <div class="eventLocation">{{ $attendee->email }}</div>
+                        </div>
+                    </div>
+                </div>
             </div>
+        </div>
 
-            <div class="col-md-4">
-                @if(\Gloudemans\Shoppingcart\Facades\Cart::count() > 0)
-                    <h2>Your Order</h2>
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Etkinlik</th>
-                                <th>Kategori</th>
-                                <th>Adet</th>
-                                <th>Fiyat</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach(\Gloudemans\Shoppingcart\Facades\Cart::content() as $item)
-                                <tr>
-                                    <td>{{ $item->options->event }}</td>
-                                    <td>{{ $item->name }}</td>
-                                    <td>{{ $item->qty }}</td>
-                                    <td>{{ $item->price }}</td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <td colspan="2"></td>
-                                <td>ARA TOPLAM</td>
-                                <td>{{ \Gloudemans\Shoppingcart\Facades\Cart::subtotal() }}</td>
-                            </tr>
-                            <tr>
-                                <td colspan="2"></td>
-                                <td>VERGİ</td>
-                                <td>{{ \Gloudemans\Shoppingcart\Facades\Cart::tax() }}</td>
-                            </tr>
-                            <tr>
-                                <td colspan="2"></td>
-                                <td>TOPLAM</td>
-                                <td>{{ \Gloudemans\Shoppingcart\Facades\Cart::total() }}</td>
-                            </tr>
-                        </tfoot>
-                    </table>
-                    <form action="https://entegrasyon.asseco-see.com.tr/fim/est3Dgate" method="POST">
-                        <input type="hidden" name="clientid" value="{{ $paymentInfo['clientid'] }}">
-                        <input type="hidden" name="amount" value="{{ $paymentInfo['amount'] }}">
-                        <input type="hidden" name="oid" value="{{ $paymentInfo['oid'] }}">
-                        <input type="hidden" name="okUrl" value="{{ $paymentInfo['okUrl'] }}">
-                        <input type="hidden" name="failUrl" value="{{ $paymentInfo['failUrl'] }}" >
-                        <input type="hidden" name="islemtipi" value="{{ $paymentInfo['islemtipi'] }}" >
-                        <input type="hidden" name="taksit" value="{{ $paymentInfo['taksit'] }}">
-                        <input type="hidden" name="rnd" value="{{ $paymentInfo['rnd'] }}" >
-                        <input type="hidden" name="hash" value="{{ $hash }}" >
+        <div class="container">
+            <div class="row" style="background: #fff;">
+                <div class="col-md-4">
+                    <h2>Profil Bilgileri</h2>
 
-                        <input type="hidden" name="storetype" value="3d_pay_hosting" >
+                    <form action="{{ action('AttendeeController@update', ['id' => $attendee->id]) }}" method="POST">
+                        {{ csrf_field() }}
+                        {{ method_field('PUT') }}
 
-                        <input type="hidden" name="refreshtime" value="10" >
-                        <input type="hidden" name="lang" value="tr">
-                        <input type="hidden" name="currency" value="949">
-                        <input type="submit" class="btn btn-success btn-block" value="Ödeme Yap">
+                        <div class="form-group">
+                            <label for="name">Ad</label>
+                            <input type="text" name="name" id="name" class="form-control" value="{{ $attendee->name }}" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="name">Soyad</label>
+                            <input type="text" name="surname" id="surname" class="form-control" value="{{ $attendee->surname }}" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="name">Telefon</label>
+                            <input type="text" name="phone" id="phone" class="form-control" value="{{ $attendee->phone }}" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="name">Email</label>
+                            <input type="email" name="email" id="email" class="form-control" value="{{ $attendee->email }}" required>
+                        </div>
+
+                        <input type="submit" value="BİLGİLERİ GÜNCELLE" class="btn btn-block btn-primary">
                     </form>
-                @endif
+                </div>
+                
+                <div class="col-md-8">
+                    <h2>Biletlerim</h2>
+
+                    @if($attendee->orders->count() < 1)
+                        <div class="alert alert-info" role="alert">
+                            Satın almış olduğunuz bir yayın bulunmamaktadır!
+                        </div>
+                    @else
+                        <div class="row">
+                            <div class="col-md-3"></div>
+                            <div class="col-md-3"><h4>Yayın Adı</h4></div>
+                            <div class="col-md-3"><h4>Başlangıç Saati</h4></div>
+                            <div class="col-md-3"><h4>İşlemler</h4></div>
+                        </div>
+
+                        @foreach($attendee->orders as $order)
+                        <div class="row orders">
+                            <div class="col-md-3">
+                                <img src="images/small-images/{{ $order->event->small_image }}" class="img-rounded" alt="">
+                            </div>
+                            <div class="col-md-3">
+                                <p>{{ $order->event->title }}</p>
+                            </div>
+                            <div class="col-md-3">
+                                <p>{{ \Acikgise\Helpers\Helpers::getTurkishTime($order->event->start_date) }}</p>
+                            </div>
+                            <div class="col-md-3">
+                                <a href="#" class="btn btn-sm btn-default">Şimdi İzle</a>
+                            </div>
+                        </div>
+                        @endforeach
+                    @endif
+                </div>
             </div>
         </div>
     </div>
