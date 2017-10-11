@@ -32,7 +32,7 @@
 
                 <div class="col-md-4">
                     <h3>Ödeme Seçenekleri</h3>
-                    <p>"Ödeme Yap" butonuna basarak veya bu siteyi kullanarak, Kullanım Koşulları'nı da kabul etmiş sayılırsınız.</p>
+                    <p>"Ödeme Yap" butonuna basarak veya bu siteyi kullanarak, <a href="{{ action('Util\PageController@show', ['slug' => 'kullanim-kosullari']) }}" target="_blank">Kullanım Şartları</a>'nı da kabul etmiş sayılırsınız.</p>
                     <form action="{{ \Acikgise\Helpers\Helpers::getGatewayFormUrl() }}" method="POST">
                         <input type="hidden" name="clientid" value="{{ $paymentInfo['clientid'] }}">
                         <input type="hidden" name="amount" value="{{ $paymentInfo['amount'] }}">

@@ -14,11 +14,11 @@
         <tbody>
         <tr class="second-tr">
             <td class="img-td">
-                <img src="images/small-images/{{ $order->event->small_image }}" alt="" class="img-responsive">
+                <img src="/images/small-images/{{ $order->event->small_image }}" alt="" class="img-responsive">
             </td>
             <td class="default-td">{{ $order->event->title }}</td>
             <td class="default-td">{{ \Acikgise\Helpers\Helpers::getTurkishTime($order->event->start_date) }}</td>
-            <td class="default-td">{{ $order->total }}</td>
+            <td class="default-td"><strong>{{ $order->total }} TL</strong></td>
         </tr>
         </tbody>
     </table>
