@@ -9,7 +9,6 @@
             background-repeat: no-repeat;
             background-position: center center;
             min-height: 450px;
-            margin-bottom: 50px;
             ">
         <div style="
             background: rgba(0,0,0,0.4);
