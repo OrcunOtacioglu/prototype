@@ -4,7 +4,7 @@
 
 @section('content')
     <div style="
-            background: url('/images/cover-images/coverBG.jpg');
+            background: url('/frontend/img/loginImg.jpg');
             background-size: cover;
             background-repeat: no-repeat;
             background-position: center center;

@@ -46,7 +46,7 @@
                 <div class="panel-body">
                     <ul class="list-group list-group-dividered list-group-full">
 
-                        @foreach(\App\Models\Event::all() as $event)
+                        @foreach(\App\Models\Event::paginate(10) as $event)
                             <li class="list-group-item">
                                 <div class="media">
                                     <div class="pr-20">
