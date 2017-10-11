@@ -43,7 +43,7 @@ return [
 
         'account' => [
             'driver' => 'session',
-            'provider' => 'accounts',
+            'provider' => 'attendees',
         ],
 
         'api' => [
@@ -75,7 +75,7 @@ return [
             'model' => App\User::class,
         ],
 
-        'accounts' => [
+        'attendees' => [
             'driver' => 'eloquent',
             'model' => \App\Models\Attendee::class,
         ],
@@ -108,7 +108,7 @@ return [
             'expire' => 60,
         ],
 
-        'accounts' => [
+        'attendees' => [
             'provider' => 'attendees',
             'table' => 'attendee_password_resets',
             'expire' => 60,

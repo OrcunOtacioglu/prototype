@@ -19,7 +19,7 @@
         </div>
 
         <div class="container">
-            <div class="row" style="background: #fff;">
+            <div class="row" style="background: #fff; padding: 40px;">
                 <div class="col-md-4">
                     <h2>Profil Bilgileri</h2>
 
@@ -47,7 +47,9 @@
                             <input type="email" name="email" id="email" class="form-control" value="{{ $attendee->email }}" required>
                         </div>
 
-                        <input type="submit" value="BİLGİLERİ GÜNCELLE" class="btn btn-block btn-primary">
+                        <button type="submit" class="btn btn-primary btn-block" style="background-color: #fcb131; border: none; padding: 6px 25px;">
+                            Bilgileri Güncelle
+                        </button>
                     </form>
                 </div>
                 
@@ -55,7 +57,7 @@
                     <h2>Biletlerim</h2>
 
                     @if($attendee->orders->count() < 1)
-                        <div class="alert alert-info" role="alert">
+                        <div class="alert alert-warning" role="alert">
                             Satın almış olduğunuz bir yayın bulunmamaktadır!
                         </div>
                     @else

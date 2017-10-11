@@ -23,11 +23,7 @@ Route::post('dashboard/logout', 'Auth\LoginController@logout')->name('dashboard.
 // Dashboard Registration Routes...
 Route::get('dashboard/register', 'Auth\RegisterController@showRegistrationForm')->name('dashboard.register');
 Route::post('dashboard/register', 'Auth\RegisterController@register');
-// Dashboard Password Reset Routes...
-Route::get('dashboard/password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('dashboard.password.request');
-Route::post('dashboard/password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('dashboard.password.email');
-Route::get('dashboard/password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('dashboard.password.reset');
-Route::post('dashboard/password/reset', 'Auth\ResetPasswordController@reset');
+
 // Account Authentication Routes
 Route::get('login', 'Auth\Account\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\Account\LoginController@login');

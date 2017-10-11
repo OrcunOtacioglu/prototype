@@ -4991,3 +4991,32 @@ header.sticky nav.full-horizontal{
 -moz-box-shadow: inset 0px -72px 119px -29px rgba(0,0,0,0.45);
 box-shadow: inset 0px -72px 119px -29px rgba(0,0,0,0.45);
 }
+
+table.order-table {
+	background-color: #fff;
+	width: 100%;
+}
+
+.first-th{
+	padding: 5px 5px 5px 15px; border: solid 1px #fff
+}
+
+.default-th{
+	padding: 5px 5px 5px 15px; border: solid 1px #fff; background-color: #353535; color:#fff
+}
+
+.second-tr{
+	border: solid 1px #fff;
+}
+
+.img-td{
+	padding: 5px 5px; text-align: center; background-color: #efefef; width: 56px
+}
+
+.default-td{
+	padding: 5px 5px 5px 15px; border: solid 1px #fff; background-color: #efefef;
+}
+
+.p-10{
+	padding: 10px;
+}

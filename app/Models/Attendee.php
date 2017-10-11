@@ -4,10 +4,15 @@ namespace App\Models;
 
 
 use App\Models\Finance\Invoice;
+use Illuminate\Contracts\Auth\CanResetPassword;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticable;
 
-class Attendee extends Authenticable
+class Attendee extends Authenticable implements CanResetPassword
 {
+
+    use Notifiable;
+
     /**
      * Tablename.
      *

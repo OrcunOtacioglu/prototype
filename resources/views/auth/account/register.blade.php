@@ -9,7 +9,6 @@
             background-repeat: no-repeat;
             background-position: center center;
             min-height: 450px;
-            margin-bottom: 50px;
             ">
         <div style="
             background: rgba(0,0,0,0.4);
@@ -21,7 +20,7 @@
     </div>
 
     <div class="container">
-        <div class="row" style="background: #fff;">
+        <div class="row">
             <div class="col-md-12">
                 <h3>Giriş Yap</h3>
                 <p>Kayıtlı kullanıcı iseniz giriş yaparak, kayıtlı değilseniz kayıt olarak devam ediniz.</p>
