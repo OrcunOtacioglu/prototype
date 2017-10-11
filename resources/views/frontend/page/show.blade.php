@@ -6,18 +6,22 @@
 
 @section('content')
     <div class="coverPhoto">
-        <div class="coverPhotoContainer" style="background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('/frontend/img/coverBG.jpg');">
-            <div class="coverPhotoImage" style="background-image: linear-gradient(rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.15) 70%, rgba(0, 0, 0, 0.8) 100%), url('/frontend/img/coverBG.jpg'), linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5));">
-                <div class="coverTitle">
-                    <h1 class="eventTitle">{{ $page->title }}</h1>
+        <div style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/frontend/img/coverBG.jpg'); background-repeat: no-repeat; background-size: cover">
+            <div class="container">
+                <div class="row">
+                    <div class="coverPhotoImage">
+                        <img src="/frontend/img/coverBG.jpg" alt="">
+                        <h1 class="eventTitle">{{ $page->title }}</h1>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                {!! $page->content !!}
+
+        <div class="container">
+            <div class="row" style="background: #fff">
+                <div class="col-md-12">
+                    {!! $page->content !!}
+                </div>
             </div>
         </div>
     </div>
