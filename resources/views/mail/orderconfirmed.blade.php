@@ -54,7 +54,7 @@
                             <div class="col-md-4">
                                 <p>Toplam Tutar: {{ $item->unit_price * $item->quantity }}</p>
                                 <a href="#" class="btn btn-block btn-default">Bu Sayfayı Yazdır</a>
-                                <a href="#" class="btn btn-block btn default">Fatura Al</a>
+                                <a href="{{ $order->video_link }}" class="btn btn-block btn-primary">Şimdi İzle</a>
                             </div>
                         </div>
                     </div>
