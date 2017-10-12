@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\UserUpdated;
 use App\Models\Attendee;
 use App\Models\Order;
 use Carbon\Carbon;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class AttendeeController extends Controller
 {
@@ -90,16 +92,42 @@ class AttendeeController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $messages = [
+            'name.required' => 'Ad alanı zorunludur.',
+            'surname.required' => 'Soyad alanı zorunludur.',
+            'phone.required' => 'Telefon alanı zorunludur',
+            'email.required' => 'Email alanı zorunludur.',
+            'email.unique' => 'Bu email adresi kullanımda.',
+            'password.required' => 'Parola alanı zorunludur.'
+        ];
+
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string',
+            'surname' => 'required|string',
+            'phone' => 'required|string',
+            'email' => 'required|string|unique:attendees',
+            'password' => 'required|string|min:6|confirmed'
+        ], $messages);
+
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
         $attendee = Attendee::find($id);
 
         $attendee->name = $request->name;
         $attendee->surname = $request->surname;
         $attendee->phone = $request->phone;
         $attendee->email = $request->email;
+        $attendee->password = bcrypt($request->password);
 
         $attendee->updated_at = Carbon::now();
 
         $attendee->save();
+
+        event(new UserUpdated($attendee, $request));
 
         return redirect()->action('AttendeeController@show');
     }

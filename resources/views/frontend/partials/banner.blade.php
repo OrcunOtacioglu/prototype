@@ -4,7 +4,7 @@
         <ul>
 
             @foreach($slides as $slide)
-                <li data-transition="fade" data-slotamount="7" data-masterspeed="500" data-saveperformance="on" data-title="{{ $slide->event->title }}">
+                <li class="hide-slide" data-transition="fade" data-slotamount="7" data-masterspeed="500" data-saveperformance="on" data-title="{{ $slide->event->title }}">
                     <!-- MAIN IMAGE -->
                     <img src="{{ asset('img/slides_bg/dummy.png') }}" alt="slidebg1" data-lazyload="images/slider-images/{{ $slide->img_path }}" data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
                     <div class="tp-caption skewfromrightshort fadeout"

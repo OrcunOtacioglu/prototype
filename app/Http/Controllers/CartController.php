@@ -211,13 +211,13 @@ class CartController extends Controller
 
             } else {
 
-                $results = "Ödeme Islemi Basarisiz. Hata = " . $ErrMsg;
+                $results = "Ödeme Islemi Basarisiz. Kredi kartı ile 3D ödeme işleminiz başarısız sonuçlanmıştır.";
                 return view('frontend.payment.fail', compact('results'));
 
             }
 
         } else {
-            $results = "3D Islemi basarisiz. " . $request->mdErrorMsg;
+            $results = "Ödeme Islemi Basarisiz. Kredi kartı ile 3D ödeme işleminiz başarısız sonuçlanmıştır.";
             return view('frontend.payment.fail', compact('results'));
         }
     }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth\Account;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
 
@@ -27,6 +28,18 @@ class LoginController extends Controller
     public function showLoginForm()
     {
         return view('auth.account.login');
+    }
+
+    protected function validateLogin(Request $request)
+    {
+        $messages = [
+            'email.required' => 'Email adresi girmek zorunludur.',
+        ];
+
+        $this->validate($request, [
+            $this->username() => 'required|string',
+            'password' => 'required|string'
+        ], $messages);
     }
 
     /**

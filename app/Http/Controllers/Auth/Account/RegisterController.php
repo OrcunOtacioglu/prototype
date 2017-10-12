@@ -81,6 +81,7 @@ class RegisterController extends Controller
 
         return Attendee::create([
             'name' => $data['name'],
+            'reference' => $data['email'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
             'remember_token' => '',
