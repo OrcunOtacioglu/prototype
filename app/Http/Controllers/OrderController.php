@@ -86,6 +86,9 @@ class OrderController extends Controller
 
                 $hash = base64_encode(pack('H*',sha1($hashstr)));
 
+                $order->attendee_id = request()->user('account')->id;
+                $order->save();
+
 
                 return view('frontend.cart.proceed', compact('order', 'paymentInfo', 'hash'));
             }

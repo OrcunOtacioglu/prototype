@@ -80,7 +80,7 @@
                                 <p>{{ \Acikgise\Helpers\Helpers::getTurkishTime($order->event->start_date) }}</p>
                             </div>
                             <div class="col-md-3">
-                                <a href="#" class="btn btn-sm btn-default">Şimdi İzle</a>
+                                <a href="{{ $order->video_link }}" class="btn btn-sm btn-default">Şimdi İzle</a>
                             </div>
                         </div>
                         @endforeach
