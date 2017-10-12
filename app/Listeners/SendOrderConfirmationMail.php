@@ -2,7 +2,7 @@
 
 namespace App\Listeners;
 
-use App\Events\OrderSuccessful;
+use App\Events\OrderCompleted;
 use App\Mail\OrderConfirmation;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -23,10 +23,10 @@ class SendOrderConfirmationMail
     /**
      * Handle the event.
      *
-     * @param  OrderSuccessful  $event
+     * @param  OrderCompleted  $event
      * @return void
      */
-    public function handle(OrderSuccessful $event)
+    public function handle(OrderCompleted $event)
     {
         Mail::to($event->order->attendee)->send(new OrderConfirmation($event->order));
     }
