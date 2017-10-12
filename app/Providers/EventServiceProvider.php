@@ -29,6 +29,9 @@ class EventServiceProvider extends ServiceProvider
         ],
         'App\Events\UserRegistered' => [
             'App\Listeners\SendUserInfo'
+        ],
+        'App\Events\UserUpdated' => [
+            'App\Listeners\SendUpdatedUserInfo',
         ]
     ];
 
