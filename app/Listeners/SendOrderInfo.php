@@ -50,7 +50,7 @@ class SendOrderInfo
         ]);
         $data = \GuzzleHttp\json_decode($response->getBody());
 
-        $videoLink = Helpers::decrypt(env('API_ENCRYPT_KEY'), Helpers::encrypt(env('API_ENCRYPT_KEY'), $data->Ciphertext));
+        $videoLink = Helpers::decrypt(env('API_ENCRYPT_KEY'), $data->Ciphertext);
 
         $order = Order::find($event->order->id);
         $order->video_link = $videoLink;
