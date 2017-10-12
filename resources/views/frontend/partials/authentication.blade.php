@@ -9,7 +9,7 @@
 
 <!-- Tab panes -->
 <div class="tab-content">
-    <div role="tabpanel" class="tab-pane active" id="authenticate">
+    <div role="tabpanel" class="tab-pane" id="authenticate">
         <form class="form-horizontal" method="POST" action="{{ route('login') }}">
             {{ csrf_field() }}
 
@@ -65,7 +65,7 @@
             </div>
         </form>
     </div>
-    <div role="tabpanel" class="tab-pane" id="registration">
+    <div role="tabpanel" class="tab-pane active" id="registration">
         <form class="form-horizontal" method="POST" action="{{ route('register') }}">
             {{ csrf_field() }}
 
