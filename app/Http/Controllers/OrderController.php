@@ -10,6 +10,7 @@ use App\Models\Util\Settings;
 use Carbon\Carbon;
 use function Couchbase\defaultDecoder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cookie;
 
 class OrderController extends Controller
 {
@@ -61,7 +62,10 @@ class OrderController extends Controller
     public function show(Request $request, Order $order)
     {
         if (Helpers::checkAuthenticated($request)) {
-            if (!$request->hasCookie('orderRef')) {
+            if (!$request->hasCookie('orderRef') || $request->cookie('orderRef') != $order->reference) {
+                cookie()->queue(
+                    Cookie::forget('orderRef')
+                );
                 return redirect()->to('/');
             } else {
                 $config = Helpers::getProcessorConfig();

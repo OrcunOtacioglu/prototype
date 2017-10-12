@@ -2,7 +2,9 @@
 
 namespace App\Listeners;
 
+use App\Events\OrderCompleted;
 use App\Events\OrderSuccessful;
+use Carbon\Carbon;
 use GuzzleHttp\Client;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -28,7 +30,7 @@ class SendOrderInfo
     public function handle(OrderSuccessful $event)
     {
         $client = new Client();
-        $client->request('POST', env('API_URL') . '/sale', [
+        $response = $client->request('POST', env('API_URL') . '/sale', [
             'json' => [
                 'Credential' => [
                     'Username' => env('API_USER'),
@@ -42,6 +44,15 @@ class SendOrderInfo
                 'Email' => $event->order->attendee->email,
                 'Phone' => $event->order->phone,
             ]
-        ]);
+        ])->getBody();
+
+        $videoLink = $response->Ciphertext;
+
+        $event->order->video_link = $videoLink;
+        $event->order->updated_at = Carbon::now();
+
+        $event->order->save();
+
+        event(new OrderCompleted($event->order));
     }
 }

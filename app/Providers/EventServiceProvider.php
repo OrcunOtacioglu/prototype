@@ -15,9 +15,11 @@ class EventServiceProvider extends ServiceProvider
     protected $listen = [
         'App\Events\OrderSuccessful' => [
             'App\Listeners\SendOrderInfo',
-            'App\Listeners\SendOrderConfirmationMail',
             'App\Listeners\ClearShoppingCart',
             'App\Listeners\GenerateInvoice',
+        ],
+        'App\Events\OrderCompleted' => [
+            'App\Listeners\SendOrderConfirmationMail',
         ],
         'App\Events\EventCreated' => [
             'App\Listeners\SendEventInfo'
