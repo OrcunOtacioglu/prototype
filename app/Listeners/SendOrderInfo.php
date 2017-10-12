@@ -4,6 +4,7 @@ namespace App\Listeners;
 
 use App\Events\OrderCompleted;
 use App\Events\OrderSuccessful;
+use App\Models\Order;
 use Carbon\Carbon;
 use GuzzleHttp\Client;
 use Illuminate\Queue\InteractsWithQueue;
@@ -50,11 +51,10 @@ class SendOrderInfo
 
         $videoLink = $data->Ciphertext;
 
-        $event->order->video_link = $videoLink;
-        $event->order->updated_at = Carbon::now();
-
-        $event->order->save();
-
+        $order = Order::find($event->order->id);
+        $order->video_link = $videoLink;
+        $order->updated_at = Carbon::now();
+        $order->save();
         event(new OrderCompleted($event->order));
     }
 }
