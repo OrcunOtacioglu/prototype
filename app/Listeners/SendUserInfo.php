@@ -2,6 +2,7 @@
 
 namespace App\Listeners;
 
+use Acikgise\Helpers\Helpers;
 use App\Events\UserRegistered;
 use GuzzleHttp\Client;
 use Illuminate\Queue\InteractsWithQueue;
@@ -28,18 +29,18 @@ class SendUserInfo
     public function handle(UserRegistered $event)
     {
         $client = new Client();
-        $client->request('POST', env('API_URL') . '/customer', [
+        $res = $client->request('POST', env('API_URL') . '/customer', [
             'json' => [
                 'Credential' => [
                     'Username' => env('API_USER'),
                     'Password' => env('API_PASSWORD')
                 ],
-                'ReferenceEmail' => $event->data['email'],
+//                'ReferenceEmail' => $event->data['email'],
                 'Firstname' => $event->data['name'],
                 'Lastname' => $event->data['surname'],
                 'Email' => $event->data['email'],
                 'Phone' => $event->data['phone'],
-                'Password' => encrypt($event->data['password'])
+                'Password' => Helpers::encrypt($event->data['password'])
             ]
         ]);
     }

@@ -42,11 +42,13 @@ class SendOrderInfo
                 'Firstname' => $event->order->attendee->name,
                 'Lastname' => $event->order->attendee->surname,
                 'Email' => $event->order->attendee->email,
-                'Phone' => $event->order->phone,
+                'Phone' => '',
+                'Password' => ''
             ]
-        ])->getBody();
+        ]);
+        $data = \GuzzleHttp\json_decode($response->getBody());
 
-        $videoLink = $response->Ciphertext;
+        $videoLink = $data->Ciphertext;
 
         $event->order->video_link = $videoLink;
         $event->order->updated_at = Carbon::now();
