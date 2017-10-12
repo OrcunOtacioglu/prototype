@@ -2,6 +2,7 @@
 
 namespace App\Listeners;
 
+use Acikgise\Helpers\Helpers;
 use App\Events\OrderCompleted;
 use App\Events\OrderSuccessful;
 use App\Models\Order;
@@ -49,7 +50,7 @@ class SendOrderInfo
         ]);
         $data = \GuzzleHttp\json_decode($response->getBody());
 
-        $videoLink = $data->Ciphertext;
+        $videoLink = Helpers::decrypt(env('API_ENCRYPT_KEY'), Helpers::encrypt(env('API_ENCRYPT_KEY'), $data->Ciphertext));
 
         $order = Order::find($event->order->id);
         $order->video_link = $videoLink;

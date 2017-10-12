@@ -40,7 +40,7 @@ class SendUserInfo
                 'Lastname' => $event->data['surname'],
                 'Email' => $event->data['email'],
                 'Phone' => $event->data['phone'],
-                'Password' => Helpers::encrypt($event->data['password'])
+                'Password' => Helpers::encrypt(env('API_ENCRYPT_KEY'), $event->data['password'])
             ]
         ]);
     }

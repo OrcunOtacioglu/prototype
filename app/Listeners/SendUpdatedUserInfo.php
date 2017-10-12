@@ -40,7 +40,7 @@ class SendUpdatedUserInfo
                 'Lastname' => $event->attendee->surname,
                 'Email' => $event->attendee->email,
                 'Phone' => $event->attendee->phone,
-                'Password' => Helpers::encrypt($event->request->password)
+                'Password' => Helpers::encrypt(env('API_ENCRYPT_KEY'), $event->request->password)
             ]
         ]);
     }

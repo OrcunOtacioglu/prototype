@@ -14,6 +14,9 @@ use Intervention\Image\Facades\Image;
 
 class Helpers
 {
+
+    public static $encryptKey = 'YUl1tOn1RLZG5Dcof5JiivqcMcYMp5gh';
+
     /**
      * Creates a slug based on given string.
      *
@@ -254,13 +257,27 @@ class Helpers
         return json_decode($gateway->default_config, true);
     }
 
-    public static function encrypt($string)
+    public static function encrypt($key, $string)
     {
-        $key = 'YUl1tOn1RLZG5Dcof5JiivqcMcYMp5gh';
+        if (!isset($key)) {
+            $key = static::$encryptKey;
+        }
 
         $iv = substr($key, 0, 16);
         $key = substr(hash('sha256', $key, true), 0, 32);
 
         return base64_encode(openssl_encrypt($string, 'aes-256-cbc', $key, OPENSSL_RAW_DATA, $iv));
+    }
+
+    public static function decrypt($key, $string)
+    {
+        if (!isset($key)) {
+            $key = static::$encryptKey;
+        }
+
+        $iv = substr($key, 0, 16);
+        $key = substr(hash('sha256', $key, true), 0, 32);
+
+        return openssl_decrypt(base64_decode($string), 'aes-256-cbc', $key, OPENSSL_RAW_DATA, $iv);
     }
 }
