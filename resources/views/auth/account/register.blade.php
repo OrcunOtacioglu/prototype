@@ -22,8 +22,8 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h3>Giriş Yap</h3>
-                <p>Kayıtlı kullanıcı iseniz giriş yaparak, kayıtlı değilseniz kayıt olarak devam ediniz.</p>
+                <h3>Kayıt Ol</h3>
+                <p>Aşağıdaki formda bilgilerinizi doldurarak kayıt olabilirsiniz.</p>
                 @include('frontend.partials.authentication')
             </div>
         </div>

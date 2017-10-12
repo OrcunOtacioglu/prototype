@@ -1,15 +1,26 @@
 <ul class="nav nav-tabs nav-justified" role="tablist">
-    <li role="presentation" class="active">
-        <a href="#authenticate" aria-controls="home" role="tab" data-toggle="tab">GİRİŞ YAP</a>
-    </li>
-    <li role="presentation">
-        <a href="#registration" aria-controls="profile" role="tab" data-toggle="tab">KAYIT OL</a>
-    </li>
+    @if(request()->is('register'))
+        <li role="presentation" class="active">
+            <a href="#registration" aria-controls="profile" role="tab" data-toggle="tab">KAYIT OL</a>
+        </li>
+        <li role="presentation">
+            <a href="#authenticate" aria-controls="home" role="tab" data-toggle="tab">GİRİŞ YAP</a>
+        </li>
+    @else
+        <li role="presentation" class="active">
+            <a href="#authenticate" aria-controls="home" role="tab" data-toggle="tab">GİRİŞ YAP</a>
+        </li>
+        <li role="presentation">
+            <a href="#registration" aria-controls="profile" role="tab" data-toggle="tab">KAYIT OL</a>
+        </li>
+    @endif
 </ul>
 
 <!-- Tab panes -->
 <div class="tab-content">
-    <div role="tabpanel" class="tab-pane" id="authenticate">
+    <div role="tabpanel" class="tab-pane @if(!request()->is('register'))
+            active
+        @endif" id="authenticate">
         <form class="form-horizontal" method="POST" action="{{ route('login') }}">
             {{ csrf_field() }}
 
@@ -65,7 +76,9 @@
             </div>
         </form>
     </div>
-    <div role="tabpanel" class="tab-pane active" id="registration">
+    <div role="tabpanel" class="tab-pane @if(request()->is('register'))
+            active
+        @endif" id="registration">
         <form class="form-horizontal" method="POST" action="{{ route('register') }}">
             {{ csrf_field() }}
 
