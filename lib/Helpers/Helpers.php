@@ -253,4 +253,14 @@ class Helpers
         $gateway = PaymentGateway::find($settings->default_payment_processor_id);
         return json_decode($gateway->default_config, true);
     }
+
+    public static function encrypt($string)
+    {
+        $key = 'YUl1tOn1RLZG5Dcof5JiivqcMcYMp5gh';
+
+        $iv = substr($key, 0, 16);
+        $key = substr(hash('sha256', $key, true), 0, 32);
+
+        return base64_encode(openssl_encrypt($string, 'aes-256-cbc', $key, OPENSSL_RAW_DATA, $iv));
+    }
 }
