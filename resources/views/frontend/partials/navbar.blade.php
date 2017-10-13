@@ -20,7 +20,7 @@
                             <h4>Online <span style="color: #f22c29">Canlı Yayın</span> İzleme Portalı&nbsp;&nbsp;&nbsp;&nbsp;|</h4>
                         </li>
                         @if(!request()->user('account'))
-                            <li class="dropdown">
+                            <li class="dropdown{{ $errors->count() > 0 ? ' open' : '' }}">
                                 <a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="cursor: pointer">
                                     GİRİŞ YAP <span class="caret"></span>
                                 </a>
@@ -30,13 +30,25 @@
                                         {{ csrf_field() }}
 
                                         <div class="col-xs-12 col-sm-12 col-md-12" style="margin-top: 10px;">
-                                            <div class="form-group">
+                                            <div class="form-group{{ $errors->has('email') ? 'has-error' : '' }}">
                                                 <input type="text" name="email" id="email" class="form-control input-lg" placeholder="E-posta">
+
+                                                @if($errors->has('email'))
+                                                    <span class="help-block">
+                                                        <strong>{{ $errors->first('email') }}</strong>
+                                                    </span>
+                                                @endif
                                             </div>
                                         </div>
                                         <div class="col-xs-12 col-sm-12 col-md-12">
-                                            <div class="form-group">
+                                            <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                                                 <input type="password" name="password" id="password" class="form-control input-lg" placeholder="Şifre">
+
+                                                @if ($errors->has('password'))
+                                                    <span class="help-block">
+                                                        <strong>{{ $errors->first('password') }}</strong>
+                                                    </span>
+                                                @endif
                                             </div>
                                         </div>
                                         <div class="col-xs-12 col-sm-12 col-md-12">
