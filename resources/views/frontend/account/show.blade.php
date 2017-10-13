@@ -75,7 +75,7 @@
                             <div class="col-md-3"></div>
                             <div class="col-md-3"><h4>Yayın Adı</h4></div>
                             <div class="col-md-3"><h4>Başlangıç Saati</h4></div>
-                            <div class="col-md-3"><h4>İşlemler</h4></div>
+                            <div class="col-md-3 text-center"><h4>İşlemler</h4></div>
                         </div>
 
                         @foreach($attendee->orders as $order)
@@ -89,8 +89,13 @@
                             <div class="col-md-3">
                                 <p>{{ \Acikgise\Helpers\Helpers::getTurkishTime($order->event->start_date) }}</p>
                             </div>
-                            <div class="col-md-3">
-                                <a href="{{ $order->video_link }}" class="btn btn-sm btn-default">Şimdi İzle</a>
+                            <div class="col-md-3 text-center">
+                                <a href="{{ $order->video_link }}" class="btn btn-sm btn-default @if(!Acikgise\Helpers\Helpers::checkVideoAvailability($order))
+                                    not-active
+                                @endif">Şimdi İzle</a> <br>
+                                @if(!\Acikgise\Helpers\Helpers::checkVideoAvailability($order))
+                                    <small>Yayın saati bekleniyor.</small>
+                                @endif
                             </div>
                         </div>
                         @endforeach

@@ -4,6 +4,7 @@
 namespace Acikgise\Helpers;
 
 
+use App\Models\Order;
 use App\Models\PaymentGateway;
 use App\Models\Util\Settings;
 use Carbon\Carbon;
@@ -279,5 +280,18 @@ class Helpers
         $key = substr(hash('sha256', $key, true), 0, 32);
 
         return openssl_decrypt(base64_decode($string), 'aes-256-cbc', $key, OPENSSL_RAW_DATA, $iv);
+    }
+
+    public static function checkVideoAvailability(Order $order)
+    {
+        $startTime = Carbon::parse($order->event->start_date)->subMinutes(30);
+        $now = Carbon::now();
+
+        if ($startTime->gt($now))
+        {
+            return false;
+        } else {
+            return true;
+        }
     }
 }
