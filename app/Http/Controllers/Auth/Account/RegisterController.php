@@ -99,7 +99,7 @@ class RegisterController extends Controller
             $order = Order::where('reference', '=', Cookie::get('orderRef'))->first();
             return '/order/' . $order->id;
         } else {
-            return url(request()->headers->get('referer'));
+            return '/';
         }
     }
 }
