@@ -83,7 +83,7 @@
                             </thead>
 
                             <tbody>
-                            @foreach($attendee->orders as $order)
+                            @foreach(\App\Models\Attendee::getCompletedOrders($attendee->orders) as $order)
                                 <tr>
                                     <td class="img-td">
                                         <img src="/images/small-images/{{ $order->event->small_image }}" alt="" class="img-responsive">
