@@ -272,10 +272,6 @@ class Helpers
 
     public static function decrypt($key, $string)
     {
-        if (!isset($key)) {
-            $key = static::$encryptKey;
-        }
-
         $iv = substr($key, 0, 16);
         $key = substr(hash('sha256', $key, true), 0, 32);
 
