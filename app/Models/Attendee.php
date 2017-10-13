@@ -4,6 +4,7 @@ namespace App\Models;
 
 
 use App\Models\Finance\Invoice;
+use App\Notifications\CustomResetPassword as ResetPasswordNotification;
 use Illuminate\Contracts\Auth\CanResetPassword;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticable;
@@ -56,5 +57,10 @@ class Attendee extends Authenticable implements CanResetPassword
     public function invoices()
     {
         return $this->hasMany(Invoice::class);
+    }
+
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new ResetPasswordNotification($token));
     }
 }
