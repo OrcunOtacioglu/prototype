@@ -31,6 +31,8 @@ class OrderConfirmation extends Mailable
      */
     public function build()
     {
-        return $this->view('mail.orderconfirmed');
+        return $this->from('bilgi@neredeysenorada.com', 'Neredeysen Orada')
+                    ->subject('NeredeysenOrada Sipariş Onayı & İzleme Bağlantısı')
+                    ->view('mail.orderconfirmed');
     }
 }
