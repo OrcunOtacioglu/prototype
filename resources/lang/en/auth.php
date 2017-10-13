@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'failed' => 'Kayıtlarımızda böyle bir email adresi bulunamadı.',
+    'failed' => 'Kullanıcı giriş bilgilerinizi kontrol ediniz.',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
 
 ];
