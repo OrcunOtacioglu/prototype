@@ -63,4 +63,17 @@ class Attendee extends Authenticable implements CanResetPassword
     {
         $this->notify(new ResetPasswordNotification($token));
     }
+
+    public static function getCompletedOrders($orders)
+    {
+        $completedOrders = [];
+
+        foreach ($orders as $order) {
+            if ($order->status === 1) {
+                array_push($completedOrders, $order);
+            }
+        }
+
+        return collect($completedOrders);
+    }
 }
