@@ -10,6 +10,7 @@ use Carbon\Carbon;
 use GuzzleHttp\Client;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Support\Facades\Log;
 
 class SendOrderInfo
 {
@@ -49,6 +50,13 @@ class SendOrderInfo
             ]
         ]);
         $data = \GuzzleHttp\json_decode($response->getBody());
+
+        if (!$data->IsSuccessfull) {
+            Log::error('Order creation unsuccessfull!', [
+                'order' => $event->order->reference,
+                'messages' => $data->messages
+            ]);
+        }
 
         $videoLink = Helpers::decrypt(env('API_ENCRYPT_KEY'), $data->Ciphertext);
 

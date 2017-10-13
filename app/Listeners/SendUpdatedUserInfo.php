@@ -7,6 +7,7 @@ use App\Events\UserUpdated;
 use GuzzleHttp\Client;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Support\Facades\Log;
 
 class SendUpdatedUserInfo
 {
@@ -43,5 +44,14 @@ class SendUpdatedUserInfo
                 'Password' => Helpers::encrypt(env('API_ENCRYPT_KEY'), $event->request->password)
             ]
         ]);
+
+        $data = \GuzzleHttp\json_decode($res->getBody());
+
+        if (!$data->IsSuccessfull) {
+            Log::error('User update unsuccessfull!', [
+                'user' => $event->attendee,
+                'messages' => $data->messages
+            ]);
+        }
     }
 }

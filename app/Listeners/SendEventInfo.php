@@ -7,6 +7,7 @@ use Carbon\Carbon;
 use GuzzleHttp\Client;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Support\Facades\Log;
 
 class SendEventInfo
 {
@@ -29,7 +30,7 @@ class SendEventInfo
     public function handle(EventCreated $object)
     {
         $client = new Client();
-        $client->request('POST', env('API_URL') . '/event', [
+        $res = $client->request('POST', env('API_URL') . '/event', [
             'json' => [
                 'Credential' => [
                     'Username' => env('API_USER'),
@@ -49,5 +50,14 @@ class SendEventInfo
                 'Listing' => $object->event->listing === 0 ? 'Public' : 'Private'
             ]
         ]);
+
+        $data = \GuzzleHttp\json_decode($res->getBody());
+
+        if (!$data->IsSuccessfull) {
+            Log::error('Event creation unsuccessfull!', [
+                'event' => $object->event,
+                'messages' => $data->messages
+            ]);
+        }
     }
 }
