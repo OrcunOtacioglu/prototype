@@ -170,7 +170,7 @@ return [
         Intervention\Image\ImageServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
         Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
-
+        Sentry\SentryLaravel\SentryLaravelServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -232,6 +232,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
         'Image' => Intervention\Image\Facades\Image::class,
+        'Sentry' => Sentry\SentryLaravel\SentryFacade::class,
 
     ],
 
