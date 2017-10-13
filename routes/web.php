@@ -58,6 +58,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
     Route::resource('/slider', 'SliderController', ['except' => 'show']);
     Route::get('/settings', 'Util\SettingsController@index');
     Route::put('/settings', 'Util\SettingsController@update');
+    Route::get('/logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 });
 
 /**

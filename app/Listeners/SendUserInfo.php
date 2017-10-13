@@ -7,6 +7,7 @@ use App\Events\UserRegistered;
 use GuzzleHttp\Client;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Support\Facades\Log;
 
 class SendUserInfo
 {
@@ -43,5 +44,14 @@ class SendUserInfo
                 'Password' => Helpers::encrypt(env('API_ENCRYPT_KEY'), $event->data['password'])
             ]
         ]);
+
+        $data = \GuzzleHttp\json_decode($res->getBody());
+
+        if (!$data->IsSuccessfull) {
+            Log::error('User creation unsuccessfull!', [
+                'user' => $event->data['email'],
+                'messages' => $data->messages
+            ]);
+        }
     }
 }

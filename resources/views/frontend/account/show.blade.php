@@ -66,7 +66,7 @@
                 <div class="col-md-8">
                     <h2>Biletlerim</h2>
 
-                    @if($attendee->orders->count() < 1)
+                    @if(\App\Models\Attendee::getCompletedOrders($attendee->orders)->count() < 1)
                         <div class="alert alert-warning" role="alert">
                             Satın almış olduğunuz bir yayın bulunmamaktadır!
                         </div>
