@@ -1,24 +1,32 @@
 <ul class="nav nav-tabs nav-justified" role="tablist">
-    @if(request()->is('register'))
+    @if(!request()->is('register')
+            || $errors->has('email')
+            || $errors->has('password'))
         <li role="presentation" class="active">
-            <a href="#registration" aria-controls="profile" role="tab" data-toggle="tab">KAYIT OL</a>
+            <a href="#authenticate" aria-controls="home" role="tab" data-toggle="tab">GİRİŞ YAP</a>
         </li>
         <li role="presentation">
-            <a href="#authenticate" aria-controls="home" role="tab" data-toggle="tab">GİRİŞ YAP</a>
+            <a href="#registration" aria-controls="profile" role="tab" data-toggle="tab">KAYIT OL</a>
         </li>
     @else
-        <li role="presentation" class="active">
-            <a href="#authenticate" aria-controls="home" role="tab" data-toggle="tab">GİRİŞ YAP</a>
+        <li role="presentation" class="@if($errors->has('email') || $errors->has('password'))
+                ''
+            @else
+                active
+            @endif">
+            <a href="#registration" aria-controls="profile" role="tab" data-toggle="tab">KAYIT OL</a>
         </li>
         <li role="presentation">
-            <a href="#registration" aria-controls="profile" role="tab" data-toggle="tab">KAYIT OL</a>
+            <a href="#authenticate" aria-controls="home" role="tab" data-toggle="tab">GİRİŞ YAP</a>
         </li>
     @endif
 </ul>
 
 <!-- Tab panes -->
 <div class="tab-content">
-    <div role="tabpanel" class="tab-pane @if(!request()->is('register'))
+    <div role="tabpanel" class="tab-pane @if(!request()->is('register')
+            || $errors->has('email')
+            || $errors->has('password'))
             active
         @endif" id="authenticate">
         <form class="form-horizontal" method="POST" action="{{ route('login') }}">
@@ -76,87 +84,89 @@
             </div>
         </form>
     </div>
-    <div role="tabpanel" class="tab-pane @if(request()->is('register'))
+    <div role="tabpanel" class="tab-pane @if($errors->has('email') || $errors->has('password'))
+            ''
+        @elseif(request()->is('register'))
             active
         @endif" id="registration">
         <form class="form-horizontal" method="POST" action="{{ route('register') }}">
             {{ csrf_field() }}
 
-            <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                <label for="name" class="col-md-3 control-label">Ad</label>
+            <div class="form-group{{ $errors->has('registerName') ? ' has-error' : '' }}">
+                <label for="registerName" class="col-md-3 control-label">Ad</label>
 
                 <div class="col-md-6">
-                    <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus maxlength="100">
+                    <input id="registerName" type="text" class="form-control" name="registerName" value="{{ old('registerName') }}" required autofocus maxlength="100">
 
-                    @if ($errors->has('name'))
+                    @if ($errors->has('registerName'))
                         <span class="help-block">
-                        <strong>{{ $errors->first('name') }}</strong>
+                        <strong>{{ $errors->first('registerName') }}</strong>
                     </span>
                     @endif
                 </div>
             </div>
 
-            <div class="form-group{{ $errors->has('surname') ? ' has-error' : '' }}">
-                <label for="name" class="col-md-3 control-label">Soyad</label>
+            <div class="form-group{{ $errors->has('registerSurname') ? ' has-error' : '' }}">
+                <label for="registerSurname" class="col-md-3 control-label">Soyad</label>
 
                 <div class="col-md-6">
-                    <input id="name" type="text" class="form-control" name="surname" value="{{ old('surname') }}" required maxlength="100">
+                    <input id="registerSurname" type="text" class="form-control" name="registerSurname" value="{{ old('registerSurname') }}" required maxlength="100">
 
-                    @if ($errors->has('surname'))
+                    @if ($errors->has('registerSurname'))
                         <span class="help-block">
-                        <strong>{{ $errors->first('surname') }}</strong>
+                        <strong>{{ $errors->first('registerSurname') }}</strong>
                     </span>
                     @endif
                 </div>
             </div>
 
-            <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                <label for="email" class="col-md-3 control-label">E-Mail</label>
+            <div class="form-group{{ $errors->has('registerEmail') ? ' has-error' : '' }}">
+                <label for="registerEmail" class="col-md-3 control-label">E-Mail</label>
 
                 <div class="col-md-6">
-                    <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required maxlength="100">
+                    <input id="registerEmail" type="email" class="form-control" name="registerEmail" value="{{ old('registerEmail') }}" required maxlength="100">
 
-                    @if ($errors->has('email'))
+                    @if ($errors->has('registerEmail'))
                         <span class="help-block">
-                        <strong>{{ $errors->first('email') }}</strong>
+                        <strong>{{ $errors->first('registerEmail') }}</strong>
                     </span>
                     @endif
                 </div>
             </div>
 
-            <div class="form-group{{ $errors->has('phone') ? ' has-error' : '' }}">
-                <label for="name" class="col-md-3 control-label">Telefon Numarası</label>
+            <div class="form-group{{ $errors->has('registerPhone') ? ' has-error' : '' }}">
+                <label for="registerPhone" class="col-md-3 control-label">Telefon Numarası</label>
 
                 <div class="col-md-6">
-                    <input id="name" type="text" class="form-control" name="phone" value="{{ old('phone') }}" required pattern=".{10,25}">
+                    <input id="registerPhone" type="text" class="form-control" name="registerPhone" value="{{ old('registerPhone') }}" required pattern=".{10,25}">
 
-                    @if ($errors->has('phone'))
+                    @if ($errors->has('registerPhone'))
                         <span class="help-block">
-                        <strong>{{ $errors->first('phone') }}</strong>
+                        <strong>{{ $errors->first('registerPhone') }}</strong>
                     </span>
                     @endif
                 </div>
             </div>
 
-            <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                <label for="password" class="col-md-3 control-label">Parola</label>
+            <div class="form-group{{ $errors->has('registerPassword') ? ' has-error' : '' }}">
+                <label for="registerPassword" class="col-md-3 control-label">Parola</label>
 
                 <div class="col-md-6">
-                    <input id="password" type="password" class="form-control" name="password" required maxlength="25">
+                    <input id="registerPassword" type="password" class="form-control" name="registerPassword" required maxlength="25">
 
-                    @if ($errors->has('password'))
+                    @if ($errors->has('registerPassword'))
                         <span class="help-block">
-                        <strong>{{ $errors->first('password') }}</strong>
+                        <strong>{{ $errors->first('registerPassword') }}</strong>
                     </span>
                     @endif
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="password-confirm" class="col-md-3 control-label">Parola Doğrulama</label>
+                <label for="registerPassword_confirmation" class="col-md-3 control-label">Parola Doğrulama</label>
 
                 <div class="col-md-6">
-                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required maxlength="25">
+                    <input id="registerPassword_confirmation" type="password" class="form-control" name="registerPassword_confirmation" required maxlength="25">
                 </div>
             </div>
 

@@ -97,16 +97,13 @@ class AttendeeController extends Controller
             'surname.required' => 'Soyad alanı zorunludur.',
             'phone.required' => 'Telefon alanı zorunludur',
             'email.required' => 'Email alanı zorunludur.',
-            'email.unique' => 'Bu email adresi kullanımda.',
-            'password.required' => 'Parola alanı zorunludur.'
         ];
 
         $validator = Validator::make($request->all(), [
             'name' => 'required|string',
             'surname' => 'required|string',
             'phone' => 'required|string',
-            'email' => 'required|string|unique:attendees',
-            'password' => 'required|string|min:6|confirmed'
+            'email' => 'required|string',
         ], $messages);
 
         if ($validator->fails()) {
@@ -121,7 +118,9 @@ class AttendeeController extends Controller
         $attendee->surname = $request->surname;
         $attendee->phone = $request->phone;
         $attendee->email = $request->email;
-        $attendee->password = bcrypt($request->password);
+        $attendee->password = $request->password != null
+            ? bcrypt($request->password)
+            : $attendee->password;
 
         $attendee->updated_at = Carbon::now();
 

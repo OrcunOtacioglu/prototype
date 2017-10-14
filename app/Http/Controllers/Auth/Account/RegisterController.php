@@ -53,23 +53,23 @@ class RegisterController extends Controller
     public function validator(array $data)
     {
         $messages = [
-            'name.required' => 'Ad alanını doldurmak zorunludur.',
-            'surname.required' => 'Soyad alanını doldurmak zorunludur.',
-            'phone.required' => 'Telefon numarası alanını doldurmak zorunludur.',
-            'phone.min' => 'En az :min karakterden oluşmalıdır.',
-            'phone.max' => 'En fazla :max karakterden oluşmalıdır.',
-            'email.required' => 'Email alanını doldurmak zorunludur.',
-            'email.unique' => 'Bu email hesabı zaten kullanımda.',
-            'password.required' => 'Parola alanını doldurmak zorunludur.',
-            'password.confirmed' => 'Parolalar eşleşmiyor.'
+            'registerName.required' => 'Ad alanını doldurmak zorunludur.',
+            'registerSurname.required' => 'Soyad alanını doldurmak zorunludur.',
+            'registerPhone.required' => 'Telefon numarası alanını doldurmak zorunludur.',
+            'registerPhone.min' => 'En az :min karakterden oluşmalıdır.',
+            'registerPhone.max' => 'En fazla :max karakterden oluşmalıdır.',
+            'registerEmail.required' => 'Email alanını doldurmak zorunludur.',
+            'registerEmail.unique' => 'Bu email hesabı zaten kullanımda.',
+            'registerPassword.required' => 'Parola alanını doldurmak zorunludur.',
+            'registerPassword.confirmed' => 'Girmiş olduğunuz parolalar birbiriyle eşleşmemektedir.'
         ];
 
         return Validator::make($data, [
-                'name' => 'required|string|max:255',
-                'surname' => 'required|string|max:255',
-                'phone' => 'required|string|min:10|max:25',
-                'email' => 'required|string|email|max:255|unique:users',
-                'password' => 'required|string|min:6|confirmed',
+                'registerName' => 'required|string|max:255',
+                'registerSurname' => 'required|string|max:255',
+                'registerPhone' => 'required|string|min:10|max:25',
+                'registerEmail' => 'required|string|email|max:255|unique:attendees,email',
+                'registerPassword' => 'required|string|min:6|confirmed',
         ], $messages);
     }
 
@@ -84,15 +84,15 @@ class RegisterController extends Controller
         event(new UserRegistered($data));
 
         return Attendee::create([
-            'name' => $data['name'],
-            'reference' => $data['email'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
+            'name' => $data['registerName'],
+            'reference' => $data['registerEmail'],
+            'email' => $data['registerEmail'],
+            'password' => bcrypt($data['registerPassword']),
             'remember_token' => '',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
-            'surname' => $data['surname'],
-            'phone' => $data['phone'],
+            'surname' => $data['registerSurname'],
+            'phone' => $data['registerPhone'],
         ]);
     }
 
