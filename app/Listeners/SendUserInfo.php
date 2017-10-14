@@ -47,7 +47,7 @@ class SendUserInfo
 
         $data = \GuzzleHttp\json_decode($res->getBody());
 
-        if (!$data->IsSuccessfull) {
+        if (!$data->IsSuccessful) {
             Log::error('User creation unsuccessfull!', [
                 'user' => $event->data['email'],
                 'messages' => $data->messages

@@ -51,7 +51,7 @@ class SendOrderInfo
         ]);
         $data = \GuzzleHttp\json_decode($response->getBody());
 
-        if (!$data->IsSuccessfull) {
+        if (!$data->IsSuccessful) {
             Log::error('Order creation unsuccessfull!', [
                 'order' => $event->order->reference,
                 'messages' => $data->messages
