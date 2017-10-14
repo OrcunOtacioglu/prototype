@@ -37,18 +37,18 @@ class SendUserInfo
                     'Password' => env('API_PASSWORD')
                 ],
 //                'ReferenceEmail' => $event->data['email'],
-                'Firstname' => $event->data['name'],
-                'Lastname' => $event->data['surname'],
-                'Email' => $event->data['email'],
-                'Phone' => $event->data['phone'],
-                'Password' => Helpers::encrypt(env('API_ENCRYPT_KEY'), $event->data['password'])
+                'Firstname' => $event->data['registerName'],
+                'Lastname' => $event->data['registerSurname'],
+                'Email' => $event->data['registerEmail'],
+                'Phone' => $event->data['registerPhone'],
+                'Password' => Helpers::encrypt(env('API_ENCRYPT_KEY'), $event->data['registerPassword'])
             ]
         ]);
 
         $data = \GuzzleHttp\json_decode($res->getBody());
         if (!$data->IsSuccessful) {
             Log::error('User creation unsuccessfull!', [
-                'user' => $event->data['email'],
+                'user' => $event->data['registerEmail'],
                 'messages' => $data->Messages
             ]);
         }

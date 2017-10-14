@@ -20,7 +20,14 @@
                             <h4>Online <span style="color: #f22c29">Canlı Yayın</span> İzleme Portalı&nbsp;&nbsp;&nbsp;&nbsp;|</h4>
                         </li>
                         @if(!request()->user('account'))
-                            <li class="dropdown{{ $errors->count() > 0 ? ' open' : '' }}">
+                            <li class="dropdown @if(request()->is('register'))
+                                    ''
+                                    @elseif(request()->is('order/*'))
+                                    ''
+                                    @elseif(($errors->has('email') || $errors->has('password')))
+                                    open
+                                @endif
+                            ">
                                 <a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="cursor: pointer">
                                     GİRİŞ YAP <span class="caret"></span>
                                 </a>

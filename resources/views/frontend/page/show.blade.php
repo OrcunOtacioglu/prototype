@@ -11,7 +11,9 @@
                 <div class="row">
                     <div class="coverPhotoImage">
                         <img src="/frontend/img/loginImg.jpg" alt="">
-                        <h1 class="eventTitle" style="color: #fff">{{ $page->title }}</h1>
+                        <div class="coverTitle">
+                            <h1 class="eventTitle">{{ $page->title }}</h1>
+                        </div>
                     </div>
                 </div>
             </div>

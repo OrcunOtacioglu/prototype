@@ -27,34 +27,64 @@
                         {{ csrf_field() }}
                         {{ method_field('PUT') }}
 
-                        <div class="form-group">
+                        <div class="form-group {{ $errors->has('name') ? ' has-error' : '' }}">
                             <label for="name">Ad</label>
                             <input type="text" name="name" id="name" class="form-control" value="{{ $attendee->name }}" required maxlength="100">
+
+                            @if ($errors->has('name'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('name') }}</strong>
+                                </span>
+                            @endif
                         </div>
 
-                        <div class="form-group">
-                            <label for="name">Soyad</label>
+                        <div class="form-group {{ $errors->has('surname') ? ' has-error' : '' }}">
+                            <label for="surname">Soyad</label>
                             <input type="text" name="surname" id="surname" class="form-control" value="{{ $attendee->surname }}" required maxlength="100">
+
+                            @if ($errors->has('surname'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('surname') }}</strong>
+                                </span>
+                            @endif
                         </div>
 
-                        <div class="form-group">
-                            <label for="name">Telefon</label>
+                        <div class="form-group {{ $errors->has('phone') ? ' has-error' : '' }}">
+                            <label for="phone">Telefon</label>
                             <input type="text" name="phone" id="phone" class="form-control" value="{{ $attendee->phone }}" required maxlength="25">
+
+                            @if ($errors->has('phone'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('phone') }}</strong>
+                                </span>
+                            @endif
                         </div>
 
-                        <div class="form-group">
-                            <label for="name">Email</label>
+                        <div class="form-group {{ $errors->has('phone') ? ' has-error' : '' }}">
+                            <label for="email">Email</label>
                             <input type="email" name="email" id="email" class="form-control" value="{{ $attendee->email }}" required maxlength="100">
+
+                            @if ($errors->has('email'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('email') }}</strong>
+                                </span>
+                            @endif
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group {{ $errors->has('password') ? ' has-error' : '' }}">
                             <label for="password">Parola</label>
                             <input type="password" name="password" id="password" class="form-control" maxlength="25" minlength="6">
+
+                            @if ($errors->has('password'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('password') }}</strong>
+                                </span>
+                            @endif
                         </div>
 
                         <div class="form-group">
-                            <label for="password-confirm">Parola Doğrulama</label>
-                            <input type="password" name="password-confirm" id="password-confirm" class="form-control" maxlength="25" minlength="6">
+                            <label for="password-confirm" class="control-label">Parola Doğrulama</label>
+                            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required maxlength="25">
                         </div>
 
                         <button type="submit" class="btn btn-primary btn-block" style="background-color: #fcb131; border: none; padding: 6px 25px;">
@@ -78,7 +108,7 @@
                                 <th class="default-th">Etkinlik</th>
                                 <th class="default-th">Tarih</th>
                                 <th class="default-th">Tutar</th>
-                                <th class="default-th text-center">İşlemler</th>
+                                <th class="default-th text-center">Durum</th>
                             </tr>
                             </thead>
 
@@ -92,12 +122,10 @@
                                     <td class="default-td">{{ \Acikgise\Helpers\Helpers::getTurkishTime($order->event->start_date) }}</td>
                                     <td class="default-td">{{ $order->total }} TL</td>
                                     <td class="default-td text-center">
-                                        <a href="{{ $order->video_link }}" class="btn btn-sm btn-default
-                                            @if(!Acikgise\Helpers\Helpers::checkVideoAvailability($order))
-                                                disabled not-active
-                                            @endif">Şimdi İzle</a> <br>
-                                        @if(!\Acikgise\Helpers\Helpers::checkVideoAvailability($order))
-                                            <small>Yayın saati bekleniyor.</small>
+                                        @if(Acikgise\Helpers\Helpers::checkVideoAvailability($order))
+                                            <a href="{{ $order->video_link }}" class="btn btn-sm btn-primary">Şimdi İzle</a>
+                                        @else
+                                            <a href="#" class="btn btn-sm btn-default disabled not-active">Yayın Saati Bekleniyor</a>
                                         @endif
                                     </td>
                                 </tr>
