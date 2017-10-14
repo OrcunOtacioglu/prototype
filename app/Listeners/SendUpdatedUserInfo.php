@@ -50,7 +50,7 @@ class SendUpdatedUserInfo
         if (!$data->IsSuccessful) {
             Log::error('User update unsuccessfull!', [
                 'user' => $event->attendee,
-                'messages' => $data->messages
+                'messages' => $data->Messages
             ]);
         }
     }

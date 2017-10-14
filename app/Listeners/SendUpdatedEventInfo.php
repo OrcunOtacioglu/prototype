@@ -52,11 +52,10 @@ class SendUpdatedEventInfo
         ]);
 
         $data = \GuzzleHttp\json_decode($res->getBody());
-        dd($data);
         if (!$data->IsSuccessful) {
             Log::error('Event update unsuccessfull!', [
                 'user' => $object->event,
-                'messages' => $data->messages
+                'messages' => $data->Messages
             ]);
         }
     }

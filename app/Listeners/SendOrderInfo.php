@@ -50,16 +50,13 @@ class SendOrderInfo
             ]
         ]);
         $data = \GuzzleHttp\json_decode($response->getBody());
-
         if (!$data->IsSuccessful) {
             Log::error('Order creation unsuccessfull!', [
                 'order' => $event->order->reference,
-                'messages' => $data->messages
+                'messages' => $data->Messages
             ]);
         }
-
         $videoLink = Helpers::decrypt(env('API_ENCRYPT_KEY'), $data->Ciphertext);
-
         $order = Order::find($event->order->id);
         $order->video_link = $videoLink;
         $order->updated_at = Carbon::now();

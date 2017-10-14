@@ -34,7 +34,8 @@ class LoginController extends Controller
     {
         $messages = [
             'email.required' => 'Email adresi girmek zorunludur.',
-            'password.required' => 'Parola girmek zorunludur.'
+            'password.required' => 'Parola girmek zorunludur.',
+            'password.confirmed' => 'Parolalar eşleşmiyor.'
         ];
 
         $this->validate($request, [
