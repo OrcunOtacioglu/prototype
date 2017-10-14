@@ -53,10 +53,10 @@ class SendEventInfo
 
         $data = \GuzzleHttp\json_decode($res->getBody());
 
-        if (!$data->IsSuccessfull) {
+        if (!$data->IsSuccessful) {
             Log::error('Event creation unsuccessfull!', [
                 'event' => $object->event,
-                'messages' => $data->messages
+                'messages' => $data->Messages
             ]);
         }
     }

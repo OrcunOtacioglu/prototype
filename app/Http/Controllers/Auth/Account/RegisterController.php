@@ -56,14 +56,18 @@ class RegisterController extends Controller
             'name.required' => 'Ad alanını doldurmak zorunludur.',
             'surname.required' => 'Soyad alanını doldurmak zorunludur.',
             'phone.required' => 'Telefon numarası alanını doldurmak zorunludur.',
+            'phone.min' => 'En az :min karakterden oluşmalıdır.',
+            'phone.max' => 'En fazla :max karakterden oluşmalıdır.',
             'email.required' => 'Email alanını doldurmak zorunludur.',
-            'password.required' => 'Parola alanını doldurmak zorunludur.'
+            'email.unique' => 'Bu email hesabı zaten kullanımda.',
+            'password.required' => 'Parola alanını doldurmak zorunludur.',
+            'password.confirmed' => 'Parolalar eşleşmiyor.'
         ];
 
         return Validator::make($data, [
                 'name' => 'required|string|max:255',
                 'surname' => 'required|string|max:255',
-                'phone' => 'required|string',
+                'phone' => 'required|string|min:10|max:25',
                 'email' => 'required|string|email|max:255|unique:users',
                 'password' => 'required|string|min:6|confirmed',
         ], $messages);

@@ -128,7 +128,7 @@
                 <label for="name" class="col-md-3 control-label">Telefon Numarası</label>
 
                 <div class="col-md-6">
-                    <input id="name" type="text" class="form-control" name="phone" value="{{ old('phone') }}" required maxlength="25">
+                    <input id="name" type="text" class="form-control" name="phone" value="{{ old('phone') }}" required pattern=".{10,25}">
 
                     @if ($errors->has('phone'))
                         <span class="help-block">
