@@ -59,7 +59,7 @@ class PageController extends Controller
      */
     public function show($slug)
     {
-        $page = Page::where('slug', '=', $slug)->first();
+        $page = Page::where('slug', '=', $slug)->firstOrFail();
 
         return view('frontend.page.show', compact('page'));
     }
