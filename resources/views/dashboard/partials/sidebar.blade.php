@@ -79,7 +79,7 @@
                         </a>
                         <ul class="site-menu-sub">
                             <li class="site-menu-item">
-                                <a class="animsition-link" href="{{ action('OrderController@index') }}">
+                                <a class="animsition-link" href="{{ action('Finance\SaleController@index') }}">
                                     <span class="site-menu-title">All Sales</span>
                                 </a>
                             </li>

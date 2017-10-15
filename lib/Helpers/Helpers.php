@@ -281,13 +281,27 @@ class Helpers
     public static function checkVideoAvailability(Order $order)
     {
         $startTime = Carbon::parse($order->event->start_date)->subMinutes(30);
+        $endTime = Carbon::parse($order->event->end_date);
+
         $now = Carbon::now();
 
-        if ($startTime->gt($now))
+        if ($startTime->gt($now) || $now->gt($endTime))
         {
             return false;
         } else {
             return true;
         }
+    }
+
+    public static function calculateTotalIncome($sales)
+    {
+        $total = 0;
+
+        foreach ($sales as $sale)
+        {
+            $total += $sale->total;
+        }
+
+        return $total;
     }
 }
