@@ -88,6 +88,8 @@ class EventController extends Controller
 
         event(new EventUpdated($event));
 
+        flash()->success('Success!', 'Event updated successfully!');
+
         return redirect()->action('EventController@edit', ['id' => $id]);
     }
 

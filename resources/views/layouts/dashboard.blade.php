@@ -72,5 +72,7 @@
     @yield('footer.scripts')
 
     @include('dashboard.partials.js.initialize')
+    <script src="{{ asset('frontend/js/plugins/sweetalert.min.js') }}"></script>
+    @include('partials.flash')
 </body>
 </html>

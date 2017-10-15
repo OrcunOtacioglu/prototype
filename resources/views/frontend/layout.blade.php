@@ -52,6 +52,7 @@
 </head>
 <body>
 
+    @yield('social.code')
     <!-- Mobile menu overlay mask -->
     <div class="layer"></div>
 
@@ -70,6 +71,8 @@
     <script src="{{ asset('frontend/js/functions.js') }}"></script>
     <script src="{{ asset('frontend/js/common_scripts_min.js') }}"></script>
     <script src="{{ asset('frontend/js/common_scripts_min.js') }}"></script>
+    <script src="{{ asset('frontend/js/plugins/sweetalert.min.js') }}"></script>
+    @include('partials.flash')
     @yield('footer.scripts')
 </body>
 </html>

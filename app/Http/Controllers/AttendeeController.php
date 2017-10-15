@@ -128,6 +128,8 @@ class AttendeeController extends Controller
 
         event(new UserUpdated($attendee, $request));
 
+        flash()->success('Başarılı!', 'Bilgileriniz başarı ile güncellenmiştir!');
+
         return redirect()->action('AttendeeController@show');
     }
 
