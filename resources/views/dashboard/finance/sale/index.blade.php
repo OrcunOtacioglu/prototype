@@ -21,6 +21,7 @@
                         <th>Transaction ID</th>
                         <th>Date</th>
                         <th>Customer</th>
+                        <th>Amount</th>
                         <th class="text-nowrap">Actions</th>
                     </tr>
                     </thead>
@@ -31,6 +32,7 @@
                             <td>{{ $sale->transaction_id }}</td>
                             <td>{{ $sale->updated_at }}</td>
                             <td>{{ $sale->attendee->name }}</td>
+                            <td>{{ $sale->total }} TL</td>
                             <td>
                                 <a href="{{ action('OrderController@edit', ['id' => $sale->id]) }}" class="btn btn-sm btn-icon btn-flat btn-default" data-toggle="tooltip" data-original-title="Edit">
                                     <i class="icon wb-wrench" aria-hidden="true"></i>
