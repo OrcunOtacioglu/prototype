@@ -5,14 +5,14 @@
 <div id="tabs" class="tabs">
     <nav>
         <ul>
-            @foreach(\App\Models\Util\EventCategory::all() as $category)
+            @foreach($categories as $category)
                 <li><a href="#section-{{ $category->id }}"><span>{{ $category->name }}</span></a></li>
             @endforeach
         </ul>
     </nav>
 
     <div class="content">
-        @foreach(\App\Models\Util\EventCategory::all() as $category)
+        @foreach($categories as $category)
             <section id="section-{{ $category->id }}">
                 <div class="row list_tours_tabs">
                     <ul>

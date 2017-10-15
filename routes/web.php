@@ -6,10 +6,11 @@ header('Access-Control-Allow-Headers:  Content-Type, X-Auth-Token, Origin, Autho
 
 Route::get('/', function () {
     $events = \App\Models\Event::with('eventCategory')->get();
+    $categories = \App\Models\Util\EventCategory::all();
 
     $eligibleEvents = \App\Models\Event::eligibleEvents($events);
     $slides = \App\Slider::with('event')->get();
-    return view('frontend.index', compact('eligibleEvents', 'slides'));
+    return view('frontend.index', compact('eligibleEvents','categories', 'slides'));
 });
 
 /**
@@ -53,6 +54,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
     Route::resource('/page', 'Util\PageController', ['except' => 'show']);
     Route::resource('/role', 'Authority\RoleController');
     Route::resource('/permission', 'Authority\PermissionController');
+    Route::resource('/sale', 'Finance\SaleController');
     Route::resource('/invoice', 'Finance\InvoiceController');
     Route::resource('/user', 'UserController');
     Route::resource('/slider', 'SliderController', ['except' => 'show']);
