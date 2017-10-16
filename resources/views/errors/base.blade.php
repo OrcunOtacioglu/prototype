@@ -35,7 +35,7 @@
                 <span class="br3" style="font-size: 20px">@yield('message')</span>
             </div>
             <div class="col-md-12 mt-250">
-                <a href="http://www.fbbentertainment.com/" target="_blank"><img src="{{ asset('frontend/img/logo-fbb.png') }}"></a>
+                <a href="http://www.fbbentertainment.com/" target="_blank"><img src="{{ asset('frontend/img/logo-fbb-error.png') }}"></a>
             </div>
             <div class="col-md-12">
                 <span>Bizi Takip Edin!</span>
