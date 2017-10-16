@@ -20,7 +20,9 @@ class AttendeeController extends Controller
      */
     public function index()
     {
-        //
+        $customers = Attendee::all();
+
+        return view('dashboard.customer.index', compact('customers'));
     }
 
     /**
