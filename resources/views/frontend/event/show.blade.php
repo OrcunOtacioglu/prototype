@@ -104,18 +104,19 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Your share button code -->
-                    <div class="fb-share-button"
-                         data-href="{{ env('APP_URL') . '/event/' . $event->slug }}"
-                         data-layout="button"
-                         data-size="large"
-                    >
+                    <div class="social-sharing">
+                        <div class="fb-share-button"
+                             data-href="{{ env('APP_URL') . '/event/' . $event->slug }}"
+                             data-layout="button"
+                             data-size="large"
+                        >
+                        </div>
+                        <a class="twitter-share-button"
+                           href="https://twitter.com/intent/tweet?text={{ $event->description }}"
+                           data-size="large"
+                           data-hashtags="neredeysenorada">
+                            Tweet</a>
                     </div>
-                    <a class="twitter-share-button"
-                       href="https://twitter.com/intent/tweet?text={{ $event->description }}"
-                       data-size="large"
-                       data-hashtags="neredeysenorada">
-                        Tweet</a>
                 </div>
             </div>
             @include('frontend.ticketType.show')
