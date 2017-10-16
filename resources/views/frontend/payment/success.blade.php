@@ -60,7 +60,7 @@
                         <tbody>
                         <tr>
                             <td>
-                                <br>Etkinliği izlemek için lütfen etkinlik saatinde mail adresinize gönderilen bağlantıya tıklayarak izleme sayfasına gidiniz.
+                                <br>Etkinliği izlemek için lütfen etkinlik saatinde mail adresinize gönderilen bağlantıya tıklayarak izleme sayfasına gidiniz. Ayrıca profil sayfanızdan da etkinlik saatinde izleme sayfasına erişebilirsiniz.
                                 <br><br>
                                 <a href="#" style="color: black"><b>{{ $order->video_link }}</b></a>
                                 <br><br><br>
