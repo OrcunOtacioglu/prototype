@@ -380,3 +380,7 @@ footer {
     float: right;
     padding-top: 5px;
 }
+
+.twitter-share-button {
+    vertical-align: bottom !important;
+}

@@ -6,7 +6,7 @@
     <meta property="og:type" content="article">
     <meta property="og:title" content="{{ $event->title }}">
     <meta property="og:description" content="{{ $event->description }}">
-    <meta property="og:image" content="{{ env('APP_URL') . '/images/cover-images/' . $event->bg_cover_image }}">
+    <meta property="og:image" content="{{ env('APP_URL') . '/images/featured-images/' . $event->featured_image }}">
     <meta property="og:locale" content="tr_TR">
 @stop
 
@@ -112,7 +112,7 @@
                         >
                         </div>
                         <a class="twitter-share-button"
-                           href="https://twitter.com/intent/tweet?text={{ $event->description }}"
+                           href="https://twitter.com/intent/tweet?text={{ substr($event->description, 0, 85) . '...' }}"
                            data-size="large"
                            data-hashtags="neredeysenorada">
                             Tweet</a>
