@@ -4,7 +4,10 @@ namespace App\Exceptions;
 
 use Exception;
 use Illuminate\Auth\AuthenticationException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Http\Exceptions\HttpResponseException;
+use Psy\Exception\ErrorException;
 
 class Handler extends ExceptionHandler
 {
@@ -48,8 +51,19 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-//        return parent::render($request, $exception);
-        return view('errors.500');
+        $e = $this->prepareException($exception);
+
+        if ($e instanceof HttpResponseException) {
+            return $e->getResponse();
+        } elseif ($e instanceof AuthenticationException) {
+            return $this->unauthenticated($request, $e);
+        } elseif ($e instanceof ValidationException) {
+            return $this->convertValidationExceptionToResponse($e, $request);
+        } elseif ($e instanceof \ErrorException) {
+            return view('errors.500');
+        }
+
+        return $this->prepareResponse($request, $e);
     }
 
     /**
