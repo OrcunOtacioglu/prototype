@@ -12,6 +12,7 @@ use App\Models\Util\Settings;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\Log;
 
 class CartController extends Controller
 {
@@ -212,12 +213,24 @@ class CartController extends Controller
             } else {
 
                 $results = "Ödeme Islemi Basarisiz. Kredi kartı ile 3D ödeme işleminiz başarısız sonuçlanmıştır.";
+
+                Log::error('Order not successful!', [
+                    'order' => $request->ReturnOid,
+                    'error' => $ErrMsg
+                ]);
+
                 return view('frontend.payment.fail', compact('results'));
 
             }
 
         } else {
             $results = "Ödeme Islemi Basarisiz. Kredi kartı ile 3D ödeme işleminiz başarısız sonuçlanmıştır.";
+
+            Log::error('Order not successful!', [
+                'order' => $request->ReturnOid,
+                'error' => $ErrMsg
+            ]);
+
             return view('frontend.payment.fail', compact('results'));
         }
     }
