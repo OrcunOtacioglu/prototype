@@ -1,7 +1,5 @@
 <ul class="nav nav-tabs nav-justified" role="tablist">
-    @if(!request()->is('register')
-            || $errors->has('email')
-            || $errors->has('password'))
+    @if($errors->has('email') || $errors->has('password'))
         <li role="presentation" class="active">
             <a href="#authenticate" aria-controls="home" role="tab" data-toggle="tab">GİRİŞ YAP</a>
         </li>
@@ -24,9 +22,7 @@
 
 <!-- Tab panes -->
 <div class="tab-content">
-    <div role="tabpanel" class="tab-pane @if(!request()->is('register')
-            || $errors->has('email')
-            || $errors->has('password'))
+    <div role="tabpanel" class="tab-pane @if($errors->has('email') || $errors->has('password'))
             active
         @endif" id="authenticate">
         <form class="form-horizontal" method="POST" action="{{ route('login') }}">
@@ -87,6 +83,8 @@
     <div role="tabpanel" class="tab-pane @if($errors->has('email') || $errors->has('password'))
             ''
         @elseif(request()->is('register'))
+            active
+        @else
             active
         @endif" id="registration">
         <form class="form-horizontal" method="POST" action="{{ route('register') }}">
