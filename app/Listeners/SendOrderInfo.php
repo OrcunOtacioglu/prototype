@@ -61,6 +61,6 @@ class SendOrderInfo
         $order->video_link = $videoLink;
         $order->updated_at = Carbon::now();
         $order->save();
-        event(new OrderCompleted($event->order));
+        event(new OrderCompleted($order));
     }
 }

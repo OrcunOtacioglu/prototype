@@ -60,7 +60,10 @@
 <table style="background: #f1f1f1; width: 620px" border="0">
     <tbody>
     <tr >
-        <td style="text-align: left"><a href="http://neredeysenorada.com/" target="_blank"><img src="http://neredeysenorada.com/img/logo.png"></a></td>
+        <td style="text-align: left"><a href="http://neredeysenorada.com/" target="_blank">
+                <img src="http://neredeysenorada.com/frontend/img/logo.png">
+            </a>
+        </td>
         <td>&nbsp;</td>
         <td style="text-align: right; font-size: 12px">© 2017 Neredeysen Orada. Tüm hakları saklıdır.&nbsp;&nbsp;&nbsp;&nbsp;</td>
     </tr>

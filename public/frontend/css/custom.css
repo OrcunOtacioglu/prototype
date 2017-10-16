@@ -375,3 +375,8 @@ footer {
     pointer-events: none;
     cursor: default;
 }
+
+.social-sharing {
+    float: right;
+    padding-top: 5px;
+}

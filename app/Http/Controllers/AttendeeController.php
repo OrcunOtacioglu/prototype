@@ -130,7 +130,7 @@ class AttendeeController extends Controller
 
         flash()->success('Başarılı!', 'Bilgileriniz başarı ile güncellenmiştir!');
 
-        return redirect()->action('AttendeeController@show');
+        return redirect()->back();
     }
 
     /**
