@@ -53,7 +53,7 @@ class SendOrderInfo
         if (!$data->IsSuccessful) {
             Log::error('Order creation unsuccessfull!', [
                 'order' => $event->order->reference,
-                'messages' => $data->Messages
+                'messages' => \GuzzleHttp\json_decode($data->Messages, true)
             ]);
         }
         $videoLink = Helpers::decrypt(env('API_ENCRYPT_KEY'), $data->Ciphertext);
