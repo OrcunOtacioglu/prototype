@@ -38,7 +38,7 @@
 
                                         <div class="col-xs-12 col-sm-12 col-md-12" style="margin-top: 10px;">
                                             <div class="form-group{{ $errors->has('email') ? 'has-error' : '' }}">
-                                                <input type="text" name="email" id="email" class="form-control input-lg" placeholder="E-posta">
+                                                <input type="text" name="email" id="email" class="form-control input-lg" placeholder="E-posta" required>
 
                                                 @if($errors->has('email'))
                                                     <span class="help-block">
@@ -49,7 +49,7 @@
                                         </div>
                                         <div class="col-xs-12 col-sm-12 col-md-12">
                                             <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                                                <input type="password" name="password" id="password" class="form-control input-lg" placeholder="Şifre">
+                                                <input type="password" name="password" id="password" class="form-control input-lg" placeholder="Şifre" required>
 
                                                 @if ($errors->has('password'))
                                                     <span class="help-block">
