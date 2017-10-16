@@ -112,7 +112,7 @@
                         >
                         </div>
                         <a class="twitter-share-button"
-                           href="https://twitter.com/intent/tweet?text={{ substr($event->description, 0, 85) . '...' }}"
+                           href="https://twitter.com/intent/tweet?text={{ $event->title . ' Canlı yayını izle!' }}"
                            data-size="large"
                            data-hashtags="neredeysenorada">
                             Tweet</a>
