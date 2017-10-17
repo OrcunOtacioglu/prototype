@@ -101,37 +101,39 @@
                             Satın almış olduğunuz bir yayın bulunmamaktadır!
                         </div>
                     @else
-                        <table class="order-table">
-                            <thead>
-                            <tr>
-                                <th class="first-th"></th>
-                                <th class="default-th">Etkinlik</th>
-                                <th class="default-th">Tarih</th>
-                                <th class="default-th">Tutar</th>
-                                <th class="default-th text-center">Durum</th>
-                            </tr>
-                            </thead>
-
-                            <tbody>
-                            @foreach(\App\Models\Attendee::getCompletedOrders($attendee->orders) as $order)
+                        <div style="overflow-x: auto;">
+                            <table class="order-table">
+                                <thead>
                                 <tr>
-                                    <td class="img-td">
-                                        <img src="/images/small-images/{{ $order->event->small_image }}" alt="" class="img-responsive">
-                                    </td>
-                                    <td class="default-td">{{ $order->event->title }}</td>
-                                    <td class="default-td">{{ \Acikgise\Helpers\Helpers::getTurkishTime($order->event->start_date) }}</td>
-                                    <td class="default-td">{{ $order->total }} TL</td>
-                                    <td class="default-td text-center">
-                                        @if(Acikgise\Helpers\Helpers::checkVideoAvailability($order))
-                                            <a href="{{ $order->video_link }}" class="btn btn-sm btn-primary">Şimdi İzle</a>
-                                        @else
-                                            <a href="#" class="btn btn-sm btn-default disabled not-active">Yayın Saati Bekleniyor</a>
-                                        @endif
-                                    </td>
+                                    <th class="first-th"></th>
+                                    <th class="default-th">Etkinlik</th>
+                                    <th class="default-th">Tarih</th>
+                                    <th class="default-th">Tutar</th>
+                                    <th class="default-th text-center">Durum</th>
                                 </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
+                                </thead>
+
+                                <tbody>
+                                @foreach(\App\Models\Attendee::getCompletedOrders($attendee->orders) as $order)
+                                    <tr>
+                                        <td class="img-td">
+                                            <img src="/images/small-images/{{ $order->event->small_image }}" alt="" class="img-responsive">
+                                        </td>
+                                        <td class="default-td">{{ $order->event->title }}</td>
+                                        <td class="default-td">{{ \Acikgise\Helpers\Helpers::getTurkishTime($order->event->start_date) }}</td>
+                                        <td class="default-td">{{ $order->total }} TL</td>
+                                        <td class="default-td text-center">
+                                            @if(Acikgise\Helpers\Helpers::checkVideoAvailability($order))
+                                                <a href="{{ $order->video_link }}" class="btn btn-sm btn-primary">Şimdi İzle</a>
+                                            @else
+                                                <a href="#" class="btn btn-sm btn-default disabled not-active">Yayın Saati Bekleniyor</a>
+                                            @endif
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                     @endif
                 </div>
             </div>
