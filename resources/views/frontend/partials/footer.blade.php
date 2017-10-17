@@ -1,4 +1,4 @@
-<footer style="bottom: 0; position: relative; z-index: 0; width: 100%;">
+<footer>
     <div class="container">
         <div class="row">
             <div class="col-md-3">
@@ -48,37 +48,37 @@
             </div>
         </div>
     </div>
+
+    <div class="footer-partner">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="footer-partner-padding">
+                        <ul class="list-inline valign-midd ellipses">
+                            <li><strong style="color: #8c8c8c;">Anlaşmalı Kartlar</strong></li>
+                            <li class="pr-15">
+                                <img id="imgVisaLogo" src="{{ asset('frontend/img/footer/visaMastercard.png') }}" alt="Visa">
+                            </li>
+                            <li class="footer-partner-border-left pl-15"><strong style="color: #8c8c8c;">Güvenlik</strong></li>
+                            <li>
+                                <img id="Image2" src="{{ asset('frontend/img/footer/secure.png') }}" alt="Secure">
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="social_footer">
+                        <p>© 2017 Neredeysen Orada. Tüm hakları saklıdır.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </footer>
-
-<div class="footer-partner">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 col-sm-12 col-xs-12">
-                <div class="footer-partner-padding">
-                    <ul class="list-inline valign-midd ellipses">
-                        <li><strong style="color: #8c8c8c;">Anlaşmalı Kartlar</strong></li>
-                        <li class="pr-15">
-                            <img id="imgVisaLogo" src="{{ asset('frontend/img/footer/visaMastercard.png') }}" alt="Visa">
-                        </li>
-                        <li class="footer-partner-border-left pl-15"><strong style="color: #8c8c8c;">Güvenlik</strong></li>
-                        <li>
-                            <img id="Image2" src="{{ asset('frontend/img/footer/secure.png') }}" alt="Secure">
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="footer-copyright">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div id="social_footer">
-                    <p>© 2017 Neredeysen Orada. Tüm hakları saklıdır.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
