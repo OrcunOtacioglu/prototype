@@ -22,7 +22,7 @@
         <div class="container">
             <div class="row" style="background: #fff">
                 <div class="col-md-12">
-                    <table style="font-family: sans-serif; width: 620px">
+                    <table class="width-100" style="font-family: sans-serif; width: 620px">
                         <tbody>
                         <tr>
                             <td colspan="3"  style="border-bottom: 1px solid #353535">
@@ -39,7 +39,7 @@
                         </tr>
                         </tbody>
                     </table>
-                    <table cellpadding="5" bordercolor="#fff" style="border: solid 1px #fff; width: 620px">
+                    <table class="width-100" cellpadding="5" bordercolor="#fff" style="border: solid 1px #fff; width: 620px">
                         <tbody>
                         <tr style="text-align:center; background:#353535; color:#fff; font-weight: bold">
                             <td>Etkinlik Adı</td>
@@ -56,7 +56,12 @@
                         </tr>
                         </tbody>
                     </table>
-                    <table style="width: 620px">
+                    <div class="col-md-12">
+                        <div class="text-center">
+                            <a href="#" class="btn btn-primary" style="background-color: #fcb131; border: none; padding: 6px 25px;">Biletlerim</a>
+                        </div>
+                    </div>
+                    <table class="width-100" style="width: 620px">
                         <tbody>
                         <tr>
                             <td>

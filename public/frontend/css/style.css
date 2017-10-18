@@ -5033,3 +5033,10 @@ table.order-table {
 .p-10{
 	padding: 10px;
 }
+
+@media (max-width: 776px){
+
+	.width-100{
+		width: 100% !important;
+	}
+}
