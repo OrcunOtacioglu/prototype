@@ -57,6 +57,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
     Route::resource('/sale', 'Finance\SaleController');
     Route::resource('/invoice', 'Finance\InvoiceController');
     Route::resource('/user', 'UserController');
+    Route::get('/customers', 'AttendeeController@showAll');
     Route::resource('/slider', 'SliderController', ['except' => 'show']);
     Route::get('/settings', 'Util\SettingsController@index');
     Route::put('/settings', 'Util\SettingsController@update');
@@ -73,7 +74,7 @@ Route::get('/payment', 'CartController@payment');
 Route::post('/order-complete', 'CartController@validatePayment');
 Route::get('/organizer/{name}', 'AccountController@organizer');
 
-Route::resource('/attendee', 'AttendeeController', ['except' => 'show']);
+Route::resource('/attendee', 'AttendeeController', ['except' => ['show', 'all']]);
 Route::get('/account', 'AttendeeController@show');
 
 Route::post('/api-detur', 'AttendeeController@storeDetur');
