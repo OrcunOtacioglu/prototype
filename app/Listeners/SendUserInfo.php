@@ -51,6 +51,10 @@ class SendUserInfo
                 'user' => $event->data['registerEmail'],
                 'messages' => $data->Messages
             ]);
+        } else {
+            Log::info('User created successfully!', [
+                'user' => $event->data['registerEmail']
+            ]);
         }
     }
 }

@@ -49,8 +49,12 @@ class SendUpdatedUserInfo
 
         if (!$data->IsSuccessful) {
             Log::error('User update unsuccessfull!', [
-                'user' => $event->attendee,
+                'user' => $event->attendee->email,
                 'messages' => $data->Messages
+            ]);
+        } else {
+            Log::info('User updated successfully!', [
+                'user' => $event->attendee->email
             ]);
         }
     }

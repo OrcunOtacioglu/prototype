@@ -55,8 +55,12 @@ class SendEventInfo
 
         if (!$data->IsSuccessful) {
             Log::error('Event creation unsuccessfull!', [
-                'event' => $object->event,
+                'event' => $object->event->title,
                 'messages' => $data->Messages
+            ]);
+        } else {
+            Log::info('Event created successfully!', [
+                'event' => $object->event->title
             ]);
         }
     }

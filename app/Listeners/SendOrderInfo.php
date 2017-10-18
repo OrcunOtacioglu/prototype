@@ -45,7 +45,7 @@ class SendOrderInfo
                 'Firstname' => $event->order->attendee->name,
                 'Lastname' => $event->order->attendee->surname,
                 'Email' => $event->order->attendee->email,
-                'Phone' => '',
+                'Phone' => $event->order->attendee->phone,
                 'Password' => ''
             ]
         ]);
@@ -53,7 +53,11 @@ class SendOrderInfo
         if (!$data->IsSuccessful) {
             Log::error('Order creation unsuccessfull!', [
                 'order' => $event->order->reference,
-                'messages' => \GuzzleHttp\json_decode($data->Messages, true)
+                'messages' => $data->Messages
+            ]);
+        } else {
+            Log::info('Order created successfully!', [
+                'order' => $event->order->reference
             ]);
         }
         $videoLink = Helpers::decrypt(env('API_ENCRYPT_KEY'), $data->Ciphertext);
