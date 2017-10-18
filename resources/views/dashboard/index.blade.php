@@ -45,7 +45,7 @@
                     <div class="content-text text-center mb-0">
                         <span class="font-size-40 font-weight-100">{{ $customers->count() }}</span>
                         <p class="blue-grey-400 font-weight-100 m-0">Total signed up customers on previous month</p>
-                        <small><a href="{{ action('AttendeeController@index') }}">See All</a></small>
+                        <small><a href="{{ action('AttendeeController@showAll') }}">See All</a></small>
                     </div>
                 </div>
             </div>
