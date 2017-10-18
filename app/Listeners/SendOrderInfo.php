@@ -42,10 +42,10 @@ class SendOrderInfo
                 'TicketReference' => $event->order->reference,
                 'EventReference' => $event->order->event->slug,
                 'DealerReference' => '',
-                'Firstname' => $event->order->attendee->name,
-                'Lastname' => $event->order->attendee->surname,
+                'Firstname' => '',
+                'Lastname' => '',
                 'Email' => $event->order->attendee->email,
-                'Phone' => $event->order->attendee->phone,
+                'Phone' => '',
                 'Password' => ''
             ]
         ]);
