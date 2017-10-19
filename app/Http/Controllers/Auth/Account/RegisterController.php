@@ -58,6 +58,7 @@ class RegisterController extends Controller
             'registerPhone.required' => 'Telefon numarası alanını doldurmak zorunludur.',
             'registerPhone.min' => 'En az :min karakterden oluşmalıdır.',
             'registerPhone.max' => 'En fazla :max karakterden oluşmalıdır.',
+            'registerPhone.regex' => 'Lütfen geçerli bir telefon numarası giriniz.',
             'registerEmail.required' => 'Email alanını doldurmak zorunludur.',
             'registerEmail.unique' => 'Bu email hesabı zaten kullanımda.',
             'registerEmail.email' => 'Kayıt adresi geçerli bir email olmalıdır.',
@@ -68,7 +69,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
                 'registerName' => 'required|string|max:255',
                 'registerSurname' => 'required|string|max:255',
-                'registerPhone' => 'required|string|min:10|max:25',
+                'registerPhone' => 'required|regex:/[0-9]/|min:10|max:25',
                 'registerEmail' => 'required|string|email|max:255|unique:attendees,email',
                 'registerPassword' => 'required|string|min:6|confirmed',
         ], $messages);
@@ -82,6 +83,14 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $excluded = [
+            '+', '(', ')', ' '
+        ];
+
+        foreach ($excluded as $exclude) {
+            $data['registerPhone'] = str_replace($exclude, '', $data['registerPhone']);
+        }
+
         event(new UserRegistered($data));
 
         return Attendee::create([
