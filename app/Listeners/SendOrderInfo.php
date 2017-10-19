@@ -49,6 +49,24 @@ class SendOrderInfo
                 'Password' => ''
             ]
         ]);
+
+        Log::notice('Order data has been sent!', [
+            'json' => [
+                'Credential' => [
+                    'Username' => env('API_USER'),
+                    'Password' => env('API_PASSWORD')
+                ],
+                'TicketReference' => $event->order->reference,
+                'EventReference' => $event->order->event->slug,
+                'DealerReference' => '',
+                'Firstname' => '',
+                'Lastname' => '',
+                'Email' => $event->order->attendee->email,
+                'Phone' => '',
+                'Password' => ''
+            ]
+        ]);
+
         $data = \GuzzleHttp\json_decode($response->getBody());
         if (!$data->IsSuccessful) {
             Log::error('Order creation unsuccessfull!', [

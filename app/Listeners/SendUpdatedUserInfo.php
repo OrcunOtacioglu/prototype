@@ -45,6 +45,21 @@ class SendUpdatedUserInfo
             ]
         ]);
 
+        Log::notice('Updated user info has been sent!', [
+            'json' => [
+                'Credential' => [
+                    'Username' => env('API_USER'),
+                    'Password' => env('API_PASSWORD')
+                ],
+                'ReferenceEmail' => $event->attendee->reference,
+                'Firstname' => $event->attendee->name,
+                'Lastname' => $event->attendee->surname,
+                'Email' => $event->attendee->email,
+                'Phone' => $event->attendee->phone,
+                'Password' => Helpers::encrypt(env('API_ENCRYPT_KEY'), $event->request->password)
+            ]
+        ]);
+
         $data = \GuzzleHttp\json_decode($res->getBody());
 
         if (!$data->IsSuccessful) {
