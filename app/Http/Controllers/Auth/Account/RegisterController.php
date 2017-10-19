@@ -60,6 +60,7 @@ class RegisterController extends Controller
             'registerPhone.max' => 'En fazla :max karakterden oluşmalıdır.',
             'registerEmail.required' => 'Email alanını doldurmak zorunludur.',
             'registerEmail.unique' => 'Bu email hesabı zaten kullanımda.',
+            'registerEmail.email' => 'Kayıt adresi geçerli bir email olmalıdır.',
             'registerPassword.required' => 'Parola alanını doldurmak zorunludur.',
             'registerPassword.confirmed' => 'Girmiş olduğunuz parolalar birbiriyle eşleşmemektedir.'
         ];
