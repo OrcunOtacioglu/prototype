@@ -38,6 +38,7 @@
     <link rel="stylesheet" href="{{ asset('frontend/css/tabs_home.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/color-orange.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/pop_up.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/formValidation.min.css') }}">
     @yield('custom.css')
 
     <!-- Global Site Tag (gtag.js) - Google Analytics -->
@@ -73,6 +74,9 @@
     <script src="{{ asset('frontend/js/common_scripts_min.js') }}"></script>
     <script src="{{ asset('frontend/js/plugins/sweetalert.min.js') }}"></script>
     @include('partials.flash')
+    <script src="{{ asset('frontend/js/plugins/formValidation/formValidation.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/plugins/formValidation/framework/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/plugins/formValidation/language/tr_TR.js') }}"></script>
     @yield('footer.scripts')
 </body>
 </html>

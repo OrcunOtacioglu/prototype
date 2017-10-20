@@ -64,4 +64,5 @@
             $(this).tab('show')
         })
     </script>
+    <script src="{{ asset('frontend/js/plugins/formValidation/validate-register.js') }}"></script>
 @stop
