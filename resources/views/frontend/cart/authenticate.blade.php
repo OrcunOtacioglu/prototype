@@ -57,13 +57,12 @@
 @stop
 
 @section('footer.scripts')
-    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('frontend/js/plugins/formatter.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/plugins/formValidation/validate-register.js') }}"></script>
     <script>
         $('#authenticate a').click(function (e) {
             e.preventDefault();
             $(this).tab('show')
         })
     </script>
-    <script src="{{ asset('frontend/js/plugins/formatter.min.js') }}"></script>
-    <script src="{{ asset('frontend/js/plugins/formValidation/validate-register.js') }}"></script>
 @stop

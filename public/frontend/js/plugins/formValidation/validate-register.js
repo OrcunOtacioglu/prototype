@@ -2,10 +2,6 @@ $(document).ready(function () {
     $('#register-form').formValidation({
         framework: "bootstrap",
         locale: 'tr_TR',
-        button: {
-            selector: '#register-button',
-            disabled: 'disabled'
-        },
         fields: {
             registerName: {
                 validators: {
@@ -101,8 +97,4 @@ $(document).ready(function () {
 new Formatter(document.getElementById('registerPhone'), {
     'pattern': '({{999}}) {{999}} {{9999}}',
     'persistent': true
-});
-
-$('#register-button').click(function() {
-    $(this).attr('disabled','disabled');
 });
