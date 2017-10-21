@@ -58,7 +58,7 @@
                     </table>
                     <div class="col-md-12">
                         <div class="text-center">
-                            <a href="#" class="btn btn-primary" style="background-color: #fcb131; border: none; padding: 6px 25px;">Biletlerim</a>
+                            <a href="{{ action('AttendeeController@show') }}" class="btn btn-primary" style="background-color: #fcb131; border: none; padding: 6px 25px;">Biletlerim</a>
                         </div>
                     </div>
                     <table class="width-100" style="width: 620px">

@@ -98,14 +98,21 @@ class AttendeeController extends Controller
             'name.required' => 'Ad alanı zorunludur.',
             'surname.required' => 'Soyad alanı zorunludur.',
             'phone.required' => 'Telefon alanı zorunludur',
+            'phone.min' => 'En az :min karakterden oluşmalıdır.',
+            'phone.max' => 'En fazla :max karakterden oluşmalıdır.',
+            'phone.regex' => 'Lütfen geçerli bir telefon numarası giriniz.',
             'email.required' => 'Email alanı zorunludur.',
+            'email.email' => 'Lütfen geçerli bir email adresi giriniz.',
+            'password.min' => 'En az :min karakterden oluşmalıdır.',
+            'password.confirmed' => 'Parolalar eşleşmiyor.'
         ];
 
         $validator = Validator::make($request->all(), [
-            'name' => 'required|string',
-            'surname' => 'required|string',
-            'phone' => 'required|string',
-            'email' => 'required|string',
+            'name' => 'required|string|max:100',
+            'surname' => 'required|string|max:100',
+            'phone' => 'required|regex:/[0-9]/|min:10|max:25',
+            'email' => 'required|string|email|max:255',
+            'password' => 'string|min:6|confirmed'
         ], $messages);
 
         if ($validator->fails()) {

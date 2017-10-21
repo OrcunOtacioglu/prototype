@@ -1,13 +1,13 @@
 $(document).ready(function () {
-    $('#register-form').formValidation({
-        framework: "bootstrap",
+    $('#update-account').formValidation({
+        framework: 'bootstrap',
         locale: 'tr_TR',
         button: {
-            selector: '#register-button',
+            selector: '#update-account-button',
             disabled: 'disabled'
         },
         fields: {
-            registerName: {
+            name: {
                 validators: {
                     notEmpty: {
                         message: 'Ad alanını doldurmak zorunludur.'
@@ -21,7 +21,7 @@ $(document).ready(function () {
                     }
                 }
             },
-            registerSurname: {
+            surname: {
                 validators: {
                     notEmpty: {
                         message: 'Soyad alanını doldurmak zorunludur.'
@@ -35,24 +35,22 @@ $(document).ready(function () {
                     }
                 }
             },
-            registerEmail: {
-                validator: {
-                    notEmpty: {
-                        message: 'Email alanını doldurmak zorunludur.'
-                    },
-                    emailAddress: {
-                        message: 'Lütfen geçerli bir email adresi giriniz.'
-                    },
-                    stringLength: {
-                        min: 6,
-                        max: 100
-                    },
-                    regexp: {
-                        regexp: /([a-zA-Z0-9])\w+/
-                    }
+            email: {
+                notEmpty: {
+                    message: 'Email alanını doldurmak zorunludur.'
+                },
+                emailAddress: {
+                    message: 'Lütfen geçerli bir email adresi giriniz.'
+                },
+                stringLength: {
+                    min: 6,
+                    max: 100
+                },
+                regexp: {
+                    regexp: /([a-zA-Z0-9])\w+/
                 }
             },
-            registerPhone: {
+            phone: {
                 validator: {
                     notEmpty: {
                         message: 'Telefon numarası alanını doldurmak zorunludur.'
@@ -67,10 +65,13 @@ $(document).ready(function () {
                     }
                 }
             },
-            registerPassword: {
+            password: {
                 validator: {
+                    notEmpty: {
+                        message: 'Parola alanını doldurmak zorunludur.'
+                    },
                     identical: {
-                        field: 'registerPassword_confirmation',
+                        field: 'password_confirmation',
                         message: 'Parolalar uyuşmuyor'
                     },
                     stringLength: {
@@ -80,10 +81,13 @@ $(document).ready(function () {
                     }
                 }
             },
-            registerPassword_confirmation: {
+            password_confirmation: {
                 validator: {
+                    notEmpty: {
+                        message: 'Parola alanını doldurmak zorunludur.'
+                    },
                     identical: {
-                        field: 'registerPassword',
+                        field: 'password',
                         message: 'Parolalar uyuşmuyor'
                     },
                     stringLength: {
@@ -96,11 +100,7 @@ $(document).ready(function () {
     });
 });
 
-new Formatter(document.getElementById('registerPhone'), {
+new Formatter(document.getElementById('phone'), {
     'pattern': '({{999}}) {{999}} {{9999}}',
     'persistent': true
-});
-
-$('#register-button').click(function() {
-    $(this).attr('disabled','disabled');
 });
