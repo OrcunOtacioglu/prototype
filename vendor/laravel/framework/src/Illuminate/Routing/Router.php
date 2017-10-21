@@ -1002,7 +1002,7 @@ class Router implements RegistrarContract, BindingRegistrar
     }
 
     /**
-     * Register the typical authentication routes for an application.
+     * Register the typical authentication routes for an application
      *
      * @return void
      */
