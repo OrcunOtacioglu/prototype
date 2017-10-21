@@ -94,6 +94,8 @@ $(document).ready(function () {
             }
         }
     });
+
+    console.log('Working!');
 });
 
 new Formatter(document.getElementById('registerPhone'), {
