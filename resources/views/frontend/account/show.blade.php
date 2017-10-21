@@ -23,7 +23,7 @@
                 <div class="col-md-4">
                     <h2>Profil Bilgileri</h2>
 
-                    <form action="{{ action('AttendeeController@update', ['id' => $attendee->id]) }}" method="POST">
+                    <form action="{{ action('AttendeeController@update', ['id' => $attendee->id]) }}" method="POST" id="update-account">
                         {{ csrf_field() }}
                         {{ method_field('PUT') }}
 
@@ -60,7 +60,7 @@
                             @endif
                         </div>
 
-                        <div class="form-group {{ $errors->has('phone') ? ' has-error' : '' }}">
+                        <div class="form-group {{ $errors->has('email') ? ' has-error' : '' }}">
                             <label for="email">Email</label>
                             <input type="email" name="email" id="email" class="form-control" value="{{ $attendee->email }}" required maxlength="100">
 
@@ -83,11 +83,11 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="password-confirm" class="control-label">Parola Doğrulama</label>
-                            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required maxlength="25">
+                            <label for="password_confirmation" class="control-label">Parola Doğrulama</label>
+                            <input id="password_confirmation" type="password" class="form-control" name="password_confirmation" required maxlength="25">
                         </div>
 
-                        <button type="submit" class="btn btn-primary btn-block" style="background-color: #fcb131; border: none; padding: 6px 25px;">
+                        <button id="update-account-button" type="submit" class="btn btn-primary btn-block" style="background-color: #fcb131; border: none; padding: 6px 25px;">
                             Bilgileri Güncelle
                         </button>
                     </form>
@@ -139,4 +139,9 @@
             </div>
         </div>
     </div>
+@stop
+
+@section('footer.scripts')
+    <script src="{{ asset('frontend/js/plugins/formatter.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/plugins/formValidation/validate-account.js') }}"></script>
 @stop

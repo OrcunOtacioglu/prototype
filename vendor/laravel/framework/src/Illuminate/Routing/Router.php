@@ -1009,25 +1009,15 @@ class Router implements RegistrarContract, BindingRegistrar
     public function auth()
     {
         // Authentication Routes...
-        $this->get('dashboard/login', 'Auth\LoginController@showLoginForm')->name('dashboard.login');
-        $this->post('dashboard/login', 'Auth\LoginController@login');
-        $this->post('dashboard/logout', 'Auth\LoginController@logout')->name('dashboard.logout');
+        $this->get('login', 'Auth\LoginController@showLoginForm')->name('login');
+        $this->post('login', 'Auth\LoginController@login');
+        $this->post('logout', 'Auth\LoginController@logout')->name('logout');
+
         // Registration Routes...
-        $this->get('dashboard/register', 'Auth\RegisterController@showRegistrationForm')->name('dashboard.register');
-        $this->post('dashboard/register', 'Auth\RegisterController@register');
+        $this->get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+        $this->post('register', 'Auth\RegisterController@register');
+
         // Password Reset Routes...
-        $this->get('dashboard/password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('dashboard.password.request');
-        $this->post('dashboard/password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('dashboard.password.email');
-        $this->get('dashboard/password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('dashboard.password.reset');
-        $this->post('dashboard/password/reset', 'Auth\ResetPasswordController@reset');
-        // Account Authentication Routes
-        $this->get('login', 'Auth\Account\LoginController@showLoginForm')->name('login');
-        $this->post('login', 'Auth\Account\LoginController@login');
-        $this->post('logout', 'Auth\Account\LoginController@logout')->name('logout');
-        // Account Registration Routes
-        $this->get('register', 'Auth\Account\RegisterController@showRegistrationForm')->name('register');
-        $this->post('register', 'Auth\Account\RegisterController@register');
-        // Account Password Reset Routes..
         $this->get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
         $this->post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
         $this->get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');

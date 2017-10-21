@@ -29,3 +29,9 @@
         </div>
     </div>
 @stop
+
+@section('footer.scripts')
+    <script src="{{ asset('frontend/js/plugins/formValidation/language/tr_TR.js') }}"></script>
+    <script src="{{ asset('frontend/js/plugins/formatter.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/plugins/formValidation/validate-register.js') }}"></script>
+@stop

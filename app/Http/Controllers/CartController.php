@@ -213,25 +213,27 @@ class CartController extends Controller
             } else {
 
                 $results = "Ödeme Islemi Basarisiz. Kredi kartı ile 3D ödeme işleminiz başarısız sonuçlanmıştır.";
+                $order =  Order::where('reference', '=', $request->ReturnOid)->with('orderItems', 'attendee', 'event')->first();
 
                 Log::error('Order not successful!', [
                     'order' => $request->ReturnOid,
                     'error' => $ErrMsg
                 ]);
 
-                return view('frontend.payment.fail', compact('results'));
+                return view('frontend.payment.fail', compact('results', 'order'));
 
             }
 
         } else {
             $results = "Ödeme Islemi Basarisiz. Kredi kartı ile 3D ödeme işleminiz başarısız sonuçlanmıştır.";
+            $order =  Order::where('reference', '=', $request->ReturnOid)->with('orderItems', 'attendee', 'event')->first();
 
             Log::error('Order not successful!', [
                 'order' => $request->ReturnOid,
                 'error' => $ErrMsg
             ]);
 
-            return view('frontend.payment.fail', compact('results'));
+            return view('frontend.payment.fail', compact('results', 'order'));
         }
     }
 }

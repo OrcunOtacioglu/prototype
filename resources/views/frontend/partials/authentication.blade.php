@@ -87,7 +87,7 @@
         @else
             active
         @endif" id="registration">
-        <form class="form-horizontal" method="POST" action="{{ route('register') }}">
+        <form class="form-horizontal" id="register-form" method="POST" action="{{ route('register') }}">
             {{ csrf_field() }}
 
             <div class="form-group{{ $errors->has('registerName') ? ' has-error' : '' }}">
@@ -98,8 +98,8 @@
 
                     @if ($errors->has('registerName'))
                         <span class="help-block">
-                        <strong>{{ $errors->first('registerName') }}</strong>
-                    </span>
+                            <strong>{{ $errors->first('registerName') }}</strong>
+                        </span>
                     @endif
                 </div>
             </div>
@@ -112,8 +112,8 @@
 
                     @if ($errors->has('registerSurname'))
                         <span class="help-block">
-                        <strong>{{ $errors->first('registerSurname') }}</strong>
-                    </span>
+                            <strong>{{ $errors->first('registerSurname') }}</strong>
+                        </span>
                     @endif
                 </div>
             </div>
@@ -126,8 +126,8 @@
 
                     @if ($errors->has('registerEmail'))
                         <span class="help-block">
-                        <strong>{{ $errors->first('registerEmail') }}</strong>
-                    </span>
+                            <strong>{{ $errors->first('registerEmail') }}</strong>
+                        </span>
                     @endif
                 </div>
             </div>
@@ -140,8 +140,8 @@
 
                     @if ($errors->has('registerPhone'))
                         <span class="help-block">
-                        <strong>{{ $errors->first('registerPhone') }}</strong>
-                    </span>
+                            <strong>{{ $errors->first('registerPhone') }}</strong>
+                        </span>
                     @endif
                 </div>
             </div>
@@ -150,12 +150,12 @@
                 <label for="registerPassword" class="col-md-3 control-label">Parola</label>
 
                 <div class="col-md-6">
-                    <input id="registerPassword" type="password" class="form-control" name="registerPassword" required maxlength="25">
+                    <input id="registerPassword" type="password" class="form-control" name="registerPassword" required pattern=".{6,25}">
 
                     @if ($errors->has('registerPassword'))
                         <span class="help-block">
-                        <strong>{{ $errors->first('registerPassword') }}</strong>
-                    </span>
+                            <strong>{{ $errors->first('registerPassword') }}</strong>
+                        </span>
                     @endif
                 </div>
             </div>
@@ -164,7 +164,7 @@
                 <label for="registerPassword_confirmation" class="col-md-3 control-label">Parola Doğrulama</label>
 
                 <div class="col-md-6">
-                    <input id="registerPassword_confirmation" type="password" class="form-control" name="registerPassword_confirmation" required maxlength="25">
+                    <input id="registerPassword_confirmation" type="password" class="form-control" name="registerPassword_confirmation" required pattern=".{6,25}">
                 </div>
             </div>
 
@@ -189,7 +189,7 @@
                 Gizlilik Beyanı’nın son güncel halini okumanızı önemle rica ederiz.</small>
             <div class="form-group">
                 <div class="col-md-12 text-center">
-                    <button type="submit" class="btn btn-primary" style="background-color: #fcb131; border: none; padding: 6px 25px;">
+                    <button id="register-button" type="submit" class="btn btn-primary" style="background-color: #fcb131; border: none; padding: 6px 25px;">
                         Kayıt Ol
                     </button>
                 </div>
