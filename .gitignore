@@ -4,7 +4,6 @@
 /public/invoices
 /storage/*.key
 /vendor/*
-!/vendor/laravel
 /.idea
 /.vagrant
 Homestead.json
