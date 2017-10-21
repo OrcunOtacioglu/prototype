@@ -15,9 +15,6 @@ $(document).ready(function () {
                     stringLength: {
                         min: 3,
                         max: 100
-                    },
-                    regexp: {
-                        regexp: /^[a-zA-Z]+$/
                     }
                 }
             },
@@ -29,9 +26,6 @@ $(document).ready(function () {
                     stringLength: {
                         min: 2,
                         max: 100
-                    },
-                    regexp: {
-                        regexp: /^[a-zA-Z]+$/
                     }
                 }
             },
