@@ -36,7 +36,7 @@ class SendUpdatedUserInfo
                     'Username' => env('API_USER'),
                     'Password' => env('API_PASSWORD')
                 ],
-                'ReferenceEmail' => $event->attendee->reference,
+                'ReferenceEmail' => $event->attendee->email,
                 'Firstname' => $event->attendee->name,
                 'Lastname' => $event->attendee->surname,
                 'Email' => $event->attendee->email,
