@@ -13,7 +13,7 @@ $(document).ready(function () {
                         message: 'Ad alanını doldurmak zorunludur.'
                     },
                     stringLength: {
-                        min: 3,
+                        min: 2,
                         max: 100
                     }
                 }
