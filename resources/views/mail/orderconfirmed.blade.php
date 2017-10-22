@@ -48,10 +48,6 @@
             <br><br>
             <a href="#" style="color: black"><b>{{ $order->video_link }}</b></a>
             <br><br><br>
-            <a href="#" style="color: black;">Bu Sayfayı Yazdır</a>
-            &nbsp;
-            <a href="#" style="color: black;">Fatura Al</a>
-            <br><br>
             <p style="font-size: 14px"><i><b>Uyarı:</b> Bağlantı adresi tek izleme hakkıyla size özel oluşturulmuştur. İzleme sırasında aynı bağlantı üzerinden ikinci bir izleme başlatılması, yayınınızın kesilmesine neden olacağından, bağlantı adresinizi lütfen başkalarıyla paylaşmayınız.</i><br><br></p>
         </td>
     </tr>

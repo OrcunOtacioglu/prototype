@@ -3,7 +3,7 @@
 @section('title', 'Siparişiniz Başarıyla Tamamlandı!')
 
 @section('content')
-    <div class="coverPhoto">
+    <div class="coverPhoto" id="printArea">
         <div style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/images/cover-images/{{$order->event->bg_cover_image}}'); background-repeat: no-repeat; background-size: cover">
             <div class="container">
                 <div class="row">
@@ -56,11 +56,6 @@
                         </tr>
                         </tbody>
                     </table>
-                    <div class="col-md-12">
-                        <div class="text-center">
-                            <a href="{{ action('AttendeeController@show') }}" class="btn btn-primary" style="background-color: #fcb131; border: none; padding: 6px 25px;">Biletlerim</a>
-                        </div>
-                    </div>
                     <table class="width-100" style="width: 620px">
                         <tbody>
                         <tr>
@@ -69,17 +64,35 @@
                                 <br><br>
                                 <a href="#" style="color: black"><b>{{ $order->video_link }}</b></a>
                                 <br><br><br>
-                                <a href="#" style="color: black;">Bu Sayfayı Yazdır</a>
-                                &nbsp;
-                                <a href="#" style="color: black;">Fatura Al</a>
+                                <a href="#" onclick="printDiv('printArea')" style="color: black;">Bu Sayfayı Yazdır</a>
                                 <br><br>
                                 <p style="font-size: 14px"><i><b>Uyarı:</b> Bağlantı adresi tek izleme hakkıyla size özel oluşturulmuştur. İzleme sırasında aynı bağlantı üzerinden ikinci bir izleme başlatılması, yayınınızın kesilmesine neden olacağından, bağlantı adresinizi lütfen başkalarıyla paylaşmayınız.</i><br><br></p>
                             </td>
                         </tr>
                         </tbody>
                     </table>
+                    <div class="col-md-12">
+                        <div class="text-right">
+                            <a href="{{ action('AttendeeController@show') }}" class="btn btn-primary" style="background-color: #fcb131; border: none; padding: 6px 25px;">Biletlerim</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+@stop
+
+@section('footer.scripts')
+    <script>
+        function printDiv(divName) {
+            var printContents = document.getElementById(divName).innerHTML;
+            var originalContents = document.body.innerHTML;
+
+            document.body.innerHTML = printContents;
+
+            window.print();
+
+            document.body.innerHTML = originalContents;
+        }
+    </script>
 @stop
