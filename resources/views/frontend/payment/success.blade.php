@@ -54,6 +54,11 @@
                         <tr style="text-align:right; background:#fcb131; color:#000;">
                             <td colspan="3">Ödenen Toplam Tutar: <b>{{ $order->total }} TL</b></td>
                         </tr>
+                        <tr>
+                            <td colspan="3" style="text-align:right; color:#000; padding-top: 10px;">
+                                <a href="{{ action('AttendeeController@show') }}" class="btn btn-primary" style="background-color: #fcb131; border: none; padding: 6px 25px;">Biletlerim</a>
+                            </td>
+                        </tr>
                         </tbody>
                     </table>
                     <table class="width-100" style="width: 620px">
@@ -71,11 +76,6 @@
                         </tr>
                         </tbody>
                     </table>
-                    <div class="col-md-12">
-                        <div class="text-right">
-                            <a href="{{ action('AttendeeController@show') }}" class="btn btn-primary" style="background-color: #fcb131; border: none; padding: 6px 25px;">Biletlerim</a>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

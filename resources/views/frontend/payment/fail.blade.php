@@ -4,11 +4,11 @@
 
 @section('content')
     <div class="coverPhoto">
-        <div style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/images/cover-images/{{$order->event->bg_cover_image}}'); background-repeat: no-repeat; background-size: cover">
+        <div style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/frontend/img/loginImg.jpg'); background-repeat: no-repeat; background-size: cover">
             <div class="container">
                 <div class="row">
                     <div class="coverPhotoImage">
-                        <img src="/images/cover-images/{{$order->event->cover_image}}" alt="">
+                        <img src="/frontend/img/loginImg.jpg" alt="">
                     </div>
                 </div>
             </div>
