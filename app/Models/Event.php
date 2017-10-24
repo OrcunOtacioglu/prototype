@@ -80,7 +80,7 @@ class Event extends Model
         $event->account_id = Auth::user()->account->id;
         $event->event_category_id = $request->category;
         $event->title = $request->title;
-        $event->slug = Helpers::sluggify($request->title);
+        $event->slug = $request->slug != null ? $request->slug : Helpers::sluggify($request->title);
         $event->description = $request->description;
         $event->cover_image = Helpers::uploadImage($request, 'cover-images','coverImage');
         $event->bg_cover_image = Helpers::makeBlurredImage($request, 'cover-images', 'coverImage');
@@ -110,7 +110,7 @@ class Event extends Model
 
         $event->event_category_id = $request->category;
         $event->title = $request->title;
-        $event->slug = Helpers::sluggify($request->title);
+        $event->slug = $request->slug != null ? $request->slug : Helpers::sluggify($request->title);
 
         $event->cover_image = $request->coverImage != null ? Helpers::uploadImage($request, 'cover-images' ,'coverImage') : $event->cover_image;
         $event->bg_cover_image = $request->coverImage != null ? Helpers::makeBlurredImage($request, 'cover-images', 'coverImage') : $event->bg_cover_image;

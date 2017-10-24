@@ -42,6 +42,11 @@
                         </div>
 
                         <div class="form-group">
+                            <label for="slug">URL Slug</label>
+                            <input type="text" class="form-control" name="slug" id="slug" value="{{ $event->slug }}">
+                        </div>
+
+                        <div class="form-group">
                             <label for="description">Description</label>
                             <textarea class="form-control" name="description" id="description" cols="30" rows="5">{{ $event->description }}</textarea>
                         </div>
