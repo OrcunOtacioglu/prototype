@@ -70,7 +70,7 @@
                 <div class="col-md-8">
 
                     <h3>Etkinlik Detayı</h3>
-                    {{ $event->description }}
+                    {!! $event->description !!}
 
                 </div>
 
