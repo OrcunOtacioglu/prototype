@@ -150,6 +150,8 @@ class AttendeeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Attendee::destroy($id);
+
+        return redirect()->action('AttendeeController@showAll');
     }
 }

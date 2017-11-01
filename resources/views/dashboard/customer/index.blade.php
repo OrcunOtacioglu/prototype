@@ -30,7 +30,7 @@
                                 <a href="#" class="btn btn-sm btn-icon btn-flat btn-default" data-toggle="tooltip" data-original-title="Edit">
                                     <i class="icon wb-wrench" aria-hidden="true"></i>
                                 </a>
-                                <form action="#" method="POST">
+                                <form action="{{ action('AttendeeController@destroy', ['id' => $customer->id]) }}" method="POST">
                                     {{ csrf_field() }}
                                     {{ method_field('DELETE') }}
                                     <button type="submit"
