@@ -35,8 +35,10 @@
             </div>
         </div>
 
+        @include('frontend.partials.exciting-dialogs')
+
         <section id="all-events" name="all-events">
-            <div class="white_bground">
+            <div class="wide-grey">
                 <div class="wide">
                     <div class="container">
                         @include('frontend.partials.allEvents')
@@ -55,4 +57,5 @@
 
     <script src="{{ asset('frontend/js/tabs.js') }}"></script>
     <script>new CBPFWTabs(document.getElementById('tabs'));</script>
+    <script>new CBPFWTabs(document.getElementById('tabs-1'));</script>
 @stop

@@ -384,3 +384,30 @@ footer {
 .twitter-share-button {
     vertical-align: bottom !important;
 }
+
+@media(min-width:992px){
+    .mt-75{
+        margin-top: 75px;
+    }
+}
+
+.img-shadow{
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
+    -moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
+    border: solid 2px #fff;
+}
+
+.h2-sub{
+    color: #000 !important;
+    font-size: 22px !important;
+}
+
+.p-usual{
+    padding-top: 20px !important;
+    font-size: 14px !important;
+}
+
+.color-red-default{
+    color: #fc2b2b;
+}
