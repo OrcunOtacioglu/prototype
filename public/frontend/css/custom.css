@@ -9,6 +9,10 @@ header {
     margin-top: 20px;
 }
 
+#app {
+    overflow-x: hidden;
+}
+
 .forcefullwidth_wrapper_tp_banner {
     margin-top: 40px;
 }
