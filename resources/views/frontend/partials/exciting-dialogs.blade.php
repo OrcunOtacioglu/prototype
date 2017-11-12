@@ -5,8 +5,8 @@
                 <div class="main_title">
                     <h2>Heye<span class="color-red-default">Canlı</span> Sohbetler</h2>
                     <p class="p-usual">
-                        Her hafta farklı konuklarla merak edilen konular üzerine derin sohbetlerin gerçekleştirileceği, sansürsüz soruların sorulacağı, alanlarının <br>üstadlarından ustalarına kadar birçok sanatçının yer alacağı en özel programlar çok yakında sadece Türkiye’nin en heyecanlı platformu; neredeysenorada.com’da.
-                    </p>
+                        Her hafta merak edilen konular üzerine derin sohbetlerin gerçekleştirileceği, sansürsüz soruların sorulacağı, alanlarının
+                        üstadlarından ustalarına kadar birçok konuğun yer alacağı en özel programlar canlı yayınlarımızla çok yakında sadece Türkiye’nin en heyeCanlı platformu; neredeysenorada.com’da.                    </p>
                 </div>
                 <div id="tabs-1" class="tabs-2">
                     <nav>

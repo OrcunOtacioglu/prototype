@@ -437,7 +437,7 @@ header.sticky{
 	padding-bottom:0;
 }
 
-nav{ margin-top:20px; position:relative;}
+nav{ margin-top:20px; position:relative; text-align: center;}
 .sticky nav{ margin-top:20px}
 .sticky #logo{ margin-top:0; margin-bottom:10px;}
 

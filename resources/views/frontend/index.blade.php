@@ -39,7 +39,7 @@
 
         <section id="all-events" name="all-events">
             <div class="wide-grey">
-                <div class="wide">
+                <div class="wide-grey">
                     <div class="container">
                         @include('frontend.partials.allEvents')
                     </div>
