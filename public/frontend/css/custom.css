@@ -318,15 +318,6 @@ footer {
     background-color: #fff;
 }
 
-.wide {
-    text-align: left;
-    background: #fff;
-    width: 100%;
-    height: auto;
-    padding-top: 40px;
-    padding-bottom: 20px;
-}
-
 .pdt-5 {
     padding-top: 5px;
 }
@@ -391,7 +382,7 @@ footer {
 
 @media(min-width:992px){
     .mt-75{
-        margin-top: 75px;
+        margin-top: 55px;
     }
 }
 
@@ -414,4 +405,10 @@ footer {
 
 .color-red-default{
     color: #fc2b2b;
+}
+
+@media (max-width: 767px){
+    .mt-20{
+        margin-top: 20px;
+    }
 }

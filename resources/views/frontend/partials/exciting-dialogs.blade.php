@@ -25,7 +25,7 @@
                                     <div class="ribbon_4"><span>MÜZİK</span></div>
                                     <img src="assets/frontend/img/sarper.jpg" class="img-responsive img-shadow">
                                 </div>
-                                <div class="col-md-9 col-sm-8 col-xs-12 mt-75">
+                                <div class="col-md-9 col-sm-8 col-xs-12 mt-75 mt-20">
                                     <h2 class="h2-sub">Sarper SEMİZ'le Heye<span class="color-red-default">Canlı</span> Sohbetler</h2>
                                     <span>Her hafta bir ünlünün konuk olacağı, canlı müzik ve renkli sohbetleriyle eğlenceyi ekranlarınıza taşıyacak olan Sarper Semiz’in “Heyecanlı Sohbetler” programı 8 Ocak’tan itibaren her pazartesi 21:00 - 22:30 saatleri arasında canlı olarak sadece neredeysenorada.com’da.</span>
                                 </div>

@@ -231,6 +231,10 @@
         font-size: 11px;
             padding: 0 10px;
     }
+    .tabs-2 nav a {
+        font-size: 9px;
+        padding: 0 10px;
+    }
 	.mediabox {
 		float: none;
 		width: auto;
